@@ -67,17 +67,13 @@ public class Grammar {
 			}
 		}
 		
-		private String priority(String input, char[] operations){
+		private String priorityRecursive(String input, char[] operations){
 			int parenPairs=0;
-			int rightOffset=input.length()-1;
-			int leftOffset=0;
 			
 			if(!input.contains(Character.toString(operations[0])) && !input.contains(Character.toString(operations[1])))
 				return input;
 					
-			while(input.charAt(leftOffset)=='l' && input.charAt(rightOffset)=='r'){
-				leftOffset++;
-				rightOffset--;
+			while(input.charAt(parenPairs)=='l' && input.charAt(input.length()-1-parenPairs)=='r'){
 				parenPairs++;
 			}
 		
@@ -87,7 +83,7 @@ public class Grammar {
 				while(input.charAt(i)!=operations[0] && input.charAt(i)!=operations[1])
 					i--;
 				
-				String newString = priority("l" + input.substring(parenPairs, i) + "r", operations);
+				String newString = priorityRecursive("l" + input.substring(parenPairs, i) + "r", operations);
 				
 				return input.substring(0,parenPairs) + newString + input.substring(i,input.length()); 
 			}else
@@ -96,9 +92,9 @@ public class Grammar {
 
 		}
 		
-		public String calculationPriority(String input){
-			input = priority(input, new char[]{'u','d'});
-			input = priority(input, new char[]{'p','m'});
+		private String calculationPriority(String input){
+			input = priorityRecursive(input, new char[]{'u','d'});
+			input = priorityRecursive(input, new char[]{'p','m'});
 			return input;
 		}
 		
