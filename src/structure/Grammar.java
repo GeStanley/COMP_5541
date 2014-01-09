@@ -52,7 +52,7 @@ public class Grammar {
 		private String parseString(String input){
 			
 			if(!input.contains("l"))
-				return input;
+				return expression(input);
 			else{
 				
 				int rightBracket = input.indexOf("r");
@@ -76,19 +76,62 @@ public class Grammar {
 			while(input.charAt(parenPairs)=='l' && input.charAt(input.length()-1-parenPairs)=='r'){
 				parenPairs++;
 			}
-		
-			if(parenPairs!=0){
-				int i=input.length()-1;
-				//TODO fix this
-				while(input.charAt(i)!=operations[0] && input.charAt(i)!=operations[1])
-					i--;
-				
-				String newString = priorityRecursive("l" + input.substring(parenPairs, i) + "r", operations);
-				
-				return input.substring(0,parenPairs) + newString + input.substring(i,input.length()); 
-			}else
-				return "l" + input + "r";
 			
+			input = input.substring(parenPairs,input.length()-parenPairs);
+			
+			if(input.contains("l")){
+				
+				int r=input.length()-1;
+				int l=0;
+
+				while(input.charAt(r)!='r')
+					r--;
+
+				while(input.charAt(l)!='l')
+					l++;
+				
+				String newString = priorityRecursive(input.substring(l+1, r), operations);
+				
+				return input.substring(0,l+1) + newString + input.substring(r,input.length()); 
+			}else{
+				for(int i=0;i<input.length();i++){
+					if(input.charAt(i)==operations[0] || input.charAt(i)==operations[1]){
+						int leftIndex=i-1;
+						int rightIndex=i+1;
+						while(leftIndex>=0 && 
+								(input.charAt(leftIndex)=='0'||
+								input.charAt(leftIndex)=='1'||
+								input.charAt(leftIndex)=='2'||
+								input.charAt(leftIndex)=='3'||
+								input.charAt(leftIndex)=='4'||
+								input.charAt(leftIndex)=='5'||
+								input.charAt(leftIndex)=='6'||
+								input.charAt(leftIndex)=='7'||
+								input.charAt(leftIndex)=='8'||
+								input.charAt(leftIndex)=='9'||
+								input.charAt(leftIndex)=='.'))
+							leftIndex--;
+						while(rightIndex<input.length() &&
+								(input.charAt(rightIndex)=='0'||
+								input.charAt(rightIndex)=='1'||
+								input.charAt(rightIndex)=='2'||
+								input.charAt(rightIndex)=='3'||
+								input.charAt(rightIndex)=='4'||
+								input.charAt(rightIndex)=='5'||
+								input.charAt(rightIndex)=='6'||
+								input.charAt(rightIndex)=='7'||
+								input.charAt(rightIndex)=='8'||
+								input.charAt(rightIndex)=='9'||
+								input.charAt(rightIndex)=='.'))
+							rightIndex++;
+						
+						String newString = input.replace(input.substring(leftIndex+1,rightIndex), expression(input.substring(leftIndex+1,rightIndex)));
+						
+						return priorityRecursive(newString,operations);
+					}
+				}
+			}
+			return input;
 
 		}
 		
