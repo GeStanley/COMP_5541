@@ -46,7 +46,7 @@ public class Grammar {
 			else if (subString.contains("d"))
 				return division(subString);
 			else
-				return "error";
+				return subString;
 		}
 		
 		private String parseString(String input){
@@ -65,6 +65,41 @@ public class Grammar {
 
 				return parseString(newString);
 			}
+		}
+		
+		private String priority(String input, char[] operations){
+			int parenPairs=0;
+			int rightOffset=input.length()-1;
+			int leftOffset=0;
+			
+			if(!input.contains(Character.toString(operations[0])) && !input.contains(Character.toString(operations[1])))
+				return input;
+					
+			while(input.charAt(leftOffset)=='l' && input.charAt(rightOffset)=='r'){
+				leftOffset++;
+				rightOffset--;
+				parenPairs++;
+			}
+		
+			if(parenPairs!=0){
+				int i=input.length()-1;
+				//TODO fix this
+				while(input.charAt(i)!=operations[0] && input.charAt(i)!=operations[1])
+					i--;
+				
+				String newString = priority("l" + input.substring(parenPairs, i) + "r", operations);
+				
+				return input.substring(0,parenPairs) + newString + input.substring(i,input.length()); 
+			}else
+				return "l" + input + "r";
+			
+
+		}
+		
+		public String calculationPriority(String input){
+			input = priority(input, new char[]{'u','d'});
+			input = priority(input, new char[]{'p','m'});
+			return input;
 		}
 		
 		public String calculate(String input){
@@ -96,6 +131,7 @@ public class Grammar {
 						input.charAt(i)!='7'&&
 						input.charAt(i)!='8'&&
 						input.charAt(i)!='9'&&
+						input.charAt(i)!='.'&&
 						input.charAt(i)!='p'&&
 						input.charAt(i)!='m'&&
 						input.charAt(i)!='u'&&
@@ -108,7 +144,7 @@ public class Grammar {
 			if(leftParen-rightParen!=0)
 				return "error";
 			
-			return parseString(input);
+			return parseString(calculationPriority(input));
 		}
 	}
 	
@@ -118,6 +154,10 @@ public class Grammar {
 		
 		System.out.println(form.calculate("(5+1)*4"));
 		System.out.println(form.calculate("(6/2)-1"));
-		
+		System.out.println(form.calculate("1.25+1.5"));
+		System.out.println(form.calculate("(2.5)"));
+		System.out.println(form.calculate("2*5*4*10"));
+		System.out.println(form.calculate("2+5+4+10"));
+		System.out.println(form.calculate("2+5*4+10"));
 	}
 }
