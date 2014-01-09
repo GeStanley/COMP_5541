@@ -71,7 +71,7 @@ public class Grammar {
 			int leftParen=0;
 			int rightParen=0;
 			
-			if(input.charAt(0)!='l'||input.charAt(input.length()-1)!='l')
+			if(input.charAt(0)!='l'||input.charAt(input.length()-1)!='r')
 				input = "l" + input + "r";
 			
 			input = input.replace('+', 'p');
