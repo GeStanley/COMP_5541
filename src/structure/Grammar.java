@@ -55,7 +55,26 @@ public class Grammar {
 			
 			for(int i=0;i<operations.length;i++)
 				if(operations[i].contains("u")||operations[i].contains("d"))
-					expression=expression.replace(operations[i],calculate(operations[i]));
+					while(operations[i].contains("u")||operations[i].contains("d")){
+						int opCount=0;
+						int index=0;
+						
+						while(opCount<2 && index<operations[i].length()){
+							if(operations[i].charAt(index)=='u'|| operations[i].charAt(index)=='d')
+								opCount++;
+								
+							index++;
+						}
+						
+						if(opCount==1)
+							index=operations[i].length()+1;
+						
+						String result=calculate(operations[i].substring(0,index-1));
+								
+						expression=expression.replace(operations[i].substring(0,index-1),result);
+						operations[i]=operations[i].replace(operations[i].substring(0,index-1),result);
+							
+					}
 			
 			
 			
@@ -69,8 +88,11 @@ public class Grammar {
 						
 					index++;
 				}
-					
-				expression=expression.replace(expression.substring(0,index),calculate(expression.substring(0,index)));
+				
+				if(opCount==1)
+					index=expression.length()+1;
+				
+				expression=expression.replace(expression.substring(0,index-1),calculate(expression.substring(0,index-1)));
 					
 			}
 			
