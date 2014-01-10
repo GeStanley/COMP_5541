@@ -36,7 +36,7 @@ public class Grammar {
 			return Double.toString(c1/c2);
 		}
 		
-		private String expression(String subString){
+		private String calculate(String subString){
 			if(subString.contains("p"))
 				return addition(subString);
 			else if (subString.contains("m"))
@@ -47,6 +47,34 @@ public class Grammar {
 				return division(subString);
 			else
 				return subString;
+		}
+		
+		private String expression(String expression){
+			
+			String[] operations = expression.split("p|m");
+			
+			for(int i=0;i<operations.length;i++)
+				if(operations[i].contains("u")||operations[i].contains("d"))
+					expression=expression.replace(operations[i],calculate(operations[i]));
+			
+			
+			
+			while(expression.contains("p")||expression.contains("m")){
+				int opCount=0;
+				int index=0;
+				
+				while(opCount<2 && index<expression.length()){
+					if(expression.charAt(index)=='p'|| expression.charAt(index)=='m')
+						opCount++;
+						
+					index++;
+				}
+					
+				expression=expression.replace(expression.substring(0,index),calculate(expression.substring(0,index)));
+					
+			}
+			
+			return expression;
 		}
 		
 		private String parseString(String input){
@@ -65,83 +93,9 @@ public class Grammar {
 
 				return parseString(newString);
 			}
-		}
+		}	
 		
-		private String priorityRecursive(String input, char[] operations){
-			int parenPairs=0;
-			
-			if(!input.contains(Character.toString(operations[0])) && !input.contains(Character.toString(operations[1])))
-				return input;
-					
-			while(input.charAt(parenPairs)=='l' && input.charAt(input.length()-1-parenPairs)=='r'){
-				parenPairs++;
-			}
-			
-			input = input.substring(parenPairs,input.length()-parenPairs);
-			
-			if(input.contains("l")){
-				
-				int r=input.length()-1;
-				int l=0;
-
-				while(input.charAt(r)!='r')
-					r--;
-
-				while(input.charAt(l)!='l')
-					l++;
-				
-				String newString = priorityRecursive(input.substring(l+1, r), operations);
-				
-				return input.substring(0,l+1) + newString + input.substring(r,input.length()); 
-			}else{
-				for(int i=0;i<input.length();i++){
-					if(input.charAt(i)==operations[0] || input.charAt(i)==operations[1]){
-						int leftIndex=i-1;
-						int rightIndex=i+1;
-						while(leftIndex>=0 && 
-								(input.charAt(leftIndex)=='0'||
-								input.charAt(leftIndex)=='1'||
-								input.charAt(leftIndex)=='2'||
-								input.charAt(leftIndex)=='3'||
-								input.charAt(leftIndex)=='4'||
-								input.charAt(leftIndex)=='5'||
-								input.charAt(leftIndex)=='6'||
-								input.charAt(leftIndex)=='7'||
-								input.charAt(leftIndex)=='8'||
-								input.charAt(leftIndex)=='9'||
-								input.charAt(leftIndex)=='.'))
-							leftIndex--;
-						while(rightIndex<input.length() &&
-								(input.charAt(rightIndex)=='0'||
-								input.charAt(rightIndex)=='1'||
-								input.charAt(rightIndex)=='2'||
-								input.charAt(rightIndex)=='3'||
-								input.charAt(rightIndex)=='4'||
-								input.charAt(rightIndex)=='5'||
-								input.charAt(rightIndex)=='6'||
-								input.charAt(rightIndex)=='7'||
-								input.charAt(rightIndex)=='8'||
-								input.charAt(rightIndex)=='9'||
-								input.charAt(rightIndex)=='.'))
-							rightIndex++;
-						
-						String newString = input.replace(input.substring(leftIndex+1,rightIndex), expression(input.substring(leftIndex+1,rightIndex)));
-						
-						return priorityRecursive(newString,operations);
-					}
-				}
-			}
-			return input;
-
-		}
-		
-		private String calculationPriority(String input){
-			input = priorityRecursive(input, new char[]{'u','d'});
-			input = priorityRecursive(input, new char[]{'p','m'});
-			return input;
-		}
-		
-		public String calculate(String input){
+		public String formula(String input){
 			int leftParen=0;
 			int rightParen=0;
 			
@@ -183,20 +137,21 @@ public class Grammar {
 			if(leftParen-rightParen!=0)
 				return "error";
 			
-			return parseString(calculationPriority(input));
+			return parseString(input);
 		}
 	}
-	
+
 	
 	public static void main(String[] args){
 		Grammar.Formula form = new Grammar.Formula();
-		
-		System.out.println(form.calculate("(5+1)*4"));
-		System.out.println(form.calculate("(6/2)-1"));
-		System.out.println(form.calculate("1.25+1.5"));
-		System.out.println(form.calculate("(2.5)"));
-		System.out.println(form.calculate("2*5*4*10"));
-		System.out.println(form.calculate("2+5+4+10"));
-		System.out.println(form.calculate("2+5*4+10"));
+
+		System.out.println(form.formula("(5+1)*4"));
+		System.out.println(form.formula("(6/2)-1"));
+		System.out.println(form.formula("1.25+1.5"));
+		System.out.println(form.formula("(2.5)"));
+		System.out.println(form.formula("2*5*4*10"));
+		System.out.println(form.formula("2+5+4+10"));
+		System.out.println(form.formula("2+5*4+10"));
+		System.out.println(form.formula("(2+5)*4+10"));
 	}
 }
