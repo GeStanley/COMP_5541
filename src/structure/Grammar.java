@@ -156,6 +156,12 @@ public class Grammar {
 					return "error";
 			}
 			
+			input = input.replace("mm", "m-");
+			input = input.replace("pm", "p-");
+			input = input.replace("dm", "d-");
+			input = input.replace("um", "u-");
+			input = input.replace("lm", "l-");
+			
 			if(leftParen-rightParen!=0)
 				return "error";
 			
@@ -167,7 +173,7 @@ public class Grammar {
 	public static void main(String[] args){
 		Grammar.Formula form = new Grammar.Formula();
 
-		System.out.println(form.formula("(5+1)*4"));
+		System.out.println(form.formula("(-5+1)*4"));
 		System.out.println(form.formula("(6/2)-1"));
 		System.out.println(form.formula("1.25+1.5"));
 		System.out.println(form.formula("(2.5)"));
