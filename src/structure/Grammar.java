@@ -124,6 +124,7 @@ public class Grammar {
 			if(input.charAt(0)!='l'||input.charAt(input.length()-1)!='r')
 				input = "l" + input + "r";
 			
+			input = input.replace(" ", "");
 			input = input.replace('+', 'p');
 			input = input.replace('-', 'm');
 			input = input.replace('*', 'u');
