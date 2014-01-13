@@ -41,10 +41,22 @@ public class UnitTestGrammar {
 		assertStatement(-10.0,"-2+-8");
 	}	
 	
+	public void testPolinomialOperations(){
+		//Test spaces
+		assertStatement(22.0,"(-2+5)*4+10");
+		assertStatement(32.0,"2+5*4+10");
+		assertStatement(21.0,"2+5+4+10");
+		assertStatement(-400,"2*5*-4*10");
+		assertStatement(-16.0,"(-5+1)*4");
+		assertStatement(2.0,"(6/2)-1");
+		assertStatement(400.0,"2*5*4*10");
+	}
+	
 	@Test
 	public void testMiscOperations(){
 		//Test spaces
 		assertStatement(17.0,"8 + 9");
+		assertStatement(2.5,"(2.5)");
 	}
 	
 	@Test
