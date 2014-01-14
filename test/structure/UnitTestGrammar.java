@@ -41,8 +41,9 @@ public class UnitTestGrammar {
 		assertStatement(-10.0,"-2+-8");
 	}	
 	
-	public void testPolinomialOperations(){
-		//Test spaces
+	@Test
+	public void testPolynomialOperations(){
+		//Test polynomials
 		assertStatement(22.0,"(-2+5)*4+10");
 		assertStatement(32.0,"2+5*4+10");
 		assertStatement(21.0,"2+5+4+10");
@@ -57,12 +58,6 @@ public class UnitTestGrammar {
 		//Test spaces
 		assertStatement(17.0,"8 + 9");
 		assertStatement(2.5,"(2.5)");
-	}
-	
-	@Test
-	public void testAdditionalOperations(){
-		//Testing exponents
-		assertStatement(16.0,"4^2");
 	}
 	
 	public void assertStatement(double expected, String given){
