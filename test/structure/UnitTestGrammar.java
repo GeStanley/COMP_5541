@@ -43,7 +43,7 @@ public class UnitTestGrammar {
 	
 	@Test
 	public void testPolynomialOperations(){
-		//Test polynomials
+		//Test polynomial operation which have multiple operations included
 		assertStatement(22.0,"(-2+5)*4+10");
 		assertStatement(32.0,"2+5*4+10");
 		assertStatement(21.0,"2+5+4+10");
@@ -51,11 +51,15 @@ public class UnitTestGrammar {
 		assertStatement(-16.0,"(-5+1)*4");
 		assertStatement(2.0,"(6/2)-1");
 		assertStatement(400.0,"2*5*4*10");
+		assertStatement(5.0,"(5+3*5)/4");
+		assertStatement(20.0,"((5+3)*(2*5))/4");
+		assertStatement(2.5,"(100/2/10)/2");
+
 	}
 	
 	@Test
 	public void testMiscOperations(){
-		//Test spaces
+		//Test spaces and brackets
 		assertStatement(17.0,"8 + 9");
 		assertStatement(2.5,"(2.5)");
 	}
