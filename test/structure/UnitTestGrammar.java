@@ -60,6 +60,12 @@ public class UnitTestGrammar {
 		assertStatement(2.5,"(2.5)");
 	}
 	
+	@Test
+	public void testAdditionalOperations(){
+		//Testing exponents
+		assertStatement(16.0,"4^2");
+	}
+	
 	public void assertStatement(double expected, String given){
 		Grammar.Formula testFormula = new Grammar.Formula();
 		assertEquals(expected,Double.parseDouble(testFormula.formula(given)),0.01);
