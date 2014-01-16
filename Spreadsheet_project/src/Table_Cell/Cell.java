@@ -1,16 +1,16 @@
 package Table_Cell;
 
 public class Cell {
-	public Cell() {
-		this.setValue(0.0);
-		this.setName("A1");
-		this.formula="0";
-		this.format="";
-	}
+	
 	private String formula;
 	private String format;
 	private double value;
 	private String name;
+	public Cell() {
+		this.setValue(0.0);
+		this.formula="0";
+		this.format="";
+	}
 	public void set_formula(String readInData){
 		this.formula=readInData;
 		}
@@ -32,7 +32,64 @@ public class Cell {
 	public String getName() {
 		return this.name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(int row,int column) {
+		StringBuilder sb=new StringBuilder();
+		switch(column){
+		case 0:
+			sb.append("A");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 1:
+			sb.append("B");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 2:
+			sb.append("C");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 3:
+			sb.append("D");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 4:
+			sb.append("E");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 5:
+			sb.append("F");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 6:
+			sb.append("G");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 7:
+			sb.append("H");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 8:
+			sb.append("I");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 9:
+			sb.append("J");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		case 10:
+			sb.append("K");
+			sb.append(row);
+			this.name=sb.toString();
+			break;
+		}
 	}
 }
