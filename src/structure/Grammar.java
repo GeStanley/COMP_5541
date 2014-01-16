@@ -1,9 +1,27 @@
 package structure;
 
+/**
+ * Parser for cell formulas
+ * 
+ * @author GeStanley
+ */
 public class Grammar {
-	
+
+	/**
+	 * Nested formula class
+	 * 
+	 * Different operators are replaced by character representations for conveniance:
+	 * 	p = +
+	 * 	m = -
+	 */
 	public static class Formula{
-		
+	
+		/**
+		 * Helper for addition (p = +)
+		 * 
+		 * @param add A string representation of an addition operation
+		 * @return A double value that contains the result of the addition
+		 */
 		private String addition(String add){
 			String[] components = add.split("p");
 			Double c1 = Double.parseDouble(components[0]);
@@ -11,7 +29,13 @@ public class Grammar {
 			
 			return Double.toString(c1+c2);
 		}
-		
+
+		/**
+		 * Helper for subtraction (m = -)
+		 * 
+		 * @param sub A string representation of a subtraction operation
+		 * @return A double value that contains the result of the operation
+		 */
 		private String substraction(String sub){
 			String[] components = sub.split("m");
 			Double c1 = Double.parseDouble(components[0]);
@@ -19,7 +43,13 @@ public class Grammar {
 			
 			return Double.toString(c1-c2);
 		}
-		
+
+		/**
+		 * Helper for multiplication (u = *)
+		 * 
+		 * @param mult A string representation of a multiplication operation
+		 * @return A double value that contains the result of the operation
+		 */	
 		private String multiplication(String mult){
 			String[] components = mult.split("u");
 			Double c1 = Double.parseDouble(components[0]);
@@ -27,7 +57,13 @@ public class Grammar {
 			
 			return Double.toString(c1*c2);
 		}
-		
+
+		/**
+		 * Helper for division (d = /)
+		 * 
+		 * @param div A string representation of a division operation
+		 * @return A double value that contains the result of the operation
+		 */		
 		private String division(String div){
 			String[] components = div.split("d");
 			Double c1 = Double.parseDouble(components[0]);
