@@ -1,9 +1,6 @@
-package tableLoadandSave;
+package structure;
 
 import java.io.*;
-
-//import Table_Cell.Cell;
-import Table_Cell.Table;
 
 public class myTableSaver {
 	public myTableSaver() throws IOException {

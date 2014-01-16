@@ -1,4 +1,4 @@
-package Table_Cell;
+package structure;
 
 public class Table {
 	
