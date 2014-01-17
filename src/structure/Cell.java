@@ -2,6 +2,7 @@ package structure;
 
 public class Cell {
 	
+	private String test;
 	private String formula;
 	private String format;
 	private double value;
