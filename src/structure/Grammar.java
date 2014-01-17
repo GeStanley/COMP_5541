@@ -10,9 +10,13 @@ public class Grammar {
 	/**
 	 * Nested formula class
 	 * 
-	 * Different operators are replaced by character representations for conveniance:
+	 * Different operators are replaced by character representations for convenience:
 	 * 	p = +
 	 * 	m = -
+	 *  u = *
+	 *  d = /
+	 *  l = (
+	 *  r = )
 	 */
 	public static class Formula{
 	
@@ -20,7 +24,7 @@ public class Grammar {
 		 * Helper for addition (p = +)
 		 * 
 		 * @param add A string representation of an addition operation
-		 * @return A double value that contains the result of the addition
+		 * @return A String representation of a double value that contains the result of the operation
 		 */
 		private String addition(String add){
 			String[] components = add.split("p");
@@ -34,9 +38,9 @@ public class Grammar {
 		 * Helper for subtraction (m = -)
 		 * 
 		 * @param sub A string representation of a subtraction operation
-		 * @return A double value that contains the result of the operation
+		 * @return A String representation of a double value that contains the result of the operation
 		 */
-		private String substraction(String sub){
+		private String subtraction(String sub){
 			String[] components = sub.split("m");
 			Double c1 = Double.parseDouble(components[0]);
 			Double c2 = Double.parseDouble(components[1]);
@@ -48,7 +52,7 @@ public class Grammar {
 		 * Helper for multiplication (u = *)
 		 * 
 		 * @param mult A string representation of a multiplication operation
-		 * @return A double value that contains the result of the operation
+		 * @return A String representation of a double value that contains the result of the operation
 		 */	
 		private String multiplication(String mult){
 			String[] components = mult.split("u");
@@ -62,7 +66,7 @@ public class Grammar {
 		 * Helper for division (d = /)
 		 * 
 		 * @param div A string representation of a division operation
-		 * @return A double value that contains the result of the operation
+		 * @return A String representation of a double value that contains the result of the operation
 		 */		
 		private String division(String div){
 			String[] components = div.split("d");
@@ -72,11 +76,17 @@ public class Grammar {
 			return Double.toString(c1/c2);
 		}
 		
+		/**
+		 * Helper to classify a string as a particular operation
+		 * 
+		 * @param subString A string representation of an operation. Must contain two numbers and an operation character
+		 * @return A String representation of a double
+		 */		
 		private String calculate(String subString){
 			if(subString.contains("p"))
 				return addition(subString);
 			else if (subString.contains("m"))
-				return substraction(subString);
+				return subtraction(subString);
 			else if (subString.contains("u"))
 				return multiplication(subString);
 			else if (subString.contains("d"))
@@ -85,6 +95,13 @@ public class Grammar {
 				return subString;
 		}
 		
+		/**
+		 * This method determines the operation priority in a mathematical expression (no parenthesis). It performs
+		 * multiplications and devisions before addition and subtraction.
+		 * 
+		 * @param expression A string representation of an expression.
+		 * @return A String representation of a double
+		 */	
 		private String expression(String expression){
 			
 			String[] operations = expression.split("p|m");
@@ -135,6 +152,13 @@ public class Grammar {
 			return expression;
 		}
 		
+		/**
+		 * This method recursively extracts a mathematical expression from a mathematical formula. In other words it determines
+		 * operation priority of parenthesized expressions within a mathematical formula.
+		 * 
+		 * @param input A string representation of a mathematical formula.
+		 * @return A String representation of a double
+		 */	
 		private String parseString(String input){
 			
 			if(!input.contains("l"))
@@ -153,6 +177,22 @@ public class Grammar {
 			}
 		}	
 		
+		
+		/**
+		 * This method determine if the user input was valid. It also perform certain modifications to correct user input as 
+		 * well as facilitate and simplify code: it replace mathematical operations by chars:
+		 * 	p = +
+		 * 	m = -
+		 *  u = *
+		 *  d = /
+		 *  l = (
+		 *  r = )
+		 *  
+		 *  It also ensures that all chars in the string are valid and interpretable.
+		 * 
+		 * @param input A string representation of a mathematical formula, as input by the user.
+		 * @return A String representation of a double
+		 */	
 		public String formula(String input){
 			int leftParen=0;
 			int rightParen=0;
