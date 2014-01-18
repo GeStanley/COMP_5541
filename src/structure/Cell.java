@@ -3,94 +3,35 @@ package structure;
 public class Cell {
 	
 	
-	private String formula;
-	private String format;
-	private double value;
-	private String name;
+	private String formulaWithCellReference;
+	private String formulaWithoutCellReference;
+	private String value;
+	
 	public Cell() {
-		this.setValue(0.0);
-		this.formula="0";
-		this.format="";
+		setFormula("0.0");
+		getReferenceValues();
+		setValue();
 	}
-	public void set_formula(String readInData){
-		this.formula=readInData;
-		}
-	public void set_format(String readInData){
-		this.format=readInData;
-		}
-	public String get_formula(){
-		return this.formula;
-		}
-	public String get_format(){
-		return this.format;
-		}
-	public double getValue() {
+	
+	public void setFormula(String formula){
+		formulaWithCellReference = formula;
+	}
+	
+	public String getFormula(){
+		return this.formulaWithCellReference;
+	}
+	
+	public String getValue() {
 		return this.value;
 	}
-	public void setValue(double value) {
-		this.value = value;
+	
+	private void getReferenceValues(){
+		//TODO do the parsing of the string and then get value from other cell.
 	}
-	public String getName() {
-		return this.name;
+	
+	private void setValue() {
+		Grammar.Formula form = new Grammar.Formula();
+		value = form.formula(formulaWithoutCellReference);
 	}
-	public void setName(int row,int column) {
-		StringBuilder sb=new StringBuilder();
-		switch(column){
-		case 0:
-			sb.append("A");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 1:
-			sb.append("B");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 2:
-			sb.append("C");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 3:
-			sb.append("D");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 4:
-			sb.append("E");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 5:
-			sb.append("F");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 6:
-			sb.append("G");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 7:
-			sb.append("H");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 8:
-			sb.append("I");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 9:
-			sb.append("J");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		case 10:
-			sb.append("K");
-			sb.append(row);
-			this.name=sb.toString();
-			break;
-		}
-	}
+
 }

@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Table {
+public class Table { 
 	
     private Cell[][] cells;
 	
