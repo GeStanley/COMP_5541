@@ -18,8 +18,11 @@ public class ConsoleGUI {
 			table.getCell(1, 2).setFormula("2+3*2");
 			System.out.println(table.getCell(1, 2).getValue());
 			
-			table.getCell(2, 2).setFormula("A1*2");
-			System.out.println(table.getCell(2, 2).getValue() + " doesn't work....");
+			//table.getCell(2, 2).setFormula("A1*2");
+			//System.out.println(table.getCell(2, 2).getValue() + " doesn't work....");
+			
+			table.displayTable();
+			
 			
 		} catch (NullCellPointer e) {
 			// TODO Auto-generated catch block

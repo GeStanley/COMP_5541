@@ -13,7 +13,7 @@ import java.util.Scanner;
  * the spreadsheet to a text file.
  * 
  * @author GeStanley
- *
+ * @author Mike
  */
 public class Table {
 	
@@ -231,8 +231,30 @@ public class Table {
     	output.close();
     }
     
-    public void displayTable(){
+    
+    /**
+     * This method will print out the grid to the command line.
+     * 
+     */
+    public void displayTable() throws NullCellPointer{
+    	char c = 'A';
+    	String header = "";
+    	String[] displayedGrid = new String[cells[0].length];
     	
+    	for (int i = 0; i < cells.length; i++){
+    		header += "\t\t" + (char)(c + i) ;
+    		for (int j = 0; j < cells[i].length; j++){
+    			if (i == 0){
+    				displayedGrid[j] = (j+1) + "\t\t";
+    			}
+    			displayedGrid[j] += cells[i][j].getValue() + "\t\t";
+    		}
+    	}
+    	
+    	System.out.println(header);
+    	for (int j = 0; j < displayedGrid.length; j++){
+    		System.out.println(displayedGrid[j]);
+    	}
     }
     
     public class NullCellPointer extends Exception {
