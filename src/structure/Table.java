@@ -23,9 +23,12 @@ public class Table {
     
     /**
      * This is the constructor method. It building a 1 by 1 spreadsheet.
+     * @throws NullCellPointer 
+     * @throws NumberFormatException 
      */
-    public Table(){ 
-    	this.cells = new Cell[0][0]; 
+    public Table() throws NumberFormatException, NullCellPointer{ 
+    	this.cells = new Cell[1][1];
+    	cells[0][0] = new Cell(this);
     }
     
     /**
@@ -35,62 +38,89 @@ public class Table {
      * 
      * @param rowQty A integer parameter that determines how many rows will be in the array.
      * @param columnQty A integer parameter that determines how many columns will be in the array.
+     * @throws NullCellPointer 
+     * @throws NumberFormatException 
      */
-    public void defineArraySize(int rowQty, int columnQty){
+    public void defineArraySize(int rowQty, int columnQty) throws NumberFormatException, NullCellPointer{
     	int rows = cells.length;
     	int columns = cells[0].length;
     	
     	Cell[][] temp = new Cell[rows][columns];
     	
     	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++)
-    			temp[i][j]=cells[i][j];
+    		for(int j=0;j<columns;j++){
+    			temp[i][j] = new Cell(this);
+    			temp[i][j].setFormula(cells[i][j].getFormula());
+    			}
     	
     	cells = new Cell[rowQty][columnQty];
     	
+    	for(int i=0;i<rowQty;i++)
+    		for(int j=0;j<columnQty;j++){
+    			cells[i][j] = new Cell(this);
+    			}
+    	
     	for(int i=0;i<rows;i++)
     		for(int j=0;j<columns;j++)
-    			cells[i][j]=temp[i][j];
+    			cells[i][j].setFormula(temp[i][j].getFormula());
     }
     
     /**
      * This method adds a row to the bottom of the spreadsheet.
+     * @throws NullCellPointer 
+     * @throws NumberFormatException 
      */
-    public void insertRow(){
+    public void insertRow() throws NumberFormatException, NullCellPointer{
     	int rows = cells.length;
     	int columns = cells[0].length;
     	
     	Cell[][] temp = new Cell[rows][columns];
     	
     	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++)
-    			temp[i][j]=cells[i][j];
+    		for(int j=0;j<columns;j++){
+    			temp[i][j] = new Cell(this);
+    			temp[i][j].setFormula(cells[i][j].getFormula());
+    			}
     	
     	cells = new Cell[rows+1][columns];
     	
+    	for(int i=0;i<rows+1;i++)
+    		for(int j=0;j<columns;j++){
+    			cells[i][j] = new Cell(this);
+    			}
+    	
     	for(int i=0;i<rows;i++)
     		for(int j=0;j<columns;j++)
-    			cells[i][j]=temp[i][j];
+    			cells[i][j].setFormula(temp[i][j].getFormula());
     }
     
     /**
      * This method adds a column to the far right of the spreadsheet.
+     * @throws NullCellPointer 
+     * @throws NumberFormatException 
      */
-    public void insertColumn(){
+    public void insertColumn() throws NumberFormatException, NullCellPointer{
     	int rows = cells.length;
     	int columns = cells[0].length;
     	
     	Cell[][] temp = new Cell[rows][columns];
     	
     	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++)
-    			temp[i][j]=cells[i][j];
+    		for(int j=0;j<columns;j++){
+    			temp[i][j] = new Cell(this);
+    			temp[i][j].setFormula(cells[i][j].getFormula());
+    			}
     	
     	cells = new Cell[rows][columns+1];
     	
     	for(int i=0;i<rows;i++)
+    		for(int j=0;j<columns+1;j++){
+    			cells[i][j] = new Cell(this);
+    			}
+    	
+    	for(int i=0;i<rows;i++)
     		for(int j=0;j<columns;j++)
-    			cells[i][j]=temp[i][j];
+    			cells[i][j].setFormula(temp[i][j].getFormula());
     }
     
     /**
@@ -132,15 +162,16 @@ public class Table {
      * This method load data from a file and creates a spreadsheet according to the specification in the file.
      * 
      * This file should delimit cells with a semicolon and information contained within an individual cell by a comma.
-     * The first two pieces of information should be the cell address, the third the cells value and the fourth the cell
-     * formula.
+     * The first two pieces of information should be the cell address, the third the cell formula.
      * 
-     * ex: 0,0,1.0,1+0;0,1,2.0,1+1;
+     * ex: 0,0,1+0;0,1,1+1;
      * 
      * @param fileName The path and name of file to be loaded. eg: c:/.../textfile.txt
      * @throws FileNotFoundException
+     * @throws NullCellPointer 
+     * @throws NumberFormatException 
      */
-    public void loadFromFile(String fileName) throws FileNotFoundException{
+    public void loadFromFile(String fileName) throws FileNotFoundException, NumberFormatException, NullCellPointer{
     	Scanner input = new Scanner(fileName);
     	
     	int rows=1;
@@ -167,8 +198,7 @@ public class Table {
     		for(int i=0;i<data.length;i++){
     			String[] cellData = data[i].split(",");
     			Cell cell = getCell(Integer.parseInt(cellData[0]),Integer.parseInt(cellData[1]));
-    			cell.setValue(cellData[2]);
-    			cell.setFormula(cellData[3]);
+    			cell.setFormula(cellData[2]);
     		}
     	}
     	
@@ -179,29 +209,37 @@ public class Table {
      * This method loads data contained within the spreadsheet to a text file.
      * 
      * This file will delimit cells with a semicolon and information contained within an individual cell by a comma.
-     * The first two pieces of information should be the cell address, the third the cells value and the fourth the cell
-     * formula.
+     * The first two pieces of information should be the cell address, the third the cell formula.
      * 
-     * ex: 0,0,1.0,1+0;0,1,2.0,1+1;
+     * ex: 0,0,1+0;0,1,1+1;
      * 
      * @param fileName The path and name of file to be saved. eg: c:/.../textfile.txt
+     * @throws NullCellPointer 
+     * @throws FileNotFoundException 
      */
-    public void saveToFile(String fileName){
+    public void saveToFile(String fileName) throws NullCellPointer, FileNotFoundException{
     	PrintWriter output = new PrintWriter(fileName);
     	
     	for(int i=0;i<cells.length;i++){
-    		String data;
+    		String data="";
     		for(int j=0;j<cells[i].length;j++)
-    			data = data + i + "," + j + "," + getCell(i,j).getValue() + "," + getCell(i,j).getFormula() + ";";
+    			data = data + i + "," + j + "," + getCell(i,j).getFormula() + ";";
     		
     		output.println(data);
     		data=null;
     	}
-
+    	
+    	output.close();
     }
     
     public void displayTable(){
     	
     }
     
+    public class NullCellPointer extends Exception {
+    	
+        public NullCellPointer(){
+            super("Cell was not found.");
+    }
+    }
 }
