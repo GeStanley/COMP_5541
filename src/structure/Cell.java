@@ -3,6 +3,8 @@ package structure;
 import structure.Table.NullCellPointer;
 
 /**
+ * This class is the object that manages the behavior of the individual cells within the table class.
+ * 
  * @author g_stanle
  *
  */
@@ -15,6 +17,8 @@ public class Cell {
 	private Table table;
 	
 	/**
+	 * Constructor method
+	 * 
 	 * @param table
 	 * @throws NullCellPointer 
 	 * @throws NumberFormatException 
@@ -25,7 +29,10 @@ public class Cell {
 	}
 	
 	/**
-	 * @param formula
+	 * This method sets the formula of the cells.
+	 * 
+	 * @param formula A String representation of the formula to be calculated. It can contain references to
+	 * other cells in the form 'char' digit. Eg: A1 or B10
 	 * @throws NullCellPointer 
 	 * @throws NumberFormatException 
 	 */
@@ -36,6 +43,8 @@ public class Cell {
 	}
 	
 	/**
+	 * Returns the string representation of the formula contained within the cell.
+	 * 
 	 * @return
 	 */
 	public String getFormula(){
@@ -43,6 +52,8 @@ public class Cell {
 	}
 	
 	/**
+	 * Returns the value calculated from the formula in the cell.
+	 * 
 	 * @return
 	 */
 	public String getValue() {
@@ -50,6 +61,8 @@ public class Cell {
 	}
 	
 	/**
+	 * Retrieve values from cells referenced in the formula String.
+	 * 
 	 * @throws NullCellPointer 
 	 * @throws NumberFormatException 
 	 * 
@@ -75,7 +88,8 @@ public class Cell {
 	}
 	
 	/**
-	 * 
+	 * This is a private method because the value is determined once a formula is entered, values retrieved from referenced cells
+	 * and the formula parsed by the grammar class.
 	 */
 	private void setValue() {
 		Grammar.Formula form = new Grammar.Formula();
