@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Table { 
+public class Table {
 	
     private Cell[][] cells;
 	
@@ -65,12 +65,12 @@ public class Table {
     			cells[i][j]=temp[i][j];
     }
     
-    public int getRowIndex(char row){
+    public int getColumnIndex(char row){
     	return ((int) row) - ((int) 'A');
     }
     
     public Cell getCell(int row, char column) throws NullCellPointer{
-    	return cells[row][getRowIndex(column)];
+    	return cells[row][getColumnIndex(column)];
     }
     
     public Cell getCell(int row, int column) throws NullCellPointer{
