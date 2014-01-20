@@ -14,36 +14,45 @@ import org.junit.Test;
  */
 public class UnitTestGrammar {
 
+	/**
+	 * Testing multiplication, addition, subtraction, division
+	 */
 	@Test
 	public void testBasicOperations() {
-		//Testing multiplication, addition, subtraction, division
+		
 		assertStatement(29.0,"12+17");
 		assertStatement(24.0,"3*8");
 		assertStatement(14.0,"17-3");
 		assertStatement(6.0,"18/3");
 	}
 	
+	/**
+	 * Testing negative numbers
+	 */
 	@Test
-	public void testNegativeNumbers(){
-		//Testing negative numbers 
+	public void testNegativeNumbers(){		
 		assertStatement(-6.0,"-2*3");
 		assertStatement(-1.0,"-4/4");
 		assertStatement(-11.0,"-8-3");
 		assertStatement(6.0,"-2+8");
 	}
 	
+	/**
+	 * Testing negative numbers combined with additional operations
+	 */
 	@Test
-	public void testNegativeNumbersPlus(){
-		//Testing negative numbers combined with additional operations
+	public void testNegativeNumbersPlus(){		
 		assertStatement(6.0,"-2*-3");
 		assertStatement(1.0,"-4/-4");
 		assertStatement(-5.0,"-8--3");
 		assertStatement(-10.0,"-2+-8");
 	}	
 	
+	/**
+	 * Test polynomial operation which have multiple operations included
+	 */
 	@Test
-	public void testPolynomialOperations(){
-		//Test polynomial operation which have multiple operations included
+	public void testPolynomialOperations(){		
 		assertStatement(22.0,"(-2+5)*4+10");
 		assertStatement(32.0,"2+5*4+10");
 		assertStatement(21.0,"2+5+4+10");
@@ -57,13 +66,20 @@ public class UnitTestGrammar {
 
 	}
 	
+	/**
+	 * Test spaces and brackets
+	 */
 	@Test
-	public void testMiscOperations(){
-		//Test spaces and brackets
+	public void testMiscOperations(){		
 		assertStatement(17.0,"8 + 9");
 		assertStatement(2.5,"(2.5)");
 	}
 	
+	/**
+	 * Generic public method to assert various statements
+	 * @param expected value expected as a result
+	 * @param String to be evaluated by Grammar.Formula. Values only no cell references.
+	 */
 	public void assertStatement(double expected, String given){
 		Grammar.Formula testFormula = new Grammar.Formula();
 		assertEquals(expected,Double.parseDouble(testFormula.formula(given)),0.01);
