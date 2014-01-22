@@ -95,5 +95,9 @@ public class Cell {
 		Grammar.Formula form = new Grammar.Formula();
 		value = form.formula(formulaWithoutCellReference);
 	}
+	
+	public void setValue(int v){
+		value = String.valueOf(v);
+	}
 
 }

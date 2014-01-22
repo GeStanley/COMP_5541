@@ -15,15 +15,20 @@ public class Console {
 		try {
 			table = new Table();
 			table.defineArraySize(5, 5);
+			
+			table.selectCell("A1");
+			table.insertToCell("1");
+		
 			/*
 			table.getCell(1, 1).setFormula("1+1");
 			System.out.println(table.getCell(1, 1).getValue());
 			
 			table.getCell(1, 2).setFormula("2+3*2");
 			System.out.println(table.getCell(1, 2).getValue());
-			*/
+			
 			table.getCell(2, 2).setFormula("A1*2");
 			System.out.println(table.getCell(2, 2).getValue() + " doesn't work....");
+			*/
 			
 			table.displayTable();
 			

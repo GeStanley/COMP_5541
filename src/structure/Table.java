@@ -2,7 +2,15 @@ package structure;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import javax.script.SimpleBindings;
+
 
 /**
  * This class manages the cells in the spreadsheet. It is also designed to be able to interact with a user interface.
@@ -19,6 +27,7 @@ public class Table {
 	
     private Cell[][] cells;
     private String selectedCell = null;
+    
 	
     
     /**
@@ -265,6 +274,10 @@ public class Table {
     }
     }
     
+    /**
+     * This method allows you to check if a cell is selected
+     * @return true if a cell is selected, false if no cell is selected yet
+     */
     public boolean isCellSelected(){
     	if (selectedCell != null) {
     		return true;
@@ -273,17 +286,51 @@ public class Table {
     	}
     }
     
+    /**
+     * This method selects a cell from a table
+     * @param cell
+     */
     public void selectCell(String cell) {
     	selectedCell = cell;
     }
     
+    /**
+     * This method will insert the formula into the selected cell, and it unselects the cell when it's done
+     * @param formula
+     * @throws NumberFormatException
+     * @throws NullCellPointer
+     */
     public void insertToCell(String formula) throws NumberFormatException, NullCellPointer{
-    	
     	int i = Integer.parseInt(selectedCell.substring(1)) ;
-    	getCell(i, selectedCell.charAt(0)).setFormula(formula) ;
-    	
+    	Cell cell = getCell(i-1, selectedCell.charAt(0));
+    	cell.setFormula(formula) ;
+    	try {
+			cell.setValue(getValue(formula));
+		} catch (ScriptException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	selectedCell = null;
     }
+    
+    /**
+     * Calculates the value of a formula
+     * @param formula
+     * @return value of the calculated formula
+     * @throws ScriptException
+     */
+    public int getValue(String formula) throws ScriptException{
+    	
+    	ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
+    	Map<String, Object> vars = new HashMap<String, Object>();
+        vars.put("A1", 1);
+        vars.put("A2", 2);
+        vars.put("A3", 3);
+        System.out.println("formula = "+ engine.eval("A1+A2+A3", new SimpleBindings(vars)));
+    	
+		return 0;
+    }
+    
     
     
 }
