@@ -13,7 +13,7 @@ public class Cell {
 	
 	private String formulaWithCellReference;
 	private String formulaWithoutCellReference;
-	private String value;
+	private double value;
 	private Table table;
 	
 	/**
@@ -56,8 +56,15 @@ public class Cell {
 	 * 
 	 * @return
 	 */
-	public String getValue() {
+	public double getValue() {
 		return this.value;
+	}
+	
+	/**
+	 * Returns the value as a string, useful for replacing in formulas
+	 */
+	public String getValueString() {
+		return value + "";
 	}
 	
 	/**
@@ -82,7 +89,7 @@ public class Cell {
 					
 				Cell referencedCell = table.getCell(Integer.parseInt(formulaWithCellReference.substring(i+1, i+offset)), current);
 				
-				formulaWithoutCellReference = formulaWithoutCellReference.replace(referencedCell.getValue(),formulaWithCellReference.substring(i, i+offset));
+				formulaWithoutCellReference = formulaWithoutCellReference.replace(referencedCell.getValueString(),formulaWithCellReference.substring(i, i+offset));
 			}
 		}
 	}
@@ -93,11 +100,16 @@ public class Cell {
 	 */
 	private void setValue() {
 		Grammar.Formula form = new Grammar.Formula();
-		value = form.formula(formulaWithoutCellReference);
+		try {
+			value = form.formula(formulaWithoutCellReference);
+		}
+		catch (Exception e) {
+			value = 0;
+		}
 	}
 	
 	public void setValue(double v){
-		value = String.valueOf(v);
+		value = v;
 	}
 
 }

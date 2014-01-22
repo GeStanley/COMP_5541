@@ -191,11 +191,13 @@ public class Grammar {
 		 *  It also ensures that all chars in the string are valid and interpretable.
 		 * 
 		 * @param input A string representation of a mathematical formula, as input by the user.
-		 * @return A String representation of a double
+		 * @return A double
+		 * @throws Exception
 		 */	
-		public String formula(String input){
+		public double formula(String input) throws Exception {
 			int leftParen=0;
 			int rightParen=0;
+			double val = 0;
 			
 			if(input.charAt(0)!='l'||input.charAt(input.length()-1)!='r')
 				input = "l" + input + "r";
@@ -230,7 +232,7 @@ public class Grammar {
 						input.charAt(i)!='d'&&
 						input.charAt(i)!='l'&&
 						input.charAt(i)!='r')
-					return "error";
+					throw new Exception("Invalid formula");
 			}
 			
 			input = input.replace("mm", "m-");
@@ -240,23 +242,29 @@ public class Grammar {
 			input = input.replace("lm", "l-");
 			
 			if(leftParen-rightParen!=0)
-				return "error";
+				throw new Exception("Invalid formula");
 			
-			return parseString(input);
+			val = Double.parseDouble(parseString(input));
+			return val;
 		}
 	}
 
 	
 	public static void main(String[] args){
 		Grammar.Formula form = new Grammar.Formula();
-
-		System.out.println(form.formula("(-5+1)*4"));
-		System.out.println(form.formula("(6/2)-1"));
-		System.out.println(form.formula("1.25+1.5"));
-		System.out.println(form.formula("(2.5)"));
-		System.out.println(form.formula("2*5*4*10"));
-		System.out.println(form.formula("2+5+4+10"));
-		System.out.println(form.formula("2+5*4+10"));
-		System.out.println(form.formula("(2+5)*4+10"));
+		
+		try {
+			System.out.println(form.formula("(-5+1)*4"));
+			System.out.println(form.formula("(6/2)-1"));
+			System.out.println(form.formula("1.25+1.5"));
+			System.out.println(form.formula("(2.5)"));
+			System.out.println(form.formula("2*5*4*10"));
+			System.out.println(form.formula("2+5+4+10"));
+			System.out.println(form.formula("2+5*4+10"));
+			System.out.println(form.formula("(2+5)*4+10"));
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
