@@ -271,12 +271,19 @@ public class Table {
     	} else {
     		return false;
     	}
-    	
     }
     
+    public void selectCell(String cell) {
+    	selectedCell = cell;
+    }
     
-    
-    
+    public void insertToCell(String formula) throws NumberFormatException, NullCellPointer{
+    	
+    	int i = Integer.parseInt(selectedCell.substring(1)) ;
+    	getCell(i, selectedCell.charAt(0)).setFormula(formula) ;
+    	
+    	selectedCell = null;
+    }
     
     
 }
