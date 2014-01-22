@@ -78,10 +78,27 @@ public class Console {
 	private static void select(String address) {
 		address = address.toUpperCase();
 		selected = table.selectCell(address);
+		String input;
 		if (selected == null)
-			System.out.println("Could not select this cell");
-		else
+			System.out.println("Could not select this cell.");
+		else {
 			System.out.println(address + " selected");
+			System.out.print("Enter a value or formula:");
+			input = sc.nextLine().toUpperCase();
+			System.out.println();
+			try {
+				table.insertToCell(input);
+			}
+			catch (NullCellPointer e) {
+				System.out.print("ERROR: ");
+				System.out.println(e.getMessage());
+			}
+			catch (NumberFormatException e) {
+				System.out.print("ERROR: ");
+				System.out.println(e.getMessage());
+			}
+		}
+		
 	}
 	
 	/**
