@@ -15,15 +15,15 @@ public class ConsoleGUI {
 		try {
 			table = new Table();
 			table.defineArraySize(5, 5);
-			
+			/*
 			table.getCell(1, 1).setFormula("1+1");
 			System.out.println(table.getCell(1, 1).getValue());
 			
 			table.getCell(1, 2).setFormula("2+3*2");
 			System.out.println(table.getCell(1, 2).getValue());
-			
-			//table.getCell(2, 2).setFormula("A1*2");
-			//System.out.println(table.getCell(2, 2).getValue() + " doesn't work....");
+			*/
+			table.getCell(2, 2).setFormula("A1*2");
+			System.out.println(table.getCell(2, 2).getValue() + " doesn't work....");
 			
 			table.displayTable();
 			
@@ -47,9 +47,11 @@ public class ConsoleGUI {
 					
 				}else if (input.equalsIgnoreCase("Save")){
 					System.out.println("Filename: ");
-					
+					save();
+				
 				}else if (input.equalsIgnoreCase("Open")){
 					System.out.println("Filename: ");
+					open();
 					
 				}else{
 					continue;
@@ -66,6 +68,7 @@ public class ConsoleGUI {
 		}
 		
 	}
+	
 	/**
 	 * Self explanatory welcome message.
 	 */
@@ -85,10 +88,20 @@ public class ConsoleGUI {
 	 * This is the help menu, to get a quick idea of the commands available.
 	 */
 	private static void help(){
-		String commands = 	"\tOpen [file name]\n\tSave [file name]\n\t[letter][number] of the column and row" +
+		String commands = 	"\tOpen [file name]\n\tSave [file name]\n\t[letter][number] of the column and row " +
 							"to select a cell\n\tQuit to quit\n\tHelp to see this again\n";
 		System.out.println(commands);
 							
+	}
+	
+	private static void open() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private static void save() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

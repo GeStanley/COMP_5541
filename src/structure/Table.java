@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class Table {
 	
     private Cell[][] cells;
+    private String selectedCell = null;
 	
     
     /**
@@ -263,4 +264,19 @@ public class Table {
             super("Cell was not found.");
     }
     }
+    
+    public boolean isCellSelected(){
+    	if (selectedCell != null) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    	
+    }
+    
+    public 
+    
+    
+    
+    
 }
