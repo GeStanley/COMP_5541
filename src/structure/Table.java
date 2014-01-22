@@ -153,36 +153,7 @@ public class Table {
      */
     public Cell getCell(int row, int column) throws NullCellPointer{
     	return cells[row][column];
-    }
-    
-    
-    /** 
-     * This method loads data contained within the spreadsheet to a text file.
-     * 
-     * This file will delimit cells with a semicolon and information contained within an individual cell by a comma.
-     * The first two pieces of information should be the cell address, the third the cell formula.
-     * 
-     * ex: 0,0,1+0;0,1,1+1;
-     * 
-     * @param fileName The path and name of file to be saved. eg: c:/.../textfile.txt
-     * @throws NullCellPointer 
-     * @throws FileNotFoundException 
-     */
-    public void saveToFile(String fileName) throws NullCellPointer, FileNotFoundException{
-    	PrintWriter output = new PrintWriter(fileName);
-    	
-    	for(int i=0;i<cells.length;i++){
-    		String data="";
-    		for(int j=0;j<cells[i].length;j++)
-    			data = data + i + "," + j + "," + getCell(i,j).getFormula() + ";";
-    		
-    		output.println(data);
-    		data=null;
-    	}
-    	
-    	output.close();
-    }
-    
+    }    
     
     /**
      * This method will print out the grid to the command line.
