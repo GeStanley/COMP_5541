@@ -11,7 +11,7 @@ public class Console {
 	
 	static Table table;
 	private static boolean quit = false;
-	private static SaveFile saved;
+	private static SaveFile saved = null;
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class Console {
 					help();
 					break;
 				case "save":
-					System.out.println("Function not yet available.");
+					save();
 					break;
 				case "open":
 					open();
@@ -121,9 +121,30 @@ public class Console {
 		}		
 	}
 	
+	/**
+	 * Save a spreadsheet
+	 */
 	private static void save() {
-		// TODO Auto-generated method stub
+		if (saved == null)
+			saved = new SaveFile(table);
+		boolean back = false;
+		String input, msg;
 		
+		while (!back) {
+			System.out.println("Enter the path to save to, or \"back\":");
+			input = sc.nextLine().toLowerCase();
+			switch (input) {
+				case "back":
+					back = true;
+					break;
+				default:
+					msg = saved.save(input);
+					System.out.println(msg);
+					if (msg == "Success: file saved")
+						back=true;
+					break;
+			}
+		}
 	}
 	
 }

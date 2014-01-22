@@ -63,7 +63,9 @@ public class Table {
     	if (pos >= cells.length || row.length > cells[0].length)
     		expandTable(new Cell[pos+1][row.length]);
     	ret = cells[pos];
-    	cells[pos] = row;
+    	for (int i=0; i<row.length; i++) {
+    		cells[pos][i] = row[i];
+    	}
     	return ret;
     }
     
@@ -116,6 +118,20 @@ public class Table {
     }
     
     /**
+     * Accessor method for an entire row
+     * 
+     * @param pos Which row to return
+     * @return The row or null if there is no row to return
+     */
+    public Cell[] getRow(int pos) {
+    	if (pos >= cells.length)
+    		return null;
+    				
+    	// TODO return a copy of the row contents instead of the row itself
+    	return cells[pos];
+    }
+    
+    /**
      * This method retrieves a cell at a given row and column address.
      * 
      * @param row An integer representation of the row address.
@@ -139,52 +155,6 @@ public class Table {
     	return cells[row][column];
     }
     
-    /**
-     * This method load data from a file and creates a spreadsheet according to the specification in the file.
-     * 
-     * This file should delimit cells with a semicolon and information contained within an individual cell by a comma.
-     * The first two pieces of information should be the cell address, the third the cell formula.
-     * 
-     * ex: 0,0,1+0;0,1,1+1;
-     * 
-     * @param fileName The path and name of file to be loaded. eg: c:/.../textfile.txt
-     * @throws FileNotFoundException
-     * @throws NullCellPointer 
-     * @throws NumberFormatException 
-     */
-    public void loadFromFile(String fileName) throws FileNotFoundException, NumberFormatException, NullCellPointer{
-    	Scanner input = new Scanner(fileName);
-    	
-    	int rows=1;
-    	
-    	String row = input.next();
-    	String[] data = row.split(";");
-    	
-    	int columns = data.length;
-    	
-    	while(input.hasNext()){
-    		input.next();
-    		rows++;
-    	}
-    	
-    	cells = new Cell[rows][columns];
-    	
-    	input.close();
-    	input = new Scanner(fileName);
-    	
-    	while(input.hasNext()){
-    		row = input.next();
-    		data = row.split(";");
-    		
-    		for(int i=0;i<data.length;i++){
-    			String[] cellData = data[i].split(",");
-    			Cell cell = getCell(Integer.parseInt(cellData[0]),Integer.parseInt(cellData[1]));
-    			cell.setFormula(cellData[2]);
-    		}
-    	}
-    	
-    	input.close();
-    }
     
     /** 
      * This method loads data contained within the spreadsheet to a text file.

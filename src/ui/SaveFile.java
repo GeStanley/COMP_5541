@@ -1,13 +1,17 @@
 package ui;
 
 import java.io.File;
-import java.util.*;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import structure.Cell;
 import structure.Table;
 
 public class SaveFile {
-	private Scanner saveFile;
+	private File saveFile;
+	private Scanner readFile;
+	private PrintWriter writeFile;
 	private Table target;
+	private static String defaultMsg = "No message";
 	
 	/**
 	 * Constructor for the save file
@@ -16,6 +20,8 @@ public class SaveFile {
 	 */
 	public SaveFile(Table table) {
 		saveFile = null;
+		readFile = null;
+		writeFile = null;
 		target = table;
 	}
 	
@@ -26,35 +32,55 @@ public class SaveFile {
 	 * @return A message about the operation
 	 */
 	public String load(String path) {
-		String msg = "No message";
-		boolean success = open(path);
+		String msg = defaultMsg;
+		boolean success = openRead(path);
 		if (success) {
 			try {
-				parse();
+				parseFile();
 			}
 			catch (Exception e) {
 				msg = "Error: file parsing - " + e.getMessage();
 			}
-			close();
-			if (msg == "No message")
+			readFile.close();
+			if (msg == defaultMsg)
 				msg = "Success: file loaded";
 		}
 		else
-			msg = "Error: file could not be opened.";
+			msg = "Error: file could not be opened for reading.";
 		return msg;
 	}
 	
 	/**
-	 * Try to open the listed file
+	 * Save to the given file
+	 * 
+	 * @param path path to the file
+	 * @return A message about the operation
+	 */
+	public String save(String path) {
+		String msg = defaultMsg;
+		boolean success = openWrite(path);
+		if (success) {
+			targetToCSV();
+			writeFile.close();
+			msg = "Success: file saved";
+		}
+		else
+			msg = "Error: file could not be opened for writing.";
+		return msg;
+	}
+	
+	/**
+	 * Try to open the listed file for reading
 	 *
 	 * @param file The target file location
 	 * @return Whether or not the file was successfully opened
 	 */
-	private boolean open(String file) {
+	private boolean openRead(String file) {
 		boolean success = false;
 		
 		try {
-			saveFile = new Scanner (new File (file));
+			saveFile = new File (file);
+			readFile = new Scanner(saveFile);
 			success = true;
 		}
 		
@@ -64,16 +90,38 @@ public class SaveFile {
 	}
 
 	/**
+	 * Try and open a file for writing
+	 * 
+	 * @param file The target file location
+	 * @return Whether or not the file was successfully opened
+	 */
+	private boolean openWrite(String file) {
+		boolean success = false;
+		
+		try {
+			saveFile = new File (file);
+			saveFile.createNewFile();
+			writeFile = new PrintWriter(saveFile);
+			success = true;
+		}
+		
+		catch (Exception e) {}
+
+		return success;
+		
+	}
+	
+	/**
 	 * Attempt to parse the file
 	 * 
 	 * @throws Exception
 	 */
-	private void parse() throws Exception {
+	private void parseFile() throws Exception {
 		String line;
 		int pos = 0;
-		while (saveFile.hasNextLine()) {
+		while (readFile.hasNextLine()) {
 			try {
-				line = saveFile.nextLine().trim();
+				line = readFile.nextLine().trim();
 				parseLine(pos, line);
 				pos++;
 			}
@@ -115,12 +163,38 @@ public class SaveFile {
 		
 		return row;
 	}
-	
-	/**	
-	 * Close saveFile
+
+	/**
+	 * Write the table to a CSV file
 	 */
-	private void close() {
-		saveFile.close();
+	private void targetToCSV() {
+		String line;
+		int rowCount = target.getLength();
+		for (int i=0; i<rowCount; i++) {
+			line = rowToCSV(target.getRow(i));
+			writeFile.println(line);
+		}
+	}
+	
+	/**
+	 * Generate a line of CSV from an array of cells
+	 * 
+	 * @param row An array of cells
+	 * @return A string suitable for inclusion as a line in a CSV
+	 */
+	public String rowToCSV(Cell[] row) {
+		// TODO make this method private once we can test the parse method directly
+		String val = "\"\"", out = "";
+		for (int i=0; i<row.length; i++) {
+			if (row[i] == null)
+				val = "\"\"";
+			else
+				val = '"' + row[i].getFormula() + '"';
+			out += val;
+			if (i != row.length-1)
+				out += ",";
+		}
+		return out;
 	}
 	
 }
