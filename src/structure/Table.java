@@ -26,10 +26,8 @@ import javax.script.SimpleBindings;
 public class Table {
 	
     private Cell[][] cells;
-    private String selectedCell;
-    
-	
-    
+    private Cell selectedCell;
+        
     /**
      * Default constructor method. Builds a 1 by 1 spreadsheet.
      */
@@ -47,7 +45,7 @@ public class Table {
     	this.cells = new Cell[rows][cols];
     	selectedCell = null;
     }
- 
+    
     /**
      * Insert values into the row at position pos
      * 
@@ -137,9 +135,8 @@ public class Table {
      * @param row An integer representation of the row address.
      * @param column  An character representation of the column address.
      * @return The desired Cell.
-     * @throws NullCellPointer
      */
-    public Cell getCell(int row, char column) throws NullCellPointer{
+    public Cell getCell(int row, char column) {
     	return cells[row][getColumnIndex(column)];
     }
     
@@ -149,15 +146,58 @@ public class Table {
      * @param row An integer representation of the row address.
      * @param column An integer representation of the column address.
      * @return The desired Cell.
-     * @throws NullCellPointer
      */
-    public Cell getCell(int row, int column) throws NullCellPointer{
+    public Cell getCell(int row, int column) {
     	return cells[row][column];
     }    
     
     /**
-     * This method will print out the grid to the command line.
+     * Select cell, create one if none exists at the desired location
      * 
+     * @param address String address of the cell
+     * @return The desired cell or null
+     */
+    public Cell selectCell(String address) {
+    	int col = 0, row = -1;
+    	char lastChar = '!';
+    	// Always return null when the spreadsheet has 0 dimensions
+    	if (cells.length == 0)
+    		return null;
+    	    	    	
+    	// Try to get useable row and column indices
+    	while (row < 0) {
+    		col += getColumnIndex(address.charAt(0));
+    		// This conditional is how we deal with multi letter addresses
+    		if (lastChar != '!')
+    			col += (int) lastChar;
+    		lastChar = address.charAt(0);
+    		address = address.substring(1);
+    		try {
+    			row = Integer.parseInt(address);
+    		}
+    		catch (NumberFormatException e) {
+    			if (address.length() > 0)
+    				row = -1;
+    			else
+    				return null;
+    		}
+    	}
+    	    	    	
+    	// First check that row and column indices are within
+    	// the bounds of the spreadsheet
+    	if (row < cells.length && col < cells[0].length) {
+    		if (cells[row][col] == null)
+    			cells[row][col] = new Cell(this);
+    		selectedCell = cells[row][col];
+    		return selectedCell;
+    	}
+    	else
+    		return null;
+    }
+    
+    
+    /**
+     * This method will print out the grid to the command line.
      */
     public void displayTable() {
     	int row, col, ch = (int) 'A'; // row and column count and character int value of col
@@ -192,13 +232,6 @@ public class Table {
     	System.out.println(grid);
     }
     
-    public class NullCellPointer extends Exception {
-    	
-        public NullCellPointer(){
-            super("Cell was not found.");
-    }
-    }
-    
     /**
      * This method allows you to check if a cell is selected
      * @return true if a cell is selected, false if no cell is selected yet
@@ -212,14 +245,6 @@ public class Table {
     }
     
     /**
-     * This method selects a cell from a table
-     * @param cell
-     */
-    public void selectCell(String cell) {
-    	selectedCell = cell;
-    }
-    
-    /**
      * Insert the formula into the selected cell, and it unselects the cell when it's done
      * 
      * @param formula
@@ -227,13 +252,10 @@ public class Table {
      * @throws NullCellPointer
      */
     public void insertToCell(String formula) throws NumberFormatException, NullCellPointer{
-    	int i = Integer.parseInt(selectedCell.substring(1)) ;
-    	Cell cell = getCell(i-1, selectedCell.charAt(0));
-    	cell.setFormula(formula) ;
+    	selectedCell.setFormula(formula) ;
     	try {
-			cell.setValue(getValue(formula));
+			selectedCell.setValue(getValue(formula));
 		} catch (ScriptException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	selectedCell = null;
@@ -276,6 +298,14 @@ public class Table {
 		return i;
     }
     
-    
+    /**
+     * Create an exception class for null cell pointers
+     */
+    public class NullCellPointer extends Exception {
+    	
+        public NullCellPointer(){
+            super("Cell was not found.");
+        }
+    }    
     
 }

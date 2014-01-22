@@ -47,5 +47,17 @@ public class UnitTestTable {
 		// Reset the tester object
 		tester = null;
 	}
+	
+	/**
+	 * Test cell selection and changing values
+	 */
+	@Test
+	public void testCellSelection() {
+		tester = new Table(5,5);
+		Cell selected = tester.selectCell("A2");
+		assertEquals("Should be 0", "0.0", selected.getValueString());
+		selected = tester.selectCell("AA2");
+		assertEquals("Should be null", "null", selected+"");
+	}
 
 }

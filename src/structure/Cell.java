@@ -114,9 +114,6 @@ public class Cell {
 			formulaWithoutCellReference = "0.0";
 		}
 		
-		catch (NullCellPointer e) {
-			formulaWithoutCellReference = "0.0";
-		}
 	}
 	
 	/**

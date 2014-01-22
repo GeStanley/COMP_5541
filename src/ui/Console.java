@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import structure.Table;
 import structure.Table.NullCellPointer;
+import structure.Cell;
 import ui.SaveFile;
 
 public class Console {
@@ -13,6 +14,7 @@ public class Console {
 	private static boolean quit = false;
 	private static SaveFile saved = null;
 	private static Scanner sc = new Scanner(System.in);
+	private static Cell selected = null;
 	
 	public static void main(String[] args) {
 
@@ -59,12 +61,27 @@ public class Console {
 					table.displayTable();
 					break;
 				default:
+					select(input);
 					break;
 			}
 		}	
 			
 
 		
+	}
+
+	/**
+	 * Try to select a cell
+	 * 
+	 * @param address The address of the cell
+	 */
+	private static void select(String address) {
+		address = address.toUpperCase();
+		selected = table.selectCell(address);
+		if (selected == null)
+			System.out.println("Could not select this cell");
+		else
+			System.out.println(address + " selected");
 	}
 	
 	/**
@@ -90,8 +107,8 @@ public class Console {
 							"\tOpen\n" +
 							"\tSave\n" +
 							"\t[letter][number] of the column and row to select a cell\n" +
-							"\tQuit to quit\n" +
-							"\tHelp to see this again\n";
+							"\tQuit\n" +
+							"\t\"Help\" to see this again\n";
 		System.out.println(commands);
 							
 	}
