@@ -26,18 +26,26 @@ import javax.script.SimpleBindings;
 public class Table {
 	
     private Cell[][] cells;
-    private String selectedCell = null;
+    private String selectedCell;
     
 	
     
     /**
-     * This is the constructor method. It building a 1 by 1 spreadsheet.
-     * @throws NullCellPointer 
-     * @throws NumberFormatException 
+     * Default constructor method. Builds a 1 by 1 spreadsheet.
      */
-    public Table() throws NumberFormatException, NullCellPointer{ 
-    	this.cells = new Cell[1][1];
-    	cells[0][0] = new Cell(this);
+    public Table() { 
+    	this(1,1);
+    }
+    
+    /**
+     * Constructor method
+     * 
+     * @param rows int number of rows in the sheet
+     * @param cols int number of columns in the sheet
+     */
+    public Table(int rows, int cols) {
+    	this.cells = new Cell[rows][cols];
+    	selectedCell = null;
     }
     
     /**
@@ -75,61 +83,46 @@ public class Table {
     }
     
     /**
-     * This method adds a row to the bottom of the spreadsheet.
+     * This method adds rows to the bottom of the spreadsheet.
+     * 
+     * @param count Integer number of rows to add
      * @throws NullCellPointer 
-     * @throws NumberFormatException 
+     * @throws NumberFormatException
+     * @return New number of rows in the spreadsheet 
      */
-    public void insertRow() throws NumberFormatException, NullCellPointer{
-    	int rows = cells.length;
-    	int columns = cells[0].length;
-    	
-    	Cell[][] temp = new Cell[rows][columns];
-    	
-    	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++){
-    			temp[i][j] = new Cell(this);
-    			temp[i][j].setFormula(cells[i][j].getFormula());
-    			}
-    	
-    	cells = new Cell[rows+1][columns];
-    	
-    	for(int i=0;i<rows+1;i++)
-    		for(int j=0;j<columns;j++){
-    			cells[i][j] = new Cell(this);
-    			}
-    	
-    	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++)
-    			cells[i][j].setFormula(temp[i][j].getFormula());
+    public int appendRow(int count) throws NumberFormatException, NullCellPointer {
+    	expandTable(new Cell[cells.length+count][cells[0].length]);
+    	return cells.length;
     }
     
     /**
-     * This method adds a column to the far right of the spreadsheet.
+     * This method adds columns to the far right of the spreadsheet.
+     * 
+     * @param count Integer number of columns to add
+     * @throws NullCellPointer 
+     * @throws NumberFormatException 
+     * @return New number of columns in the spreadsheet
+     */
+    public int appendColumn(int count) throws NumberFormatException, NullCellPointer {
+    	expandTable(new Cell[cells.length][cells[0].length+count]);
+    	return cells[0].length;
+    }
+    
+    /**
+     * Helper method for the appendColumn and appendRow methods
+     * 
+     * @param tmp A new array of cells to expand into
      * @throws NullCellPointer 
      * @throws NumberFormatException 
      */
-    public void insertColumn() throws NumberFormatException, NullCellPointer{
-    	int rows = cells.length;
-    	int columns = cells[0].length;
+    private void expandTable(Cell[][] tmp) throws NumberFormatException, NullCellPointer {
+    	for(int i=0;i<cells.length;i++) {
+    		for(int j=0;j<cells[0].length;j++) {
+    			tmp[i][j] = cells[i][j];
+    		}
+    	}
     	
-    	Cell[][] temp = new Cell[rows][columns];
-    	
-    	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++){
-    			temp[i][j] = new Cell(this);
-    			temp[i][j].setFormula(cells[i][j].getFormula());
-    			}
-    	
-    	cells = new Cell[rows][columns+1];
-    	
-    	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns+1;j++){
-    			cells[i][j] = new Cell(this);
-    			}
-    	
-    	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++)
-    			cells[i][j].setFormula(temp[i][j].getFormula());
+    	cells = tmp;
     }
     
     /**
@@ -295,7 +288,8 @@ public class Table {
     }
     
     /**
-     * This method will insert the formula into the selected cell, and it unselects the cell when it's done
+     * Insert the formula into the selected cell, and it unselects the cell when it's done
+     * 
      * @param formula
      * @throws NumberFormatException
      * @throws NullCellPointer
@@ -311,6 +305,23 @@ public class Table {
 			e.printStackTrace();
 		}
     	selectedCell = null;
+    }
+
+    /**
+     * Get the length (number of rows) of the spreadsheet
+     */
+    public int getLength() {
+    	return cells.length;
+    }
+    
+    /**
+     * Get the width (number of columns) of the spreadsheet
+     */
+    public int getWidth() {
+    	if (cells.length > 0)
+    		return cells[0].length;
+    	else
+    		return 0;
     }
     
     /**
