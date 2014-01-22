@@ -319,16 +319,18 @@ public class Table {
      * @return value of the calculated formula
      * @throws ScriptException
      */
-    public int getValue(String formula) throws ScriptException{
+    public double getValue(String formula) throws ScriptException{
     	
     	ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
     	Map<String, Object> vars = new HashMap<String, Object>();
-        vars.put("A1", 1);
+        vars.put("A1", 1); 
+        // will need to fetch those actively from the cells, this is temporary testing.
         vars.put("A2", 2);
         vars.put("A3", 3);
-        System.out.println("formula = "+ engine.eval("A1+A2+A3", new SimpleBindings(vars)));
-    	
-		return 0;
+        Object x = engine.eval(formula, new SimpleBindings(vars));
+        System.out.println("formula = "+ x.toString());
+        double i = Double.parseDouble( x.toString() );
+		return i;
     }
     
     

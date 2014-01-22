@@ -96,7 +96,7 @@ public class Cell {
 		value = form.formula(formulaWithoutCellReference);
 	}
 	
-	public void setValue(int v){
+	public void setValue(double v){
 		value = String.valueOf(v);
 	}
 
