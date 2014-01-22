@@ -19,13 +19,33 @@ public class Cell {
 	/**
 	 * Constructor method
 	 * 
-	 * @param table
-	 * @throws NullCellPointer 
-	 * @throws NumberFormatException 
+	 * @param table The table this cell is in
 	 */
-	public Cell(Table table) throws NumberFormatException, NullCellPointer {
+	public Cell(Table table) {
+		this(table, 0.0);
+	}
+	
+	/**
+	 * Constructor method with an existing value
+	 * 
+	 * @param table The table this cell is in
+	 * @param val The value
+	 */
+	public Cell(Table table, double val) {
 		this.table = table;
-		setFormula("0.0");
+		setFormula(val + "");
+		value = val;
+	}
+	
+	/**
+	 * Constructor method with an existing formula
+	 * 
+	 * @param table The table this cell is in
+	 * @param formula The formula
+	 */
+	public Cell(Table table, String formula) {
+		this.table = table;
+		setFormula(formula);
 	}
 	
 	/**
@@ -33,10 +53,8 @@ public class Cell {
 	 * 
 	 * @param formula A String representation of the formula to be calculated. It can contain references to
 	 * other cells in the form 'char' digit. Eg: A1 or B10
-	 * @throws NullCellPointer 
-	 * @throws NumberFormatException 
 	 */
-	public void setFormula(String formula) throws NumberFormatException, NullCellPointer{
+	public void setFormula(String formula) {
 		formulaWithCellReference = formula;
 		getReferenceValues();
 		setValue();
@@ -69,28 +87,35 @@ public class Cell {
 	
 	/**
 	 * Retrieve values from cells referenced in the formula String.
-	 * 
-	 * @throws NullCellPointer 
-	 * @throws NumberFormatException 
-	 * 
 	 */
-	private void getReferenceValues() throws NumberFormatException, NullCellPointer{
+	private void getReferenceValues() {
 		
-		formulaWithoutCellReference = formulaWithCellReference;
+		try {
+			formulaWithoutCellReference = formulaWithCellReference;
 		
-		for(int i=0;i<formulaWithCellReference.length();i++){
-			char current = formulaWithCellReference.charAt(i);
+			for(int i=0;i<formulaWithCellReference.length();i++){
+				char current = formulaWithCellReference.charAt(i);
 			
-			int offset=0;
+				int offset=0;
 			
-			if(Character.getNumericValue(current)>9&&Character.getNumericValue(current)<36){
-				while(current!='+'&&current!='-'&&current!='*'&&current!='/')
-					offset++;
+				if(Character.getNumericValue(current)>9&&Character.getNumericValue(current)<36){
+					while(current!='+'&&current!='-'&&current!='*'&&current!='/')
+						offset++;
 					
-				Cell referencedCell = table.getCell(Integer.parseInt(formulaWithCellReference.substring(i+1, i+offset)), current);
+					Cell referencedCell = table.getCell(Integer.parseInt(formulaWithCellReference.substring(i+1, i+offset)), current);
 				
-				formulaWithoutCellReference = formulaWithoutCellReference.replace(referencedCell.getValueString(),formulaWithCellReference.substring(i, i+offset));
+					formulaWithoutCellReference = formulaWithoutCellReference.replace(referencedCell.getValueString(),formulaWithCellReference.substring(i, i+offset));
+				}
 			}
+		}
+		
+		catch (NumberFormatException e) {
+			// TODO Do something more intelligent with these exception cases
+			formulaWithoutCellReference = "0.0";
+		}
+		
+		catch (NullCellPointer e) {
+			formulaWithoutCellReference = "0.0";
 		}
 	}
 	

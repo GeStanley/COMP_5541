@@ -3,7 +3,7 @@ package structure;
 import org.junit.*;
 import static org.junit.Assert.*;
 import structure.Table;
-import structure.Table.NullCellPointer;
+import structure.Cell;
 import java.util.Random;
 
 public class UnitTestTable {
@@ -19,16 +19,14 @@ public class UnitTestTable {
 	 *   getWidth()
 	 *   appendRow()
 	 *   appendColumn()
-	 *   
-	 * @throws NullCellPointer 
-	 * @throws NumberFormatException 
 	 */
 	@Test
-	public void testTableExpansion() throws NumberFormatException, NullCellPointer {
-		// First check normal cell dimensions using random numbers
+	public void testTableExpansion() {
 		int numRows = rand.nextInt(9)+1;
 		int numCols = rand.nextInt(9)+1;
 		int expand;
+		
+		// First check normal cell dimensions using random numbers
 		tester = new Table(numRows,numCols);
 		assertEquals("Should be " + numRows + " rows", numRows, tester.getLength());
 		assertEquals("Should be " + numCols + " columns", numCols, tester.getWidth());
@@ -45,7 +43,7 @@ public class UnitTestTable {
 		tester = new Table(0,0);
 		assertEquals("Should be 0 rows", 0, tester.getLength());
 		assertEquals("Should be 0 columns", 0, tester.getWidth());
-		
+				
 		// Reset the tester object
 		tester = null;
 	}

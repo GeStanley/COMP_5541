@@ -47,50 +47,33 @@ public class Table {
     	this.cells = new Cell[rows][cols];
     	selectedCell = null;
     }
-    
+ 
     /**
-     * This method will allow you to change the size of the spreadsheet. It will keep the data that has been input into the cells
-     * so long as the size of the array is increasing. If you are decreasing the size of the array the information that was outside
-     * the dimensions passed to the array will be lost.
+     * Insert values into the row at position pos
      * 
-     * @param rowQty A integer parameter that determines how many rows will be in the array.
-     * @param columnQty A integer parameter that determines how many columns will be in the array.
-     * @throws NullCellPointer 
-     * @throws NumberFormatException 
+     * Spreadsheet will automatically be resized to accomodate the new 
+     * row position and width
+     * 
+     * @param pos The row position at which to insert
+     * @param row An array of cells to insert
+     * @return The former contents of the row
      */
-    public void defineArraySize(int rowQty, int columnQty) throws NumberFormatException, NullCellPointer{
-    	int rows = cells.length;
-    	int columns = cells[0].length;
-    	
-    	Cell[][] temp = new Cell[rows][columns];
-    	
-    	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++){
-    			temp[i][j] = new Cell(this);
-    			temp[i][j].setFormula(cells[i][j].getFormula());
-    			}
-    	
-    	cells = new Cell[rowQty][columnQty];
-    	
-    	for(int i=0;i<rowQty;i++)
-    		for(int j=0;j<columnQty;j++){
-    			cells[i][j] = new Cell(this);
-    			}
-    	
-    	for(int i=0;i<rows;i++)
-    		for(int j=0;j<columns;j++)
-    			cells[i][j].setFormula(temp[i][j].getFormula());
+    public Cell[] updateRow(int pos, Cell[] row) {
+    	Cell[] ret;
+    	if (pos >= cells.length || row.length > cells[0].length)
+    		expandTable(new Cell[pos+1][row.length]);
+    	ret = cells[pos];
+    	cells[pos] = row;
+    	return ret;
     }
     
     /**
      * This method adds rows to the bottom of the spreadsheet.
      * 
      * @param count Integer number of rows to add
-     * @throws NullCellPointer 
-     * @throws NumberFormatException
      * @return New number of rows in the spreadsheet 
      */
-    public int appendRow(int count) throws NumberFormatException, NullCellPointer {
+    public int appendRow(int count) {
     	expandTable(new Cell[cells.length+count][cells[0].length]);
     	return cells.length;
     }
@@ -99,11 +82,9 @@ public class Table {
      * This method adds columns to the far right of the spreadsheet.
      * 
      * @param count Integer number of columns to add
-     * @throws NullCellPointer 
-     * @throws NumberFormatException 
      * @return New number of columns in the spreadsheet
      */
-    public int appendColumn(int count) throws NumberFormatException, NullCellPointer {
+    public int appendColumn(int count) {
     	expandTable(new Cell[cells.length][cells[0].length+count]);
     	return cells[0].length;
     }
@@ -112,10 +93,8 @@ public class Table {
      * Helper method for the appendColumn and appendRow methods
      * 
      * @param tmp A new array of cells to expand into
-     * @throws NullCellPointer 
-     * @throws NumberFormatException 
      */
-    private void expandTable(Cell[][] tmp) throws NumberFormatException, NullCellPointer {
+    private void expandTable(Cell[][] tmp) {
     	for(int i=0;i<cells.length;i++) {
     		for(int j=0;j<cells[0].length;j++) {
     			tmp[i][j] = cells[i][j];
@@ -239,25 +218,37 @@ public class Table {
      * This method will print out the grid to the command line.
      * 
      */
-    public void displayTable() throws NullCellPointer{
-    	char c = 'A';
-    	String header = "";
-    	String[] displayedGrid = new String[cells[0].length];
+    public void displayTable() {
+    	int row, col, ch = (int) 'A'; // row and column count and character int value of col
+    	String header = "A";
+    	String grid = "";
+    	Cell active = null;
     	
-    	for (int i = 0; i < cells.length; i++){
-    		header += "\t\t" + (char)(c + i) ;
-    		for (int j = 0; j < cells[i].length; j++){
-    			if (i == 0){
-    				displayedGrid[j] = (j+1) + "\t\t";
-    			}
-    			displayedGrid[j] += cells[i][j].getValue() + "\t\t";
+    	// Do nothing if the table is empty
+    	if (cells.length == 0) {
+    		System.out.println("No table data");
+    		return;
+    	}
+    	
+    	for (col = 0; col < cells[0].length; col++) {
+    		header += "\t\t" + ((char) ++ch);
+    	}
+    	
+    	for (row = 0; row < cells.length; row++) {
+    		// Add the column values
+    		for (col = 0; col < cells[0].length; col++) {
+    			active = cells[row][col];
+    			if (active == null)
+    				grid += "\t\t";
+    			else
+    				grid += active.getValueString() + "\t\t";
     		}
+    		// New line!
+    		grid += "\n";
     	}
     	
     	System.out.println(header);
-    	for (int j = 0; j < displayedGrid.length; j++){
-    		System.out.println(displayedGrid[j]);
-    	}
+    	System.out.println(grid);
     }
     
     public class NullCellPointer extends Exception {
