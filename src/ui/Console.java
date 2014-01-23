@@ -18,24 +18,12 @@ public class Console {
 	
 	public static void main(String[] args) {
 
-		table = new Table(5,5);
+		table = new Table(10,11);
 		String input;
-			
-		//table.selectCell("A1");
-		//table.insertToCell("1");
-		
-		/*
-		table.getCell(1, 1).setFormula("1+1");
-		System.out.println(table.getCell(1, 1).getValue());
-			
-		table.getCell(1, 2).setFormula("2+3*2");
-		System.out.println(table.getCell(1, 2).getValue());
-		
-		table.getCell(2, 2).setFormula("A1*2");
-		System.out.println(table.getCell(2, 2).getValue() + " doesn't work....");
-		*/
 						
 		welcome();
+		table.displayTable();
+		help();
 			
 		while (!quit) {
 				
@@ -56,9 +44,17 @@ public class Console {
 					break;
 				case "open":
 					open();
+					table.displayTable();
 					break;
 				case "display":
 					table.displayTable();
+					break;
+				case "create new":
+					createNew();
+					table.displayTable();
+					break;
+				case "":
+					help();
 					break;
 				default:
 					select(input);
@@ -68,6 +64,13 @@ public class Console {
 			
 
 		
+	}
+	
+	/**
+	 * This method created a new table, by replacing the current table in memory.
+	 */
+	private static void createNew() {
+		table = new Table(10,11);
 	}
 
 	/**
@@ -88,6 +91,7 @@ public class Console {
 			System.out.println();
 			try {
 				table.insertToCell(input);
+				table.displayTable();
 			}
 			catch (NullCellPointer e) {
 				System.out.print("ERROR: ");
@@ -112,7 +116,6 @@ public class Console {
 								"**************************************************************\n";
 		
 		System.out.println(programName);
-		help();
 		
 	}
 	
@@ -120,8 +123,10 @@ public class Console {
 	 * This is the help menu, to get a quick idea of the commands available.
 	 */
 	private static void help(){
-		String commands = 	"\tDisplay\n" +
+		String commands = 	"\n" +
+							"\tDisplay\n" +
 							"\tOpen\n" +
+							"\tCreate New\n" +
 							"\tSave\n" +
 							"\t[letter][number] of the column and row to select a cell\n" +
 							"\tQuit\n" +

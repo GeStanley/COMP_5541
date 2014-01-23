@@ -37,6 +37,18 @@ public class Cell {
 		value = val;
 	}
 	
+	
+	/**
+	 * Constructor method without a table link.
+	 * 
+	 * @param val value of the cell
+	 */
+	public Cell(double val) {
+		value = val;
+	}
+	
+	
+	
 	/**
 	 * Constructor method with an existing formula
 	 * 

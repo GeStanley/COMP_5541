@@ -43,6 +43,12 @@ public class Table {
      */
     public Table(int rows, int cols) {
     	this.cells = new Cell[rows][cols];
+    	for(int i=0;i<cells.length;i++) {
+    		for(int j=0;j<cells[0].length;j++) {
+    			cells[i][j] = new Cell(0.0);
+    		}
+    	}
+    	
     	selectedCell = null;
     }
     
@@ -173,7 +179,7 @@ public class Table {
     		lastChar = address.charAt(0);
     		address = address.substring(1);
     		try {
-    			row = Integer.parseInt(address);
+    			row = Integer.parseInt(address) - 1;
     		}
     		catch (NumberFormatException e) {
     			if (address.length() > 0)
@@ -201,7 +207,7 @@ public class Table {
      */
     public void displayTable() {
     	int row, col, ch = (int) 'A'; // row and column count and character int value of col
-    	String header = "A";
+    	String header = "";
     	String grid = "";
     	Cell active = null;
     	
@@ -212,12 +218,16 @@ public class Table {
     	}
     	
     	for (col = 0; col < cells[0].length; col++) {
-    		header += "\t\t" + ((char) ++ch);
+    		header += "\t\t" + ((char) ch++);
     	}
     	
     	for (row = 0; row < cells.length; row++) {
     		// Add the column values
     		for (col = 0; col < cells[0].length; col++) {
+    			
+    			if (col == 0){
+    			grid += (row+1) + "\t\t";	
+    			}
     			active = cells[row][col];
     			if (active == null)
     				grid += "\t\t";
@@ -252,7 +262,12 @@ public class Table {
      * @throws NullCellPointer
      */
     public void insertToCell(String formula) throws NumberFormatException, NullCellPointer{
-    	selectedCell.setFormula(formula) ;
+    	if (formula.equals("")){
+    		System.out.println("Value of cell was not changed");
+    		selectedCell = null;
+    		return;
+    	}
+    	selectedCell.setFormula(formula);
     	try {
 			selectedCell.setValue(getValue(formula));
 		} catch (ScriptException e) {
