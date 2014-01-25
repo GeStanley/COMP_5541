@@ -45,7 +45,7 @@ public class Table {
     	this.cells = new Cell[rows][cols];
     	for(int i=0;i<cells.length;i++) {
     		for(int j=0;j<cells[0].length;j++) {
-    			cells[i][j] = new Cell(0.0);
+    			cells[i][j] = new Cell(this);
     		}
     	}
     	

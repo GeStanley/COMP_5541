@@ -105,18 +105,23 @@ public class Cell {
 		try {
 			formulaWithoutCellReference = formulaWithCellReference;
 		
-			for(int i=0;i<formulaWithCellReference.length();i++){
-				char current = formulaWithCellReference.charAt(i);
+			for(int i=0;i<formulaWithoutCellReference.length();i++){
+				char current = formulaWithoutCellReference.charAt(i);
 			
 				int offset=0;
 			
 				if(Character.getNumericValue(current)>9&&Character.getNumericValue(current)<36){
-					while(current!='+'&&current!='-'&&current!='*'&&current!='/')
+					while((i+offset)<formulaWithoutCellReference.length() &&
+							(formulaWithoutCellReference.charAt(i+offset)!='+'&&
+							formulaWithoutCellReference.charAt(i+offset)!='-'&&
+							formulaWithoutCellReference.charAt(i+offset)!='*'&&
+							formulaWithoutCellReference.charAt(i+offset)!='/'))
 						offset++;
 					
-					Cell referencedCell = table.getCell(Integer.parseInt(formulaWithCellReference.substring(i+1, i+offset)), current);
-				
-					formulaWithoutCellReference = formulaWithoutCellReference.replace(referencedCell.getValueString(),formulaWithCellReference.substring(i, i+offset));
+					Cell referencedCell = table.getCell(Integer.parseInt(formulaWithoutCellReference.substring(i+1, i+offset))-1, current);
+					
+					formulaWithoutCellReference = formulaWithoutCellReference.replace(formulaWithoutCellReference.substring(i, i+offset),referencedCell.getValueString());
+					i=0;
 				}
 			}
 		}
