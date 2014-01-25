@@ -111,7 +111,7 @@ public class Table {
     }
     
     /**
-     * This method transforms a Character value into the equivalent interger for row addressing within the spreadsheet.
+     * This method transforms a Character value into the equivalent integer for row addressing within the spreadsheet.
      * In other words, it converts A into 0, B into 1 and so on.
      * 
      * @param row A character representation of the row.
@@ -139,7 +139,7 @@ public class Table {
      * This method retrieves a cell at a given row and column address.
      * 
      * @param row An integer representation of the row address.
-     * @param column  An character representation of the column address.
+     * @param column  A character representation of the column address.
      * @return The desired Cell.
      */
     public Cell getCell(int row, char column) {

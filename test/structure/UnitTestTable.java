@@ -58,6 +58,7 @@ public class UnitTestTable {
 		assertEquals("Should be 0", "0.0", selected.getValueString());
 		selected = tester.selectCell("AA2");
 		assertEquals("Should be null", "null", selected+"");
+		assertTrue(tester.isCellSelected());
 	}
 	
 	/**
@@ -73,6 +74,5 @@ public class UnitTestTable {
 
 	}
 	
-
 
 }
