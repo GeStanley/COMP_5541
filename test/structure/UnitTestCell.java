@@ -15,7 +15,7 @@ public class UnitTestCell {
 	public void testCellConstructor() {
 		table = new Table();
 		
-
+		
 		
 		Cell cell1 = new Cell(table);
 		

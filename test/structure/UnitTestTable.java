@@ -54,6 +54,9 @@ public class UnitTestTable {
 	@Test
 	public void testCellSelection() {
 		tester = new Table(5,5);
+		
+		assertFalse(tester.isCellSelected());
+		
 		Cell selected = tester.selectCell("A2");
 		assertEquals("Should be 0", "0.0", selected.getValueString());
 		selected = tester.selectCell("AA2");
@@ -67,12 +70,41 @@ public class UnitTestTable {
 	@Test
 	public void testGetCell() {
 		tester = new Table(5,5);
-		Cell selected = tester.getCell(1, 'A');
-		selected.setFormula("5");
 		
-		assertEquals("Should be 5", "5.0", selected.getValueString());
+		int counter = 1;
+		
+		for(int i=0;i<5;i++)
+			for(int j=0;j<5;j++){
+				
+				Cell selected = tester.getCell(i,j);
+				selected.setFormula(Integer.toString(counter));
+				
+				counter++;
+			}
+		
+		counter=1;
+		
+		for(int i=0;i<5;i++)
+			for(int j=0;j<5;j++){
+				assertEquals("Should be " + counter, Integer.toString(counter)+ ".0", tester.getCell(i,j).getValueString());
+				counter++;
+				}
 
 	}
 	
+	/**
+	 * Test get cell
+	 */
+	@Test
+	public void testDimensions() {
+		
+		int numRows = rand.nextInt(9)+1;
+		int numCols = rand.nextInt(9)+1;
+		
+		tester = new Table(numRows,numCols);
+		
+		assertEquals("Should be " + numRows, numRows, tester.getLength());
+		assertEquals("Should be " + numCols, numCols, tester.getWidth());
 
+	}
 }
