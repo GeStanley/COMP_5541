@@ -45,6 +45,8 @@ public class Cell {
 	 */
 	public Cell(double val) {
 		value = val;
+		formulaWithCellReference = Double.toString(val);
+		formulaWithoutCellReference = formulaWithCellReference;
 	}
 	
 	
@@ -146,7 +148,8 @@ public class Cell {
 			value = 0;
 		}
 	}
-	
+	//TODO
+	//Why does this method even exist? See method above.
 	public void setValue(double v){
 		value = v;
 	}

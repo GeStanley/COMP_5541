@@ -73,23 +73,6 @@ public class UnitTestTable {
 
 	}
 	
-	/**
-	 * Test cell referencing
-	 */
-	@Test
-	public void testCellReferencing() {
-		tester = new Table(2,2);
-		Cell selected = tester.selectCell("A1");
-		selected.setFormula("5");
-		
-		Cell selected2 = tester.selectCell("A2");
-		selected2.setFormula("10");
-		
-		Cell referencing = tester.selectCell("B1");
-		referencing.setFormula("A1+A2");
-		
-		assertEquals("Should be 15", "15.0", referencing.getValueString());
 
-	}
 
 }
