@@ -1,10 +1,11 @@
 package structure;
-import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import static org.junit.Assert.assertEquals;
+
+import java.lang.reflect.Method;
+
 import org.junit.Test;
+
+import structure.Grammar.Formula;
 
 /**
  * @author Nick
@@ -15,6 +16,69 @@ import org.junit.Test;
 public class UnitTestGrammar {
 	
 	Grammar.Formula tester;
+	
+/*	
+	calculate(String)
+	expression(String)
+	parseString(String)
+	*/
+
+	/**
+	 * Tests all the private methods in the Grammar.Formula class sequentially
+	 */
+	@Test
+	public void testAllPrivateMethods() throws Exception{	
+		String currentResult;
+		
+		currentResult = testAGrammarPrivateMethod("addition", "5p5");
+		assertEquals(10.0,Double.parseDouble(currentResult),0);
+		
+		currentResult = testAGrammarPrivateMethod("subtraction", "7m5");
+		assertEquals(2.0,Double.parseDouble(currentResult),0);
+		
+		currentResult = testAGrammarPrivateMethod("multiplication", "7u5");
+		assertEquals(35.0,Double.parseDouble(currentResult),0);
+		
+		currentResult = testAGrammarPrivateMethod("division", "80d4");
+		assertEquals(20.0,Double.parseDouble(currentResult),0);
+
+		currentResult = testAGrammarPrivateMethod("calculate", "5p5");
+		assertEquals(10.0,Double.parseDouble(currentResult),0);
+		
+		currentResult = testAGrammarPrivateMethod("calculate", "7m5");
+		assertEquals(2.0,Double.parseDouble(currentResult),0);
+		
+		currentResult = testAGrammarPrivateMethod("calculate", "7u5");
+		assertEquals(35.0,Double.parseDouble(currentResult),0);
+		
+		currentResult = testAGrammarPrivateMethod("calculate", "80d4");
+		assertEquals(20.0,Double.parseDouble(currentResult),0);		
+		
+	}
+	
+	/**
+	 * Tests a single private method in the grammar.formula class
+	 * @param methodName name of the private method to verify
+	 * @param formula the formula input, should be based on formula
+	 * class-style input such as "5p5" for "5+5"
+	 * @return returns the result after evaluation for assertion
+	 * @throws Exception
+	 */
+	private String testAGrammarPrivateMethod(String methodName, 
+			String formula) throws Exception{
+		Grammar.Formula testPrivate = new Grammar.Formula();
+		Method testMe = getMethodOfClass(Grammar.Formula.class, methodName);
+		String result = (String) testMe.invoke(testPrivate, formula);
+		return result;
+	}	
+	
+	private Method getMethodOfClass(Class testClass, String methodName) 
+			throws NoSuchMethodException, SecurityException{
+		Method method = testClass.getDeclaredMethod(methodName, String.class);
+		method.setAccessible(true);
+		return method;
+	}
+
 
 	/**
 	 * Testing multiplication, addition, subtraction, division
