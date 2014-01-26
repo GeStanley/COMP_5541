@@ -28,6 +28,7 @@ public class Table {
     private Cell[][] cells;
     private Cell selectedCell;
         
+    
     /**
      * Default constructor method. Builds a 1 by 1 spreadsheet.
      */
@@ -52,7 +53,15 @@ public class Table {
     	selectedCell = null;
     }
     
-    /**
+    public Cell getSelectedCell() {
+		return selectedCell;
+	}
+
+	public void setSelectedCell(Cell selectedCell) {
+		this.selectedCell = selectedCell;
+	}
+
+	/**
      * Insert values into the row at position pos
      * 
      * Spreadsheet will automatically be resized to accomodate the new 

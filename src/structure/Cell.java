@@ -62,6 +62,22 @@ public class Cell {
 		setFormula(formula);
 	}
 	
+	public String getFormulaWithCellReference() {
+		return formulaWithCellReference;
+	}
+
+	public void setFormulaWithCellReference(String formulaWithCellReference) {
+		this.formulaWithCellReference = formulaWithCellReference;
+	}
+
+	public String getFormulaWithoutCellReference() {
+		return formulaWithoutCellReference;
+	}
+
+	public void setFormulaWithoutCellReference(String formulaWithoutCellReference) {
+		this.formulaWithoutCellReference = formulaWithoutCellReference;
+	}
+
 	/**
 	 * This method sets the formula of the cells.
 	 * 
