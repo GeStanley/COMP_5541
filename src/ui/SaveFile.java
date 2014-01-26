@@ -105,7 +105,9 @@ public class SaveFile {
 			success = true;
 		}
 		
-		catch (Exception e) {}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return success;
 		
@@ -160,7 +162,7 @@ public class SaveFile {
 		}
 		
 		target.updateRow(pos, row);
-		
+
 		return row;
 	}
 

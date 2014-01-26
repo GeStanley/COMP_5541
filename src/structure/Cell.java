@@ -32,7 +32,7 @@ public class Cell {
 	public Cell(Table table, double val) {
 		this(table, ""+val);
 	}
-		
+
 	/**
 	 * Constructor method with an existing formula
 	 * 
@@ -82,7 +82,8 @@ public class Cell {
 	}
 	
 	/**
-	 * This is a private method because the value is determined once a formula is entered, values retrieved from referenced cells
+	 * This is a private method because the value is determined once a formula is 
+	 * entered, values retrieved from referenced cells
 	 * and the formula parsed by the grammar class.
 	 */
 	private void evalValue() {

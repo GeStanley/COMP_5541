@@ -25,6 +25,7 @@ public class Table {
     private Cell selectedCell;
     private Formula parser;
         
+    
     /**
      * Default constructor method. Builds a 1 by 1 spreadsheet.
      */
@@ -55,7 +56,15 @@ public class Table {
     	}
 	}
     
-    /**
+    public Cell getSelectedCell() {
+		return selectedCell;
+	}
+
+	public void setSelectedCell(Cell selectedCell) {
+		this.selectedCell = selectedCell;
+	}
+
+	/**
      * Insert values into the row at position pos
      * 
      * Spreadsheet will automatically be resized to accomodate the new 
@@ -114,7 +123,7 @@ public class Table {
     }
     
     /**
-     * This method transforms a Character value into the equivalent interger for row addressing within the spreadsheet.
+     * This method transforms a Character value into the equivalent integer for row addressing within the spreadsheet.
      * In other words, it converts A into 0, B into 1 and so on.
      * 
      * @param row A character representation of the row.
@@ -142,7 +151,7 @@ public class Table {
      * This method retrieves a cell at a given row and column address.
      * 
      * @param row An integer representation of the row address.
-     * @param column  An character representation of the column address.
+     * @param column  A character representation of the column address.
      * @return The desired Cell.
      */
     public Cell getCell(int row, char column) {
@@ -220,9 +229,9 @@ public class Table {
     		System.out.println("No table data");
     		return;
     	}
-    	
+    	header = "   ";
     	for (col = 0; col < cells[0].length; col++) {
-    		header += "\t\t" + ((char) ch++);
+    		header += String.format("%12c", ((char) ch++)) ;
     	}
     	
     	for (row = 0; row < cells.length; row++) {
@@ -230,13 +239,17 @@ public class Table {
     		for (col = 0; col < cells[0].length; col++) {
     			
     			if (col == 0){
-    			grid += (row+1) + "\t\t";	
+    			grid += String.format("%2d ", row+1);	
     			}
+    			
     			active = cells[row][col];
-    			if (active == null)
-    				grid += "\t\t";
+    			
+    			Double value = active.getValue();
+    			
+    			if(value>99999999D)
+    				grid += String.format("%e", value);
     			else
-    				grid += active.getValueString() + "\t\t";
+    				grid += String.format("%12.2f", value);
     		}
     		// New line!
     		grid += "\n";
