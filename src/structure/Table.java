@@ -1,11 +1,7 @@
 package structure;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -27,6 +23,7 @@ public class Table {
 	
     private Cell[][] cells;
     private Cell selectedCell;
+    private Formula parser;
         
     /**
      * Default constructor method. Builds a 1 by 1 spreadsheet.
@@ -43,14 +40,20 @@ public class Table {
      */
     public Table(int rows, int cols) {
     	this.cells = new Cell[rows][cols];
+    	selectedCell = null;
+    	parser = new Formula("", this);
+    }
+    
+    /**
+     * Populate this table with empty cells
+     */
+    public void populate() {	
     	for(int i=0;i<cells.length;i++) {
     		for(int j=0;j<cells[0].length;j++) {
-    			cells[i][j] = new Cell(0.0);
+    			cells[i][j] = new Cell(this);
     		}
     	}
-    	
-    	selectedCell = null;
-    }
+	}
     
     /**
      * Insert values into the row at position pos
@@ -166,6 +169,7 @@ public class Table {
     public Cell selectCell(String address) {
     	int col = 0, row = -1;
     	char lastChar = '!';
+    	//System.out.println("Select cell at " + address);
     	// Always return null when the spreadsheet has 0 dimensions
     	if (cells.length == 0)
     		return null;
@@ -268,14 +272,16 @@ public class Table {
     		return;
     	}
     	selectedCell.setFormula(formula);
-    	try {
-			selectedCell.setValue(getValue(formula));
-		} catch (ScriptException e) {
-			e.printStackTrace();
-		}
     	selectedCell = null;
     }
 
+    /**
+     * Retrieve the tables parser
+     */
+    public Formula getParser() {
+    	return parser;
+    }
+    
     /**
      * Get the length (number of rows) of the spreadsheet
      */
@@ -308,7 +314,7 @@ public class Table {
         vars.put("A2", 2);
         vars.put("A3", 3);
         Object x = engine.eval(formula, new SimpleBindings(vars));
-        System.out.println("formula = "+ x.toString());
+        //System.out.println("formula = "+ x.toString());
         double i = Double.parseDouble( x.toString() );
 		return i;
     }

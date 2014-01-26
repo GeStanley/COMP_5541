@@ -1,7 +1,8 @@
 package structure;
 import static org.junit.Assert.*;
+
 import org.junit.Test;
-import structure.Formula;
+import structure.*;
 
 /**
  * This Junit class does a unit test on the Grammar class 
@@ -13,7 +14,45 @@ import structure.Formula;
 public class UnitTestFormula {
 	
 	Formula tester;
+	Table table;
 
+	/**
+	 * Test cell referencing
+	 */
+	@Test
+	public void testCellReferences() throws Exception {
+		table = new Table(5,5);
+		tester = table.getParser();
+		Cell selected;
+		
+		// Select a cell (and check it)
+		selected = table.selectCell("A2");
+		assertEquals("Should be 0", "0.0", selected.getValueString());
+		table.insertToCell("3.5");
+		assertEquals("Should be 3.5", "3.5", selected.getValueString());
+		
+		// Select another cell and assign it a value
+		selected = table.selectCell("C3");
+		assertEquals("Should be 0", "0.0", selected.getValueString());
+		table.insertToCell("2.5");
+		assertEquals("Should be 2.5", "2.5", selected.getValueString());
+		
+		// Calculate the sum of A2 and C3
+		assertEquals(6.0,tester.evaluate("A2+C3"),0);
+		
+		// Insert a reference to A2 in D1
+		selected = table.selectCell("D1");
+		assertEquals("Should be 0", "0.0", selected.getValueString());
+		table.insertToCell("A2");
+		assertEquals("Should be 3.5", "3.5", selected.getValueString());
+		
+		// Insert a formula using D1 in D2
+		selected = table.selectCell("D2");
+		assertEquals("Should be 0", "0.0", selected.getValueString());
+		table.insertToCell("D1+1");
+		assertEquals("Should be 4.5", "4.5", selected.getValueString());
+	}
+	
 	/**
 	 * Testing multiplication, addition, subtraction, division
 	 */
@@ -43,7 +82,7 @@ public class UnitTestFormula {
 	/**
 	 * Testing negative numbers combined with additional operations
 	 */
-	@Test
+	//@Test
 	public void testNegativeNumbersPlus() throws Exception {
 		tester = new Formula();
 		
@@ -84,5 +123,4 @@ public class UnitTestFormula {
 		assertEquals(2.5,tester.evaluate("(2.5)"),0);
 	}
 	
-
 }
