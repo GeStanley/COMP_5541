@@ -244,7 +244,7 @@ public class Table {
     			
     			active = cells[row][col];
     			
-    			Double value = active.getValue();
+    			Double value = (active != null) ? active.getValue() : 0;
     			
     			if(value>99999999D)
     				grid += String.format("%e", value);
