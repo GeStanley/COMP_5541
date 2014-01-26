@@ -225,9 +225,9 @@ public class Table {
     		System.out.println("No table data");
     		return;
     	}
-    	
+    	header = "   ";
     	for (col = 0; col < cells[0].length; col++) {
-    		header += "\t\t" + ((char) ch++);
+    		header += String.format("%12c", ((char) ch++)) ;
     	}
     	
     	for (row = 0; row < cells.length; row++) {
@@ -235,13 +235,17 @@ public class Table {
     		for (col = 0; col < cells[0].length; col++) {
     			
     			if (col == 0){
-    			grid += (row+1) + "\t\t";	
+    			grid += String.format("%2d ", row+1);	
     			}
+    			
     			active = cells[row][col];
-    			if (active == null)
-    				grid += "\t\t";
+    			
+    			Double value = active.getValue();
+    			
+    			if(value>99999999D)
+    				grid += String.format("%e", value);
     			else
-    				grid += active.getValueString() + "\t\t";
+    				grid += String.format("%12.2f", value);
     		}
     		// New line!
     		grid += "\n";
