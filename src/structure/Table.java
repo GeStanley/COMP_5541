@@ -201,7 +201,18 @@ public class Table {
     				return null;
     		}
     	}
-    	    	    	
+    	
+    	return selectCell(row, col);
+    }
+  
+    /**
+     * Select cell, create one if none exists at the desired location
+     * 
+     * @param row row index of the cell
+     * @param col column index of the cell
+     * @return The desired cell or null
+     */
+    public Cell selectCell(int row, int col) {    	    	
     	// First check that row and column indices are within
     	// the bounds of the spreadsheet
     	if (row < cells.length && col < cells[0].length) {
@@ -213,7 +224,6 @@ public class Table {
     	else
     		return null;
     }
-    
     
     /**
      * This method will print out the grid to the command line.

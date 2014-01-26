@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import structure.Table;

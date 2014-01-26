@@ -82,8 +82,7 @@ public class Formula {
 			if (select == null)
 				throw new Exception("Cell " + ref + " could not be referenced!");
 			else {
-				Formula nested = new Formula(select.getFormula(), table);
-				list.add(nested.evaluate());
+				list.add(select.getValue(true));
 			}
 		}
 		return "";
@@ -94,6 +93,7 @@ public class Formula {
 	 */
 	public double evaluate(String form) throws Exception, NumberFormatException {
 		formula = form;
+		result = 0;
 		return evaluate();
 	}
 	
@@ -177,7 +177,13 @@ public class Formula {
 		String number = "", reference = "";
 		LinkedList<Double> vals = new LinkedList<Double>();
 		LinkedList<Character> ops = new LinkedList<Character>();
+		
+		if (debug) System.out.println("Evaluation of " + this);
 
+		// Do not evaluate anything when formula is empty
+		if (formula == "")
+			return 0.0;
+		
 		// Main loop through the formula
 		for (pos=0; pos<formula.length(); pos++) {
 

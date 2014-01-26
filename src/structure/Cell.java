@@ -75,6 +75,15 @@ public class Cell {
 	}
 	
 	/**
+	 * Force recalculation of a value while getting it
+	 */
+	public double getValue(boolean recalculate) {
+		if (recalculate)
+			evalValue();
+		return value;
+	}
+	
+	/**
 	 * Returns the value as a string, useful for replacing in formulas
 	 */
 	public String getValueString() {

@@ -7,6 +7,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import structure.Table;
 import structure.Cell;
+import structure.Table.NullCellPointer;
 import ui.SaveFile;
 
 public class UnitTestSaveFile {
@@ -20,21 +21,35 @@ public class UnitTestSaveFile {
 	@Test
 	public void testImportLine() {
 		tester = new Table(5,5);
+		tester.populate();
 		saved = new SaveFile(tester);
-		Cell[] tmp;
+		Cell[] tmp = new Cell[4];
 		String in = "\"1\",\"2\",\"3\",\"4\"";
 		
 		// Test parsing a CSV line
-		tmp = saved.parseLine(4,in);
+		try {
+			tmp = saved.parseLine(4,in);
+		}
+		catch (Exception e) {
+			fail(e.getMessage());
+		}
 		
 		assertEquals(3.0, tmp[2].getValue(), 0);
 		assertEquals(1.0, tmp[0].getValue(), 0);
 		assertEquals(4.0, tmp[3].getValue(), 0);
 		
 		// Test generating a line of csv
-		assertEquals("Should be" + in, in, saved.rowToCSV(tmp));
+		try {
+			assertEquals("Should be" + in, in, saved.rowToCSV(tmp));
+		}
+		catch (Exception e) {
+			fail(e.getMessage());
+		}
 	}
 	
+	/**
+	 * Test conversion of rows to CSV
+	 */
 	@Test
 	public void testRow2CSV() {
 		tester = new Table(5,5);
@@ -61,11 +76,15 @@ public class UnitTestSaveFile {
 		for (count=0; count<parts.length; count++) {
 			row[count] = new Cell(tester, parts[count]);
 		}
+		try {
+			String out= saved.rowToCSV(row);
+			assertEquals(lineTemp, out);
 		
-		String out= saved.rowToCSV(row);
-		assertEquals(lineTemp, out);
-		
-		assertEquals(null, saved.rowToCSV(null));
+			assertEquals(null, saved.rowToCSV(null));
+		}
+		catch (Exception e) {
+			fail(e.getMessage());
+		}
 	}
 
 	private Method getMethodOfClass(Class argClass, String argMethodName) {
