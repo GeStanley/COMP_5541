@@ -53,7 +53,7 @@ public class UnitTestCell {
 		
 		
 		cell.setFormula(null);
-		assertEquals(null, cell.getValue());
+		assertEquals(0.0, cell.getValue(),0);
 	}	
 	
 	@Test
@@ -63,7 +63,8 @@ public class UnitTestCell {
 		cell.setFormula("5+12");
 		assertEquals("5+12", cell.getFormula());
 		//TODO null formula validation
-		fail("Not yet implemented");
+		cell.setFormula(null);
+		assertEquals("0.0", cell.getFormula());
 	}
 	
 	/**

@@ -330,6 +330,9 @@ public class Table {
      */
     public double getValue(String formula) throws ScriptException{
     	
+    	if(formula==null)
+    		formula="0.0";
+    	
     	ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
     	Map<String, Object> vars = new HashMap<String, Object>();
         vars.put("A1", 1); 
