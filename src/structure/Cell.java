@@ -122,7 +122,9 @@ public class Cell {
 		if (obj.getClass() != getClass())  // Not the same class
 			return false;
 		Cell other = (Cell) obj; // Cast obj to cell
-		if (other.getFormula() == getFormula() 
+		
+		//System.out.println(" Compare " + this + " to " + other);
+		if (other.getFormula().equals(getFormula()) 
 				&& other.getValue() == getValue())
 			return true;
 		else
