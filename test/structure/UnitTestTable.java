@@ -258,54 +258,6 @@ public class UnitTestTable {
 	}
 	
 	/**
-	 * Test for inserting a formula
-	 * 
-	 * @throws NumberFormatException
-	 * @throws NullCellPointer
-	 * @throws ScriptException
-	 */
-	@Test
-	public void TestInsertFormula() throws NumberFormatException, NullCellPointer, ScriptException{
-		//To Do test with formula as referneces to be uncommented
-		String formula = "5+12";
-		String selectedCell = "B1";
-		tester.setSelectedCell(tester.selectCell(selectedCell));
-		try {
-			tester.insertToCell(formula);
-		} 
-		catch (Exception e) {
-			fail("Exception: " + e.getMessage());
-		}
-		assertEquals("17.0",tester.getCell(0, 1).getValueString());
-	
-		selectedCell = "A2";
-		formula = "B1";
-		tester.setSelectedCell(tester.selectCell(selectedCell));
-		try {
-			tester.insertToCell(formula);
-		} 
-		catch (Exception e) {
-			fail("Exception: " + e.getMessage());
-		}
-		//assertEquals(tester.getValue(formula),tester.getCell(1, 0).getValueString());
-		
-		selectedCell = "A3";
-		formula = "B1+A2";
-		tester.setSelectedCell(tester.selectCell(selectedCell));
-		try {
-			tester.insertToCell(formula);
-		} 
-		catch (Exception e) {
-			fail("Exception: " + e.getMessage());
-		}
-		//assertEquals(tester.getValue(formula),tester.getCell(2, 0).getValueString());
-		
-		
-		//TODO test for references as formula
-		fail("Not yet implemented");
-	}
-	
-	/**
 	 * Test getLength method
 	 */
 	@Test

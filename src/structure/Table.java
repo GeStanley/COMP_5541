@@ -54,14 +54,6 @@ public class Table {
     		}
     	}
 	}
-    
-    public Cell getSelectedCell() {
-		return selectedCell;
-	}
-
-	public void setSelectedCell(Cell selectedCell) {
-		this.selectedCell = selectedCell;
-	}
 
 	/**
      * Insert values into the row at position pos
@@ -273,11 +265,7 @@ public class Table {
      * @return true if a cell is selected, false if no cell is selected yet
      */
     public boolean isCellSelected(){
-    	if (selectedCell != null) {
-    		return true;
-    	} else {
-    		return false;
-    	}
+    	return (selectedCell != null);
     }
     
     /**
@@ -311,29 +299,6 @@ public class Table {
     		return cells[0].length;
     	else
     		return 0;
-    }
-    
-    /**
-     * Calculates the value of a formula
-     * @param formula
-     * @return value of the calculated formula
-     * @throws ScriptException
-     */
-    public double getValue(String formula) throws ScriptException{
-    	
-    	if(formula==null)
-    		formula="0.0";
-    	
-    	ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
-    	Map<String, Object> vars = new HashMap<String, Object>();
-        vars.put("A1", 1); 
-        // will need to fetch those actively from the cells, this is temporary testing.
-        vars.put("A2", 2);
-        vars.put("A3", 3);
-        Object x = engine.eval(formula, new SimpleBindings(vars));
-        //System.out.println("formula = "+ x.toString());
-        double i = Double.parseDouble( x.toString() );
-		return i;
     }
     
 	/**
