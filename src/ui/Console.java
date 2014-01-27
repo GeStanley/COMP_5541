@@ -144,6 +144,10 @@ public class Console {
 			catch (NumberFormatException e) {
 				System.out.print("ERROR: ");
 				System.out.println(e.getMessage());
+			} 
+			catch (Exception e) {
+				System.out.print("ERROR: ");
+				System.out.println(e.getMessage());
 			}
 		}
 		

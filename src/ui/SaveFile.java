@@ -146,10 +146,9 @@ public class SaveFile {
 	 * @param pos Which row to update
 	 * @param line A string of CSV text
 	 * @return The parsed line as an array of cells
-	 * @throws NullCellPointer 
-	 * @throws NumberFormatException 
+	 * @throws Exception 
 	 */
-	public Cell[] parseLine(int pos, String line) throws NumberFormatException, NullCellPointer {
+	public Cell[] parseLine(int pos, String line) throws Exception {
 		// TODO make this method private once we can test the parse method directly
 		Cell[] row;
 		String[] parts;

@@ -102,7 +102,7 @@ public class Cell {
 	 * Override tostring method
 	 */
 	public String toString() {
-		return formula + "=" + value;
+		return formula.formula() + "=" + value;
 	}
 	
 }

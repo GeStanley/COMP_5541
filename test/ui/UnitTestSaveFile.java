@@ -20,7 +20,7 @@ public class UnitTestSaveFile {
 	 * Test importing and exporting lines of csv code
 	 */
 	@Test
-	public void testImportLine() {
+	public void testImportExportLine() {
 		tester = new Table(5,5);
 		tester.populate();
 		saved = new SaveFile(tester);
@@ -48,9 +48,6 @@ public class UnitTestSaveFile {
 		}
 	}
 	
-	/**
-	 * Test conversion of rows to CSV
-	 */
 	@Test
 	public void testSave(){
 		tester = new Table(5,5);
@@ -159,45 +156,6 @@ public class UnitTestSaveFile {
 		result = (boolean) openWriteMethod.invoke(saved, fileName);
 		assertEquals(false,result);
 		
-	}
-	
-	
-	@Test
-	public void testRow2CSV() {
-		tester = new Table(5,5);
-		saved = new SaveFile(tester);
-		
-		String line = "\"1\",\"2\",\"3\",\"4\"";
-		String lineTemp = line;
-		
-		Cell[] row;
-		String[] parts;
-		int count;
-		
-		// Remove leading and trailing quotes and commas
-		if (line.charAt(0) == '"')
-			line = line.substring(1);
-		if (line.charAt(line.length()-1) == ',')
-			line = line.substring(0,line.length()-1);
-		if (line.charAt(line.length()-1) == '"')
-			line = line.substring(0,line.length()-1);
-		
-		parts = line.split("\",\"");
-		row = new Cell[parts.length];
-		
-		for (count=0; count<parts.length; count++) {
-			row[count] = new Cell(tester, parts[count]);
-		}
-		try {
-			String out= saved.rowToCSV(row);
-			assertEquals(lineTemp, out);
-		
-			assertEquals(null, saved.rowToCSV(null));
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
-
 	}
 
 	private Method getMethodOfClass(Class argClass, String argMethodName) {
