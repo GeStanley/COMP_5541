@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
   structure.UnitTestCell.class,
-  structure.UnitTestGrammar.class,
+  structure.UnitTestFormula.class,
   structure.UnitTestTable.class,
   ui.UnitTestSaveFile.class
 })
