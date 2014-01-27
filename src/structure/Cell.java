@@ -91,6 +91,13 @@ public class Cell {
 	}
 	
 	/**
+	 * Override tostring method
+	 */
+	public String toString() {
+		return formula + "=" + value;
+	}
+	
+	/**
 	 * This is a private method because the value is determined once a formula is 
 	 * entered, values retrieved from referenced cells
 	 * and the formula parsed by the grammar class.
