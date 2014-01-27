@@ -6,22 +6,41 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
 
 import structure.Table.NullCellPointer;
 
 public class UnitTestCell {
 	
 	Table table;
+	Cell cell;
+	
+	/**
+	 * Intialize values for every test
+	 */
+	@Before
+	public void before() {
+		table = new Table(2,2);
+		cell = new Cell(table);
+	}
+	
+	/**
+	 * Clean up after a test
+	 */
+	@After
+	public void after() {
+		table = null;
+		cell = null;
+	}
 	
 	/**
 	 * Test cell constructors
 	 */
 	@Test
-	public void testCellConstructor() {
-		table = new Table();
-		
+	public void testCellConstructor() {		
 		try {
-			Cell cell1 = new Cell(table);
+			Cell cell1 = cell;
 			
 			assertEquals("Should be 0", "0.0", cell1.getValueString());
 			assertEquals(0.0, cell1.getValue(),0.0001);
@@ -46,9 +65,6 @@ public class UnitTestCell {
 	 */
 	@Test
 	public void testSetCellFormula() {
-		table = new Table(2,2);
-		Cell cell = new Cell(table);
-		
 		try {
 			cell.setFormula("23+27");
 			
@@ -68,9 +84,6 @@ public class UnitTestCell {
 	 */
 	@Test
 	public void testGetCellFormula(){
-		table = new Table(2,2);
-		Cell cell = new Cell(table);
-		
 		try {
 			cell.setFormula("5+12");
 			assertEquals("5+12", cell.getFormula());
@@ -88,9 +101,7 @@ public class UnitTestCell {
 	 * Test cell referencing
 	 */
 	@Test
-	public void testCellReferencing() {
-		table = new Table(2,2);
-		
+	public void testCellReferencing() {		
 		try {
 			Cell selected = table.selectCell("A1");
 			selected.setFormula("5");
@@ -114,8 +125,6 @@ public class UnitTestCell {
 	 */
 	@Test
 	public void testGetValue() {
-		table = new Table(2,2);
-		Cell cell = new Cell(table);
 		try {
 			cell.setFormula("23+27");
 			assertEquals(50.0, cell.getValue(),0.0001);
@@ -123,6 +132,23 @@ public class UnitTestCell {
 		catch (Exception e) {
 			fail("Exception: " + e.getMessage());
 		}
+	}
+	
+	/**
+	 * Test equals method of Cell
+	 */
+	@Test
+	public void testEquals() {
+		assertFalse("Compare a cell to a table", cell.equals(table));
+		assertFalse("Compare a cell to null", cell.equals(table));
+		assertTrue("Compare a cellt o itself", cell.equals(cell));
+
+		// Now compare actual cells
+		Cell one = new Cell(table, "2+3");
+		Cell two = new Cell(table, "2+3");
+		Cell three = new Cell(table, "3+2");
+		assertTrue("Compare cells with the same formula", one.equals(two));
+		assertFalse("Compare cells with different formulas", two.equals(three));
 	}
 	
 	/**
