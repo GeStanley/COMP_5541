@@ -197,11 +197,60 @@ public class UnitTestFormula {
 	}	
 	
 	/**
-	 * Test exceptions
+	 * Test exceptions (except for circular references, tested on their own)
 	 */
 	@Test
 	public void testExceptions() {
+		String openClause = "1+(2+3";
+		String openClauseAgain = "1+2+3)";
+		String invalidChars = "7& + ???";
+		String doubleOp = "18 ++ 19";
+		String invalidReference = "Z99 + 13";
+
+		// Test an open clause
+		try {
+			tester.evaluate(openClause);
+		}
+		catch (Exception e) {
+			assertEquals("class java.lang.Exception", e.getClass().toString());
+			assertEquals("Open sub-condition in " + openClause, e.getMessage());
+		}
 		
+		// Test another open clause
+		try {
+			tester.evaluate(openClauseAgain);
+		}
+		catch (Exception e) {
+			assertEquals("class java.lang.Exception", e.getClass().toString());
+			assertEquals("Open sub-condition in " + openClauseAgain, e.getMessage());
+		}
+		
+		// Test invalid characters
+		try {
+			tester.evaluate(invalidChars);
+		}
+		catch (Exception e) {
+			assertEquals("class java.lang.Exception", e.getClass().toString());
+			assertEquals("Unsupported character at position 1 : \"&\"", e.getMessage());
+		}
+		
+		// Test double operators
+		try {
+			tester.evaluate(doubleOp);
+		}
+		catch (Exception e) {
+			assertEquals("class java.lang.Exception", e.getClass().toString());
+			assertEquals("Invalid operation at position 4", e.getMessage());
+		}
+		
+		// Test invalid references
+		try {
+			tester.evaluate(invalidReference);
+		}
+		catch (Exception e) {
+			assertEquals("class java.lang.Exception", e.getClass().toString());
+			assertEquals("Cell Z99 could not be referenced!", e.getMessage());
+		}
 	}
 	
 	
