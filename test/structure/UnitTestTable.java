@@ -99,32 +99,36 @@ public class UnitTestTable {
 	
 	/**
 	 * Test get cell
+	 * 
+	 * Iterate through every cell in the table and assign it a value,
+	 * then check for that value.
 	 */
 	@Test
 	public void testGetCell() {		
-		int counter = 1;
+		double expected;
+		Cell selected;
+		// Populate the table with empty cells
+		tester.populate();
 		
-		for(int i=0;i<5;i++)
-			for(int j=0;j<5;j++){
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<5;j++) {
 				
-				Cell selected = tester.getCell(i,j);
+				selected = tester.getCell(i,j);
 				try {
-					selected.setFormula(Integer.toString(counter));
+					selected.setFormula(i  + "+" + j);
 				}
 				catch (Exception e) {
 					fail("Exception: " + e.getMessage());
-				}
-				
-				counter++;
+				}			
 			}
-		
-		counter=1;
-		
-		for(int i=0;i<5;i++)
-			for(int j=0;j<5;j++){
-				assertEquals("Should be " + counter, Integer.toString(counter)+ ".0", tester.getCell(i,j).getValueString());
-				counter++;
-				}
+		}
+				
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<5;j++) {
+				expected = (double) (i+j);
+				assertEquals(expected, tester.getCell(i,j).getValue(), 0.0001);
+			}
+		}
 
 	}
 	
@@ -262,6 +266,7 @@ public class UnitTestTable {
 	 */
 	@Test
 	public void testGetLength(){
+		tester = new Table(6,5);
 		assertEquals(6, tester.getLength());
 	}
 	
