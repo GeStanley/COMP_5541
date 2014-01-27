@@ -102,6 +102,7 @@ public class Cell {
 		catch (Exception e) {
 			e.printStackTrace();
 			value = 0;
+			formula = "0.0";
 		}
 	}
 
