@@ -49,7 +49,8 @@ public class Table {
     public void populate() {	
     	for(int i=0;i<cells.length;i++) {
     		for(int j=0;j<cells[0].length;j++) {
-    			cells[i][j] = new Cell(this);
+    			if (cells[i][j] == null)
+    				cells[i][j] = new Cell(this);
     		}
     	}
 	}
