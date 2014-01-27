@@ -40,6 +40,12 @@ public class Cell {
 	public Cell(Table table, String formula) {
 		this.table = table;
 		this.formula = new Formula(formula, table);
+		try {
+			value = this.formula.evaluate();
+		}
+		catch (Exception e) {
+			value = 0.0;
+		}
 	}
 	
 	/**

@@ -20,22 +20,25 @@ public class UnitTestCell {
 	public void testCellConstructor() {
 		table = new Table();
 		
-		
-		
-		Cell cell1 = new Cell(table);
-		
-		assertEquals("Should be 0", "0.0", cell1.getValueString());
-		assertEquals(0.0, cell1.getValue(),0.0001);
-		
-		Cell cell2 = new Cell(table, 7.8);
-		
-		assertEquals("Should be 7.8", "7.8", cell2.getValueString());
-		assertEquals(7.8, cell2.getValue(),0.0001);
-		
-		Cell cell4 = new Cell(table, "2+5");
-		
-		assertEquals("Should be 7", "7.0", cell4.getValueString());
-		assertEquals(7.0, cell4.getValue(),0.0001);
+		try {
+			Cell cell1 = new Cell(table);
+			
+			assertEquals("Should be 0", "0.0", cell1.getValueString());
+			assertEquals(0.0, cell1.getValue(),0.0001);
+			
+			Cell cell2 = new Cell(table, 7.8);
+			
+			assertEquals("Should be 7.8", "7.8", cell2.getValueString());
+			assertEquals(7.8, cell2.getValue(),0.0001);
+			
+			Cell cell4 = new Cell(table, "2+5");
+			
+			assertEquals("Should be 7", "7.0", cell4.getValueString());
+			assertEquals(7.0, cell4.getValue(),0.0001);
+		}
+		catch (Exception e) {
+			fail(e.getMessage());
+		}
 	}
 	
 	/**
@@ -46,25 +49,35 @@ public class UnitTestCell {
 		table = new Table(2,2);
 		Cell cell = new Cell(table);
 		
-		cell.setFormula("23+27");
-		
-		assertEquals("Should be 50", "50.0", cell.getValueString());
-		assertEquals(50.0, cell.getValue(),0.0001);
-		
-		
-		cell.setFormula(null);
-		assertEquals(0.0, cell.getValue(),0);
+		try {
+			cell.setFormula("23+27");
+			
+			assertEquals("Should be 50", "50.0", cell.getValueString());
+			assertEquals(50.0, cell.getValue(),0.0001);
+			
+			cell.setFormula(null);
+			assertEquals(0.0, cell.getValue(),0);
+		}
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 	}	
 	
 	@Test
 	public void testGetCellFormula(){
 		table = new Table(2,2);
 		Cell cell = new Cell(table);
-		cell.setFormula("5+12");
-		assertEquals("5+12", cell.getFormula());
-		//TODO null formula validation
-		cell.setFormula(null);
-		assertEquals("0.0", cell.getFormula());
+		
+		try {
+			cell.setFormula("5+12");
+			assertEquals("5+12", cell.getFormula());
+			//TODO null formula validation
+			cell.setFormula(null);
+			assertEquals("0.0", cell.getFormula());
+		}
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 	}
 	
 	/**
@@ -73,16 +86,22 @@ public class UnitTestCell {
 	@Test
 	public void testCellReferencing() {
 		table = new Table(2,2);
-		Cell selected = table.selectCell("A1");
-		selected.setFormula("5");
 		
-		Cell selected2 = table.selectCell("A2");
-		selected2.setFormula("10");
-		
-		Cell referencing = table.selectCell("B1");
-		referencing.setFormula("A1+A2");
-		
-		assertEquals("Should be 15", "15.0", referencing.getValueString());
+		try {
+			Cell selected = table.selectCell("A1");
+			selected.setFormula("5");
+			
+			Cell selected2 = table.selectCell("A2");
+			selected2.setFormula("10");
+			
+			Cell referencing = table.selectCell("B1");
+			referencing.setFormula("A1+A2");
+			
+			assertEquals("Should be 15", "15.0", referencing.getValueString());
+		}
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 
 	}
 	
@@ -90,16 +109,26 @@ public class UnitTestCell {
 	public void testGetValue() {
 		table = new Table(2,2);
 		Cell cell = new Cell(table);
-		cell.setFormula("23+27");
-		assertEquals(50.0, cell.getValue(),0.0001);
+		try {
+			cell.setFormula("23+27");
+			assertEquals(50.0, cell.getValue(),0.0001);
+		}
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 	}
 	
 	@Test
 	public void testGetValueString() {
 		table = new Table(2,2);
 		Cell cell = new Cell(table);
-		cell.setFormula("23+27");
-		assertEquals("50.0", cell.getValueString());
+		try {
+			cell.setFormula("23+27");
+			assertEquals("50.0", cell.getValueString());
+		}
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 	}
 	
 //	@Test
