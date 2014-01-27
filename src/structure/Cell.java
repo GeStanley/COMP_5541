@@ -57,6 +57,8 @@ public class Cell {
 	 * @throws NumberFormatException 
 	 */
 	public void setFormula(String formula) throws NumberFormatException, Exception {
+		if (formula == null) // Treat an empty formula as zero
+			formula = "0.0"; 
 		this.formula = new Formula(formula, table);
 		value = this.formula.evaluate();
 	}
@@ -104,5 +106,29 @@ public class Cell {
 	public String toString() {
 		return formula.formula() + "=" + value;
 	}
+
+
+	/**
+	 * Cells are equal if their formulas and values are equal
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)  // The same object
+			return true;
+		if (obj == null) 
+			return false;
+		if (obj.getClass() != getClass())  // Not the same class
+			return false;
+		Cell other = (Cell) obj; // Cast obj to cell
+		if (other.getFormula() == getFormula() 
+				&& other.getValue() == getValue())
+			return true;
+		else
+			return false;
+	}
+	
+
 	
 }

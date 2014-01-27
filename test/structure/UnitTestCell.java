@@ -63,6 +63,9 @@ public class UnitTestCell {
 		}
 	}	
 	
+	/**
+	 * Test getFormula method of Cell
+	 */
 	@Test
 	public void testGetCellFormula(){
 		table = new Table(2,2);
@@ -71,13 +74,14 @@ public class UnitTestCell {
 		try {
 			cell.setFormula("5+12");
 			assertEquals("5+12", cell.getFormula());
-			//TODO null formula validation
+			
 			cell.setFormula(null);
 			assertEquals("0.0", cell.getFormula());
 		}
 		catch (Exception e) {
 			fail("Exception: " + e.getMessage());
 		}
+
 	}
 	
 	/**
@@ -105,6 +109,9 @@ public class UnitTestCell {
 
 	}
 	
+	/**
+	 * Test getValue method of Cell
+	 */
 	@Test
 	public void testGetValue() {
 		table = new Table(2,2);
@@ -118,6 +125,9 @@ public class UnitTestCell {
 		}
 	}
 	
+	/**
+	 * Test getValueString method of Cell
+	 */
 	@Test
 	public void testGetValueString() {
 		table = new Table(2,2);
