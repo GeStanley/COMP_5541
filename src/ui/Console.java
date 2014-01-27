@@ -10,16 +10,31 @@ import ui.SaveFile;
 
 public class Console {
 	
-	private static Table table;
+	private static Table table = null;
 	private static boolean quit = false;
 	private static SaveFile saved = null;
-	private static Scanner sc = new Scanner(System.in);
+	private static Scanner sc;
 	private static Cell selected = null;
 	
+	/**
+	 * Specify a test table instead of creating a new one
+	 * 
+	 * @param testable testing table object
+	 */
+	public static void testTable(Table testable) {
+		table = testable;
+	}
+	
+	/**
+	 * Main method
+	 */
 	public static void main(String[] args) {
 
-		table = new Table(10,11);
+		if (table == null)
+			table = new Table(10,11);
+		
 		String input;
+		sc = new Scanner(System.in);
 						
 		welcome();
 		table.displayTable();
@@ -60,10 +75,11 @@ public class Console {
 					select(input);
 					break;
 			}
-		}	
-			
-
+		}
 		
+		// For testing purposes, reset the state of console at the end of the loop
+		quit=false; 
+		sc.close();
 	}
 	
 	/**
