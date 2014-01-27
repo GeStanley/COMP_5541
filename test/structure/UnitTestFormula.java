@@ -197,6 +197,38 @@ public class UnitTestFormula {
 	}	
 	
 	/**
+	 * Test circular references
+	 */
+	@Test
+	public void testCircularReference() {
+		String a1 = "A1 + 12";
+		String b3 = "B3 - 4";
+		String c4 = "C4 * 8";
+		
+		// Basic test, insert a reference to itself into a cell
+		try {
+			table.selectCell("A1");
+			table.insertToCell(a1);
+		}
+		catch (Exception e) {
+			assertEquals("class java.lang.Exception", e.getClass().toString());
+			assertEquals("Open sub-condition in ", e.getMessage());	
+		}
+		
+		// Complex test - B3 refers to C4 and C4 refers to B3
+		try {
+			table.selectCell("B3");
+			table.insertToCell(c4);
+			table.selectCell("C4");
+			table.insertToCell(b3);
+		}
+		catch (Exception e) {
+			assertEquals("class java.lang.Exception", e.getClass().toString());
+			assertEquals("Open sub-condition in ", e.getMessage());	
+		}
+	}
+	
+	/**
 	 * Test exceptions (except for circular references, tested on their own)
 	 */
 	@Test
