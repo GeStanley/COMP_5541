@@ -1,7 +1,5 @@
 package structure;
 
-import structure.Table.NullCellPointer;
-
 /**
  * This class is the object that manages the behavior of the individual cells within the table class.
  * 
@@ -11,10 +9,10 @@ import structure.Table.NullCellPointer;
 public class Cell {
 	
 	
-	private String formulaWithCellReference;
-	private String formulaWithoutCellReference;
+	private String formula;
 	private double value;
 	private Table table;
+	private Formula parser;
 	
 	/**
 	 * Constructor method
@@ -22,7 +20,7 @@ public class Cell {
 	 * @param table The table this cell is in
 	 */
 	public Cell(Table table) {
-		this(table, 0.0);
+		this(table, "0.0");
 	}
 	
 	/**
@@ -32,25 +30,9 @@ public class Cell {
 	 * @param val The value
 	 */
 	public Cell(Table table, double val) {
-		this.table = table;
-		setFormula(val + "");
-		value = val;
+		this(table, ""+val);
 	}
-	
-	
-	/**
-	 * Constructor method without a table link.
-	 * 
-	 * @param val value of the cell
-	 */
-	public Cell(double val) {
-		value = val;
-		formulaWithCellReference = Double.toString(val);
-		formulaWithoutCellReference = formulaWithCellReference;
-	}
-	
-	
-	
+
 	/**
 	 * Constructor method with an existing formula
 	 * 
@@ -59,25 +41,10 @@ public class Cell {
 	 */
 	public Cell(Table table, String formula) {
 		this.table = table;
+		this.parser = table.getParser();
 		setFormula(formula);
 	}
 	
-	public String getFormulaWithCellReference() {
-		return formulaWithCellReference;
-	}
-
-	public void setFormulaWithCellReference(String formulaWithCellReference) {
-		this.formulaWithCellReference = formulaWithCellReference;
-	}
-
-	public String getFormulaWithoutCellReference() {
-		return formulaWithoutCellReference;
-	}
-
-	public void setFormulaWithoutCellReference(String formulaWithoutCellReference) {
-		this.formulaWithoutCellReference = formulaWithoutCellReference;
-	}
-
 	/**
 	 * This method sets the formula of the cells.
 	 * 
@@ -85,9 +52,8 @@ public class Cell {
 	 * other cells in the form 'char' digit. Eg: A1 or B10
 	 */
 	public void setFormula(String formula) {
-		formulaWithCellReference = formula;
-		getReferenceValues();
-		setValue();
+		this.formula = formula;
+		evalValue();
 	}
 	
 	/**
@@ -96,7 +62,7 @@ public class Cell {
 	 * @return
 	 */
 	public String getFormula(){
-		return this.formulaWithCellReference;
+		return this.formula;
 	}
 	
 	/**
@@ -109,6 +75,15 @@ public class Cell {
 	}
 	
 	/**
+	 * Force recalculation of a value while getting it
+	 */
+	public double getValue(boolean recalculate) {
+		if (recalculate)
+			evalValue();
+		return value;
+	}
+	
+	/**
 	 * Returns the value as a string, useful for replacing in formulas
 	 */
 	public String getValueString() {
@@ -116,58 +91,18 @@ public class Cell {
 	}
 	
 	/**
-	 * Retrieve values from cells referenced in the formula String.
-	 */
-	private void getReferenceValues() {
-		
-		try {
-			formulaWithoutCellReference = formulaWithCellReference;
-		
-			for(int i=0;i<formulaWithoutCellReference.length();i++){
-				char current = formulaWithoutCellReference.charAt(i);
-			
-				int offset=0;
-			
-				if(Character.getNumericValue(current)>9&&Character.getNumericValue(current)<36){
-					while((i+offset)<formulaWithoutCellReference.length() &&
-							(formulaWithoutCellReference.charAt(i+offset)!='+'&&
-							formulaWithoutCellReference.charAt(i+offset)!='-'&&
-							formulaWithoutCellReference.charAt(i+offset)!='*'&&
-							formulaWithoutCellReference.charAt(i+offset)!='/'))
-						offset++;
-					
-					Cell referencedCell = table.getCell(Integer.parseInt(formulaWithoutCellReference.substring(i+1, i+offset))-1, current);
-					
-					formulaWithoutCellReference = formulaWithoutCellReference.replace(formulaWithoutCellReference.substring(i, i+offset),referencedCell.getValueString());
-					i=0;
-				}
-			}
-		}
-		
-		catch (NumberFormatException e) {
-			// TODO Do something more intelligent with these exception cases
-			formulaWithoutCellReference = "0.0";
-		}
-		
-	}
-	
-	/**
-	 * This is a private method because the value is determined once a formula is entered, values retrieved from referenced cells
+	 * This is a private method because the value is determined once a formula is 
+	 * entered, values retrieved from referenced cells
 	 * and the formula parsed by the grammar class.
 	 */
-	private void setValue() {
-		Grammar.Formula form = new Grammar.Formula();
+	private void evalValue() {
 		try {
-			value = form.formula(formulaWithoutCellReference);
+			value = parser.evaluate(formula);
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			value = 0;
 		}
-	}
-	//TODO
-	//Why does this method even exist? See method above.
-	public void setValue(double v){
-		value = v;
 	}
 
 }

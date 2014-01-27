@@ -1,11 +1,7 @@
 package structure;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -27,6 +23,7 @@ public class Table {
 	
     private Cell[][] cells;
     private Cell selectedCell;
+    private Formula parser;
         
     
     /**
@@ -44,14 +41,20 @@ public class Table {
      */
     public Table(int rows, int cols) {
     	this.cells = new Cell[rows][cols];
+    	selectedCell = null;
+    	parser = new Formula("", this);
+    }
+    
+    /**
+     * Populate this table with empty cells
+     */
+    public void populate() {	
     	for(int i=0;i<cells.length;i++) {
     		for(int j=0;j<cells[0].length;j++) {
     			cells[i][j] = new Cell(this);
     		}
     	}
-    	
-    	selectedCell = null;
-    }
+	}
     
     public Cell getSelectedCell() {
 		return selectedCell;
@@ -175,6 +178,7 @@ public class Table {
     public Cell selectCell(String address) {
     	int col = 0, row = -1;
     	char lastChar = '!';
+    	//System.out.println("Select cell at " + address);
     	// Always return null when the spreadsheet has 0 dimensions
     	if (cells.length == 0)
     		return null;
@@ -197,7 +201,18 @@ public class Table {
     				return null;
     		}
     	}
-    	    	    	
+    	
+    	return selectCell(row, col);
+    }
+  
+    /**
+     * Select cell, create one if none exists at the desired location
+     * 
+     * @param row row index of the cell
+     * @param col column index of the cell
+     * @return The desired cell or null
+     */
+    public Cell selectCell(int row, int col) {    	    	
     	// First check that row and column indices are within
     	// the bounds of the spreadsheet
     	if (row < cells.length && col < cells[0].length) {
@@ -209,7 +224,6 @@ public class Table {
     	else
     		return null;
     }
-    
     
     /**
      * This method will print out the grid to the command line.
@@ -225,9 +239,9 @@ public class Table {
     		System.out.println("No table data");
     		return;
     	}
-    	
+    	header = "   ";
     	for (col = 0; col < cells[0].length; col++) {
-    		header += "\t\t" + ((char) ch++);
+    		header += String.format("%12c", ((char) ch++)) ;
     	}
     	
     	for (row = 0; row < cells.length; row++) {
@@ -235,13 +249,17 @@ public class Table {
     		for (col = 0; col < cells[0].length; col++) {
     			
     			if (col == 0){
-    			grid += (row+1) + "\t\t";	
+    			grid += String.format("%2d ", row+1);	
     			}
+    			
     			active = cells[row][col];
-    			if (active == null)
-    				grid += "\t\t";
+    			
+    			Double value = (active != null) ? active.getValue() : 0;
+    			
+    			if(value>99999999D)
+    				grid += String.format("%e", value);
     			else
-    				grid += active.getValueString() + "\t\t";
+    				grid += String.format("%12.2f", value);
     		}
     		// New line!
     		grid += "\n";
@@ -277,14 +295,16 @@ public class Table {
     		return;
     	}
     	selectedCell.setFormula(formula);
-    	try {
-			selectedCell.setValue(getValue(formula));
-		} catch (ScriptException e) {
-			e.printStackTrace();
-		}
     	selectedCell = null;
     }
 
+    /**
+     * Retrieve the tables parser
+     */
+    public Formula getParser() {
+    	return parser;
+    }
+    
     /**
      * Get the length (number of rows) of the spreadsheet
      */
@@ -317,7 +337,7 @@ public class Table {
         vars.put("A2", 2);
         vars.put("A3", 3);
         Object x = engine.eval(formula, new SimpleBindings(vars));
-        System.out.println("formula = "+ x.toString());
+        //System.out.println("formula = "+ x.toString());
         double i = Double.parseDouble( x.toString() );
 		return i;
     }

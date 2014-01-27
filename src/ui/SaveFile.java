@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import structure.Cell;
 import structure.Table;
+import structure.Table.NullCellPointer;
 
 public class SaveFile {
 	private File saveFile;
@@ -58,11 +59,17 @@ public class SaveFile {
 	 */
 	public String save(String path) {
 		String msg = defaultMsg;
+		target.populate();
 		boolean success = openWrite(path);
 		if (success) {
-			targetToCSV();
-			writeFile.close();
-			msg = "Success: file saved";
+			try {
+				targetToCSV();
+				writeFile.close();
+				msg = "Success: file saved";
+			}
+			catch (Exception e) {
+				msg = "Error: " + e.getMessage();
+			}
 		}
 		else
 			msg = "Error: file could not be opened for writing.";
@@ -134,13 +141,15 @@ public class SaveFile {
 	}
 	
 	/**
-	 * Parse a line of CSV into the target table
+	 * Parse a line of CSV into the target table (already populated with empty cells)
 	 * 
 	 * @param pos Which row to update
 	 * @param line A string of CSV text
 	 * @return The parsed line as an array of cells
+	 * @throws NullCellPointer 
+	 * @throws NumberFormatException 
 	 */
-	public Cell[] parseLine(int pos, String line) {
+	public Cell[] parseLine(int pos, String line) throws NumberFormatException, NullCellPointer {
 		// TODO make this method private once we can test the parse method directly
 		Cell[] row;
 		String[] parts;
@@ -155,21 +164,23 @@ public class SaveFile {
 			line = line.substring(0,line.length()-1);
 		
 		parts = line.split("\",\"");
+		
 		row = new Cell[parts.length];
 		
 		for (count=0; count<parts.length; count++) {
-			row[count] = new Cell(target, parts[count]);
+			row[count] = target.selectCell(pos, count);
+			target.insertToCell(parts[count]);
 		}
-		
-		target.updateRow(pos, row);
 
 		return row;
 	}
 
 	/**
 	 * Write the table to a CSV file
+	 * 
+	 * @throws Exception
 	 */
-	private void targetToCSV() {
+	private void targetToCSV() throws Exception {
 		String line;
 		int rowCount = target.getLength();
 		for (int i=0; i<rowCount; i++) {
@@ -183,8 +194,11 @@ public class SaveFile {
 	 * 
 	 * @param row An array of cells
 	 * @return A string suitable for inclusion as a line in a CSV
+	 * @throws Exception
 	 */
-	public String rowToCSV(Cell[] row) {
+	public String rowToCSV(Cell[] row) throws Exception {
+		if (row == null)
+			throw new Exception("Null row cannot be parsed");
 		// TODO make this method private once we can test the parse method directly
 		String val = "\"\"", out = "";
 		for (int i=0; i<row.length; i++) {
