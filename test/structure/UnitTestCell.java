@@ -61,6 +61,23 @@ public class UnitTestCell {
 	}
 	
 	/**
+	 * Test equals method of Cell
+	 */
+	@Test
+	public void testEquals() {
+		assertFalse("Compare a cell to a table", cell.equals(table));
+		assertFalse("Compare a cell to null", cell.equals(table));
+		assertTrue("Compare a cellt o itself", cell.equals(cell));
+
+		// Now compare actual cells
+		Cell one = new Cell(table, "2+3");
+		Cell two = new Cell(table, "2+3");
+		Cell three = new Cell(table, "3+2");
+		assertTrue("Compare cells with the same formula", one.equals(two));
+		assertFalse("Compare cells with different formulas", two.equals(three));
+	}
+	
+	/**
 	 * Test cell formula
 	 */
 	@Test
@@ -132,23 +149,6 @@ public class UnitTestCell {
 		catch (Exception e) {
 			fail("Exception: " + e.getMessage());
 		}
-	}
-	
-	/**
-	 * Test equals method of Cell
-	 */
-	@Test
-	public void testEquals() {
-		assertFalse("Compare a cell to a table", cell.equals(table));
-		assertFalse("Compare a cell to null", cell.equals(table));
-		assertTrue("Compare a cellt o itself", cell.equals(cell));
-
-		// Now compare actual cells
-		Cell one = new Cell(table, "2+3");
-		Cell two = new Cell(table, "2+3");
-		Cell three = new Cell(table, "3+2");
-		assertTrue("Compare cells with the same formula", one.equals(two));
-		assertFalse("Compare cells with different formulas", two.equals(three));
 	}
 	
 	/**

@@ -336,6 +336,44 @@ public class Table {
 		return i;
     }
     
+	/**
+	 * Tables are equal if all their cells are equal
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		Table other;
+		boolean checkCells = true;
+		if (this == obj)  // The same object
+			return true;
+		if (obj == null) 
+			return false;
+		if (obj.getClass() != getClass())  // Not the same class
+			return false;
+		
+		other = (Table) obj; // Cast obj to cell
+		
+		// Check the cell dimensions
+		if (other.getLength() == getLength()) {
+			if (getLength() == 0) // Trivially equal
+				return true;
+			else if (other.getWidth() != getWidth())
+				return false;
+		}
+		
+		// Iterate through every cell
+		for (int i=0; i<cells.length; i++) {
+			for (int j=0; j<cells[0].length; j++) {
+				if (other.cells[i][j] != null && !other.cells[i][j].equals(cells[i][j]))
+					checkCells = false;
+				else if (other.cells[i][j] == null && cells[i][j] != null)
+					checkCells = false;
+			}
+		}
+		return checkCells;
+	}
+    
     /**
      * Create an exception class for null cell pointers
      */
