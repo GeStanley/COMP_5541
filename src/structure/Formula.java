@@ -87,9 +87,11 @@ public class Formula {
 		if (debug) System.out.println("Try to eval reference: " + ref + "; ");
 		if (ref != "") {
 			select = table.selectCell(ref);
-			if (select == null)
+			if (select == null) {
+				formula = "0.0";
+				result = 0.0;
 				throw new Exception("Cell " + ref + " could not be referenced!");
-			else {
+			} else {
 				list.add(select.getValue(true));
 			}
 		}
