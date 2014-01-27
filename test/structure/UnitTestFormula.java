@@ -1,7 +1,10 @@
 package structure;
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Method;
+
 import org.junit.Test;
+
 import structure.*;
 
 /**
@@ -11,11 +14,170 @@ import structure.*;
  * 
  * @author Nick
  */
+
 public class UnitTestFormula {
 	
 	Formula tester;
 	Table table;
-
+	
+	
+	@Test
+	public void testPrivateMethodsFormula() throws Exception{
+		Formula testPrivate = new Formula();
+		boolean resultBool;
+		double resultDouble;
+		String methodName;
+		Method testMe;			
+		
+		//Test inNum
+		Class params[] = new Class[1];
+		params[0] = char.class; 
+		methodName = "inNum";
+		testMe = getMethodOfClass(structure.Formula.class, methodName, params);		
+		//Should passs
+		resultBool = (boolean) testMe.invoke(testPrivate, '9');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '0');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '4');
+		assertTrue(resultBool);
+		//Should fail
+		resultBool = (boolean) testMe.invoke(testPrivate, 'a');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '-');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '~');
+		assertFalse(resultBool);
+		
+		//Test isLetter
+		methodName = "isLetter";
+		testMe = getMethodOfClass(structure.Formula.class, methodName, params);
+		//Should pass
+		resultBool = (boolean) testMe.invoke(testPrivate, 'a');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, 'z');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, 'A');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, 'Z');
+		assertTrue(resultBool);
+		//Should fail
+		resultBool = (boolean) testMe.invoke(testPrivate, '3');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '?');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '*');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '/');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '$');
+		assertFalse(resultBool);
+		
+		//Test isNumBound
+		methodName = "isNumBound";
+		testMe = getMethodOfClass(structure.Formula.class, methodName, params);		
+		//Should pass
+		resultBool = (boolean) testMe.invoke(testPrivate, '+');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '-');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, ' ');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '(');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, ')');
+		//Should fail
+		resultBool = (boolean) testMe.invoke(testPrivate, '?');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '%');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '$');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, 'j');
+		assertFalse(resultBool);
+		
+		//Test isNumBound
+		methodName = "isOp";
+		testMe = getMethodOfClass(structure.Formula.class, methodName, params);		
+		//Should pass
+		resultBool = (boolean) testMe.invoke(testPrivate, '+');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '-');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '*');
+		assertTrue(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '/');
+		assertTrue(resultBool);
+		//Should fail
+		resultBool = (boolean) testMe.invoke(testPrivate, '3');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '%');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, '@');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, 'j');
+		assertFalse(resultBool);
+		resultBool = (boolean) testMe.invoke(testPrivate, 'Z');
+		assertFalse(resultBool);
+		
+		//Test calc
+		methodName = "calc";
+		Class params2[] = new Class[3];
+		params2[0] = double.class;
+		params2[1] = char.class; 
+		params2[2] = double.class;
+		testMe = getMethodOfClass(structure.Formula.class, methodName, params2);
+		//Should pass
+		resultDouble = (double) testMe.invoke(testPrivate, 3.0, '+', 4.0);
+		assertEquals(7.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, 8.0, '-', 4.0);
+		assertEquals(4.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, 3.0, '*', 4.0);
+		assertEquals(12.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, 3.0, '/', 4.0);
+		assertEquals(0.75,resultDouble,0);	
+		resultDouble = (double) testMe.invoke(testPrivate, -1.0, '+', 4.0);
+		assertEquals(3.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, -7, '-', 4.0);
+		assertEquals(-11.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, -3.0, '*', 4.0);
+		assertEquals(-12.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, -3.0, '/', 4.0);
+		assertEquals(-0.75,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, -1.0, '+', -4.0);
+		assertEquals(-5.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, -7, '-', -4.0);
+		assertEquals(-3.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, -3.0, '*', -4.0);
+		assertEquals(12.0,resultDouble,0);
+		resultDouble = (double) testMe.invoke(testPrivate, -3.0, '/', -4.0);
+		assertEquals(0.75,resultDouble,0);	
+		
+		/*//Test toString
+		methodName = "toString()";
+		testMe = getMethodOfClass(structure.Formula.class, methodName, params);
+		//Should pass
+		//Shoudl fail
+	 	*/		
+		
+	}
+	/**
+	 * 
+	 * @param testClass The class to be tested
+	 * @param methodName The method to be found
+	 * @return returns the method to the user 
+	 * @throws NoSuchMethodException Method was not found
+	 * @throws SecurityException
+	 */
+	private Method getMethodOfClass(Class testClass, String methodName, 
+			Class partypes[]) 
+			throws NoSuchMethodException, SecurityException{
+		Method method = testClass.getDeclaredMethod(methodName, partypes);
+		method.setAccessible(true);
+		return method;
+	}	
+	
+	
 	/**
 	 * Test cell referencing
 	 */
