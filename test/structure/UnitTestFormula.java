@@ -211,6 +211,7 @@ public class UnitTestFormula {
 			table.insertToCell(a1);
 		}
 		catch (Exception e) {
+			// TODO update these with real values
 			assertEquals("class java.lang.Exception", e.getClass().toString());
 			assertEquals("Open sub-condition in ", e.getMessage());	
 		}
@@ -223,6 +224,7 @@ public class UnitTestFormula {
 			table.insertToCell(b3);
 		}
 		catch (Exception e) {
+			// TODO update these with real values
 			assertEquals("class java.lang.Exception", e.getClass().toString());
 			assertEquals("Open sub-condition in ", e.getMessage());	
 		}
