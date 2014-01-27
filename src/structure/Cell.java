@@ -44,6 +44,7 @@ public class Cell {
 			value = this.formula.evaluate();
 		}
 		catch (Exception e) {
+			formula = "0.0";
 			value = 0.0;
 		}
 	}
