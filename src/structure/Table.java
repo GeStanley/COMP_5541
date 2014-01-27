@@ -23,7 +23,6 @@ public class Table {
 	
     private Cell[][] cells;
     private Cell selectedCell;
-    private Formula parser;
         
     
     /**
@@ -42,7 +41,6 @@ public class Table {
     public Table(int rows, int cols) {
     	this.cells = new Cell[rows][cols];
     	selectedCell = null;
-    	parser = new Formula("", this);
     }
     
     /**
@@ -285,10 +283,9 @@ public class Table {
      * Insert the formula into the selected cell, and it unselects the cell when it's done
      * 
      * @param formula
-     * @throws NumberFormatException
-     * @throws NullCellPointer
+     * @throws Exception 
      */
-    public void insertToCell(String formula) throws NumberFormatException, NullCellPointer{
+    public void insertToCell(String formula) throws Exception{
     	if (formula.equals("")){
     		System.out.println("Value of cell was not changed");
     		selectedCell = null;
@@ -296,13 +293,6 @@ public class Table {
     	}
     	selectedCell.setFormula(formula);
     	selectedCell = null;
-    }
-
-    /**
-     * Retrieve the tables parser
-     */
-    public Formula getParser() {
-    	return parser;
     }
     
     /**

@@ -51,6 +51,15 @@ public class Formula {
 	}
 
 	/**
+	 * Get the formula
+	 * 
+	 * @return A string
+	 */
+	public String formula() {
+		return formula;
+	}
+	
+	/**
 	 * Helper to parse and push a number
 	 *
 	 * @param list List of numbers to push the number onto
@@ -59,7 +68,6 @@ public class Formula {
 	 * @return An empty string to clear the num, unless there was a problem
 	 */
 	private String pushDouble(LinkedList<Double> list, String num) throws NumberFormatException {
-		if (debug) System.out.println("Try to parse: " + num + "; ");
 		if (num != "")
 			list.add(Double.parseDouble(num));
 		return "";
@@ -139,7 +147,6 @@ public class Formula {
 	 */
 	private boolean isLetter(char test) {
 		int val = (int) test;
-		if (debug) System.out.println("Is " + test + " a letter?");
 		if (val >= ((int) 'A') && val <= ((int) 'Z'))
 			return true;
 		else if (val >= ((int) 'a') && val <= ((int) 'z'))
@@ -178,7 +185,11 @@ public class Formula {
 		LinkedList<Double> vals = new LinkedList<Double>();
 		LinkedList<Character> ops = new LinkedList<Character>();
 		
-		if (debug) System.out.println("Evaluation of " + this);
+		if (debug) System.out.println("Evaluation of " + this.formula);
+		
+		for (char op : ops) {
+			System.out.println(op);
+		}
 
 		// Do not evaluate anything when formula is empty
 		if (formula == "")
@@ -188,6 +199,7 @@ public class Formula {
 		for (pos=0; pos<formula.length(); pos++) {
 
 			char current = formula.charAt(pos);
+			if (debug) System.out.println("\tProcess " + current + " at " + pos);
 			Formula nested;
 			boolean supported = false; // used to detect an unsupported character
 
@@ -199,7 +211,7 @@ public class Formula {
 					if (number != "") number = pushDouble(vals, number); 
 					if (brackets++ == 0)
 						startNested = pos+1;
-					if (debug) System.out.println("Open a bracket at position " + startNested);
+					if (debug) System.out.println("\t\tOpen a bracket at position " + startNested);
 					supported = true;
 					break;
 
@@ -207,18 +219,17 @@ public class Formula {
 				case ')':
 					if (brackets-- == 1)
 						endNested = pos;
-					if (debug) System.out.println("Close a bracket at position " + endNested);
+					if (debug) System.out.println("\t\tClose a bracket at position " + endNested);
 					supported = true;
 					break;
 			}
 			
 			// Now process equations at the current level
 			if (brackets == 0 && current != ')') { 
-				
-				if (debug) System.out.println("Process non-bracket: " + current);
-				
+								
 				// First test if we have a value to push
 				if (isNumBound(current)) {
+					if (debug) System.out.println("\t\tTerm boundary detected");
 					if (reference != "")
 						reference = pushRef(vals, reference);
 					else
@@ -233,14 +244,17 @@ public class Formula {
 				
 					
 				// If it is a number it may belong to a reference or a number
-				else if (inNum(current))
+				else if (inNum(current)) {
+					if (debug) System.out.println("\t\tDigit or decimal point detected");
 					if (reference != "")
 						reference += current;
 					else
 						number += current;
-				
+				}
+					
 				// If it is a minus it may be an operation or the negative sign
 				else if (current == '-' && isOp(last)) {
+					if (debug) System.out.println("\t\tNegative number detected.");
 					if (number == "")
 						number += current;
 					else
@@ -249,6 +263,7 @@ public class Formula {
 				
 				// If it is an operation do some validation
 				else if (isOp(current)) {
+					if (debug) System.out.println("\t\tOperation detected.");
 					if (isOp(last))
 						throw new Exception("Invalid operation at position " + pos);
 					else
@@ -266,7 +281,7 @@ public class Formula {
 				nested = new Formula(formula.substring(startNested, endNested), table);
 				vals.add(nested.evaluate());
 				startNested = endNested = 0;
-				if (debug) System.out.println("Evaluated clause " + nested);
+				if (debug) System.out.println("\tEvaluated clause " + nested);
 			}
 			
 			last = (current != ' ') ? current : last;
@@ -291,19 +306,34 @@ public class Formula {
 		// the other with a calculated value, or move forward
 		pass = 1;
 		pos = 0;
+		
+		// Skip everything if there is one value
+		if (vals.size() == 1) {
+			result = vals.remove(0);
+			if (debug) System.out.println("Evaluated " + this);
+			return result;
+		}
+
+		// Check for an exception involving an incompatible number of ops and values
+		if (vals.size()-1 != ops.size()) {
+			throw new Exception("Unexpected values for operations and values during formula evaluation.");
+		}
+		
+		// If we made it here we can iterate through ops and values
 		while (pass < 3 && ops.size() > 0) {
 			double opResult = 0;
 			boolean calcDone = false;
 			// Move to next pass if necessary
 			if (pos >= ops.size()) {
 				pass++;
-				if (debug) System.out.println("Switch to pass " + pass);
+				if (debug) System.out.println("\tSwitch to pass " + pass);
 				pos = 0;
 			}
 			else {
 				// Try to construct an expression
-				if (debug) System.out.println(ops.size() + " ops left to do on pass " + pass + ", check position " + pos);
+				if (debug) System.out.print("\t" + ops.size() + " ops left to do on pass " + pass + ", check position " + pos);
 				char op = ops.get(pos);
+				if (debug) System.out.println(" (operation is \"" + op + "\")");
 				if (pass == 1 && (op == '*' || op == '/')) {
 					ops.remove(pos);
 					opResult = calc(vals.get(pos), op, vals.remove(pos+1));
@@ -327,6 +357,7 @@ public class Formula {
 		}
 
 		result = vals.peek();
+		if (debug) System.out.println("Evaluated " + this);
 		return result;
 	}
 	

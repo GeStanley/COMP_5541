@@ -8,11 +8,9 @@ package structure;
  */
 public class Cell {
 	
-	
-	private String formula;
 	private double value;
 	private Table table;
-	private Formula parser;
+	private Formula formula;
 	
 	/**
 	 * Constructor method
@@ -41,8 +39,7 @@ public class Cell {
 	 */
 	public Cell(Table table, String formula) {
 		this.table = table;
-		this.parser = table.getParser();
-		setFormula(formula);
+		this.formula = new Formula(formula, table);
 	}
 	
 	/**
@@ -50,10 +47,12 @@ public class Cell {
 	 * 
 	 * @param formula A String representation of the formula to be calculated. It can contain references to
 	 * other cells in the form 'char' digit. Eg: A1 or B10
+	 * @throws Exception 
+	 * @throws NumberFormatException 
 	 */
-	public void setFormula(String formula) {
-		this.formula = formula;
-		evalValue();
+	public void setFormula(String formula) throws NumberFormatException, Exception {
+		this.formula = new Formula(formula, table);
+		value = this.formula.evaluate();
 	}
 	
 	/**
@@ -62,7 +61,7 @@ public class Cell {
 	 * @return
 	 */
 	public String getFormula(){
-		return this.formula;
+		return this.formula.formula();
 	}
 	
 	/**
@@ -76,10 +75,13 @@ public class Cell {
 	
 	/**
 	 * Force recalculation of a value while getting it
+	 * 
+	 * @throws Exception 
+	 * @throws NumberFormatException 
 	 */
-	public double getValue(boolean recalculate) {
+	public double getValue(boolean recalculate) throws NumberFormatException, Exception {
 		if (recalculate)
-			evalValue();
+			value = formula.evaluate();
 		return value;
 	}
 	
@@ -97,20 +99,4 @@ public class Cell {
 		return formula + "=" + value;
 	}
 	
-	/**
-	 * This is a private method because the value is determined once a formula is 
-	 * entered, values retrieved from referenced cells
-	 * and the formula parsed by the grammar class.
-	 */
-	private void evalValue() {
-		try {
-			value = parser.evaluate(formula);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			value = 0;
-			formula = "0.0";
-		}
-	}
-
 }
