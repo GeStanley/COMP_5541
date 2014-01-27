@@ -85,7 +85,12 @@ public class UnitTestTable {
 			for(int j=0;j<5;j++){
 				
 				Cell selected = tester.getCell(i,j);
-				selected.setFormula(Integer.toString(counter));
+				try {
+					selected.setFormula(Integer.toString(counter));
+				}
+				catch (Exception e) {
+					fail("Exception: " + e.getMessage());
+				}
 				
 				counter++;
 			}
@@ -240,19 +245,34 @@ public class UnitTestTable {
 		String formula = "5+12";
 		String selectedCell = "B1";
 		tester.setSelectedCell(tester.selectCell(selectedCell));
-		tester.insertToCell(formula);
+		try {
+			tester.insertToCell(formula);
+		} 
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 		assertEquals("17.0",tester.getCell(0, 1).getValueString());
 	
 		selectedCell = "A2";
 		formula = "B1";
 		tester.setSelectedCell(tester.selectCell(selectedCell));
-		tester.insertToCell(formula);
+		try {
+			tester.insertToCell(formula);
+		} 
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 		assertEquals(tester.getValue(formula),tester.getCell(1, 0).getValueString());
 		
 		selectedCell = "A3";
 		formula = "B1+A2";
 		tester.setSelectedCell(tester.selectCell(selectedCell));
-		tester.insertToCell(formula);
+		try {
+			tester.insertToCell(formula);
+		} 
+		catch (Exception e) {
+			fail("Exception: " + e.getMessage());
+		}
 		assertEquals(tester.getValue(formula),tester.getCell(2, 0).getValueString());
 		
 		
