@@ -16,14 +16,6 @@ public class Console {
 	private static Scanner sc = new Scanner(System.in);
 	private static Cell selected = null;
 	
-	public Console(){
-		table = new Table(10,11);
-	}
-	
-	public static Table getTable() {
-		return table;
-	}
-
 	public static void main(String[] args) {
 
 		table = new Table(10,11);
