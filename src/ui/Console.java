@@ -107,6 +107,7 @@ public class Console {
 			System.out.println();
 			try {
 				table.insertToCell(input);
+				table.computeTable();
 				table.displayTable();
 			}
 			catch (NullCellPointer e) {

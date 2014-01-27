@@ -1,5 +1,7 @@
 package structure;
+import java.util.ArrayList;
 import java.util.LinkedList;
+
 import structure.Table;
 
 /**
@@ -9,6 +11,7 @@ public class Formula {
 	private String formula;
 	private double result;
 	private Table table;
+	private ArrayList<String> references;
 	// Debug = true will print status messages to the console
 	private static boolean debug = false;
 	
@@ -90,7 +93,8 @@ public class Formula {
 			if (select == null)
 				throw new Exception("Cell " + ref + " could not be referenced!");
 			else {
-				list.add(select.getValue(true));
+				references.add(ref);
+				list.add(select.getValue());
 			}
 		}
 		return "";
@@ -184,6 +188,7 @@ public class Formula {
 		String number = "", reference = "";
 		LinkedList<Double> vals = new LinkedList<Double>();
 		LinkedList<Character> ops = new LinkedList<Character>();
+		references = new ArrayList<String>();
 		
 		if (debug) System.out.println("Evaluation of " + this.formula);
 		
@@ -386,6 +391,14 @@ public class Formula {
 		return result;
 	}
 	
+	/**
+	 * Get the list of cell references
+	 * @return list of cell references in the formula
+	 */
+	public ArrayList<String> getReferences() {
+		return references;
+	}
+
 	/**
 	 * Override toString
 	 */
