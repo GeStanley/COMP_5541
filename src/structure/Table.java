@@ -330,10 +330,13 @@ public class Table {
 		// Iterate through every cell
 		for (int i=0; i<cells.length; i++) {
 			for (int j=0; j<cells[0].length; j++) {
-				if (other.cells[i][j] != null && !other.cells[i][j].equals(cells[i][j]))
+				//System.out.print("Check " + other.cells[i][j] + " against " + cells[i][j]);
+				if (other.cells[i][j] != null && !other.cells[i][j].equals(cells[i][j])) 
 					checkCells = false;
-				else if (other.cells[i][j] == null && cells[i][j] != null)
+				
+				else if (other.cells[i][j] == null && cells[i][j] != null) 
 					checkCells = false;
+				//System.out.println(": " + checkCells);
 			}
 		}
 		return checkCells;

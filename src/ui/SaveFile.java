@@ -60,7 +60,9 @@ public class SaveFile {
 	public String save(String path) {
 		String msg = defaultMsg;
 		target.populate();
-		boolean success = openWrite(path);
+		boolean success = false;
+		
+		success = openWrite(path);
 		if (success) {
 			try {
 				targetToCSV();
@@ -71,8 +73,10 @@ public class SaveFile {
 				msg = "Error: " + e.getMessage();
 			}
 		}
-		else
+		else {
 			msg = "Error: file could not be opened for writing.";
+		}
+		
 		return msg;
 	}
 	
@@ -113,7 +117,7 @@ public class SaveFile {
 		}
 		
 		catch (Exception e) {
-			e.printStackTrace();
+			success = false;
 		}
 
 		return success;
