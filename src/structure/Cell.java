@@ -1,5 +1,7 @@
 package structure;
 
+import java.util.ArrayList;
+
 /**
  * This class is the object that manages the behavior of the individual cells within the table class.
  * 
@@ -11,6 +13,7 @@ public class Cell {
 	private double value;
 	private Table table;
 	private Formula formula;
+	private ArrayList<String> refs;
 	
 	/**
 	 * Constructor method
@@ -28,7 +31,7 @@ public class Cell {
 	 * @param val The value
 	 */
 	public Cell(Table table, double val) {
-		this(table, ""+val);
+		this(table, "" + val);
 	}
 
 	/**
@@ -71,6 +74,15 @@ public class Cell {
 	 */
 	public String getFormula(){
 		return this.formula.formula();
+	}
+	
+	/**
+	 * Return the formula object contained in cell.
+	 * 
+	 * @return
+	 */
+	public Formula getFormulaObject(){
+		return formula;
 	}
 	
 	/**
@@ -130,6 +142,11 @@ public class Cell {
 			return true;
 		else
 			return false;
+	}
+	
+	public ArrayList<String> getRefs(){
+		refs = formula.getReferences();
+		return refs;
 	}
 	
 

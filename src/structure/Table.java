@@ -1,11 +1,7 @@
 package structure;
 
-import java.util.HashMap;
-import java.util.Map;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import javax.script.SimpleBindings;
+import java.util.ArrayList;
+import java.util.Stack;
 
 
 /**
@@ -23,6 +19,8 @@ public class Table {
 	
     private Cell[][] cells;
     private Cell selectedCell;
+    private Stack<Cell> cellStack = new Stack<Cell>();
+    private ArrayList<Cell> visitedCells;
         
     
     /**
@@ -215,6 +213,87 @@ public class Table {
     	else
     		return null;
     }
+    
+    
+    public boolean addRefsToStack(ArrayList<String> refs) throws Exception{
+    	boolean addedRefs = false;
+    	while ( !refs.isEmpty() ){
+    		Cell c = selectCell(refs.remove(0));
+    		
+    		boolean circularRef = false;
+    		for (Cell s: cellStack){
+    			System.out.println("c: " + c + " s: " + s + " equals: " + c.equals(s) );
+    			if (c.equals(s)){
+    				circularRef = true;
+    				throw new Exception("Circular Reference");
+    			}
+    		}
+    		
+    		
+    		boolean wasVisited = false;
+    		for (Cell v: visitedCells){
+    			System.out.println("c: " + c + " v: " + v + " equals: " + c.equals(v) );
+    			if (c.equals(v)){
+    				wasVisited = true;
+    				break;
+    			}
+    		}
+    		
+    		if (c != null & !wasVisited){
+    			cellStack.add( c );
+    			addedRefs = true;
+    		}
+    	}
+    	return addedRefs;
+    	
+    }
+    
+    public void computeTable() throws NumberFormatException, Exception {
+    	visitedCells = new ArrayList<Cell>();
+    	cellStack = new Stack<Cell>();
+    	
+    	for(int i=0;i<cells.length;i++) {
+    		for(int j=0;j<cells[0].length;j++) {
+    			System.out.println(""+ i + " "+ j);
+    			if (cells[i][j] != null){
+    				System.out.println("cell content " + cells[i][j]);
+    				Cell c = cells[i][j];
+    				c.getValue(true);
+    				ArrayList<String> nextRefs = c.getFormulaObject().getReferences();
+    				System.out.println("refs "+ nextRefs);
+    				addRefsToStack(nextRefs);
+    	
+    				while (!cellStack.isEmpty()){
+    					
+    					c = cellStack.pop();
+    					System.out.println("cell content " + c + " formula "+c.getFormula());
+    					c.getValue(true);
+    					nextRefs = c.getRefs();
+    					System.out.println("refs "+ nextRefs);
+    					
+						if (nextRefs.isEmpty()){
+							System.out.println("reached bottom " + c);
+    						c.getValue(true);
+    						visitedCells.add(c);
+    					} else {
+    						System.out.println("adding " + c + " with refs " + nextRefs);
+    						cellStack.add(c);
+    						if (!addRefsToStack(nextRefs) ){
+    							c = cellStack.pop();
+    							c.getValue(true);
+        						visitedCells.add(c);
+    						}
+    					}
+    					
+    				}
+    				
+    				
+    			}
+    		}
+    	}
+    }
+    
+    
     
     /**
      * This method will print out the grid to the command line.
