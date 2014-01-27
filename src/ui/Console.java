@@ -10,7 +10,7 @@ import ui.SaveFile;
 
 public class Console {
 	
-	static Table table;
+	private static Table table;
 	private static boolean quit = false;
 	private static SaveFile saved = null;
 	private static Scanner sc = new Scanner(System.in);
@@ -22,42 +22,6 @@ public class Console {
 	
 	public static Table getTable() {
 		return table;
-	}
-
-	public static void setTable(Table table) {
-		Console.table = table;
-	}
-
-	public static boolean isQuit() {
-		return quit;
-	}
-
-	public static void setQuit(boolean quit) {
-		Console.quit = quit;
-	}
-
-	public static SaveFile getSaved() {
-		return saved;
-	}
-
-	public static void setSaved(SaveFile saved) {
-		Console.saved = saved;
-	}
-
-	public static Scanner getSc() {
-		return sc;
-	}
-
-	public static void setSc(Scanner sc) {
-		Console.sc = sc;
-	}
-
-	public static Cell getSelected() {
-		return selected;
-	}
-
-	public static void setSelected(Cell selected) {
-		Console.selected = selected;
 	}
 
 	public static void main(String[] args) {
