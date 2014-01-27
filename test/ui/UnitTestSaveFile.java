@@ -18,6 +18,8 @@ public class UnitTestSaveFile {
 	
 	/**
 	 * Test importing and exporting lines of csv code
+	 * 
+	 * TODO rewrite this test using reflection
 	 */
 	@Test
 	public void testImportExportLine() {
@@ -57,11 +59,11 @@ public class UnitTestSaveFile {
 		String successMsg = "Success: file saved";
 		String errorMsg = "Error: file could not be opened for writing.";
 		
-		String path = "o1.csv";
+		String path = "./o1.csv";
 		String outMsg = saved.save(path);
 		assertEquals(outMsg, successMsg);
 		
-		path = "c:///~/abc.csv";
+		path = "./abc.csv";
 		outMsg = saved.save(path);
 		assertTrue(errorMsg.equals(outMsg));
 		
@@ -85,11 +87,11 @@ public class UnitTestSaveFile {
 		String successMsg = "Success: file loaded";
 		String errorMsg = "Error: file could not be opened for reading.";
 		
-		String path = "o1.csv";
+		String path = "./o1.csv";
 		String outMsg = saved.load(path);
 		assertEquals(outMsg, successMsg);
 		
-		path = "c:///~/abc.csv";
+		path = "./abc.csv";
 		outMsg = saved.load(path);
 		assertTrue(errorMsg.equals(outMsg));
 		
@@ -109,12 +111,12 @@ public class UnitTestSaveFile {
 		tester = new Table(5,5);
 		saved = new SaveFile(tester);
 		//update the filename variable to the current csv file
-		String fileName = "o1.csv";
+		String fileName = "./o1.csv";
 	    Method openReadMethod = getMethodOfClass(SaveFile.class, "openRead");
 	    boolean result = (boolean) openReadMethod.invoke(saved, fileName);
 		assertEquals(true,result);
 		
-		fileName = "c:///~/#/abc.csv";
+		fileName = "./abc.csv";
 	    openReadMethod = getMethodOfClass(SaveFile.class, "openRead");
 	    result = (boolean) openReadMethod.invoke(saved, fileName);
 		assertEquals(false,result);
@@ -136,12 +138,12 @@ public class UnitTestSaveFile {
 		tester = new Table(5,5);
 		saved = new SaveFile(tester);
 		//update the filename variable to the current csv file
-		String fileName = "o1.csv";
+		String fileName = "./o1.csv";
 	    Method openWriteMethod = getMethodOfClass(SaveFile.class, "openWrite");
 	    boolean result = (boolean) openWriteMethod.invoke(saved, fileName);
 		assertEquals(true,result);
 		
-		fileName = "c:///~/#/abc.csv";
+		fileName = "./abc.csv";
 		openWriteMethod = getMethodOfClass(SaveFile.class, "openWrite");
 		result = (boolean) openWriteMethod.invoke(saved, fileName);
 		assertEquals(false,result);
