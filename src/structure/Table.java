@@ -222,7 +222,7 @@ public class Table {
     		
     		boolean circularRef = false;
     		for (Cell s: cellStack){
-    			System.out.println("c: " + c + " s: " + s + " equals: " + c.equals(s) );
+    			//System.out.println("c: " + c + " s: " + s + " equals: " + c.equals(s) );
     			if (c.equals(s)){
     				circularRef = true;
     				throw new Exception("Circular Reference");
@@ -232,7 +232,7 @@ public class Table {
     		
     		boolean wasVisited = false;
     		for (Cell v: visitedCells){
-    			System.out.println("c: " + c + " v: " + v + " equals: " + c.equals(v) );
+    			//System.out.println("c: " + c + " v: " + v + " equals: " + c.equals(v) );
     			if (c.equals(v)){
     				wasVisited = true;
     				break;
@@ -254,29 +254,29 @@ public class Table {
     	
     	for(int i=0;i<cells.length;i++) {
     		for(int j=0;j<cells[0].length;j++) {
-    			System.out.println(""+ i + " "+ j);
+    			//System.out.println(""+ i + " "+ j);
     			if (cells[i][j] != null){
-    				System.out.println("cell content " + cells[i][j]);
+    				//System.out.println("cell content " + cells[i][j]);
     				Cell c = cells[i][j];
     				c.getValue(true);
     				ArrayList<String> nextRefs = c.getFormulaObject().getReferences();
-    				System.out.println("refs "+ nextRefs);
+    				//System.out.println("refs "+ nextRefs);
     				addRefsToStack(nextRefs);
     	
     				while (!cellStack.isEmpty()){
     					
     					c = cellStack.pop();
-    					System.out.println("cell content " + c + " formula "+c.getFormula());
+    					//System.out.println("cell content " + c + " formula "+c.getFormula());
     					c.getValue(true);
     					nextRefs = c.getRefs();
-    					System.out.println("refs "+ nextRefs);
+    					//System.out.println("refs "+ nextRefs);
     					
 						if (nextRefs.isEmpty()){
-							System.out.println("reached bottom " + c);
+							//System.out.println("reached bottom " + c);
     						c.getValue(true);
     						visitedCells.add(c);
     					} else {
-    						System.out.println("adding " + c + " with refs " + nextRefs);
+    						//System.out.println("adding " + c + " with refs " + nextRefs);
     						cellStack.add(c);
     						if (!addRefsToStack(nextRefs) ){
     							c = cellStack.pop();

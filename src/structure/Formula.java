@@ -94,7 +94,7 @@ public class Formula {
 				throw new Exception("Cell " + ref + " could not be referenced!");
 			else {
 				references.add(ref);
-				list.add(select.getValue(true));
+				list.add(select.getValue());
 			}
 		}
 		return "";
