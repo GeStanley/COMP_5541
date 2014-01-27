@@ -85,7 +85,7 @@ public class Console {
 		if (selected == null)
 			System.out.println("Could not select this cell.");
 		else {
-			System.out.println(address + " selected");
+			System.out.println(address + " selected, it contains: " + selected.toString());
 			System.out.print("Enter a value or formula:");
 			input = sc.nextLine().toUpperCase();
 			System.out.println();
