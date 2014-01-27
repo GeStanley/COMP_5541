@@ -101,10 +101,10 @@ public class Cell {
 	}
 	
 	/**
-	 * Override tostring method
+	 * Override toString method
 	 */
 	public String toString() {
-		return formula.formula() + "=" + value;
+		return formula.formula() + " = " + value;
 	}
 
 
