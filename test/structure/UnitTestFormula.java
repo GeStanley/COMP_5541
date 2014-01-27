@@ -243,7 +243,7 @@ public class UnitTestFormula {
 	/**
 	 * Testing multiplication, addition, subtraction, division
 	 */
-	//@Test
+	@Test
 	public void testBasicOperations() throws Exception {		
 		assertEquals(29.0,tester.evaluate("12+17"),0);
 		assertEquals(24.0,tester.evaluate("3*8"),0);
@@ -254,7 +254,7 @@ public class UnitTestFormula {
 	/**
 	 * Testing negative numbers
 	 */
-	//@Test
+	@Test
 	public void testNegativeNumbers() throws Exception {		
 		assertEquals(-6.0,tester.evaluate("-2*3"),0);
 		assertEquals(-1.0,tester.evaluate("-4/4"),0);
@@ -265,7 +265,7 @@ public class UnitTestFormula {
 	/**
 	 * Testing negative numbers combined with additional operations
 	 */
-	//@Test
+	@Test
 	public void testNegativeNumbersPlus() throws Exception {		
 		assertEquals(6.0,tester.evaluate("-2*-3"),0);
 		assertEquals(1.0,tester.evaluate("-4/-4"),0);
@@ -276,7 +276,7 @@ public class UnitTestFormula {
 	/**
 	 * Test polynomial operation which have multiple operations included
 	 */
-	//@Test
+	@Test
 	public void testPolynomialOperations() throws Exception {		
 		assertEquals(22.0,tester.evaluate("(-2+5)*4+10"),0);
 		assertEquals(32.0,tester.evaluate("2+5*4+10"),0);
@@ -293,7 +293,7 @@ public class UnitTestFormula {
 	/**
 	 * Test spaces and brackets
 	 */
-	//@Test
+	@Test
 	public void testMiscOperations() throws Exception {
 		assertEquals(17.0,tester.evaluate("8 + 9"),0);
 		assertEquals(2.5,tester.evaluate("(2.5)"),0);
