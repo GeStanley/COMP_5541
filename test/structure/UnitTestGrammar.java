@@ -16,12 +16,6 @@ import structure.Grammar.Formula;
 public class UnitTestGrammar {
 	
 	Grammar.Formula tester;
-	
-/*	
-	calculate(String)
-	expression(String)
-	parseString(String)
-	*/
 
 	/**
 	 * Tests all the private methods in the Grammar.Formula class sequentially
@@ -57,7 +51,7 @@ public class UnitTestGrammar {
 	}
 	
 	/**
-	 * Tests a single private method in the grammar.formula class
+	 * Tests a single private method in the grammar class
 	 * @param methodName name of the private method to verify
 	 * @param formula the formula input, should be based on formula
 	 * class-style input such as "5p5" for "5+5"
