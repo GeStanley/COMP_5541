@@ -91,7 +91,8 @@ public class Formula {
 				formula = "0.0";
 				result = 0.0;
 				throw new Exception("Cell " + ref + " could not be referenced!");
-			} else {
+			} 
+			else {
 				list.add(select.getValue(true));
 			}
 		}
