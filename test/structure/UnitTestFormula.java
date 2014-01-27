@@ -204,17 +204,21 @@ public class UnitTestFormula {
 		String a1 = "A1 + 12";
 		String b3 = "B3 - 4";
 		String c4 = "C4 * 8";
+		boolean exception = true;
 		
 		// Basic test, insert a reference to itself into a cell
 		try {
 			table.selectCell("A1");
 			table.insertToCell(a1);
+			exception = false;
 		}
 		catch (Exception e) {
 			// TODO update these with real values
 			assertEquals("class java.lang.Exception", e.getClass().toString());
 			assertEquals("Open sub-condition in ", e.getMessage());	
 		}
+		assertTrue("An exception was thrown", exception);
+		exception = true;
 		
 		// Complex test - B3 refers to C4 and C4 refers to B3
 		try {
@@ -222,12 +226,14 @@ public class UnitTestFormula {
 			table.insertToCell(c4);
 			table.selectCell("C4");
 			table.insertToCell(b3);
+			exception = false;
 		}
 		catch (Exception e) {
 			// TODO update these with real values
 			assertEquals("class java.lang.Exception", e.getClass().toString());
-			assertEquals("Open sub-condition in ", e.getMessage());	
+			assertEquals("baba", e.getMessage());	
 		}
+		assertTrue("An exception was thrown", exception);
 	}
 	
 	/**
