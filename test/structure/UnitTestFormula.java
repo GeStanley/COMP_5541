@@ -231,7 +231,7 @@ public class UnitTestFormula {
 		catch (Exception e) {
 			// TODO update these with real values
 			assertEquals("class java.lang.Exception", e.getClass().toString());
-			assertEquals("baba", e.getMessage());	
+			assertEquals("Circular Reference", e.getMessage());	
 		}
 		assertTrue("An exception was thrown", exception);
 	}
