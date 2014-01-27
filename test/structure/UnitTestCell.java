@@ -32,11 +32,6 @@ public class UnitTestCell {
 		assertEquals("Should be 7.8", "7.8", cell2.getValueString());
 		assertEquals(7.8, cell2.getValue(),0.0001);
 		
-		Cell cell3 = new Cell(5.5);
-		
-		assertEquals("Should be 5.5", "5.5", cell3.getValueString());
-		assertEquals(5.5, cell3.getValue(),0.0001);
-		
 		Cell cell4 = new Cell(table, "2+5");
 		
 		assertEquals("Should be 7", "7.0", cell4.getValueString());
@@ -56,9 +51,9 @@ public class UnitTestCell {
 		assertEquals("Should be 50", "50.0", cell.getValueString());
 		assertEquals(50.0, cell.getValue(),0.0001);
 		
-		//TODO null formula validation
-//		cell.setFormula(null);
-//		assertEquals(null, cell.getValue());
+		
+		cell.setFormula(null);
+		assertEquals(null, cell.getValue());
 	}	
 	
 	@Test
@@ -68,6 +63,7 @@ public class UnitTestCell {
 		cell.setFormula("5+12");
 		assertEquals("5+12", cell.getFormula());
 		//TODO null formula validation
+		fail("Not yet implemented");
 	}
 	
 	/**
@@ -105,23 +101,23 @@ public class UnitTestCell {
 		assertEquals("50.0", cell.getValueString());
 	}
 	
-	@Test
-	public void testGetReferenceValues() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NullCellPointer {
-		table = new Table(5,5);
-		Cell cell = new Cell(table);
-		
-		String formula = "5+12";
-		String selectedCell = "A1";
-		table.setSelectedCell(table.selectCell(selectedCell));
-		table.insertToCell(formula);
-		
-		formula = "A1+12";
-		cell.setFormula(formula);
-		cell.setFormulaWithCellReference(formula);
-	    Method getReferenceValuesMethod = getMethodOfClass(Cell.class, "getReferenceValues");
-	    getReferenceValuesMethod.invoke(cell);
-		assertEquals("formulaWithoutCellReference would be 17.0+12","17.0+12", cell.getFormulaWithoutCellReference());
-	}
+//	@Test
+//	public void testGetReferenceValues() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NullCellPointer {
+//		table = new Table(5,5);
+//		Cell cell = new Cell(table);
+//		
+//		String formula = "5+12";
+//		String selectedCell = "A1";
+//		table.setSelectedCell(table.selectCell(selectedCell));
+//		table.insertToCell(formula);
+//		
+//		formula = "A1+12";
+//		cell.setFormula(formula);
+//		cell.setFormulaWithCellReference(formula);
+//	    Method getReferenceValuesMethod = getMethodOfClass(Cell.class, "getReferenceValues");
+//	    getReferenceValuesMethod.invoke(cell);
+//		assertEquals("formulaWithoutCellReference would be 17.0+12","17.0+12", cell.getFormulaWithoutCellReference());
+//	}
 	
 	private Method getMethodOfClass(Class argClass, String argMethodName) {
 	    Method[] methods = argClass.getDeclaredMethods();

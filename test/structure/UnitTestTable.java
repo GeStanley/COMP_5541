@@ -247,17 +247,17 @@ public class UnitTestTable {
 		formula = "B1";
 		tester.setSelectedCell(tester.selectCell(selectedCell));
 		tester.insertToCell(formula);
-		//assertEquals(tester.getValue(formula),tester.getCell(1, 0).getValueString());
+		assertEquals(tester.getValue(formula),tester.getCell(1, 0).getValueString());
 		
 		selectedCell = "A3";
 		formula = "B1+A2";
 		tester.setSelectedCell(tester.selectCell(selectedCell));
 		tester.insertToCell(formula);
-		//assertEquals(tester.getValue(formula),tester.getCell(2, 0).getValueString());
+		assertEquals(tester.getValue(formula),tester.getCell(2, 0).getValueString());
 		
 		
-		// to do test for references as formula
-		
+		//TODO test for references as formula
+		fail("Not yet implemented");
 	}
 	
 	@Test
@@ -281,12 +281,13 @@ public class UnitTestTable {
 		String formula = "5+12";
 		assertEquals("17.0", String.valueOf(tester.getValue(formula)));
 		
-//		formula = null;
-//		assertEquals(null, tester.getValue(formula));
-//		
-//		formula = "";
-//		assertEquals(null, tester.getValue(formula));
+		formula = null;
+		assertEquals(null, tester.getValue(formula));
+		
+		formula = "";
+		assertEquals(null, tester.getValue(formula));
 		
 		//TO DO Test to validate references
+		fail("Not yet implemented");
 	}
 }
