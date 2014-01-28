@@ -144,6 +144,11 @@ public class Cell {
 			return false;
 	}
 	
+	/**
+	 * Retrieves the list of references contained in a formula
+	 * 
+	 * @return list of references in a formula
+	 */
 	public ArrayList<String> getRefs(){
 		refs = formula.getReferences();
 		return refs;

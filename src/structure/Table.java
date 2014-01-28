@@ -214,80 +214,78 @@ public class Table {
     		return null;
     }
     
-    
+    /**
+     * This method deals with adding cells to the cell stack, and includes logic to detect Circular 
+     * references, and topological traversal, by checking the visited cell list.
+     * 
+     * @param refs is a list of references in a cell
+     */
     public boolean addRefsToStack(ArrayList<String> refs) throws Exception{
     	boolean addedRefs = false;
     	while ( !refs.isEmpty() ){
     		Cell c = selectCell(refs.remove(0));
     		
-    		boolean circularRef = false;
+    		//check for circular reference
     		for (Cell s: cellStack){
-    			//System.out.println("c: " + c + " s: " + s + " equals: " + c.equals(s) );
     			if (c.equals(s)){
-    				circularRef = true;
     				throw new Exception("Circular Reference");
     			}
     		}
     		
-    		
+    		//check if the cell was already calculated
     		boolean wasVisited = false;
     		for (Cell v: visitedCells){
-    			//System.out.println("c: " + c + " v: " + v + " equals: " + c.equals(v) );
     			if (c.equals(v)){
     				wasVisited = true;
     				break;
     			}
     		}
     		
+    		//add the referenced cell to the stack
     		if (c != null & !wasVisited){
     			cellStack.add( c );
     			addedRefs = true;
     		}
     	}
     	return addedRefs;
-    	
     }
-    
+    /**
+     * This method calculates the values of the whole table in a topological manner,
+     * by using a stack and a visited cell list.
+     * 
+     * @throws NumberFormatException
+     * @throws Exception
+     */
     public void computeTable() throws NumberFormatException, Exception {
     	visitedCells = new ArrayList<Cell>();
     	cellStack = new Stack<Cell>();
     	
     	for(int i=0;i<cells.length;i++) {
     		for(int j=0;j<cells[0].length;j++) {
-    			//System.out.println(""+ i + " "+ j);
     			if (cells[i][j] != null){
-    				//System.out.println("cell content " + cells[i][j]);
     				Cell c = cells[i][j];
     				c.getValue(true);
     				ArrayList<String> nextRefs = c.getFormulaObject().getReferences();
-    				//System.out.println("refs "+ nextRefs);
     				addRefsToStack(nextRefs);
     	
     				while (!cellStack.isEmpty()){
     					
     					c = cellStack.pop();
-    					//System.out.println("cell content " + c + " formula "+c.getFormula());
     					c.getValue(true);
     					nextRefs = c.getRefs();
-    					//System.out.println("refs "+ nextRefs);
     					
 						if (nextRefs.isEmpty()){
-							//System.out.println("reached bottom " + c);
     						c.getValue(true);
     						visitedCells.add(c);
     					} else {
-    						//System.out.println("adding " + c + " with refs " + nextRefs);
     						cellStack.add(c);
     						if (!addRefsToStack(nextRefs) ){
     							c = cellStack.pop();
     							c.getValue(true);
         						visitedCells.add(c);
     						}
-    					}
-    					
+    					}	
     				}
-    				
-    				
     			}
     		}
     	}
