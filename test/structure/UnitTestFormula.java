@@ -215,7 +215,7 @@ public class UnitTestFormula {
 		catch (Exception e) {
 			// TODO update these with real values
 			assertEquals("class java.lang.Exception", e.getClass().toString());
-			assertEquals("Open sub-condition in ", e.getMessage());	
+			assertEquals("Circular Reference", e.getMessage());	
 		}
 		assertTrue("An exception was thrown", exception);
 		exception = true;

@@ -47,10 +47,16 @@ public class Cell {
 			value = this.formula.evaluate();
 		}
 		catch (Exception e) {
-			formula = "0.0";
-			value = 0.0;
+			this.formula = new Formula("0.0", table);
+			this.value = 0.0;
 		}
 	}
+	
+	public void resetCell() {
+		this.formula = new Formula("0.0", table);
+		this.value = 0.0;
+	}
+	
 	
 	/**
 	 * This method sets the formula of the cells.

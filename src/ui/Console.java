@@ -93,6 +93,7 @@ public class Console {
 	 * Try to select a cell
 	 * 
 	 * @param address The address of the cell
+	 * @throws Exception 
 	 */
 	private static void select(String address) {
 		address = address.toUpperCase();
@@ -107,7 +108,6 @@ public class Console {
 			System.out.println();
 			try {
 				table.insertToCell(input);
-				table.computeTable();
 				table.displayTable();
 			}
 			catch (NullCellPointer e) {
@@ -121,6 +121,7 @@ public class Console {
 			catch (Exception e) {
 				System.out.print("ERROR: ");
 				System.out.println(e.getMessage());
+				table.resetSelectedCell();
 			}
 		}
 		

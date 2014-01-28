@@ -52,6 +52,14 @@ public class Table {
     		}
     	}
 	}
+    
+    /**
+     * Resets the selected cell to a zero value, will be called when some errors occur.
+     */
+    public void resetSelectedCell() {
+    	selectedCell.resetCell();
+    	selectedCell = null;
+    }
 
 	/**
      * Insert values into the row at position pos
@@ -358,6 +366,7 @@ public class Table {
     		return;
     	}
     	selectedCell.setFormula(formula);
+    	computeTable();
     	selectedCell = null;
     }
     
