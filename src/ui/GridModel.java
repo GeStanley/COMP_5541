@@ -38,8 +38,8 @@ public class GridModel extends AbstractTableModel {
 	 */
 	public GridModel(Table existing) {
 		super();
-		this.table = existing;
-		existing.populate();
+		table = existing;
+		table.populate();
 	}
 
 	/**
@@ -70,6 +70,16 @@ public class GridModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int row, int column) {
 		return table.getCell(row, column);
+	}
+	
+	/**
+	 * Wrapper for the table.selectCell method
+	 * 
+	 * @param row
+	 * @param column
+	 */
+	public void select(int row, int column) {
+		table.selectCell(row, column);
 	}
 	
 	public void setValueAt(int row, int column) {
