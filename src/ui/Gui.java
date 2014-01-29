@@ -10,6 +10,9 @@ import javax.swing.JTable;
 
 public class Gui extends JFrame implements PropertyChangeListener{
 	
+	private InputLineComponent inputLine;
+	private JTable spreadsheet;
+	
 	public Gui(){
 		// Frame setup
 		super("Calcul-O-Matic");
@@ -19,8 +22,8 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		setLayout(new BorderLayout());
 		
 		// Grid setup
-		InputLineComponent inputLine = new InputLineComponent(null);
-		JTable spreadsheet = new SpreadSheet();
+		inputLine = new InputLineComponent(null);
+		spreadsheet = new SpreadSheet();
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
 		spreadsheet.setFillsViewportHeight(true);
 		
@@ -46,8 +49,14 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		
 		if (e.getPropertyName().equals("input")){
 			System.out.println("input");
+			
+			
+			
 		} else if (e.getPropertyName().equals("select")){
 			System.out.println("select");
+			String s = (String) e.getNewValue();
+			
+			inputLine.setText(s);
 		}
 		
 		

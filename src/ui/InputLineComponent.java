@@ -41,8 +41,13 @@ public class InputLineComponent extends JPanel implements ActionListener{
 		return "";
 	}
 	
+	public void setText(String s){
+		input.setText(s);
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println( input.getText() );
 		this.firePropertyChange("input", false, true);
+		
 	}
 }

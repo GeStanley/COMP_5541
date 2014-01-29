@@ -13,9 +13,15 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
+import structure.Cell;
+
 public class SpreadSheet extends JTable implements ActionListener {
 
 	GridModel gm;
+	Cell selectedCell;
+	int row = -1;
+	int	column = -1;
+	
 
 	public SpreadSheet() {
 		gm = new GridModel();
@@ -33,7 +39,8 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				System.out.println("row " + e.getLastIndex());
+				row = e.getLastIndex();
+				System.out.println("row " + row);
 				actionPerformed(new ActionEvent(this, editingColumn, "select"));
 			}
 		};
@@ -62,7 +69,8 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 			@Override
 			public void columnSelectionChanged(ListSelectionEvent e) {
-				System.out.println("column " + e.getLastIndex());
+				column = e.getLastIndex();
+				System.out.println("column " + column);
 				actionPerformed(new ActionEvent(this, editingColumn, "select"));
 			}
 		};
@@ -71,8 +79,14 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		this.firePropertyChange("select", 1, 0);
+		if ( row >= 0 & column >= 0){
+			Cell c = (Cell) gm.getValueAt(row, column);
+			System.out.println(c.toString());
+			this.firePropertyChange("select", null, c.toString());
+			
+			row = -1;
+			column = -1;
+		}
+		
 	}
-
 }
