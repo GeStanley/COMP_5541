@@ -1,17 +1,16 @@
 package ui;
 
-import java.awt.Dimension;
-
-import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
 import structure.Table;
 
-public class SpreadsheetGrid extends AbstractTableModel{
+public class GridModel extends AbstractTableModel {
 	
 	Table table;
 	
-	public SpreadsheetGrid(){
+	public GridModel(){
 		table = new Table(10, 11);
 		
 	}
@@ -32,11 +31,16 @@ public class SpreadsheetGrid extends AbstractTableModel{
 	}
 
 	@Override
-	public Object getValueAt(int arg0, int arg1) {
+	public Object getValueAt(int row, int column) {
 		// TODO Auto-generated method stub
 		
 		// use table to get that value
 		return 0.0;
 	}
+	
+	public void setValueAt(int row, int column) {
+		
+	}
+
 	
 }

@@ -1,12 +1,14 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class Gui extends JFrame{
+public class Gui extends JFrame implements PropertyChangeListener{
 	
 	public Gui(){
 		setTitle("Calcul-O-Matic");
@@ -16,11 +18,14 @@ public class Gui extends JFrame{
 		this.setLayout(new BorderLayout());
 		
 		InputLineComponent inputLine = new InputLineComponent(null);
-		JTable spreadsheetGrid = new JTable( new SpreadsheetGrid() );
-		JScrollPane scrollPane = new JScrollPane(spreadsheetGrid);
-		spreadsheetGrid.setFillsViewportHeight(true);
+		JTable spreadsheet = new SpreadSheet();
+		JScrollPane scrollPane = new JScrollPane(spreadsheet);
+		spreadsheet.setFillsViewportHeight(true);
 		
-		//inputLine.addPropertyChangeListener(listener);
+		inputLine.addPropertyChangeListener(this);
+		spreadsheet.addPropertyChangeListener(this);
+		
+		
 		
 		add(inputLine, BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
@@ -31,6 +36,21 @@ public class Gui extends JFrame{
 	public static void main(String args[]){
 		JFrame frame = new Gui();
 		frame.setVisible(true);
+	}
+
+	
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent e) {
+		
+		
+		if (e.getPropertyName().equals("input")){
+			System.out.println("input");
+		} else if (e.getPropertyName().equals("select")){
+			System.out.println("select");
+		}
+		
+		
 	}
 
 }
