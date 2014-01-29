@@ -28,7 +28,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	public Gui() {
 		// Frame setup
 		super("Calcul-O-Matic");
-		setSize(500, 700);
+		setSize(600, 247);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -38,6 +38,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		spreadsheet = new SpreadSheet();
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
 		spreadsheet.setFillsViewportHeight(true);
+		
 
 		inputLine.addPropertyChangeListener(this);
 		spreadsheet.addPropertyChangeListener(this);

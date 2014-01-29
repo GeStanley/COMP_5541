@@ -15,6 +15,13 @@ import javax.swing.event.TableColumnModelListener;
 
 import structure.Cell;
 
+
+/**
+ * This class is the face of the spreadsheet, it displays the grid of cells
+ * 
+ * @author Mike
+ *
+ */
 public class SpreadSheet extends JTable implements ActionListener {
 
 	GridModel gm;
@@ -22,7 +29,10 @@ public class SpreadSheet extends JTable implements ActionListener {
 	int row = -1;
 	int	column = -1;
 	
-
+	/**
+	 * Constructor for the class, it sets up the table with the GridModel
+	 * Sets the selection mode, and adds listeners for column and row selection change
+	 */
 	public SpreadSheet() {
 		gm = new GridModel();
 		this.setModel(gm);
@@ -34,6 +44,13 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 	}
 
+	/**
+	 * This method is called when the row of the selected cell changes
+	 * It triggers an action that will eventually notify the parent class 
+	 * of the change to the row and give its new value.
+	 * 
+	 * @return a ListSelectionListener
+	 */
 	private ListSelectionListener listSelectionListener() {
 		ListSelectionListener lsl = new ListSelectionListener() {
 
@@ -47,6 +64,13 @@ public class SpreadSheet extends JTable implements ActionListener {
 		return lsl;
 	}
 
+	/**
+	 * This method is called when the column of the selected cell changes
+	 * It triggers an action that will eventually notify the parent class
+	 * of the change to the row and give its new value.
+	 * 
+	 * @return a TableColumnModelListener
+	 */
 	private TableColumnModelListener columnModelListener() {
 		// TODO Auto-generated method stub
 		TableColumnModelListener tcml = new TableColumnModelListener() {
@@ -77,16 +101,18 @@ public class SpreadSheet extends JTable implements ActionListener {
 		return tcml;
 	}
 
+	/**
+	 * This method fires a propertyChange, in order to inform the parent class of the
+	 * change in selected cell, it sends it's formula as a parameter, to be inserted to the
+	 * input line.
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if ( row >= 0 & column >= 0){
 			Cell c = (Cell) gm.getValueAt(row, column);
 			System.out.println(c.toString());
 			this.firePropertyChange("select", null, c.toString());
-			
-			row = -1;
-			column = -1;
 		}
-		
 	}
 }
