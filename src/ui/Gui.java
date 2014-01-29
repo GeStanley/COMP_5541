@@ -20,6 +20,8 @@ public class Gui extends JFrame{
 		JScrollPane scrollPane = new JScrollPane(spreadsheetGrid);
 		spreadsheetGrid.setFillsViewportHeight(true);
 		
+		//inputLine.addPropertyChangeListener(listener);
+		
 		add(inputLine, BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
 		
