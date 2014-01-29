@@ -23,6 +23,7 @@ public class Gui extends JFrame{
 		add(inputLine, BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
 		
+		
 	}
 	
 	public static void main(String args[]){
