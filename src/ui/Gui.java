@@ -1,8 +1,10 @@
 package ui;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class Gui extends JFrame{
 	
@@ -14,8 +16,9 @@ public class Gui extends JFrame{
 		this.setLayout(new BorderLayout());
 		
 		InputLineComponent inputLine = new InputLineComponent(null);
-		SpreadsheetGrid spreadsheetGrid = new SpreadsheetGrid();
+		JTable spreadsheetGrid = new JTable( new SpreadsheetGrid() );
 		JScrollPane scrollPane = new JScrollPane(spreadsheetGrid);
+		spreadsheetGrid.setFillsViewportHeight(true);
 		
 		add(inputLine, BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
