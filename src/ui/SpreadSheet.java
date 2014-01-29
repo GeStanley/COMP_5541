@@ -32,7 +32,7 @@ public class SpreadSheet extends JTable implements ListSelectionListener{
 	}
 	
 	public void valueChanged(ListSelectionEvent e) {
-		System.out.println("change");
+		System.out.println("change (" + getSelectedColumn() + ", " + getSelectedRow() + ")");
 	}
 	
 	
