@@ -166,6 +166,9 @@ public class Table {
     	return cells[row][column];
     }    
     
+    public Cell getSelectedCell(){
+    	return selectedCell;
+    }
     /**
      * Select cell, create one if none exists at the desired location
      * 

@@ -7,12 +7,14 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import structure.Table;
+
 public class InputLineComponent extends JComponent implements ActionListener {
 	
-	private JTextField input;
-	private JLabel msg;
+	JTextField input;
+	JLabel msg;
 	
-	public InputLineComponent(){
+	public InputLineComponent(Table table){
 		
 	}
 	
