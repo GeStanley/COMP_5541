@@ -1,18 +1,45 @@
 package ui;
 
+import java.awt.Dimension;
+
+import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
+import structure.Cell;
 import structure.Table;
 
 public class GridModel extends AbstractTableModel {
 	
 	Table table;
 	
-	public GridModel(){
-		table = new Table(10, 11);
-		table.populate();
+	/**
+	 * Default constructor
+	 */
+	public GridModel() {
+		this(new Table(10,11));
+	}
+	
+	/**
+	 * Constructor creates a new table
+	 * 
+	 * @param height Starting number of rows
+	 * @param width Starting number of columns
+	 */
+	public GridModel(int height, int width) {
+		this(new Table(height, width));
+	}
+	
+	/**
+	 * Constructor from an existing table - base constructor
+	 * 
+	 * @param existing An existing table object
+	 */
+	public GridModel(Table existing) {
+		super();
+		this.table = existing;
+		existing.populate();
 	}
 
 	/**

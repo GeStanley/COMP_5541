@@ -11,12 +11,14 @@ import javax.swing.JTable;
 public class Gui extends JFrame implements PropertyChangeListener{
 	
 	public Gui(){
-		setTitle("Calcul-O-Matic");
+		// Frame setup
+		super("Calcul-O-Matic");
 		setSize(500, 700);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		
+		// Grid setup
 		InputLineComponent inputLine = new InputLineComponent(null);
 		JTable spreadsheet = new SpreadSheet();
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
@@ -24,8 +26,6 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		
 		inputLine.addPropertyChangeListener(this);
 		spreadsheet.addPropertyChangeListener(this);
-		
-		
 		
 		add(inputLine, BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
