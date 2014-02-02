@@ -34,7 +34,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		setLayout(new BorderLayout());
 
 		// Grid setup
-		inputLine = new InputLineComponent(null);
+		inputLine = new InputLineComponent();
 		spreadsheet = new SpreadSheet();
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
 		spreadsheet.setFillsViewportHeight(true);

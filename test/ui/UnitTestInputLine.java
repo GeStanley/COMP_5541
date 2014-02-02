@@ -14,20 +14,26 @@ import structure.Table;
 public class UnitTestInputLine {
 	
 	InputLineComponent testComp;
-	Table testTable;
+	GridModel testGrid;
 	
+	@Test
+	public void testCellDisplay() throws NumberFormatException, Exception {
+		
+		testGrid = new GridModel();
+		testComp = new InputLineComponent();
+				
+		
+//		Robot enter = new Robot();
+//		enter.keyPress(KeyEvent.VK_ENTER);
+//		enter.keyRelease(KeyEvent.VK_ENTER);
+		
+		
+		assertEquals("5+7",testComp.input.getText());
+	}
+	
+	@Test
 	public void testInputLine() throws AWTException {
-		
-		testTable = new Table(5,5);
-		testComp = new InputLineComponent(testTable);
-		
-		testComp.input.setText("=2+5");
-		
-		Robot enter = new Robot();
-		enter.keyPress(KeyEvent.VK_ENTER);
-		enter.keyRelease(KeyEvent.VK_ENTER);
-		
-		assertEquals("2+5",testTable.getSelectedCell().getFormula());
+
 	}
 
 }

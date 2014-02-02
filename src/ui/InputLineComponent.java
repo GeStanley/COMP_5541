@@ -1,12 +1,10 @@
 package ui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -18,7 +16,7 @@ public class InputLineComponent extends JPanel implements ActionListener{
 	JTextField input;
 	JLabel msg;
 	
-	public InputLineComponent(Table table){
+	public InputLineComponent(){
 		
 		setLayout(new GridLayout());
 		

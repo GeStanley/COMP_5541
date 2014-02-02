@@ -78,8 +78,8 @@ public class GridModel extends AbstractTableModel {
 	 * @param row
 	 * @param column
 	 */
-	public void select(int row, int column) {
-		table.selectCell(row, column);
+	public Cell select(int row, int column) {
+		return table.selectCell(row, column);
 	}
 	
 	public void setValueAt(int row, int column) {
