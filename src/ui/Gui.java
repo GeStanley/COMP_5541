@@ -49,6 +49,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		
 		inputLine.addPropertyChangeListener(this);
 		spreadsheet.addPropertyChangeListener(this);
+		buttonComponent.addPropertyChangeListener(this);
 		
 		JPanel menuAndInput = new JPanel();
 		
@@ -84,6 +85,16 @@ public class Gui extends JFrame implements PropertyChangeListener {
 			String s = (String) e.getNewValue();
 
 			inputLine.setText(s);
+		
+		} else if  (e.getPropertyName().equals("save")) {
+			System.out.println("save");
+		
+		} else if  (e.getPropertyName().equals("saveAs")) {
+			System.out.println("saveAs");
+		
+		} else if  (e.getPropertyName().equals("load")) {
+			System.out.println("load");
+			
 		}
 
 	}

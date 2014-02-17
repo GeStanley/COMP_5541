@@ -50,13 +50,15 @@ public class ButtonComponent extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getSource());
-		
 		Object src = e.getSource();
 		
-		
-		
-		
+		if (src == save){
+			this.firePropertyChange("save", false, null);
+		} else if (src == saveAs){
+			this.firePropertyChange("saveAs", false, null);
+		} else if (src == load){
+			this.firePropertyChange("load", false, null);
+		}
 	}
 	
 }
