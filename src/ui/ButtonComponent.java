@@ -6,7 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ButtonComponent extends JPanel implements ActionListener{
 
@@ -14,6 +17,8 @@ public class ButtonComponent extends JPanel implements ActionListener{
 	private JButton saveAs;
 	private JButton load;
 	
+	private String filename;
+	private String directory;
 	
 	public ButtonComponent() {
 		
@@ -52,13 +57,42 @@ public class ButtonComponent extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-		if (src == save){
-			this.firePropertyChange("save", false, null);
-		} else if (src == saveAs){
+		if (src == save) {
+			JFileChooser saveJFC = new JFileChooser();
+			
+			FileFilter CSV = new FileNameExtensionFilter("CSV (.csv)", "csv");
+			saveJFC.addChoosableFileFilter(CSV);
+			saveJFC.setFileFilter(CSV);
+			
+			int action = saveJFC.showSaveDialog(null);
+			
+			if ( action == JFileChooser.APPROVE_OPTION ){
+				filename  = saveJFC.getSelectedFile().getName();
+				directory = saveJFC.getCurrentDirectory().toString();
+				
+				
+				
+				System.out.println( directory + " " + filename );
+				
+				this.firePropertyChange("save", false, null);
+			} else if ( action == JFileChooser.CANCEL_OPTION ) {
+				System.out.println("Cancel");
+			}
+			
+			
+			
+			
+			
+			
+		} else if (src == saveAs) {
+			
+			
 			this.firePropertyChange("saveAs", false, null);
-		} else if (src == load){
+		} else if (src == load) {
+			
+			
 			this.firePropertyChange("load", false, null);
 		}
+		
 	}
-	
 }
