@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
@@ -58,9 +59,12 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				row = e.getLastIndex();
-				System.out.println("row " + row);
-				actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				if (! e.getValueIsAdjusting() ) {
+					row = getSelectedRow();
+					System.out.println("row " + row);
+					
+					actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				}
 			}
 		};
 		return lsl;
@@ -95,10 +99,14 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 			@Override
 			public void columnSelectionChanged(ListSelectionEvent e) {
-				column = e.getLastIndex();
-				System.out.println("column " + column);
-				//System.out.println(e.toString());
-				actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				if (! e.getValueIsAdjusting() ) {
+					
+					column = getSelectedColumn();
+			        
+					System.out.println("column " + column);
+					
+					actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				}
 			}
 		};
 		return tcml;
@@ -115,6 +123,7 @@ public class SpreadSheet extends JTable implements ActionListener {
 		if ( row >= 0 & column >= 0){
 			Cell c = (Cell) gm.getValueAt(row, column);
 			System.out.println(c.formulaString());
+			
 			this.firePropertyChange("select", null, c.formulaString());
 		}
 	}
