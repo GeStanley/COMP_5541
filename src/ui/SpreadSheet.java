@@ -114,8 +114,8 @@ public class SpreadSheet extends JTable implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if ( row >= 0 & column >= 0){
 			Cell c = (Cell) gm.getValueAt(row, column);
-			System.out.println(c.toString());
-			this.firePropertyChange("select", null, c.toString());
+			System.out.println(c.formulaString());
+			this.firePropertyChange("select", null, c.formulaString());
 		}
 	}
 }
