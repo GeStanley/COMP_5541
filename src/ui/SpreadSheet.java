@@ -28,7 +28,6 @@ import structure.Cell;
 public class SpreadSheet extends JTable implements ActionListener {
 
 	GridModel gm;
-	Cell selectedCell;
 	int row = -1;
 	int	column = -1;
 	
@@ -98,6 +97,7 @@ public class SpreadSheet extends JTable implements ActionListener {
 			public void columnSelectionChanged(ListSelectionEvent e) {
 				column = e.getLastIndex();
 				System.out.println("column " + column);
+				//System.out.println(e.toString());
 				actionPerformed(new ActionEvent(this, editingColumn, "select"));
 			}
 		};
@@ -118,4 +118,16 @@ public class SpreadSheet extends JTable implements ActionListener {
 			this.firePropertyChange("select", null, c.formulaString());
 		}
 	}
+	
+	public boolean isSelected() {
+		if ( row >= 0 & column >= 0 )
+			return true;
+		else
+			return false;
+	}
+	
+	public void setFormulaOfSelectedCell(String formula) {
+		gm.setValueAt(row, column, formula);
+	}
+	
 }

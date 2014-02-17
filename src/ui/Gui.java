@@ -63,7 +63,14 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent e) {
 
 		if (e.getPropertyName().equals("input")) {
-			System.out.println("input");
+			String in = (String) e.getNewValue();
+			
+			
+			if ( ((SpreadSheet) spreadsheet).isSelected() ) { 
+				System.out.println("input " + in);
+				((SpreadSheet) spreadsheet).setFormulaOfSelectedCell( in );
+			}
+			
 
 		} else if (e.getPropertyName().equals("select")) {
 			System.out.println("select");

@@ -82,8 +82,16 @@ public class GridModel extends AbstractTableModel {
 		table.selectCell(row, column);
 	}
 	
-	public void setValueAt(int row, int column) {
+	
+	public void setValueAt(int row, int column, String formula) {
+		table.selectCell(row, column);
 		
+		try {
+			table.insertToCell(formula);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
