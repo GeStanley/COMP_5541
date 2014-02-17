@@ -5,6 +5,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -18,6 +19,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 
 	private InputLineComponent inputLine;
 	private JTable spreadsheet;
+	private ButtonComponent buttonComponent;
 
 	
 	/**
@@ -28,7 +30,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	public Gui() {
 		// Frame setup
 		super("Calcul-O-Matic");
-		setSize(600, 247);
+		setSize(600, 255);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -43,12 +45,17 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		scrollPane.setRowHeaderView(rowTable);
 		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
 		
+		buttonComponent = new ButtonComponent();
 		
-
 		inputLine.addPropertyChangeListener(this);
 		spreadsheet.addPropertyChangeListener(this);
-
-		add(inputLine, BorderLayout.NORTH);
+		
+		JPanel menuAndInput = new JPanel();
+		
+		menuAndInput.add(buttonComponent);
+		menuAndInput.add(inputLine);
+		
+		add(menuAndInput, BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
 
 	}
