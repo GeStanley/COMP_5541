@@ -12,6 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * This class contains the menu items of the program, such as Create New, Save, Save As, and Load
+ * 
+ * @author mike
+ *
+ */
 public class ButtonComponent extends JPanel implements ActionListener{
 
 	private JButton save;
@@ -23,6 +29,9 @@ public class ButtonComponent extends JPanel implements ActionListener{
 	private String directory;
 	private String fullSaveLocation;
 	
+	/**
+	 * Constructor for the Button component.
+	 */
 	public ButtonComponent() {
 		
 		int ICON_HEIGHT = 20;
@@ -63,7 +72,10 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		
 		
 	}
-
+	
+	/**
+	 * Handles the button click actions. Fires a property change.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -92,6 +104,11 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		
 	}
 	
+	/**
+	 * Creates a dialog where one can select a file.
+	 * 
+	 * @return returns the location of a selected file.
+	 */
 	public String getFileLocation() {
 		JFileChooser saveJFC = new JFileChooser();
 		

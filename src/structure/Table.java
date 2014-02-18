@@ -41,6 +41,9 @@ public class Table {
     	selectedCell = null;
     }
     
+    /**
+     * resets all the cells of a table.
+     */
     public void createNew() {
     	System.out.println("zero all cells");
     	for(int i=0;i<cells.length;i++) {

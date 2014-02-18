@@ -7,10 +7,21 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
+/**
+ * This is a table that displays the row numbers.
+ * 
+ * @author mike
+ *
+ */
 public class RowTable extends JTable {
 
 	private JTable spreadsheet;
 
+	/**
+	 * Constructor for the row table.
+	 * 
+	 * @param data JTable, it's required to create the proper number of row labels.
+	 */
 	public RowTable(JTable data) {
 		spreadsheet = data;
 		setFocusable(false);
@@ -28,21 +39,36 @@ public class RowTable extends JTable {
 
 	}
 
+	/**
+	 * returns the row count.
+	 */
 	@Override
 	public int getRowCount() {
 		return spreadsheet.getRowCount();
 	}
 
+	/**
+	 * returns the value of a row.
+	 */
 	@Override
 	public Object getValueAt(int row, int column) {
 		return "" + (row + 1);
 	}
 
+	/**
+	 * determines if cells are editable. It's set to false for all cells.
+	 */
 	@Override
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}
 
+	/**
+	 * A costum renderer is used here to color the cells in gray, instead of the default white.
+	 * 
+	 * @author mike
+	 *
+	 */
 	private static class RowRenderer extends DefaultTableCellRenderer {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,

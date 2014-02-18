@@ -77,6 +77,13 @@ public class GridModel extends AbstractTableModel {
 	}
 	
 	
+	/**
+	 * This method sets the formula of a cell at a selected location.
+	 * 
+	 * @param row of a cell desired to be changed.
+	 * @param column of a cell desired to be changed.
+	 * @param formula which will be set at the desired cell.
+	 */
 	public void setValueAt(int row, int column, String formula) {
 		table.selectCell(row, column);
 		
@@ -87,11 +94,19 @@ public class GridModel extends AbstractTableModel {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * This method retrieves a table.
+	 * 
+	 * @return the table.
+	 */
 	public Table getTable() {
 		return table;
 	}
 
+	/**
+	 * This method abstracts table creation.
+	 */
 	public void createNew() {
 		table.createNew();
 	}

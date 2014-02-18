@@ -27,7 +27,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 
 	
 	/**
-	 * This sets up the Gui aspect by taking the input line and the spreadsheet
+	 * This sets up the GUI aspect by taking the input line and the spreadsheet
 	 * and displaying them.
 	 * 
 	 */
@@ -39,7 +39,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 
-		// Grid setup
+		// GUI setup
 		buttonComponent = new ButtonComponent();
 		inputLine = new InputLineComponent(null);
 		
@@ -68,7 +68,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	}
 
 	/**
-	 * This handeles the coordination between the input line and the spreadsheet
+	 * This handles the coordination between the input line and the spreadsheet
 	 * 
 	 * An "input" change event comes from the input line, whereas a "select"
 	 * change comes from a change in the selected cell.
@@ -87,7 +87,6 @@ public class Gui extends JFrame implements PropertyChangeListener {
 				spreadsheet.repaint();
 			}
 			
-
 		} else if (e.getPropertyName().equals("select")) {
 			System.out.println("select");
 			String s = (String) e.getNewValue();
@@ -111,7 +110,10 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	}
 	
 	/**
-	 * Save a spreadsheet
+	 * Saves the table to a file.
+	 * 
+	 * @param location the location where the file will be saved.
+	 * @return a message if the save was successful.
 	 */
 	private static String save(String location) {
 		
@@ -124,7 +126,12 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		return msg;
 	}
 	
-	
+	/**
+	 * Loads the table from a file.
+	 * 
+	 * @param location the location of the file that will be loaded
+	 * @return a message confirming if loading succeeded or failed
+	 */
 	private String load(String location) {
 		Table t = ((SpreadSheet) spreadsheet).getTable();
 		saved = new SaveFile( t );
@@ -136,6 +143,9 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		return msg;			
 	}
 	
+	/**
+	 * This method clears the data from the existing spreadsheet.
+	 */
 	private void createNewSpreadsheet() {
 		((SpreadSheet) spreadsheet).createNew();
 		spreadsheet.validate();

@@ -130,6 +130,11 @@ public class SpreadSheet extends JTable implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Is a method which verifies if a cell is selected at that moment.
+	 * 
+	 * @return true if a cell is selected, and false if no cell is selected.
+	 */
 	public boolean isSelected() {
 		if ( row >= 0 & column >= 0 )
 			return true;
@@ -137,14 +142,28 @@ public class SpreadSheet extends JTable implements ActionListener {
 			return false;
 	}
 	
+	
+	/**
+	 * This method sets the formula of a cell.
+	 * 
+	 * @param formula the formula that the cell will be set to.
+	 */
 	public void setFormulaOfSelectedCell(String formula) {
 		gm.setValueAt(row, column, formula);
 	}
 	
+	/**
+	 * Will return a table for the saveing and loading features.
+	 * 
+	 * @return a table.
+	 */
 	public Table getTable() {
 		return gm.getTable();
 	}
 	
+	/**
+	 * abstracts the create new function.
+	 */
 	public void createNew() {
 		gm.createNew();
 	}
