@@ -23,6 +23,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	private InputLineComponent inputLine;
 	private static JTable spreadsheet;
 	private ButtonComponent buttonComponent;
+	private JScrollPane scrollPane;
 
 	
 	/**
@@ -39,7 +40,9 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		setLayout(new BorderLayout());
 
 		// Grid setup
+		buttonComponent = new ButtonComponent();
 		inputLine = new InputLineComponent(null);
+		
 		spreadsheet = new SpreadSheet();
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
 		spreadsheet.setFillsViewportHeight(true);
@@ -48,7 +51,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		scrollPane.setRowHeaderView(rowTable);
 		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
 		
-		buttonComponent = new ButtonComponent();
+		
 		
 		inputLine.addPropertyChangeListener(this);
 		spreadsheet.addPropertyChangeListener(this);
@@ -134,9 +137,10 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	}
 	
 	private void createNewSpreadsheet() {
-		spreadsheet = new SpreadSheet();
+		((SpreadSheet) spreadsheet).createNew();
+		spreadsheet.validate();
+		spreadsheet.repaint();
 	}
-	
 	
 	
 	/**

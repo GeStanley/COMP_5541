@@ -92,5 +92,9 @@ public class GridModel extends AbstractTableModel {
 		return table;
 	}
 
+	public void createNew() {
+		table.createNew();
+	}
+
 	
 }

@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
@@ -142,6 +143,10 @@ public class SpreadSheet extends JTable implements ActionListener {
 	
 	public Table getTable() {
 		return gm.getTable();
+	}
+	
+	public void createNew() {
+		gm.createNew();
 	}
 	
 }
