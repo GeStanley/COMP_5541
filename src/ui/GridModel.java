@@ -1,13 +1,7 @@
 package ui;
 
-import java.awt.Dimension;
-
-import javax.swing.JTable;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
-import structure.Cell;
 import structure.Table;
 
 public class GridModel extends AbstractTableModel {
@@ -92,6 +86,10 @@ public class GridModel extends AbstractTableModel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public Table getTable() {
+		return table;
 	}
 
 	

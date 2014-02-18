@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import structure.Table;
+
 
 /**
  * This class handles the creation of the gui for the calcul-o-matic program
@@ -17,8 +19,9 @@ import javax.swing.JTable;
  */
 public class Gui extends JFrame implements PropertyChangeListener {
 
+	private static SaveFile saved;
 	private InputLineComponent inputLine;
-	private JTable spreadsheet;
+	private static JTable spreadsheet;
 	private ButtonComponent buttonComponent;
 
 	
@@ -83,12 +86,13 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		} else if (e.getPropertyName().equals("select")) {
 			System.out.println("select");
 			String s = (String) e.getNewValue();
-
 			inputLine.setText(s);
 		
 		} else if  (e.getPropertyName().equals("save")) {
-			System.out.println("save " + e.getNewValue());
-			save();
+			String location = (String) e.getNewValue();
+			System.out.println("save " + location);
+			String msg = save( location );
+			inputLine.setMsg(msg);
 		
 		} else if  (e.getPropertyName().equals("load")) {
 			System.out.println("load " + e.getNewValue());
@@ -98,18 +102,23 @@ public class Gui extends JFrame implements PropertyChangeListener {
 
 	}
 	
-	private void save() {
-		// TODO Auto-generated method stub
+	/**
+	 * Save a spreadsheet
+	 */
+	private static String save(String location) {
 		
-	}	
-	
-	private void saveAs() {
-		// TODO Auto-generated method stub
+		Table t = ((SpreadSheet) spreadsheet).getTable();
+		saved = new SaveFile( t );
 		
+		String msg;
+		
+		msg = saved.save(location);
+		System.out.println(msg);
+		return msg;
 	}
 	
+	
 	private void load() {
-		// TODO Auto-generated method stub
 		
 	}
 	/**

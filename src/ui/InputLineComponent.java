@@ -37,8 +37,9 @@ public class InputLineComponent extends JPanel implements ActionListener{
 		return "";
 	}
 	
-	public String setMsg(){
-		return "";
+	public String setMsg(String newMsg){
+		msg.setText(newMsg);
+		return msg.getText();
 	}
 	
 	public void setText(String s){

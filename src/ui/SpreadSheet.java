@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import structure.Cell;
+import structure.Table;
 
 
 /**
@@ -137,6 +138,10 @@ public class SpreadSheet extends JTable implements ActionListener {
 	
 	public void setFormulaOfSelectedCell(String formula) {
 		gm.setValueAt(row, column, formula);
+	}
+	
+	public Table getTable() {
+		return gm.getTable();
 	}
 	
 }
