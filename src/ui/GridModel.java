@@ -1,13 +1,7 @@
 package ui;
 
-import java.awt.Dimension;
-
-import javax.swing.JTable;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
-import structure.Cell;
 import structure.Table;
 
 public class GridModel extends AbstractTableModel {
@@ -82,8 +76,39 @@ public class GridModel extends AbstractTableModel {
 		return table.selectCell(row, column);
 	}
 	
-	public void setValueAt(int row, int column) {
+	
+	/**
+	 * This method sets the formula of a cell at a selected location.
+	 * 
+	 * @param row of a cell desired to be changed.
+	 * @param column of a cell desired to be changed.
+	 * @param formula which will be set at the desired cell.
+	 */
+	public void setValueAt(int row, int column, String formula) {
+		table.selectCell(row, column);
 		
+		try {
+			table.insertToCell(formula);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * This method retrieves a table.
+	 * 
+	 * @return the table.
+	 */
+	public Table getTable() {
+		return table;
+	}
+
+	/**
+	 * This method abstracts table creation.
+	 */
+	public void createNew() {
+		table.createNew();
 	}
 
 	

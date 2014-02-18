@@ -3,13 +3,22 @@ package ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTable;
+import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
+<<<<<<< HEAD
+=======
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
+>>>>>>> GUI
 import structure.Cell;
+import structure.Table;
 
 
 /**
@@ -21,7 +30,6 @@ import structure.Cell;
 public class SpreadSheet extends JTable implements ActionListener {
 
 	GridModel gm;
-	Cell selectedCell;
 	int row = -1;
 	int	column = -1;
 	
@@ -52,9 +60,12 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				row = e.getLastIndex();
-				System.out.println("row " + row);
-				actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				if (! e.getValueIsAdjusting() ) {
+					row = getSelectedRow();
+					System.out.println("row " + row);
+					
+					actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				}
 			}
 		};
 		return lsl;
@@ -89,9 +100,14 @@ public class SpreadSheet extends JTable implements ActionListener {
 
 			@Override
 			public void columnSelectionChanged(ListSelectionEvent e) {
-				column = e.getLastIndex();
-				System.out.println("column " + column);
-				actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				if (! e.getValueIsAdjusting() ) {
+					
+					column = getSelectedColumn();
+			        
+					System.out.println("column " + column);
+					
+					actionPerformed(new ActionEvent(this, editingColumn, "select"));
+				}
 			}
 		};
 		return tcml;
@@ -107,8 +123,48 @@ public class SpreadSheet extends JTable implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if ( row >= 0 & column >= 0){
 			Cell c = (Cell) gm.getValueAt(row, column);
-			System.out.println(c.toString());
-			this.firePropertyChange("select", null, c.toString());
+			System.out.println(c.formulaString());
+			
+			this.firePropertyChange("select", null, c.formulaString());
 		}
 	}
+	
+	/**
+	 * Is a method which verifies if a cell is selected at that moment.
+	 * 
+	 * @return true if a cell is selected, and false if no cell is selected.
+	 */
+	public boolean isSelected() {
+		if ( row >= 0 & column >= 0 )
+			return true;
+		else
+			return false;
+	}
+	
+	
+	/**
+	 * This method sets the formula of a cell.
+	 * 
+	 * @param formula the formula that the cell will be set to.
+	 */
+	public void setFormulaOfSelectedCell(String formula) {
+		gm.setValueAt(row, column, formula);
+	}
+	
+	/**
+	 * Will return a table for the saveing and loading features.
+	 * 
+	 * @return a table.
+	 */
+	public Table getTable() {
+		return gm.getTable();
+	}
+	
+	/**
+	 * abstracts the create new function.
+	 */
+	public void createNew() {
+		gm.createNew();
+	}
+	
 }

@@ -42,6 +42,18 @@ public class Table {
     }
     
     /**
+     * resets all the cells of a table.
+     */
+    public void createNew() {
+    	System.out.println("zero all cells");
+    	for(int i=0;i<cells.length;i++) {
+    		for(int j=0;j<cells[0].length;j++) {
+    			cells[i][j] = new Cell(this);
+    		}
+    	}
+    }
+    
+    /**
      * Populate this table with empty cells
      */
     public void populate() {	

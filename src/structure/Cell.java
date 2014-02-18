@@ -120,12 +120,18 @@ public class Cell {
 	}
 	
 	/**
-	 * Override toString method
+	 * Override toString method to return the value
 	 */
 	public String toString() {
-		return formula.formula() + " = " + value;
+		return "" + value;
 	}
-
+	
+	/**
+	 * Getter for a string representation of the formula.
+	 */
+	public String formulaString() {
+		return formula.formula();
+	}
 
 	/**
 	 * Cells are equal if their formulas and values are equal
