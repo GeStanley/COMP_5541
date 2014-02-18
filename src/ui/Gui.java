@@ -95,11 +95,11 @@ public class Gui extends JFrame implements PropertyChangeListener {
 			inputLine.setMsg(msg);
 		
 		} else if  (e.getPropertyName().equals("load")) {
-			System.out.println("load " + e.getNewValue());
-			load();
-			
+			String location = (String) e.getNewValue();
+			System.out.println("load " + location);
+			String msg = load(location);
+			inputLine.setMsg(msg);
 		}
-
 	}
 	
 	/**
@@ -109,7 +109,6 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		
 		Table t = ((SpreadSheet) spreadsheet).getTable();
 		saved = new SaveFile( t );
-		
 		String msg;
 		
 		msg = saved.save(location);
@@ -118,9 +117,19 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	}
 	
 	
-	private void load() {
-		
+	private String load(String location) {
+		Table t = ((SpreadSheet) spreadsheet).getTable();
+		saved = new SaveFile( t );
+		String msg;
+	
+		msg = saved.load(location);
+		System.out.println(msg);
+			
+		return msg;			
 	}
+	
+	
+	
 	/**
 	 * Initializes the frame, and displays it.
 	 * 
