@@ -87,15 +87,11 @@ public class Gui extends JFrame implements PropertyChangeListener {
 			inputLine.setText(s);
 		
 		} else if  (e.getPropertyName().equals("save")) {
-			System.out.println("save");
+			System.out.println("save " + e.getNewValue());
 			save();
 		
-		} else if  (e.getPropertyName().equals("saveAs")) {
-			System.out.println("saveAs");
-			saveAs();
-		
 		} else if  (e.getPropertyName().equals("load")) {
-			System.out.println("load");
+			System.out.println("load " + e.getNewValue());
 			load();
 			
 		}

@@ -68,10 +68,9 @@ public class ButtonComponent extends JPanel implements ActionListener{
 				this.firePropertyChange("save", false, fullSaveLocation);
 			}
 			
-			
 		} else if (src == saveAs) {
 			if ( getFileLocation() != null ){
-				this.firePropertyChange("saveAs", false, fullSaveLocation);
+				this.firePropertyChange("save", false, fullSaveLocation);
 			}
 			
 		} else if (src == load) {
