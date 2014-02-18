@@ -80,6 +80,8 @@ public class Gui extends JFrame implements PropertyChangeListener {
 			if ( ((SpreadSheet) spreadsheet).isSelected() ) { 
 				System.out.println("input " + in);
 				((SpreadSheet) spreadsheet).setFormulaOfSelectedCell( in );
+				spreadsheet.validate();
+				spreadsheet.repaint();
 			}
 			
 
@@ -99,6 +101,9 @@ public class Gui extends JFrame implements PropertyChangeListener {
 			System.out.println("load " + location);
 			String msg = load(location);
 			inputLine.setMsg(msg);
+		} else if  (e.getPropertyName().equals("createNew")) {
+			System.out.println("createNew");
+			createNewSpreadsheet();
 		}
 	}
 	
@@ -126,6 +131,10 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		System.out.println(msg);
 			
 		return msg;			
+	}
+	
+	private void createNewSpreadsheet() {
+		spreadsheet = new SpreadSheet();
 	}
 	
 	
