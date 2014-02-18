@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.table.AbstractTableModel;
 
+import structure.Cell;
 import structure.Table;
 
 public class GridModel extends AbstractTableModel {

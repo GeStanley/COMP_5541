@@ -23,16 +23,14 @@ public class InputLineComponent extends JPanel implements ActionListener{
 	JTextField input;
 	JLabel msg;
 	
-<<<<<<< HEAD
-	public InputLineComponent(){
-=======
+
 	/**
 	 * Constructor for the class.
 	 * 
 	 * @param table the table containing all the data.
 	 */
 	public InputLineComponent(Table table){
->>>>>>> GUI
+
 		
 		setLayout(new GridLayout());
 		

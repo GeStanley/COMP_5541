@@ -39,15 +39,12 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 
-<<<<<<< HEAD
-		// Grid setup
-		inputLine = new InputLineComponent();
-=======
+
 		// GUI setup
 		buttonComponent = new ButtonComponent();
 		inputLine = new InputLineComponent(null);
 		
->>>>>>> GUI
+
 		spreadsheet = new SpreadSheet();
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
 		spreadsheet.setFillsViewportHeight(true);

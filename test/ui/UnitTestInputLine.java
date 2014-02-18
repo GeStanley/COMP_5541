@@ -20,7 +20,7 @@ public class UnitTestInputLine {
 	public void testCellDisplay() throws NumberFormatException, Exception {
 		
 		testGrid = new GridModel();
-		testComp = new InputLineComponent();
+		testComp = new InputLineComponent(null);
 				
 		
 //		Robot enter = new Robot();
