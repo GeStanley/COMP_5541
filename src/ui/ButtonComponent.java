@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +20,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 	
 	private String filename;
 	private String directory;
+	private String fullSaveLocation;
 	
 	public ButtonComponent() {
 		
@@ -58,41 +60,54 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == save) {
-			JFileChooser saveJFC = new JFileChooser();
-			
-			FileFilter CSV = new FileNameExtensionFilter("CSV (.csv)", "csv");
-			saveJFC.addChoosableFileFilter(CSV);
-			saveJFC.setFileFilter(CSV);
-			
-			int action = saveJFC.showSaveDialog(null);
-			
-			if ( action == JFileChooser.APPROVE_OPTION ){
-				filename  = saveJFC.getSelectedFile().getName();
-				directory = saveJFC.getCurrentDirectory().toString();
-				
-				
-				
-				System.out.println( directory + " " + filename );
-				
-				this.firePropertyChange("save", false, null);
-			} else if ( action == JFileChooser.CANCEL_OPTION ) {
-				System.out.println("Cancel");
+			if ( fullSaveLocation == null ){
+				if ( getFileLocation() != null ){
+					this.firePropertyChange("save", false, fullSaveLocation);
+				}
+			} else {
+				this.firePropertyChange("save", false, fullSaveLocation);
 			}
 			
 			
-			
-			
-			
-			
 		} else if (src == saveAs) {
+			if ( getFileLocation() != null ){
+				this.firePropertyChange("saveAs", false, fullSaveLocation);
+			}
 			
-			
-			this.firePropertyChange("saveAs", false, null);
 		} else if (src == load) {
-			
-			
-			this.firePropertyChange("load", false, null);
+			if ( getFileLocation() != null ){
+				this.firePropertyChange("load", false, fullSaveLocation);
+			}
 		}
+	}
+	
+	public String getFileLocation() {
+		JFileChooser saveJFC = new JFileChooser();
 		
+		FileFilter CSV = new FileNameExtensionFilter("CSV (.csv)", "csv");
+		saveJFC.addChoosableFileFilter(CSV);
+		saveJFC.setFileFilter(CSV);
+		
+		int action = saveJFC.showSaveDialog(null);
+		
+		if ( action == JFileChooser.APPROVE_OPTION ){
+			filename  = saveJFC.getSelectedFile().getName();
+			directory = saveJFC.getCurrentDirectory().toString();
+			
+			fullSaveLocation = directory + "/";
+			
+			if ( filename.endsWith(".csv") ) {
+				fullSaveLocation = fullSaveLocation + filename;
+			} else {
+				fullSaveLocation = fullSaveLocation + filename + ".csv";
+			}
+			
+			System.out.println( fullSaveLocation );
+			return fullSaveLocation;
+			
+		} else if ( action == JFileChooser.CANCEL_OPTION ) {
+			return null;
+		}
+		return null;	
 	}
 }
