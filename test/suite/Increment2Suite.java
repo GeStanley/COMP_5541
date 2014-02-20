@@ -10,6 +10,7 @@ import org.junit.runners.Suite;
   structure.UnitTestTable.class,
   ui.UnitTestSaveFile.class,
   ui.UnitTestGridModel.class,
+  ui.UnitTestSpreadSheet.class,
   ui.UnitTestInputLine.class
 })
 

@@ -1,6 +1,7 @@
 package ui;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -55,22 +56,22 @@ public class UnitTestGridModel {
 		testTable.getCell(5, 5).setFormula("5+5");
 		testTable.selectCell(5, 5);
 		
-		assertEquals("10.0",testGrid.getValueAt(5, 5));
+		assertEquals("10.0",testGrid.getValueAt(5, 5).toString());
 		
 		testTable.getCell(4, 4).setFormula(null);
 		testTable.selectCell(4, 4);
 		
-		assertEquals("0.0",testGrid.getValueAt(4, 4));
+		assertEquals("0.0",testGrid.getValueAt(4, 4).toString());
 		
 		testTable.getCell(3, 3).setFormula("0.0");
 		testTable.selectCell(3, 3);
 		
-		assertEquals("0.0",testGrid.getValueAt(3, 3));
+		assertEquals("0.0",testGrid.getValueAt(3, 3).toString());
 		
 		testTable.getCell(2, 2).setFormula("abc");
 		testTable.selectCell(2, 2);
 		
-		assertEquals("0.0",testGrid.getValueAt(2, 2));
+		assertEquals("0.0",testGrid.getValueAt(2, 2).toString());
 	}
 	
 	@Test
@@ -89,10 +90,18 @@ public class UnitTestGridModel {
 		
 		testGrid = new GridModel(5,5);
 		
-		testGrid.setValueAt(7, 7, "2+2");
+		//assertFalse(testGrid.setValueAt(7, 7, "2+2"));
+		//assertNull(testGrid.setValueAt(7, 7, "2+2"));
+		fail("trying to set a value out of bounds should result in either false or null imo");
 		
-		testGrid.setValueAt(2, 2, "2+2");
-		assertEquals("4.0",testGrid.getValueAt(2, 2));
+		testGrid.setValueAt(1, 1, "2+2");
+		assertEquals("4.0",testGrid.getValueAt(1, 1).toString());
+		
+		testGrid.setValueAt(2, 2, "2.2+2.4");
+		assertEquals("4.6",testGrid.getValueAt(2, 2).toString());
+		
+		testGrid.setValueAt(3, 3, "abvc");
+		assertEquals("0.0",testGrid.getValueAt(3, 3).toString());
 		
 	}
 }

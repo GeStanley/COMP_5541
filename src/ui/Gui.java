@@ -77,7 +77,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
-
+		//InputLineComponent action.
 		if (e.getPropertyName().equals("input")) {
 			String in = (String) e.getNewValue();
 			
@@ -88,7 +88,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 				spreadsheet.validate();
 				spreadsheet.repaint();
 			}
-			
+		//SpreadSheet component action.
 		} else if (e.getPropertyName().equals("select")) {
 			System.out.println("select");
 			String s = (String) e.getNewValue();
