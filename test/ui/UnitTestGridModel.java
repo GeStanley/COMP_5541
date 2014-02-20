@@ -1,15 +1,30 @@
 package ui;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import structure.Cell;
 import structure.Table;
 
-public class testGridModel {
-	
+public class UnitTestGridModel {
+
 	GridModel testGrid;
+	
+	@Test
+	public void testTableConstructor() {
+		testGrid = new GridModel(null);
+		testGrid = new GridModel(new Table());
+	}
+	
+	@Test
+	public void testDimensionConstructor() {
+		int i=0;
+		int j=0;
+		
+		testGrid = new GridModel(i,j);
+
+	}
 	
 	@Test
 	public void testDimensionRetreaval() {
@@ -28,6 +43,7 @@ public class testGridModel {
 		testGrid = new GridModel(testTable);
 		assertEquals(15,testGrid.getRowCount());
 		assertEquals(16,testGrid.getColumnCount());
+		
 	}
 	
 	@Test
@@ -39,7 +55,22 @@ public class testGridModel {
 		testTable.getCell(5, 5).setFormula("5+5");
 		testTable.selectCell(5, 5);
 		
-		assertEquals("5+5",testGrid.getValueAt(5, 5));
+		assertEquals("10.0",testGrid.getValueAt(5, 5));
+		
+		testTable.getCell(4, 4).setFormula(null);
+		testTable.selectCell(4, 4);
+		
+		assertEquals("0.0",testGrid.getValueAt(4, 4));
+		
+		testTable.getCell(3, 3).setFormula("0.0");
+		testTable.selectCell(3, 3);
+		
+		assertEquals("0.0",testGrid.getValueAt(3, 3));
+		
+		testTable.getCell(2, 2).setFormula("abc");
+		testTable.selectCell(2, 2);
+		
+		assertEquals("0.0",testGrid.getValueAt(2, 2));
 	}
 	
 	@Test
@@ -51,5 +82,17 @@ public class testGridModel {
 		Cell selection = testGrid.select(1, 1);
 		
 		assertEquals(testTable.getSelectedCell(), selection);
+	}
+	
+	@Test
+	public void testSetValueAt(){
+		
+		testGrid = new GridModel(5,5);
+		
+		testGrid.setValueAt(7, 7, "2+2");
+		
+		testGrid.setValueAt(2, 2, "2+2");
+		assertEquals("4.0",testGrid.getValueAt(2, 2));
+		
 	}
 }
