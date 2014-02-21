@@ -19,11 +19,13 @@ import structure.Table;
  */
 public class Gui extends JFrame implements PropertyChangeListener {
 
-	private static SaveFile saved;
-	private InputLineComponent inputLine;
-	private static JTable spreadsheet;
-	private ButtonComponent buttonComponent;
-	private JScrollPane scrollPane;
+	//TODO removed private to make testing easier.
+	//if there is another way of doing it please let me know.
+	static SaveFile saved;
+	InputLineComponent inputLine;
+	static JTable spreadsheet;
+	ButtonComponent buttonComponent;
+	JScrollPane scrollPane;
 
 	
 	/**
