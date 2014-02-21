@@ -22,7 +22,7 @@ public class UnitTestGui {
 	}
 	
 	@Test
-	public void testPropertyChange() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException, SecurityException {
+	public void testInputPropertyChange() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException, SecurityException {
 		
 		testGui = new Gui();
 		
@@ -62,6 +62,69 @@ public class UnitTestGui {
 		
 		assertEquals("input error",testGui.inputLine.getMsg());
 		assertEquals("0.0",Gui.spreadsheet.getValueAt(2, 2).toString());
+	}
+	
+	@Test
+	public void testSelectPropertyChange(){
+		testGui = new Gui();
+		int count = 1 ;
+		
+		//simple usage
+		for(int i=0;i<5;i++){
+			for(int j=0;j<5;j++){
+				Gui.spreadsheet.setRowSelectionInterval(i, i);
+				Gui.spreadsheet.setColumnSelectionInterval(j, j);
+				testGui.inputLine.setText(Integer.toString(count));
+				testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
+				count++;
+			}
+		}
+		
+		count=1;
+		
+		for(int i=0;i<5;i++){
+			for(int j=0;j<5;j++){
+				Gui.spreadsheet.setRowSelectionInterval(i, i);
+				Gui.spreadsheet.setColumnSelectionInterval(j, j);
+				
+				assertEquals(Integer.toString(count),testGui.inputLine.input.getText());
+				
+				count++;
+			}
+		}
+		
+		//simple formula
+		Gui.spreadsheet.setRowSelectionInterval(3, 3);
+		Gui.spreadsheet.setColumnSelectionInterval(3, 3);
+		testGui.inputLine.setText("2+3");
+		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
+		
+		assertEquals("2+3",testGui.inputLine.input.getText());
+		
+		
+		//blank case
+		Gui.spreadsheet.setRowSelectionInterval(1, 1);
+		Gui.spreadsheet.setColumnSelectionInterval(1, 1);
+		testGui.inputLine.setText("");
+		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
+		
+		assertEquals("0.0",testGui.inputLine.input.getText());
+		
+		//null case
+		Gui.spreadsheet.setRowSelectionInterval(2, 2);
+		Gui.spreadsheet.setColumnSelectionInterval(2, 2);
+		testGui.inputLine.setText(null);
+		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
+		
+		assertEquals("0.0",testGui.inputLine.input.getText());
+		
+		//exception case
+		Gui.spreadsheet.setRowSelectionInterval(2, 2);
+		Gui.spreadsheet.setColumnSelectionInterval(2, 2);
+		testGui.inputLine.setText("abc");
+		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
+		
+		assertEquals("0.0",testGui.inputLine.input.getText());
 	}
 	
 }
