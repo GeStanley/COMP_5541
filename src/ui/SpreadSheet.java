@@ -2,19 +2,14 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JTable;
-import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
-
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-
 
 import structure.Cell;
 import structure.Table;
@@ -78,7 +73,6 @@ public class SpreadSheet extends JTable implements ActionListener {
 	 * @return a TableColumnModelListener
 	 */
 	private TableColumnModelListener columnModelListener() {
-		// TODO Auto-generated method stub
 		TableColumnModelListener tcml = new TableColumnModelListener() {
 
 			@Override

@@ -1,12 +1,10 @@
 package ui;
 
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import structure.Cell;
 import structure.Table;
 import structure.Table.NullCellPointer;
-import structure.Cell;
-import ui.SaveFile;
 
 public class Console {
 	

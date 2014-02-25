@@ -3,9 +3,9 @@ package ui;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 import structure.Cell;
 import structure.Table;
-import structure.Table.NullCellPointer;
 
 public class SaveFile {
 	private File saveFile;
