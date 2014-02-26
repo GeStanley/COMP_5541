@@ -70,6 +70,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		add(load);
 		
 		
+		
 	}
 	
 	/**
@@ -81,7 +82,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		
 		if (src == save) {
 			if ( fullSaveLocation == null ){
-				if ( getFileLocation() != null ){
+				if ( getFileLocation("Save") != null ){
 					this.firePropertyChange("save", false, fullSaveLocation);
 				}
 			} else {
@@ -89,12 +90,12 @@ public class ButtonComponent extends JPanel implements ActionListener{
 			}
 			
 		} else if (src == saveAs) {
-			if ( getFileLocation() != null ){
+			if ( getFileLocation("Save") != null ){
 				this.firePropertyChange("save", false, fullSaveLocation);
 			}
 			
 		} else if (src == load) {
-			if ( getFileLocation() != null ){
+			if ( getFileLocation("Open") != null ){
 				this.firePropertyChange("load", false, fullSaveLocation);
 			}
 		} else if (src == createNew) {
@@ -108,18 +109,23 @@ public class ButtonComponent extends JPanel implements ActionListener{
 	 * 
 	 * @return returns the location of a selected file.
 	 */
-	public String getFileLocation() {
-		JFileChooser saveJFC = new JFileChooser();
+	public String getFileLocation(String saveOrOpen) {
+		JFileChooser JFC = new JFileChooser();
+		int action = 0;
 		
 		FileFilter CSV = new FileNameExtensionFilter("CSV (.csv)", "csv");
-		saveJFC.addChoosableFileFilter(CSV);
-		saveJFC.setFileFilter(CSV);
+		JFC.addChoosableFileFilter(CSV);
+		JFC.setFileFilter(CSV);
 		
-		int action = saveJFC.showSaveDialog(null);
+		
+		if (saveOrOpen.equals("Save"))
+			action = JFC.showSaveDialog(null);
+		else if (saveOrOpen.equals("Open"))
+			action = JFC.showOpenDialog(null);
 		
 		if ( action == JFileChooser.APPROVE_OPTION ){
-			filename  = saveJFC.getSelectedFile().getName();
-			directory = saveJFC.getCurrentDirectory().toString();
+			filename  = JFC.getSelectedFile().getName();
+			directory = JFC.getCurrentDirectory().toString();
 			
 			fullSaveLocation = directory + "/";
 			

@@ -38,12 +38,12 @@ public class UnitTestGridModel {
 		//extra column automatically.
 		testGrid = new GridModel(20,20);
 		assertEquals(20,testGrid.getRowCount());
-		assertEquals(21,testGrid.getColumnCount());
+		assertEquals(20,testGrid.getColumnCount());
 		
 		Table testTable = new Table(15,15);
 		testGrid = new GridModel(testTable);
 		assertEquals(15,testGrid.getRowCount());
-		assertEquals(16,testGrid.getColumnCount());
+		assertEquals(15,testGrid.getColumnCount());
 		
 	}
 	
