@@ -32,7 +32,7 @@ public class InputLineComponent extends JPanel implements ActionListener{
 	public InputLineComponent(Table table){
 
 		
-		setLayout(new GridLayout());
+		setLayout(new GridLayout(2, 1));
 		
 		input = new JTextField();
 		input.addActionListener(this);
@@ -40,8 +40,8 @@ public class InputLineComponent extends JPanel implements ActionListener{
 		
 		msg = new JLabel("Message:");
 		
-		add(input);
 		add(msg);
+		add(input);
 		
 	}
 	/**
@@ -59,7 +59,9 @@ public class InputLineComponent extends JPanel implements ActionListener{
 	 * @param newMsg
 	 */
 	public void setMsg(String newMsg){
-		msg.setText(newMsg);
+		if ( newMsg == null || newMsg.equals(""))
+			newMsg = "";
+		msg.setText("Message: " + newMsg);
 	}
 	
 	/**
@@ -68,6 +70,8 @@ public class InputLineComponent extends JPanel implements ActionListener{
 	 * @param s a string of the formula in a cell.
 	 */
 	public void setText(String s){
+		if ( s == null || s.equals(""))
+			s = "";
 		input.setText(s);
 	}
 	

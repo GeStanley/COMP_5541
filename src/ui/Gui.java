@@ -1,6 +1,8 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -36,7 +38,8 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	public Gui() {
 		// Frame setup
 		super("Calcul-O-Matic");
-		setSize(600, 255);
+		setSize(600, 320);
+		setMinimumSize(new Dimension(450,250));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -61,7 +64,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		spreadsheet.addPropertyChangeListener(this);
 		buttonComponent.addPropertyChangeListener(this);
 		
-		JPanel menuAndInput = new JPanel();
+		JPanel menuAndInput = new JPanel(new GridLayout(2,1));
 		
 		menuAndInput.add(buttonComponent);
 		menuAndInput.add(inputLine);
