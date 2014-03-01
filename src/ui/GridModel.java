@@ -68,6 +68,10 @@ public class GridModel extends AbstractTableModel {
 		return table.getCell(row, column);
 	}
 	
+	public String getStringValueAt(int row, int column) {
+		return "" + table.getValue(row, column);
+	}
+	
 	/**
 	 * Wrapper for the table.selectCell method
 	 * 
@@ -86,15 +90,17 @@ public class GridModel extends AbstractTableModel {
 	 * @param column of a cell desired to be changed.
 	 * @param formula which will be set at the desired cell.
 	 */
-	public void setValueAt(int row, int column, String formula) {
+	public String setValueAt(int row, int column, String formula) {
 		table.selectCell(row, column);
-		
+		String c = "" + (char) ('A' + column);
+		String r = "" + (row + 1);
 		try {
 			table.insertToCell(formula);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return c + r + ": " + e.getMessage();
 		}
+		
+		return c + r + ": " + formula + " = " +  getStringValueAt(row, column);
 	}
 	
 	/**

@@ -167,6 +167,11 @@ public class Table {
     	return cells[row][getColumnIndex(column)];
     }
     
+    public double getValue(int row, int column) {
+    	return cells[row][column].getValue();
+    }
+    
+    
     /**
      * This method retrieves a cell at a given row and column address.
      * 

@@ -99,6 +99,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 				this.firePropertyChange("load", false, fullSaveLocation);
 			}
 		} else if (src == createNew) {
+			fullSaveLocation = null;
 			this.firePropertyChange("createNew", false, null);
 		}
 		
