@@ -68,9 +68,6 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		add(save);
 		add(saveAs);
 		add(load);
-		
-		
-		
 	}
 	
 	/**

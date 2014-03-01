@@ -33,9 +33,6 @@ public class UnitTestGridModel {
 		assertEquals(10,testGrid.getRowCount());
 		assertEquals(11,testGrid.getColumnCount());
 		
-		//TODO This may need to change, but I'm assuming you are inserting an extra column to account for
-		//row headers. As such, when creating a grid with provided dimensions it may be a good idea to add an
-		//extra column automatically.
 		testGrid = new GridModel(20,20);
 		assertEquals(20,testGrid.getRowCount());
 		assertEquals(20,testGrid.getColumnCount());
@@ -90,12 +87,11 @@ public class UnitTestGridModel {
 		
 		testGrid = new GridModel(5,5);
 		
-		//assertFalse(testGrid.setValueAt(7, 7, "2+2"));
-		//assertNull(testGrid.setValueAt(7, 7, "2+2"));
-		fail("trying to set a value out of bounds should result in either false or null imo");
+		assertEquals("Out of bounds.", testGrid.setValueAt(7, 7, "2+2"));
 		
 		testGrid.setValueAt(1, 1, "2+2");
 		assertEquals("4.0",testGrid.getValueAt(1, 1).toString());
+		
 		
 		testGrid.setValueAt(2, 2, "2.2+2.4");
 		assertEquals("4.6",testGrid.getValueAt(2, 2).toString());

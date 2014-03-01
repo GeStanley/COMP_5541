@@ -91,6 +91,9 @@ public class GridModel extends AbstractTableModel {
 	 * @param formula which will be set at the desired cell.
 	 */
 	public String setValueAt(int row, int column, String formula) {
+		if (row > table.getLength() || column > table.getWidth())
+			return "Out of bounds.";
+			
 		table.selectCell(row, column);
 		String c = "" + (char) ('A' + column);
 		String r = "" + (row + 1);
