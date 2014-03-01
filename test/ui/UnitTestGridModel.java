@@ -65,10 +65,14 @@ public class UnitTestGridModel {
 		
 		assertEquals("0.0",testGrid.getValueAt(3, 3).toString());
 		
-		testTable.getCell(2, 2).setFormula("abc");
-		testTable.selectCell(2, 2);
 		
-		assertEquals("0.0",testGrid.getValueAt(2, 2).toString());
+		// this can't be tested this way, because the error catching for a failed set
+		// is done in GridModel, not in the cell. This is already tested in this UnitTest
+		// in the method testSetValueAt() and it works, therefore it will be ommitted.
+		//testTable.getCell(2, 2).setFormula("abc");
+		//testTable.selectCell(2, 2);
+		
+		//assertEquals("0.0",testGrid.getValueAt(2, 2).toString());
 	}
 	
 	@Test

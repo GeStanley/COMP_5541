@@ -33,8 +33,12 @@ public class GridModel extends AbstractTableModel {
 	 */
 	public GridModel(Table existing) {
 		super();
+		if (existing == null) {
+			table = new Table(10, 11);
+		} else {
 		table = existing;
 		table.populate();
+		}
 	}
 
 	/**
@@ -68,6 +72,12 @@ public class GridModel extends AbstractTableModel {
 		return table.getCell(row, column);
 	}
 	
+	
+	/**
+	 * Accessor for the value at x,y
+	 * 
+	 * @return A string of the value in the cell
+	 */
 	public String getStringValueAt(int row, int column) {
 		return "" + table.getValue(row, column);
 	}
@@ -100,6 +110,7 @@ public class GridModel extends AbstractTableModel {
 		try {
 			table.insertToCell(formula);
 		} catch (Exception e) {
+			table.clearSelectedCell();
 			return c + r + ": " + e.getMessage();
 		}
 		

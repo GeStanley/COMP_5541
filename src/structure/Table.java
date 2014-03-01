@@ -72,6 +72,14 @@ public class Table {
     	selectedCell.resetCell();
     	selectedCell = null;
     }
+    
+    /**
+     * Resets the selected cell to a zero value, will be called when some errors occur.
+     */
+    public void clearSelectedCell() {
+    	selectedCell.resetCell();
+    }
+    
 
 	/**
      * Insert values into the row at position pos
