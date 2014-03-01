@@ -28,19 +28,26 @@ public class SpreadSheet extends JTable implements ActionListener {
 	int	column = -1;
 	
 	/**
+	 * Default constructor will create a spreadsheet of 10 rows by 11 columns.
+	 */
+	public SpreadSheet() {
+		this(10, 11);
+	}
+	
+	/**
 	 * Constructor for the class, it sets up the table with the GridModel
 	 * Sets the selection mode, and adds listeners for column and row selection change
 	 */
-	public SpreadSheet() {
-		gm = new GridModel();
+	public SpreadSheet(int rows, int columns) {
+		gm = new GridModel(rows, columns);
 		this.setModel(gm);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setCellSelectionEnabled(true);
 
 		getColumnModel().addColumnModelListener(columnModelListener());
 		getSelectionModel().addListSelectionListener(listSelectionListener());
-
 	}
+	
 
 	/**
 	 * This method is called when the row of the selected cell changes
