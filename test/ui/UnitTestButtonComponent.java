@@ -20,6 +20,8 @@ public class UnitTestButtonComponent {
 	public void before() {
 		buttonComponent = new ButtonComponent();
 		JFC = new JFileChooser();
+		
+		
 	}
 	
 	@After
