@@ -8,10 +8,13 @@ import org.junit.runners.Suite;
   structure.UnitTestCell.class,
   structure.UnitTestFormula.class,
   structure.UnitTestTable.class,
-  ui.UnitTestSaveFile.class,
+  ui.UnitTestButtonComponent.class,
   ui.UnitTestGridModel.class,
+  ui.UnitTestGui.class,
+  ui.UnitTestInputLine.class,
+  ui.UnitTestSaveFile.class,
   ui.UnitTestSpreadSheet.class,
-  ui.UnitTestInputLine.class
+  
 })
 
 public class Increment2Suite {
