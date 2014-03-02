@@ -127,4 +127,21 @@ public class UnitTestGui {
 		assertEquals("0.0",testGui.inputLine.input.getText());
 	}
 	
+	@Test
+	public void testSavePropertyChange(){
+		//TODO implement this test.
+		//challenge is to fire property change event on the gui level and interpret if the save functionality is properly triggered
+	}
+	
+	@Test
+	public void testLoadPropertyChange(){
+		//TODO implement this test.
+		//same as above
+	}
+	
+	@Test
+	public void testCreateNewPropertyChange(){
+		//TODO implement this test.
+		//same as above
+	}
 }
