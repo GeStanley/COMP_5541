@@ -103,16 +103,15 @@ public class UnitTestGui {
 		
 		
 		//blank case
-		Gui.spreadsheet.setRowSelectionInterval(1, 1);
-		Gui.spreadsheet.setColumnSelectionInterval(1, 1);
+		Gui.spreadsheet.setRowSelectionInterval(7, 7);
+		Gui.spreadsheet.setColumnSelectionInterval(7, 7);
 		testGui.inputLine.setText("");
 		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
-		
 		assertEquals("0.0",testGui.inputLine.input.getText());
 		
 		//null case
-		Gui.spreadsheet.setRowSelectionInterval(2, 2);
-		Gui.spreadsheet.setColumnSelectionInterval(2, 2);
+		Gui.spreadsheet.setRowSelectionInterval(8, 8);
+		Gui.spreadsheet.setColumnSelectionInterval(8, 8);
 		testGui.inputLine.setText(null);
 		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
 		

@@ -39,7 +39,6 @@ public class UnitTestButtonComponent {
   		    JFileChooser JFC = new JFileChooser();
 		    String loca1,loca2,directory,directory1;
 		
-		
 		    loca1=buttonComponent1.getFileLocation("Save");
 		    directory = JFC.getCurrentDirectory().toString();
 		    //System.out.println( directory );

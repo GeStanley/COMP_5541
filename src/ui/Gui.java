@@ -89,7 +89,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 			if ( ((SpreadSheet) spreadsheet).isSelected() ) { 
 				System.out.println("input " + in);
 				String msg = ((SpreadSheet) spreadsheet).setFormulaOfSelectedCell( in );
-				
+				inputLine.setText(((SpreadSheet) spreadsheet).getFormulaOfSelectedCell());
 				inputLine.setMsg(msg);
 				
 				spreadsheet.validate();

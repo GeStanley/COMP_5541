@@ -8,7 +8,6 @@ import org.junit.runners.Suite;
   structure.UnitTestCell.class,
   structure.UnitTestFormula.class,
   structure.UnitTestTable.class,
-  ui.UnitTestButtonComponent.class,
   ui.UnitTestGridModel.class,
   ui.UnitTestGui.class,
   ui.UnitTestInputLine.class,

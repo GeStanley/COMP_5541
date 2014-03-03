@@ -146,10 +146,25 @@ public class SpreadSheet extends JTable implements ActionListener {
 	 * This method sets the formula of a cell.
 	 * 
 	 * @param formula the formula that the cell will be set to.
-	 * @return 
+	 * @return a String containing a message of success or error.
 	 */
 	public String setFormulaOfSelectedCell(String formula) {
 		return gm.setValueAt(row, column, formula);
+	}
+	
+	
+	/**
+	 * This method gets the formula of the selected cell
+	 * 
+	 * @return a String containing the formula.
+	 */
+	public String getFormulaOfSelectedCell() {
+		if ( row >= 0 & column >= 0){
+			Cell c = (Cell) gm.getValueAt(row, column);
+			return c.formulaString();
+		} else {
+			return "";
+		}
 	}
 	
 	/**
