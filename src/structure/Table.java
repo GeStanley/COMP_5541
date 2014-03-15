@@ -191,9 +191,41 @@ public class Table {
     	return cells[row][column];
     }    
     
+    /**
+     * Sets the Cell at the given row and column to the new given Cell
+     * @param row The row
+     * @param column The column
+     * @param newCell The new Cell who will replace the current Cell
+     */
+    public void setCell(int row, int column, Cell newCell) {
+    	cells[row][column] = newCell;
+    }
+    
+    /**
+     * Given a Cell, find and return an int[] with the row and column.
+     * 
+     * @param findMe
+     * @return
+     */
+    public int[] findCell(Cell findMe){
+    	int[] foundAddress = new int[2];
+    	
+    	for(int i=0;i<cells.length;i++) {
+    		for(int j=0;j<cells[0].length;j++) {
+    			if (cells[i][j] == findMe){
+    				foundAddress[0]=i;
+    				foundAddress[1]=j;
+    			}
+    		}
+		}
+		return foundAddress;
+    }
+    
+    
     public Cell getSelectedCell(){
     	return selectedCell;
     }
+        
     /**
      * Select cell, create one if none exists at the desired location
      * 
@@ -248,6 +280,16 @@ public class Table {
     	}
     	else
     		return null;
+    }
+    
+    /**
+     * Selects a Cell at given row and column
+     * 
+     * @param row The row
+     * @param col The column
+     */
+    public void selectGivenCell(int row, int col){
+    	selectedCell = cells[row][col];
     }
     
     /**

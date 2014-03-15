@@ -3,23 +3,16 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.KeyStroke;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
-import structure.ClipboardControl;
 import structure.KeyboardControl;
 import structure.Table;
 
@@ -44,7 +37,6 @@ public class Gui extends JFrame implements PropertyChangeListener{
 	 * and displaying them.
 	 * 
 	 */
-	@SuppressWarnings("serial")
 	public Gui() {
 		// Frame setup
 		super("Calcul-O-Matic");
@@ -112,10 +104,14 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		
 		//SpreadSheet component action.
 		} else if (e.getPropertyName().equals("select")) {
-			System.out.println("select");
-			String s = (String) e.getNewValue();
-			inputLine.setText(s);
-		
+			
+	        int row = spreadsheet.getSelectedRow();	       
+	        int col = spreadsheet.getSelectedColumn();
+			((SpreadSheet) spreadsheet).getTable().selectGivenCell(row, col);
+			
+			System.out.println("select Cell at " + row + "," + col);
+			String s = (String) e.getNewValue();			
+			inputLine.setText(s);								
 		//Button component action.
 		} else if  (e.getPropertyName().equals("save")) {
 			String location = (String) e.getNewValue();
