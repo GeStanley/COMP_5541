@@ -183,4 +183,6 @@ public class SpreadSheet extends JTable implements ActionListener {
 		gm.createNew();
 	}
 	
+	
+	
 }

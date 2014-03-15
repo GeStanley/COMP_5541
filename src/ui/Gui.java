@@ -3,14 +3,24 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
 
+import structure.ClipboardControl;
+import structure.KeyboardControl;
 import structure.Table;
 
 
@@ -19,7 +29,7 @@ import structure.Table;
  * 
  * @author Mike
  */
-public class Gui extends JFrame implements PropertyChangeListener {
+public class Gui extends JFrame implements PropertyChangeListener{
 
 	//TODO removed private to make testing easier.
 	//if there is another way of doing it please let me know.
@@ -28,13 +38,13 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	static JTable spreadsheet;
 	ButtonComponent buttonComponent;
 	JScrollPane scrollPane;
-
 	
 	/**
 	 * This sets up the GUI aspect by taking the input line and the spreadsheet
 	 * and displaying them.
 	 * 
 	 */
+	@SuppressWarnings("serial")
 	public Gui() {
 		// Frame setup
 		super("Calcul-O-Matic");
@@ -47,8 +57,7 @@ public class Gui extends JFrame implements PropertyChangeListener {
 
 		// GUI setup
 		buttonComponent = new ButtonComponent();
-		inputLine = new InputLineComponent(null);
-		
+		inputLine = new InputLineComponent(null);	
 
 		spreadsheet = new SpreadSheet();
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
@@ -56,14 +65,16 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		
 		JTable rowTable = new RowTable(spreadsheet);
 		scrollPane.setRowHeaderView(rowTable);
-		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
-		
-		
+		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());			
 		
 		inputLine.addPropertyChangeListener(this);
 		spreadsheet.addPropertyChangeListener(this);
 		buttonComponent.addPropertyChangeListener(this);
 		
+		//Keyboard input setup
+		@SuppressWarnings("unused")
+		KeyboardControl keyInputController = new KeyboardControl((SpreadSheet) spreadsheet);
+	    
 		JPanel menuAndInput = new JPanel(new GridLayout(2,1));
 		
 		menuAndInput.add(buttonComponent);
@@ -72,8 +83,8 @@ public class Gui extends JFrame implements PropertyChangeListener {
 		add(menuAndInput, BorderLayout.NORTH);
 		add(scrollPane, BorderLayout.CENTER);
 
-	}
-
+	}		
+	
 	/**
 	 * This handles the coordination between the input line and the spreadsheet
 	 * 
@@ -179,3 +190,4 @@ public class Gui extends JFrame implements PropertyChangeListener {
 	}
 
 }
+
