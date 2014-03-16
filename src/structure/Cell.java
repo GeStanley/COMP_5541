@@ -52,6 +52,15 @@ public class Cell {
 		}
 	}
 	
+	/**
+	 * Copy constructor
+	 * @param cell The cell to be copied
+	 */
+	public Cell(Cell cell){
+		this(cell.getTable(), cell.getFormula());
+	}
+		
+	
 	public void resetCell() {
 		this.formula = new Formula("0.0", table);
 		this.value = 0.0;
@@ -80,6 +89,10 @@ public class Cell {
 	 */
 	public String getFormula(){
 		return this.formula.formula();
+	}
+	
+	public Table getTable(){
+		return this.table;
 	}
 	
 	/**

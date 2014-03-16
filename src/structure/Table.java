@@ -198,7 +198,7 @@ public class Table {
      * @param newCell The new Cell who will replace the current Cell
      */
     public void setCell(int row, int column, Cell newCell) {
-    	cells[row][column] = newCell;
+    	cells[row][column] = new Cell(newCell);
     }
     
     /**
