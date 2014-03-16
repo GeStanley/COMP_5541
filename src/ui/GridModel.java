@@ -68,8 +68,9 @@ public class GridModel extends AbstractTableModel {
 	 */
 	//TODO this is miss leading! it's getting a cell, not a value!
 	@Override
-	public Object getValueAt(int row, int column) {
-		return table.getCell(row, column);
+	public String getValueAt(int row, int column) {
+		return table.getCell(row, column).getValueString();
+		//return table.getCell(row, column);
 	}
 	
 	
@@ -79,7 +80,7 @@ public class GridModel extends AbstractTableModel {
 	 * @return A string of the value in the cell
 	 */
 	public String getStringValueAt(int row, int column) {
-		return "" + table.getValue(row, column);
+		return table.getValueString(row, column);		
 	}
 	
 	/**

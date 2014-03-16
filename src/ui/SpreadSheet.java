@@ -31,7 +31,7 @@ public class SpreadSheet extends JTable implements ActionListener {
 	 * Default constructor will create a spreadsheet of 10 rows by 11 columns.
 	 */
 	public SpreadSheet() {
-		this(10, 11);
+		this(20, 20);
 	}
 	
 	/**
@@ -122,10 +122,11 @@ public class SpreadSheet extends JTable implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if ( row >= 0 & column >= 0){
-			Cell c = (Cell) gm.getValueAt(row, column);
-			System.out.println(c.formulaString());
+			//Cell c = (Cell) gm.getValueAt(row, column);
+			String cellValue = gm.getStringValueAt(row, column);
+			System.out.println(cellValue);
 			
-			this.firePropertyChange("select", null, c.formulaString());
+			this.firePropertyChange("select", null, cellValue);
 		}
 	}
 	
@@ -160,8 +161,8 @@ public class SpreadSheet extends JTable implements ActionListener {
 	 */
 	public String getFormulaOfSelectedCell() {
 		if ( row >= 0 & column >= 0){
-			Cell c = (Cell) gm.getValueAt(row, column);
-			return c.formulaString();
+			//Cell c = (Cell) gm.getValueAt(row, column);
+			return gm.getStringValueAt(row, column);
 		} else {
 			return "";
 		}

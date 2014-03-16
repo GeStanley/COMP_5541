@@ -1,5 +1,7 @@
 package structure;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
@@ -134,7 +136,26 @@ public class Cell {
 	 * Returns the value as a string, useful for replacing in formulas
 	 */
 	public String getValueString() {
-		return value + "";
+		NumberFormat formatter;
+		String returnString = null;
+		switch(this.cellFormat){
+		case moneyFormat:
+			formatter = NumberFormat.getCurrencyInstance();
+			returnString = String.valueOf(formatter.format(value));
+			break;
+		case scienceFormat:
+			formatter =  new DecimalFormat("0.#####E0");
+			returnString = String.valueOf(formatter.format(value));	
+			break;
+		case intFormat:			
+			formatter = NumberFormat.getIntegerInstance();
+			returnString = String.valueOf(formatter.format(value));
+			break;
+		default:
+			returnString = String.valueOf(value);
+			break;			
+		}
+		return returnString;
 	}
 	
 	/**

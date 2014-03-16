@@ -179,6 +179,10 @@ public class Table {
     	return cells[row][column].getValue();
     }
     
+    public String getValueString(int row, int column) {
+    	return cells[row][column].getValueString();
+    }
+    
     
     /**
      * This method retrieves a cell at a given row and column address.
