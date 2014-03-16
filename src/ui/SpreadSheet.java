@@ -183,6 +183,10 @@ public class SpreadSheet extends JTable implements ActionListener {
 		gm.createNew();
 	}
 	
+	public void refresh(){
+		this.validate();
+		this.repaint();
+	}
 	
 	
 }

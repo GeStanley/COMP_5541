@@ -129,6 +129,10 @@ public class Gui extends JFrame implements PropertyChangeListener{
 			inputLine.setMsg("Created new spreadsheet.");
 			createNewSpreadsheet();
 		}
+		else{
+			spreadsheet.validate();
+			spreadsheet.repaint();
+		}
 	}
 	
 	/**

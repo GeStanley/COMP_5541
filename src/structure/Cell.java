@@ -10,6 +10,11 @@ import java.util.ArrayList;
  */
 public class Cell {
 	
+	public enum Format{
+		defaultFormat, moneyFormat, scienceFormat, intFormat 
+	}
+	
+	private Format cellFormat = Format.defaultFormat;
 	private double value;
 	private Table table;
 	private Formula formula;
@@ -177,6 +182,14 @@ public class Cell {
 	public ArrayList<String> getRefs(){
 		refs = formula.getReferences();
 		return refs;
+	}
+
+	public Format getCellFormat() {
+		return cellFormat;
+	}
+
+	public void setCellFormat(Format cellFormat) {
+		this.cellFormat = cellFormat;
 	}
 	
 
