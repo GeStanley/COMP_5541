@@ -41,6 +41,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		Image resizedNewImg = newImg.getScaledInstance( ICON_WIDTH, ICON_HEIGHT,  java.awt.Image.SCALE_SMOOTH ) ;  
 		newIco = new ImageIcon( resizedNewImg );
 		createNew = new JButton( newIco );
+		createNew.setName("create");
 		createNew.addActionListener( this );
 				
 		ImageIcon saveIco = new ImageIcon( "res/img/save.png" );

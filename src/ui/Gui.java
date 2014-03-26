@@ -10,8 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumnModel;
 
 import structure.KeyboardControl;
 import structure.Table;
@@ -52,6 +50,7 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		inputLine = new InputLineComponent(null);	
 
 		spreadsheet = new SpreadSheet();
+		spreadsheet.setName("data");
 		JScrollPane scrollPane = new JScrollPane(spreadsheet);
 		spreadsheet.setFillsViewportHeight(true);
 		
@@ -64,7 +63,7 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		buttonComponent.addPropertyChangeListener(this);
 		
 		//Keyboard input setup
-		@SuppressWarnings("unused")
+		//@SuppressWarnings("unused")
 		KeyboardControl keyInputController = new KeyboardControl((SpreadSheet) spreadsheet);
 	    
 		JPanel menuAndInput = new JPanel(new GridLayout(2,1));

@@ -2,14 +2,13 @@ package ui;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 
 import java.awt.event.ActionEvent;
-import java.lang.reflect.Field;
 
 import org.junit.Test;
 
 public class UnitTestGui {
+	
 	
 	Gui testGui;
 	
@@ -143,4 +142,17 @@ public class UnitTestGui {
 		//TODO implement this test.
 		//same as above
 	}
+	
+	
+	
+	@Test
+	public void openFile(){
+		
+		
+		
+	}
+
+	
+	
+	
 }
