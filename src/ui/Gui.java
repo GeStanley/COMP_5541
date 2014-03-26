@@ -20,6 +20,7 @@ import structure.Table;
  * 
  * @author Mike
  */
+@SuppressWarnings("serial")
 public class Gui extends JFrame implements PropertyChangeListener{
 
 	//TODO removed private to make testing easier.

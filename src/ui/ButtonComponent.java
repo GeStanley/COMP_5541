@@ -17,6 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author mike
  *
  */
+@SuppressWarnings("serial")
 public class ButtonComponent extends JPanel implements ActionListener{
 
 	private JButton save;
@@ -49,6 +50,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		Image resizedSaveImg = saveImg.getScaledInstance( ICON_WIDTH, ICON_HEIGHT,  java.awt.Image.SCALE_SMOOTH ) ;  
 		saveIco = new ImageIcon( resizedSaveImg );
 		save = new JButton( saveIco );
+		save.setName("save");
 		save.addActionListener( this );
 		 
 		ImageIcon saveAsIco = new ImageIcon( "res/img/save_as.png" );
@@ -56,6 +58,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		Image resizedSaveAsImg = saveAsImg.getScaledInstance( ICON_WIDTH, ICON_HEIGHT,  java.awt.Image.SCALE_SMOOTH ) ;  
 		saveAsIco = new ImageIcon( resizedSaveAsImg );
 		saveAs = new JButton( saveAsIco );
+		saveAs.setName("saveAs");
 		saveAs.addActionListener( this );
 		
 		ImageIcon loadIco = new ImageIcon( "res/img/load.png" );
@@ -63,6 +66,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		Image resizedLoadImg = loadImg.getScaledInstance( ICON_WIDTH, ICON_HEIGHT,  java.awt.Image.SCALE_SMOOTH ) ;  
 		loadIco = new ImageIcon( resizedLoadImg );
 		load = new JButton( loadIco );
+		load.setName("load");
 		load.addActionListener( this );
 		
 		add(createNew);
