@@ -39,6 +39,7 @@ public class InputLineComponent extends JPanel implements ActionListener{
 		input.setPreferredSize(new Dimension( 200, 24 ));
 		
 		msg = new JLabel("Message:");
+		msg.setName("message");
 		
 		add(msg);
 		add(input);

@@ -9,6 +9,7 @@ import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JButtonFixture;
+import org.fest.swing.fixture.JLabelFixture;
 import org.fest.swing.fixture.JTableFixture;
 import org.fest.swing.fixture.JTextComponentFixture;
 import org.fest.swing.timing.Pause;
@@ -26,6 +27,7 @@ public class UnitTestGuiAuto {
 	private JButtonFixture saveAs;
 	private JButtonFixture load;
 	private JTableFixture cell;
+	private JLabelFixture message;
 
 	@Before
 	public void onSetUp() {
@@ -46,6 +48,7 @@ public class UnitTestGuiAuto {
 	    save = gui.button("save");
 	    saveAs = gui.button("saveAs");
 	    load = gui.button("load");
+	    message = gui.label("message");
 	    
 	}
 	
@@ -65,57 +68,131 @@ public class UnitTestGuiAuto {
 		
 		//check that value does not change when input is null
 		table.selectCell(TableCell.row(0).column(0));
-		System.out.println(table.selectionValue());
 		assertEquals("0.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		input.deleteText();
 		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
 		assertEquals("0.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		
-		//check that value does not change when a wron input is entered
+		//check that value does not change when a wrong input is entered
 		table.selectCell(TableCell.row(1).column(1));
-		System.out.println(table.selectionValue());
 		assertEquals("0.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		input.deleteText();
 		input.enterText("3+rt");
 		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
 		assertEquals("0.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		
 		// check that you can enter a value
 		table.selectCell(TableCell.row(2).column(2));
-		System.out.println(table.selectionValue());
 		assertEquals("0.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		input.deleteText();
 		input.enterText("10");
 		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
 		assertEquals("10.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		
 		// check that you can enter a formula
 		table.selectCell(TableCell.row(3).column(3));
-		System.out.println(table.selectionValue());
 		assertEquals("0.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		input.deleteText();
 		input.enterText("A1+C3");
 		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
 		assertEquals("10.0", table.selectionValue());
-		pause("ll");
+		pause("s");
 		
 	}
 	
 	@Test
 	public void testCicularReference(){
-		//TODO implement this test.
+		table.selectCell(TableCell.row(0).column(0));
+		assertEquals("0.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("1.0", table.selectionValue());
+		pause("s");
+		
+		table.selectCell(TableCell.row(0).column(1));
+		assertEquals("0.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("A1+1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("2.0", table.selectionValue());
+		pause("s");
+		
+		table.selectCell(TableCell.row(0).column(2));
+		assertEquals("0.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("B1+1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("3.0", table.selectionValue());
+		pause("s");
+		
+		table.selectCell(TableCell.row(0).column(0));
+		assertEquals("1.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("C1 + 1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		pause("s");
+		
+		// Tests if a circular reference message is shown.
+		assertEquals("Message: A1: Circular Reference", message.text());
+		pause("s");
+		
 	}
 	
 	@Test
 	public void testChangePropagation(){
-		//TODO implement this test.
+		table.selectCell(TableCell.row(0).column(0));
+		assertEquals("0.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("1.0", table.selectionValue());
+		pause("s");
+		
+		table.selectCell(TableCell.row(0).column(1));
+		assertEquals("0.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("A1+1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("2.0", table.selectionValue());
+		pause("s");
+		
+		table.selectCell(TableCell.row(0).column(2));
+		assertEquals("0.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("B1+1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("3.0", table.selectionValue());
+		pause("s");
+		
+		table.selectCell(TableCell.row(0).column(0));
+		assertEquals("1.0", table.selectionValue());
+		pause("s");
+		input.deleteText();
+		input.enterText("2");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("2.0", table.selectionValue());
+		pause("s");
+		
+		table.selectCell(TableCell.row(0).column(1));
+		assertEquals("3.0", table.selectionValue());
+		table.selectCell(TableCell.row(0).column(2));
+		assertEquals("4.0", table.selectionValue());
+		pause("s");
 	}
 	
 	@Test
