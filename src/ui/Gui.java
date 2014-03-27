@@ -66,7 +66,7 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		//Keyboard input setup
 		//@SuppressWarnings("unused")
 		KeyboardControl keyInputController = new KeyboardControl((SpreadSheet) spreadsheet);
-	    
+		
 		JPanel menuAndInput = new JPanel(new GridLayout(2,1));
 		
 		menuAndInput.add(buttonComponent);

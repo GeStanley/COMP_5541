@@ -1,6 +1,7 @@
 package structure;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
@@ -21,7 +22,7 @@ public class KeyboardControl {
 	private ActionMap myActionMap;
 
 	@SuppressWarnings("serial")
-	public KeyboardControl(SpreadSheet spreadsheet){
+	public KeyboardControl(SpreadSheet spreadsheet) {
 		this.clip = new ClipboardControl(spreadsheet.getTable());
 		this.cellFormat = new CellFormatControl(spreadsheet.getTable());
 		myKeyInput = spreadsheet.getInputMap(JPanel.WHEN_FOCUSED);
