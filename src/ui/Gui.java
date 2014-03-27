@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import structure.Cell;
 import structure.KeyboardControl;
 import structure.Table;
 
@@ -92,7 +93,7 @@ public class Gui extends JFrame implements PropertyChangeListener{
 			if ( ((SpreadSheet) spreadsheet).isSelected() ) { 
 				System.out.println("input " + in);
 				String msg = ((SpreadSheet) spreadsheet).setFormulaOfSelectedCell( in );
-				inputLine.setText(((SpreadSheet) spreadsheet).getFormulaOfSelectedCell());
+				inputLine.setText(in);
 				inputLine.setMsg(msg);
 				
 				spreadsheet.validate();
@@ -110,8 +111,9 @@ public class Gui extends JFrame implements PropertyChangeListener{
 			((SpreadSheet) spreadsheet).getTable().selectGivenCell(row, col);
 			
 			System.out.println("select Cell at " + row + "," + col);
+			Cell cell = ((SpreadSheet) spreadsheet).getTable().getSelectedCell();
 			String s = (String) e.getNewValue();			
-			inputLine.setText(s);								
+			inputLine.setText(cell.getFormula());								
 		//Button component action.
 		} else if  (e.getPropertyName().equals("save")) {
 			String location = (String) e.getNewValue();
