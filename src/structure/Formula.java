@@ -28,6 +28,10 @@ public class Formula {
 		result = 0;
 	}
 	
+	public void setFormula(String formula) {
+		this.formula = formula;
+	}
+
 	/**
 	 * Constructor using just a formula
 	 * 
@@ -184,6 +188,12 @@ public class Formula {
 	 * @return The result of the operation
 	 */
 	public double evaluate() throws Exception, NumberFormatException {
+		boolean isSpecialCharPresent = false;
+		if((this.formula).charAt(0)=='@'){
+			this.formula = this.formula.substring(1);
+			isSpecialCharPresent = true;
+		}
+		
 		int pos, brackets = 0, startNested = 0, endNested = 0;
 		char last = '+'; // Ensures leading minus signs will be properly parsed
 		byte pass;
@@ -318,6 +328,9 @@ public class Formula {
 		if (vals.size() == 1) {
 			result = vals.remove(0);
 			if (debug) System.out.println("Evaluated " + this);
+			if(isSpecialCharPresent){
+				this.formula = "@" + this.formula;
+			}
 			return result;
 		}
 
@@ -365,6 +378,11 @@ public class Formula {
 
 		result = vals.peek();
 		if (debug) System.out.println("Evaluated " + this);
+		
+		if(isSpecialCharPresent){
+			this.formula = "@" + this.formula;
+	}
+		
 		return result;
 	}
 	

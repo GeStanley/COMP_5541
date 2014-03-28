@@ -31,6 +31,7 @@ public class Gui extends JFrame implements PropertyChangeListener{
 	static JTable spreadsheet;
 	ButtonComponent buttonComponent;
 	JScrollPane scrollPane;
+	int gRow=0,gColumn=0;
 	
 	/**
 	 * This sets up the GUI aspect by taking the input line and the spreadsheet
@@ -87,17 +88,34 @@ public class Gui extends JFrame implements PropertyChangeListener{
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
 		//InputLineComponent action.
+		
+		boolean isSpecialCharPresent = false;
 		if (e.getPropertyName().equals("input")) {
 			String in = (String) e.getNewValue();
 			
 			if ( ((SpreadSheet) spreadsheet).isSelected() ) { 
 				System.out.println("input " + in);
+				// To Handle '@' 
+				if((in).charAt(0)=='@'){
+					in = in.substring(1);
+					isSpecialCharPresent = true;
+				}
 				String msg = ((SpreadSheet) spreadsheet).setFormulaOfSelectedCell( in );
+				((SpreadSheet) spreadsheet).getTable().selectGivenCell(gRow,gColumn);
+				
+				Cell cell = ((SpreadSheet) spreadsheet).getTable().getSelectedCell();
+				
+				if(isSpecialCharPresent){
+						in = "@" + in;
+						cell.setFormulaForSpecialChar(in);
+				}
+				
 				inputLine.setText(in);
 				inputLine.setMsg(msg);
 				
 				spreadsheet.validate();
 				spreadsheet.repaint();
+				
 			} else {
 				inputLine.setMsg("You have to select a cell first.");
 			}
@@ -109,7 +127,8 @@ public class Gui extends JFrame implements PropertyChangeListener{
 	        int row = spreadsheet.getSelectedRow();	       
 	        int col = spreadsheet.getSelectedColumn();
 			((SpreadSheet) spreadsheet).getTable().selectGivenCell(row, col);
-			
+			gRow=row;
+			gColumn=col;
 			System.out.println("select Cell at " + row + "," + col);
 			Cell cell = ((SpreadSheet) spreadsheet).getTable().getSelectedCell();
 			String s = (String) e.getNewValue();			

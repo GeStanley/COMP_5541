@@ -89,6 +89,12 @@ public class Cell {
 		value = this.formula.evaluate();
 	}
 	
+	public void setFormulaForSpecialChar(String formula) {
+		if (formula == null) // Treat an empty formula as zero
+			formula = "0.0"; 
+		this.formula = new Formula(formula, table);
+	}
+	
 	/**
 	 * Returns the string representation of the formula contained within the cell.
 	 * 
