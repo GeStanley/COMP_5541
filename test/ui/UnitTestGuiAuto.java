@@ -2,6 +2,7 @@ package ui;
 
 import static org.junit.Assert.assertEquals;
 
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 
 import org.fest.swing.data.TableCell;
@@ -16,6 +17,7 @@ import org.fest.swing.timing.Pause;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class UnitTestGuiAuto {
 
@@ -39,7 +41,7 @@ public class UnitTestGuiAuto {
 
 		// create and display the frame
 		gui = new FrameFixture(frame);
-		gui.show();
+		gui.show(new Dimension(750, 500));
 
 		// create all the objects required for testing.
 		input = gui.textBox();
@@ -398,6 +400,9 @@ public class UnitTestGuiAuto {
 		assertEquals("5.0", table.selectionValue()); // check for default
 													// format
 	}
+	
+	
+	
 
 	public void pause(String s) {
 		switch (s) {
