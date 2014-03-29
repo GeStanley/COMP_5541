@@ -1,6 +1,13 @@
 package structure;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import structure.Table;
 
@@ -444,6 +451,74 @@ public class Formula {
 		}
 		else
 			System.out.println("Call this with\n\tjava Formula \"<A formula enclosed by quotes>\"");
+	}
+
+	public Map<Integer,int[]> getRelativeFormula(Cell copyCell, int[] origCoordinates) {
+		String formula = copyCell.getFormula();
+		Pattern p = Pattern.compile("[A-Z][1-20]");
+		Matcher m = p.matcher(formula);
+		Map<String, Integer> refMap = new HashMap<String,Integer>();
+		Map<Integer,int[]> newFormulaRefMap = new HashMap<>();
+		
+		while(m.find()){
+			String temp = m.group();
+			int tempIndex = m.start();
+			refMap.put(temp,tempIndex);
+			int[] FormulaStringIntCord = getIntCordFromStringCord(temp);
+			int[] difFromOrigCoordinates = getDifFromOrigCoordinates(origCoordinates, FormulaStringIntCord);
+			System.out.println(difFromOrigCoordinates[0]+">>>>>"+difFromOrigCoordinates[1]);
+			newFormulaRefMap.put(tempIndex,difFromOrigCoordinates);
+		
+		}
+		return newFormulaRefMap;
+	}
+	
+	public int[] getDifFromOrigCoordinates(int[] origCoordinates, int[] FormulaStringIntCord ){
+		int[] difFromOrigCoordinates = new int[2];
+		difFromOrigCoordinates[0] = FormulaStringIntCord[0] - origCoordinates[0];
+		difFromOrigCoordinates[1] = FormulaStringIntCord[1] - origCoordinates[1];
+		return difFromOrigCoordinates;
+	}
+	
+	public int[] getIntCordFromStringCord(String strCord){
+		int[] intCord = new int[2];
+		intCord[0] = Integer.parseInt(strCord.substring(1)) - 1;
+		intCord[1] = strCord.charAt(0) - 'A';
+		return intCord;
+	}
+
+	public String setRelativeFormula(Cell clipboardCell,
+			Map<Integer,int[]> newFormulaRefMap, int[] pasteToAddress) {
+		Map<Integer,String> newRelativeFormulaRef = new HashMap<>();
+		Set<Integer> refSet = newFormulaRefMap.keySet();
+		Iterator<Integer> iterator = refSet.iterator();
+		while(iterator.hasNext()){
+			int key = iterator.next();
+			int[] temp = newFormulaRefMap.get(key);
+			temp[0] += pasteToAddress[0];
+			temp[1] += pasteToAddress[1];
+			String cordinates = getReferencesFromIntCord(temp);
+			newRelativeFormulaRef.put(key, cordinates);
+		}
+		String formula = clipboardCell.getFormula();
+		Pattern p = Pattern.compile("[A-Z][1-20]");
+		Matcher m = p.matcher(formula);
+		while(m.find()){
+			String temp = m.group();
+			int tempIndex = m.start();
+			String newRefString = newRelativeFormulaRef.get(tempIndex);
+		 	
+			formula = formula.replaceAll(temp, newRefString);
+		}
+		System.out.println(formula+"____________________________");
+		return formula;
+		
+	}
+	
+	private String getReferencesFromIntCord(int[] intCord){
+		String c = "" + (char) ('A' + intCord[1]);
+		String r = "" + (intCord[0] + 1);
+		return c+r;
 	}
 
 }
