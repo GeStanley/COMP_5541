@@ -230,13 +230,20 @@ public class UnitTestGuiAuto {
 
 	@Test
 	public void testCreateNew() {
-		// TODO implement this test.
+		table.selectCell(TableCell.row(0).column(0));
+		input.deleteText();
+		input.enterText("1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("1.0", table.selectionValue());
+		
+		create.click();
+		assertEquals("0.0", table.selectionValue());
 	}
 
 	@Test
 	public void testLoadFromFile() {
 		// check if the file exists prior to test and delete it if it does.
-		String loadFile = workingDir + "\\loadTest.csv";
+		String loadFile = workingDir + "\\data\\loadTest.csv";
 		System.out.println("loadFile : " + loadFile);
 		File file = new File(loadFile);
 		assertTrue(file.exists()); // check that the file is present.
