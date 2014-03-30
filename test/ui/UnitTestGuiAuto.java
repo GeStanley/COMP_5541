@@ -1,15 +1,17 @@
 package ui;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import org.fest.swing.data.TableCell;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JButtonFixture;
+import org.fest.swing.fixture.JFileChooserFixture;
 import org.fest.swing.fixture.JLabelFixture;
 import org.fest.swing.fixture.JTableFixture;
 import org.fest.swing.fixture.JTextComponentFixture;
@@ -17,7 +19,7 @@ import org.fest.swing.timing.Pause;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.Assert.*;
 
 public class UnitTestGuiAuto {
 
@@ -30,6 +32,7 @@ public class UnitTestGuiAuto {
 	private JButtonFixture load;
 	private JTableFixture cell;
 	private JLabelFixture message;
+	private String workingDir;
 
 	@Before
 	public void onSetUp() {
@@ -51,6 +54,8 @@ public class UnitTestGuiAuto {
 		saveAs = gui.button("saveAs");
 		load = gui.button("load");
 		message = gui.label("message");
+		workingDir = System.getProperty("user.dir");
+		
 
 	}
 
@@ -194,7 +199,33 @@ public class UnitTestGuiAuto {
 
 	@Test
 	public void testSaveToFile() {
-		// TODO implement this test.
+		
+		// check if the file exists prior to test and delete it if it does.
+		String saveFile = workingDir + "\\save.csv";
+		System.out.println("savefile : " + saveFile);
+		File file = new File(saveFile);
+		if ( file.exists()){
+			file.delete();
+		}
+		assertFalse(file.exists());
+		
+		// enter a value in the table
+		table.selectCell(TableCell.row(0).column(0));
+		input.deleteText();
+		input.enterText("1");
+		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
+		assertEquals("1.0", table.selectionValue());
+		
+		save.click();
+		JFileChooserFixture fileChooser = gui.fileChooser();
+		fileChooser.selectFile(file);
+		pause("ll");
+		fileChooser.approve();
+		
+		assertTrue(file.exists());
+		
+		pause("ll");
+		
 	}
 
 	@Test

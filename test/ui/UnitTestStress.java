@@ -9,8 +9,6 @@ import org.fest.swing.data.TableCell;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.fixture.JButtonFixture;
-import org.fest.swing.fixture.JLabelFixture;
 import org.fest.swing.fixture.JTableFixture;
 import org.fest.swing.fixture.JTextComponentFixture;
 import org.junit.After;
@@ -23,12 +21,6 @@ public class UnitTestStress {
 	private FrameFixture gui;
 	private JTextComponentFixture input;
 	private JTableFixture table;
-	private JButtonFixture create;
-	private JButtonFixture save;
-	private JButtonFixture saveAs;
-	private JButtonFixture load;
-	private JTableFixture cell;
-	private JLabelFixture message;
 
 	@Before
 	public void onSetUp() {
@@ -45,12 +37,6 @@ public class UnitTestStress {
 		// create all the objects required for testing.
 		input = gui.textBox();
 		table = gui.table("data");
-		create = gui.button("create");
-		save = gui.button("save");
-		saveAs = gui.button("saveAs");
-		load = gui.button("load");
-		message = gui.label("message");
-
 	}
 
 	@After
