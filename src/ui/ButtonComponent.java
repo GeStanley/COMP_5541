@@ -24,6 +24,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 	private JButton saveAs;
 	private JButton load;
 	private JButton createNew;
+	private JButton help;
 	
 	private String filename;
 	private String directory;
@@ -52,6 +53,14 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		save = new JButton( saveIco );
 		save.setName("save");
 		save.addActionListener( this );
+		
+		ImageIcon helpIco = new ImageIcon( "res/img/question_mark.png" );
+		Image helpImg = helpIco.getImage() ;  
+		Image resizedhelpImg = helpImg.getScaledInstance( ICON_WIDTH, ICON_HEIGHT,  java.awt.Image.SCALE_SMOOTH ) ;  
+		helpIco = new ImageIcon( resizedhelpImg );
+		help = new JButton( helpIco );
+		help.setName("help");
+		help.addActionListener( this );		
 		 
 		ImageIcon saveAsIco = new ImageIcon( "res/img/save_as.png" );
 		Image saveAsImg = saveAsIco.getImage() ;  
@@ -73,6 +82,7 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		add(save);
 		add(saveAs);
 		add(load);
+		add(help);
 	}
 	
 	/**
@@ -103,6 +113,9 @@ public class ButtonComponent extends JPanel implements ActionListener{
 		} else if (src == createNew) {
 			fullSaveLocation = null;
 			this.firePropertyChange("createNew", false, null);
+		}
+		else if(src == help){
+			this.firePropertyChange("help", false, null);
 		}
 		
 	}

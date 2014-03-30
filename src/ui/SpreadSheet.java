@@ -10,6 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
+import javax.swing.event.TableModelEvent;
 
 import structure.Cell;
 import structure.Table;
@@ -43,7 +44,7 @@ public class SpreadSheet extends JTable implements ActionListener {
 		this.setModel(gm);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setCellSelectionEnabled(true);
-
+		
 		getColumnModel().addColumnModelListener(columnModelListener());
 		getSelectionModel().addListSelectionListener(listSelectionListener());
 	}
@@ -71,7 +72,7 @@ public class SpreadSheet extends JTable implements ActionListener {
 		};
 		return lsl;
 	}
-
+	
 	/**
 	 * This method is called when the column of the selected cell changes
 	 * It triggers an action that will eventually notify the parent class

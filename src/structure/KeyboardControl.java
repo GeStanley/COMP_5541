@@ -33,8 +33,9 @@ public class KeyboardControl {
 	    myActionMap.put("copy",new AbstractAction() {
 	    	@Override
 	        public void actionPerformed(ActionEvent evt) {
-	            clip.copy();
+	            clip.copy();          	            
 	            System.out.println("Copy");
+	            
 	        }
 	    });	  		
 		
@@ -93,8 +94,8 @@ public class KeyboardControl {
 	    		cellFormat.setCellFormat(Format.intFormat);
 	            System.out.println("integer Format");
 	        }
-	    });	  			  	    
-	    
+	    });	  			    
+
 	}
 	
 }

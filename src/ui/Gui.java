@@ -7,6 +7,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -14,6 +15,7 @@ import javax.swing.JTable;
 import structure.Cell;
 import structure.KeyboardControl;
 import structure.Table;
+import structure.Cell.Format;
 
 
 /**
@@ -63,10 +65,10 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		
 		inputLine.addPropertyChangeListener(this);
 		spreadsheet.addPropertyChangeListener(this);
-		buttonComponent.addPropertyChangeListener(this);
+		buttonComponent.addPropertyChangeListener(this);		
 		
 		//Keyboard input setup
-		//@SuppressWarnings("unused")
+		@SuppressWarnings("unused")
 		KeyboardControl keyInputController = new KeyboardControl((SpreadSheet) spreadsheet);
 		
 		JPanel menuAndInput = new JPanel(new GridLayout(2,1));
@@ -90,6 +92,8 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		//InputLineComponent action.
 		
 		boolean isSpecialCharPresent = false;
+		boolean hasNumberFormat = false;
+		char numberFormatChar = 'z';
 		if (e.getPropertyName().equals("input")) {
 			String in = (String) e.getNewValue();
 			
@@ -100,6 +104,14 @@ public class Gui extends JFrame implements PropertyChangeListener{
 					in = in.substring(1);
 					isSpecialCharPresent = true;
 				}
+				// To Handle ':'
+				else if((in).charAt(0)==':')
+				{
+					in = in.substring(1);
+					numberFormatChar = (in).charAt(0);
+					in = in.substring(1);
+					hasNumberFormat = true;
+				}
 				String msg = ((SpreadSheet) spreadsheet).setFormulaOfSelectedCell( in );
 				((SpreadSheet) spreadsheet).getTable().selectGivenCell(gRow,gColumn);
 				
@@ -108,6 +120,24 @@ public class Gui extends JFrame implements PropertyChangeListener{
 				if(isSpecialCharPresent){
 						in = "@" + in;
 						cell.setFormulaForSpecialChar(in);
+				}
+				
+				if(hasNumberFormat){
+					in = ":" + numberFormatChar + in;
+					cell.setFormulaForSpecialChar(in);
+					switch (numberFormatChar){
+					case 'I':
+						cell.setCellFormat(Format.intFormat);
+						break;
+					case 'M':
+						cell.setCellFormat(Format.moneyFormat);
+						break;
+					case 'S':
+						cell.setCellFormat(Format.scienceFormat);
+						break;
+					case 'z':
+						break;					
+					}
 				}
 				
 				inputLine.setText(in);
@@ -150,10 +180,23 @@ public class Gui extends JFrame implements PropertyChangeListener{
 			inputLine.setMsg("Created new spreadsheet.");
 			createNewSpreadsheet();
 		}
+		else if (e.getPropertyName().equals("help")){
+			String helpMessage 	= 	
+					"The shortcut keys are the following:" + System.lineSeparator() +
+					"Ctrl+1 for default number format" + System.lineSeparator() +
+					"Ctrl+2 for monetary number format" + System.lineSeparator() +
+					"Ctrl+3 for scientific number format" + System.lineSeparator() +
+					"Ctrl+4 for integer number format" + System.lineSeparator() +
+					"Ctrl+x to cut a cell" + System.lineSeparator() +
+					"Ctrl+c to copy a cell" + System.lineSeparator() +
+					"Ctrl+v to paste a cell" + System.lineSeparator();
+			JOptionPane.showMessageDialog(this,	helpMessage,
+				    "Shortcut keys", JOptionPane.INFORMATION_MESSAGE);
+		}
 		else{
 			spreadsheet.validate();
 			spreadsheet.repaint();
-		}
+		}		
 	}
 	
 	/**

@@ -1,5 +1,6 @@
 package structure;
 
+import java.io.OptionalDataException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -60,11 +61,31 @@ public class Cell {
 	}
 	
 	/**
+	 * Constructor method with an existing formula and a supplied number format
+	 * 
+	 * @param table The table this cell is in
+	 * @param formula The formula
+	 */
+	public Cell(Table table, String formula, Format format) {
+		this.table = table;
+		this.formula = new Formula(formula, table);
+		this.cellFormat = format;
+		try {
+			value = this.formula.evaluate();
+		}
+		catch (Exception e) {
+			this.formula = new Formula("0.0", table);
+			this.value = 0.0;
+		}
+	}	
+	
+	/**
 	 * Copy constructor
 	 * @param cell The cell to be copied
 	 */
 	public Cell(Cell cell){
 		this(cell.getTable(), cell.getFormula());
+		this.cellFormat = cell.cellFormat;
 	}
 		
 	
@@ -122,7 +143,7 @@ public class Cell {
 	 * 
 	 * @return
 	 */
-	public double getValue() {
+	public double getValue() {	
 		return this.value;
 	}
 	

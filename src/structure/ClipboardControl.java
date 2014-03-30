@@ -38,7 +38,7 @@ public class ClipboardControl {
 			if(copyMe.getFormula().charAt(0) !='@'){
 				origCoordinates = currentTable.findCell(copyMe);
 				newFormulaRefMap = formula.getRelativeFormula(copyMe, origCoordinates);
-			}
+			}			
 			
 			if (copyMe != null){
 				clipboardCell = new Cell(copyMe);
@@ -68,11 +68,12 @@ public class ClipboardControl {
 				pasteToAddress = currentTable.findCell(currentTable.getSelectedCell()); 
 				if(clipboardCell.getFormula().charAt(0)!='@'){
 					String formula = this.formula.setRelativeFormula(clipboardCell,newFormulaRefMap,pasteToAddress);
-					Cell cell = new Cell(currentTable, formula);
+					Cell cell = new Cell(currentTable, formula, clipboardCell.getCellFormat());
 					currentTable.setCell(pasteToAddress[0], pasteToAddress[1], cell);	
 				}else{
 					currentTable.setCell(pasteToAddress[0], pasteToAddress[1], clipboardCell);
 				}
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
