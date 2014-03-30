@@ -55,7 +55,6 @@ public class UnitTestGuiAuto {
 		load = gui.button("load");
 		message = gui.label("message");
 		workingDir = System.getProperty("user.dir");
-		
 
 	}
 
@@ -199,33 +198,34 @@ public class UnitTestGuiAuto {
 
 	@Test
 	public void testSaveToFile() {
-		
+
 		// check if the file exists prior to test and delete it if it does.
 		String saveFile = workingDir + "\\save.csv";
 		System.out.println("savefile : " + saveFile);
 		File file = new File(saveFile);
-		if ( file.exists()){
+		if (file.exists()) {
 			file.delete();
 		}
-		assertFalse(file.exists());
-		
+		assertFalse(file.exists()); // check that the file was deleted or not
+									// present
+
 		// enter a value in the table
 		table.selectCell(TableCell.row(0).column(0));
 		input.deleteText();
 		input.enterText("1");
 		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
 		assertEquals("1.0", table.selectionValue());
-		
+
 		save.click();
 		JFileChooserFixture fileChooser = gui.fileChooser();
 		fileChooser.selectFile(file);
 		pause("ll");
 		fileChooser.approve();
-		
+
 		assertTrue(file.exists());
-		
+
 		pause("ll");
-		
+
 	}
 
 	@Test
@@ -233,8 +233,34 @@ public class UnitTestGuiAuto {
 		// TODO implement this test.
 	}
 
+	@Test
 	public void testLoadFromFile() {
-		// TODO implement this test.
+		// check if the file exists prior to test and delete it if it does.
+		String loadFile = workingDir + "\\loadTest.csv";
+		System.out.println("loadFile : " + loadFile);
+		File file = new File(loadFile);
+		assertTrue(file.exists()); // check that the file is present.
+		
+		// load the file
+		load.click();
+		JFileChooserFixture fileChooser = gui.fileChooser();
+		fileChooser.selectFile(file);
+		pause("l");
+		fileChooser.approve();
+		pause("l");
+		
+		// test that the file was loaded
+		table.selectCell(TableCell.row(0).column(0));
+		assertEquals("1.0", table.selectionValue());
+		
+		table.selectCell(TableCell.row(1).column(1));
+		assertEquals("2.0", table.selectionValue());
+		
+		table.selectCell(TableCell.row(2).column(2));
+		assertEquals("3.0", table.selectionValue());
+		
+		table.selectCell(TableCell.row(3).column(3));
+		assertEquals("6.0", table.selectionValue());
 	}
 
 	@Test
@@ -429,11 +455,8 @@ public class UnitTestGuiAuto {
 		table.selectCell(TableCell.row(0).column(0));
 		table.selectCell(TableCell.row(1).column(1));
 		assertEquals("5.0", table.selectionValue()); // check for default
-													// format
+														// format
 	}
-	
-	
-	
 
 	public void pause(String s) {
 		switch (s) {
