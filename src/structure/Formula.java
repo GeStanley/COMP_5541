@@ -196,9 +196,27 @@ public class Formula {
 	 */
 	public double evaluate() throws Exception, NumberFormatException {
 		boolean isSpecialCharPresent = false;
+		char monetaryFormat = 'z';
 		if((this.formula).charAt(0)=='@'){
 			this.formula = this.formula.substring(1);
-			isSpecialCharPresent = true;
+			isSpecialCharPresent = true;	
+		}
+		else if((this.formula).charAt(0)==':'){
+			this.formula = this.formula.substring(1);	
+			switch (this.formula.charAt(0)){
+			case 'M':
+				monetaryFormat = 'M';
+				this.formula = this.formula.substring(1);
+				break;
+			case 'I':
+				monetaryFormat = 'I';
+				this.formula = this.formula.substring(1);
+				break;				
+			case 'S':		
+				monetaryFormat = 'S';
+				this.formula = this.formula.substring(1);
+				break;
+			}
 		}
 		
 		int pos, brackets = 0, startNested = 0, endNested = 0;
@@ -338,6 +356,9 @@ public class Formula {
 			if(isSpecialCharPresent){
 				this.formula = "@" + this.formula;
 			}
+			if(monetaryFormat != 'z'){
+				this.formula = ":" + monetaryFormat + this.formula;
+			}
 			return result;
 		}
 
@@ -388,7 +409,8 @@ public class Formula {
 		
 		if(isSpecialCharPresent){
 			this.formula = "@" + this.formula;
-	}
+		}
+			
 		
 		return result;
 	}
