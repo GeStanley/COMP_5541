@@ -28,9 +28,7 @@ public class UnitTestGuiAuto {
 	private JTableFixture table;
 	private JButtonFixture create;
 	private JButtonFixture save;
-	private JButtonFixture saveAs;
 	private JButtonFixture load;
-	private JTableFixture cell;
 	private JLabelFixture message;
 	private String workingDir;
 
@@ -51,7 +49,6 @@ public class UnitTestGuiAuto {
 		table = gui.table("data");
 		create = gui.button("create");
 		save = gui.button("save");
-		saveAs = gui.button("saveAs");
 		load = gui.button("load");
 		message = gui.label("message");
 		workingDir = System.getProperty("user.dir");
