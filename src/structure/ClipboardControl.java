@@ -50,9 +50,11 @@ public class ClipboardControl {
 	 * Cuts the currently selected Cell. The Cell is reset.
 	 */
 	public void cut(){
-		copy();
+		
 		if (currentTable.isCellSelected()){
-			currentTable.getSelectedCell().resetCell();
+			Cell resetOriginal = currentTable.getSelectedCell();
+			copy();
+			resetOriginal.resetCell();
 		}
 	}
 	
