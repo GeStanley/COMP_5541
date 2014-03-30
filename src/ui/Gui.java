@@ -44,7 +44,7 @@ public class Gui extends JFrame implements PropertyChangeListener{
 		// Frame setup
 		super("Calcul-O-Matic");
 		setSize(600, 320);
-		setMinimumSize(new Dimension(450,250));
+		setMinimumSize(new Dimension(700,400));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());

@@ -19,7 +19,6 @@ import org.fest.swing.timing.Pause;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert.*;
 
 public class UnitTestGuiAuto {
 
