@@ -20,6 +20,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This tests the Gui behaviour of the program, by using an automated testing
+ * tool called FEST. 
+ * 
+ * @author Ankita Mishara, Geoffrey Stanley, Michael Burkat,
+ * @author Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ *         Date 31-03-2014
+ */
+
 public class UnitTestGuiAuto {
 
 	private FrameFixture gui;
@@ -231,7 +241,7 @@ public class UnitTestGuiAuto {
 		input.enterText("1");
 		input.pressAndReleaseKeys(KeyEvent.VK_ENTER);
 		assertEquals("1.0", table.selectionValue());
-		
+
 		create.click();
 		assertEquals("0.0", table.selectionValue());
 	}
@@ -243,7 +253,7 @@ public class UnitTestGuiAuto {
 		System.out.println("loadFile : " + loadFile);
 		File file = new File(loadFile);
 		assertTrue(file.exists()); // check that the file is present.
-		
+
 		// load the file
 		load.click();
 		JFileChooserFixture fileChooser = gui.fileChooser();
@@ -251,17 +261,17 @@ public class UnitTestGuiAuto {
 		pause("l");
 		fileChooser.approve();
 		pause("l");
-		
+
 		// test that the file was loaded
 		table.selectCell(TableCell.row(0).column(0));
 		assertEquals("1.0", table.selectionValue());
-		
+
 		table.selectCell(TableCell.row(1).column(1));
 		assertEquals("2.0", table.selectionValue());
-		
+
 		table.selectCell(TableCell.row(2).column(2));
 		assertEquals("3.0", table.selectionValue());
-		
+
 		table.selectCell(TableCell.row(3).column(3));
 		assertEquals("6.0", table.selectionValue());
 	}

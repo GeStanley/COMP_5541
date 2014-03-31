@@ -1,17 +1,26 @@
 package structure;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
-import structure.Table;
-import structure.Cell;
-import structure.Table.NullCellPointer;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Random;
 
-import javax.script.ScriptException;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * This class tests the Table component of our program 
+ * 
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * @author	Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
+ */
 
 public class UnitTestTable {
 	

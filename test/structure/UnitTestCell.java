@@ -1,15 +1,24 @@
 package structure;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.junit.Test;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import structure.Table.NullCellPointer;
+/**
+ * This class tests the Cell component of our program 
+ * 
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * @author	Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
+ */
 
 public class UnitTestCell {
 	

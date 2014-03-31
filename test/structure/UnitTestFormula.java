@@ -1,16 +1,23 @@
 package structure;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.lang.reflect.Method;
-import org.junit.*;
-import structure.*;
+
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * This Junit class does a unit test on the Formula class 
  * to ensure that there are no errors using it as a
  * 'black box' for grammar
  * 
- * @author Nick
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * @author	Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
  */
 
 public class UnitTestFormula {

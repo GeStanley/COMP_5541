@@ -7,6 +7,15 @@ import java.awt.event.ActionEvent;
 
 import org.junit.Test;
 
+/**
+ * This tests the Gui component of the program.
+ * 
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * @author	Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
+ */
+
 public class UnitTestGui {
 	
 	

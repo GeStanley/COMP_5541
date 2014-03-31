@@ -15,6 +15,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This performs a stress test on the system, by using an automated testing
+ * tool called FEST. 
+ * 
+ * @author Ankita Mishara, Geoffrey Stanley, Michael Burkat,
+ * @author Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ *         Date 31-03-2014
+ */
+
 public class UnitTestStress {
 	
 	

@@ -1,19 +1,31 @@
 package ui;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
-import structure.Table;
-import structure.Cell;
-import structure.Table.NullCellPointer;
-import ui.SaveFile;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import structure.Cell;
+import structure.Table;
+
+/**
+ * This tests the Saving and Loading component of the program.
+ * 
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * @author	Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
+ */
 
 public class UnitTestSaveFile {
 	
