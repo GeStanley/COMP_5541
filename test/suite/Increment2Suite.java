@@ -12,8 +12,7 @@ import org.junit.runners.Suite;
   ui.UnitTestGui.class,
   ui.UnitTestInputLine.class,
   ui.UnitTestSaveFile.class,
-  ui.UnitTestSpreadSheet.class,
-  
+  ui.UnitTestSpreadSheet.class
 })
 
 public class Increment2Suite {

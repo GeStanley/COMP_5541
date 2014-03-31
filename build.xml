@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="COMP_5541">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../Program Files/eclipse"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="COMP_5541.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="FEST/FEST/lib/fest-assert-1.2.jar"/>
+        <pathelement location="FEST/FEST/lib/fest-reflect-1.2.jar"/>
+        <pathelement location="FEST/fest-swing-1.2.jar"/>
+        <pathelement location="FEST/FEST/lib/fest-util-1.1.2.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="test">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="FEST">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="test"/>
+            <src path="FEST"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Console">
+        <java classname="ui.Console" failonerror="true" fork="yes">
+            <classpath refid="COMP_5541.classpath"/>
+        </java>
+    </target>
+    <target name="ConsoleGUI">
+        <java classname="gui.ConsoleGUI" failonerror="true" fork="yes">
+            <classpath refid="COMP_5541.classpath"/>
+        </java>
+    </target>
+    <target name="Formula">
+        <java classname="structure.Formula" failonerror="true" fork="yes">
+            <classpath refid="COMP_5541.classpath"/>
+        </java>
+    </target>
+    <target name="Gui">
+        <java classname="ui.Gui" failonerror="true" fork="yes">
+            <classpath refid="COMP_5541.classpath"/>
+        </java>
+    </target>
+    <target name="Increment1Suite">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="suite.Increment1Suite" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="Increment2Suite">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="suite.Increment2Suite" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="structure.UnitTestCell" todir="${junit.output.dir}"/>
+            <test name="structure.UnitTestFormula" todir="${junit.output.dir}"/>
+            <test name="structure.UnitTestTable" todir="${junit.output.dir}"/>
+            <test name="suite.Increment1Suite" todir="${junit.output.dir}"/>
+            <test name="suite.Increment2Suite" todir="${junit.output.dir}"/>
+            <test name="suite.Increment3Suite" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestButtonComponent" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestGridModel" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestGui" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestGuiAuto" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestInputLine" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestSaveFile" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestSpreadSheet" todir="${junit.output.dir}"/>
+            <test name="ui.UnitTestStress" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestButtonComponent">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestButtonComponent" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestCell">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="structure.UnitTestCell" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestConsole">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestConsole" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestFormula">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="structure.UnitTestFormula" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestGridModel">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestGridModel" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestGui">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestGui" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestGuiAuto">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestGuiAuto" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestGuiAuto.testCreateNew">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestGuiAuto" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestGuiAuto.testLoadFromFile">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestGuiAuto" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestGuiAuto.testSaveToFile">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestGuiAuto" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestInputLine">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestInputLine" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestSaveFile">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestSaveFile" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestSpreadSheet">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ui.UnitTestSpreadSheet" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="UnitTestTable">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="structure.UnitTestTable" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="Increment3Suite">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="suite.Increment3Suite" todir="${junit.output.dir}"/>
+            <classpath refid="COMP_5541.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
