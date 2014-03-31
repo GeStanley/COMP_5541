@@ -10,8 +10,12 @@ import javax.swing.table.TableColumn;
 /**
  * This is a table that displays the row numbers.
  * 
- * @author mike
- *
+ * This class is the object that manages the behavior of the individual cells within the table class.
+ * 
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
  */
 public class RowTable extends JTable {
 

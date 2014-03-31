@@ -6,6 +6,15 @@ import structure.Cell;
 import structure.Table;
 import structure.Table.NullCellPointer;
 
+/**
+ * This class was the console interface for Increment1.
+ * It is no longer used.
+ * 
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
+ */
 public class Console {
 	
 	private static Table table = null;

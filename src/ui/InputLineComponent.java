@@ -15,8 +15,10 @@ import structure.Table;
  * The Component where a user enters input to cell, and can see messages that are
  * displayed to him.
  * 
- * @author mike
- *
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
  */
 public class InputLineComponent extends JPanel implements ActionListener{
 	

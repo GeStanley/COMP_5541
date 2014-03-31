@@ -14,9 +14,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * This class contains the menu items of the program, such as Create New, Save, Save As, and Load
  * 
- * @author mike
- *
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
  */
+
 @SuppressWarnings("serial")
 public class ButtonComponent extends JPanel implements ActionListener{
 

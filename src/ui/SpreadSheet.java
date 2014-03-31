@@ -10,17 +10,17 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
-import javax.swing.event.TableModelEvent;
 
-import structure.Cell;
 import structure.Table;
 
 
 /**
  * This class is the face of the spreadsheet, it displays the grid of cells
  * 
- * @author Mike
- *
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
  */
 public class SpreadSheet extends JTable implements ActionListener {
 
