@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
+import javax.swing.JOptionPane;
 
 /**
  * 	This class handles the clipboard functions; copy, cut and paste.
@@ -75,7 +76,9 @@ public class ClipboardControl {
 				}
 				
 				
-			} catch (Exception e) {
+			} catch (MyInvalidRelativeFormulaReference myException) {
+				JOptionPane.showMessageDialog(null,myException.getMessage());
+			}catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

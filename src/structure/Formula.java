@@ -510,7 +510,7 @@ public class Formula {
 	}
 
 	public String setRelativeFormula(Cell clipboardCell,
-			Map<Integer,int[]> newFormulaRefMap, int[] pasteToAddress) {
+			Map<Integer,int[]> newFormulaRefMap, int[] pasteToAddress) throws MyInvalidRelativeFormulaReference{
 		Map<Integer,String> newRelativeFormulaRef = new HashMap<>();
 		Set<Integer> refSet = newFormulaRefMap.keySet();
 		Iterator<Integer> iterator = refSet.iterator();
@@ -532,15 +532,21 @@ public class Formula {
 		 	
 			formula = formula.replaceAll(temp, newRefString);
 		}
-		System.out.println(formula+"____________________________");
+		
 		return formula;
 		
 	}
 	
-	private String getReferencesFromIntCord(int[] intCord){
+	private String getReferencesFromIntCord(int[] intCord) throws MyInvalidRelativeFormulaReference{
 		String c = "" + (char) ('A' + intCord[1]);
 		String r = "" + (intCord[0] + 1);
-		return c+r;
+		String formula = c+r;
+		Pattern p = Pattern.compile("[A-Z][1-20]");
+		Matcher m = p.matcher(formula);
+		while(!m.find()){
+			throw new MyInvalidRelativeFormulaReference("Invalid reference for formula to be copied");
+		}
+		return formula;
 	}
 
 }
