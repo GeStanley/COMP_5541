@@ -1,0 +1,2159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="2" hostname="Mike-Win81" name="suite.Increment3Suite" skipped="0" tests="12" time="991.166" timestamp="2014-03-31T17:07:45">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.USERDOMAIN_ROAMINGPROFILE" value="MIKE-WIN81" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/templates/" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="env.PROMPT" value="$P$G" />
+    <property name="os.name" value="Windows 8" />
+    <property name="env.FP_NO_HOST_CHECK" value="NO" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre7\lib\resources.jar;C:\Program Files\Java\jre7\lib\rt.jar;C:\Program Files\Java\jre7\lib\sunrsasign.jar;C:\Program Files\Java\jre7\lib\jsse.jar;C:\Program Files\Java\jre7\lib\jce.jar;C:\Program Files\Java\jre7\lib\charsets.jar;C:\Program Files\Java\jre7\lib\jfr.jar;C:\Program Files\Java\jre7\classes" />
+    <property name="env.COMPUTERNAME" value="MIKE-WIN81" />
+    <property name="env.CommonProgramW6432" value="C:\Program Files\Common Files" />
+    <property name="env.ALLUSERSPROFILE" value="C:\ProgramData" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3" />
+    <property name="java.runtime.version" value="1.7.0_40-b43" />
+    <property name="env.HOMEPATH" value="\Users\Mike" />
+    <property name="user.name" value="Mike" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre7\bin" />
+    <property name="ant.project.default-target" value="build" />
+    <property name="ant.project.name" value="COMP_5541" />
+    <property name="java.version" value="1.7.0_40" />
+    <property name="env.PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 58 Stepping 9, GenuineIntel" />
+    <property name="user.timezone" value="" />
+    <property name="env.TEMP" value="C:\Users\Mike\AppData\Local\Temp" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre7\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="ant.file.COMP_5541" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\build.xml" />
+    <property name="env.HOMEDRIVE" value="C:" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="ECLIPSE_HOME" value="../../../../../Program Files/eclipse" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="CA" />
+    <property name="java.home" value="C:\Program Files\Java\jre7" />
+    <property name="env.PSModulePath" value="C:\Windows\system32\WindowsPowerShell\v1.0\Modules\" />
+    <property name="env.APPDATA" value="C:\Users\Mike\AppData\Roaming" />
+    <property name="env.PUBLIC" value="C:\Users\Public" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.ComSpec" value="C:\Windows\system32\cmd.exe" />
+    <property name="env.OS" value="Windows_NT" />
+    <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files" />
+    <property name="ant.file" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\build.xml" />
+    <property name="os.version" value="6.2" />
+    <property name="env.ProgramW6432" value="C:\Program Files" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="24.0-b56" />
+    <property name="env.USERPROFILE" value="C:\Users\Mike" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib" />
+    <property name="junit.output.dir" value="junit" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="env.TMP" value="C:\Users\Mike\AppData\Local\Temp" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="user.script" value="" />
+    <property name="eclipse.pdebuild.scripts" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/scripts/" />
+    <property name="user.home" value="C:\Users\Mike" />
+    <property name="target" value="1.7" />
+    <property name="env.ProgramData" value="C:\ProgramData" />
+    <property name="env.SESSIONNAME" value="Console" />
+    <property name="env.ProgramFiles(x86)" value="C:\Program Files (x86)" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="env.NUMBER_OF_PROCESSORS" value="8" />
+    <property name="java.library.path" value="C:\Program Files\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python33\;C:\Python33\Scripts\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MATLAB\R2014a\bin;C:\Python33;." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="ant.file.type.COMP_5541" value="file" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment3Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment3Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher920312704246153273.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit7883590166561222854.properties" />
+    <property name="java.class.path" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\bin;C:\Program Files\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;C:\Program Files\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-assert-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-reflect-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\fest-swing-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-util-1.1.2.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit4.jar" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.windir" value="C:\Windows" />
+    <property name="env.LOGONSERVER" value="\\MicrosoftAccount" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="env.PROCESSOR_ARCHITECTURE" value="AMD64" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="env.ANT_HOME" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3" />
+    <property name="env.ProgramFiles" value="C:\Program Files" />
+    <property name="java.io.tmpdir" value="C:\Users\Mike\AppData\Local\Temp\" />
+    <property name="eclipse.pdebuild.home" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/./" />
+    <property name="env.PROCESSOR_REVISION" value="3a09" />
+    <property name="env.CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="env.SystemRoot" value="C:\Windows" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre7\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="user.dir" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541" />
+    <property name="env.LOCALAPPDATA" value="C:\Users\Mike\AppData\Local" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC" />
+    <property name="env.Path" value="C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python33\;C:\Python33\Scripts\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MATLAB\R2014a\bin;C:\Python33" />
+    <property name="basedir" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar" />
+    <property name="env.USERNAME" value="Mike" />
+    <property name="source" value="1.7" />
+    <property name="env.SystemDrive" value="C:" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="env.USERDOMAIN" value="MIKE-WIN81" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="ant.project.invoked-targets" value="build,Increment2Suite,Increment3Suite,junitreport" />
+    <property name="env.PROCESSOR_LEVEL" value="6" />
+  </properties>
+  <testcase classname="ui.UnitTestGuiAuto" name="testCutPasteValue" time="7.042" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testCellFormatChange" time="8.944" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testCicularReference" time="12.42" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testCutPasteFormula" time="9.858">
+    <failure message="expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;
+	at ui.UnitTestGuiAuto.testCutPasteFormula(UnitTestGuiAuto.java:401)
+</failure>
+  </testcase>
+  <testcase classname="ui.UnitTestGuiAuto" name="testCopyPasteValue" time="7.361" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testSaveToFile" time="6.442" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testChangePropagation" time="11.812" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testLoadFromFile" time="4.095" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testCreateNew" time="1.994" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testCellInputs" time="10.933" />
+  <testcase classname="ui.UnitTestGuiAuto" name="testCopyPasteFormula" time="9.826">
+    <failure message="expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;
+	at ui.UnitTestGuiAuto.testCopyPasteFormula(UnitTestGuiAuto.java:331)
+</failure>
+  </testcase>
+  <testcase classname="ui.UnitTestStress" name="testStress" time="900.376" />
+  <system-out><![CDATA[row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+row 1
+0.0
+select Cell at 1,1
+column 1
+0.0
+select Cell at 1,1
+row 0
+0.0
+select Cell at 0,0
+column 0
+1.0
+select Cell at 0,0
+Cut
+row 18
+0.0
+select Cell at 18,18
+column 18
+0.0
+select Cell at 18,18
+1____________________________
+Paste
+row 17
+0.0
+select Cell at 17,18
+row 18
+1.0
+select Cell at 18,18
+row 0
+0.0
+select Cell at 0,0
+column 0
+0.0
+select Cell at 0,0
+row 1
+column 1
+0.0
+select Cell at 1,1
+input 5
+row 0
+0.0
+select Cell at 0,0
+column 0
+0.0
+select Cell at 0,0
+row 1
+0.0
+select Cell at 1,1
+column 1
+5.0
+select Cell at 1,1
+money 
+row 0
+0.0
+select Cell at 0,0
+column 0
+0.0
+select Cell at 0,0
+row 1
+0.0
+select Cell at 1,1
+column 1
+$5.00
+select Cell at 1,1
+science Format
+row 0
+0.0
+select Cell at 0,0
+column 0
+0.0
+select Cell at 0,0
+row 1
+0.0
+select Cell at 1,1
+column 1
+5E0
+select Cell at 1,1
+integer Format
+row 0
+0.0
+select Cell at 0,0
+column 0
+0.0
+select Cell at 0,0
+row 1
+0.0
+select Cell at 1,1
+column 1
+5
+select Cell at 1,1
+default Format
+row 0
+0.0
+select Cell at 0,0
+column 0
+0.0
+select Cell at 0,0
+row 1
+0.0
+select Cell at 1,1
+column 1
+5.0
+select Cell at 1,1
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+column 1
+0.0
+select Cell at 0,1
+input A1+1
+column 2
+0.0
+select Cell at 0,2
+input B1+1
+column 0
+1.0
+select Cell at 0,0
+input C1 + 1
+row 1
+column 1
+0.0
+select Cell at 1,1
+input 1
+row 10
+0.0
+select Cell at 10,4
+column 4
+0.0
+select Cell at 10,4
+input B2
+column 5
+0.0
+select Cell at 10,5
+column 4
+1.0
+select Cell at 10,4
+-9>>>>>-3
+Cut
+row 5
+0.0
+select Cell at 5,16
+column 16
+0.0
+select Cell at 5,16
+N-3____________________________
+Paste
+column 15
+0.0
+select Cell at 5,15
+column 16
+0.0
+select Cell at 5,16
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+row 1
+0.0
+select Cell at 1,1
+column 1
+0.0
+select Cell at 1,1
+row 0
+0.0
+select Cell at 0,0
+column 0
+1.0
+select Cell at 0,0
+Copy
+row 18
+0.0
+select Cell at 18,18
+column 18
+0.0
+select Cell at 18,18
+1____________________________
+Paste
+row 17
+0.0
+select Cell at 17,18
+row 18
+1.0
+select Cell at 18,18
+savefile : C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\save.csv
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541/save.csv
+save C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541/save.csv
+Success: file saved
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+column 1
+0.0
+select Cell at 0,1
+input A1+1
+column 2
+0.0
+select Cell at 0,2
+input B1+1
+column 0
+1.0
+select Cell at 0,0
+input 2
+column 1
+3.0
+select Cell at 0,1
+column 2
+4.0
+select Cell at 0,2
+loadFile : C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\data\loadTest.csv
+C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\data/loadTest.csv
+load C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\data/loadTest.csv
+Success: file loaded
+row 0
+column 0
+1.0
+select Cell at 0,0
+row 1
+0.0
+select Cell at 1,1
+column 1
+2.0
+select Cell at 1,1
+row 2
+0.0
+select Cell at 2,2
+column 2
+3.0
+select Cell at 2,2
+row 3
+0.0
+select Cell at 3,3
+column 3
+6.0
+select Cell at 3,3
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+createNew
+zero all cells
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 
+row 1
+0.0
+select Cell at 1,1
+column 1
+0.0
+select Cell at 1,1
+input 3+rt
+row 2
+0.0
+select Cell at 2,2
+column 2
+0.0
+select Cell at 2,2
+input 10
+row 3
+0.0
+select Cell at 3,3
+column 3
+0.0
+select Cell at 3,3
+input A1+C3
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+row 10
+0.0
+select Cell at 10,4
+column 4
+0.0
+select Cell at 10,4
+input A1
+column 5
+0.0
+select Cell at 10,5
+column 4
+1.0
+select Cell at 10,4
+-10>>>>>-4
+Copy
+row 5
+0.0
+select Cell at 5,16
+column 16
+0.0
+select Cell at 5,16
+M-4____________________________
+Paste
+column 15
+0.0
+select Cell at 5,15
+column 16
+0.0
+select Cell at 5,16
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
+column 1
+0.0
+select Cell at 0,1
+input A1 + 1
+column 2
+0.0
+select Cell at 0,2
+input B1 + 1
+column 3
+0.0
+select Cell at 0,3
+input C1 + 1
+column 4
+0.0
+select Cell at 0,4
+input D1 + 1
+column 5
+0.0
+select Cell at 0,5
+input E1 + 1
+column 6
+0.0
+select Cell at 0,6
+input F1 + 1
+column 7
+0.0
+select Cell at 0,7
+input G1 + 1
+column 8
+0.0
+select Cell at 0,8
+input H1 + 1
+column 9
+0.0
+select Cell at 0,9
+input I1 + 1
+column 10
+0.0
+select Cell at 0,10
+input J1 + 1
+column 11
+0.0
+select Cell at 0,11
+input K1 + 1
+column 12
+0.0
+select Cell at 0,12
+input L1 + 1
+column 13
+0.0
+select Cell at 0,13
+input M1 + 1
+column 14
+0.0
+select Cell at 0,14
+input N1 + 1
+column 15
+0.0
+select Cell at 0,15
+input O1 + 1
+column 16
+0.0
+select Cell at 0,16
+input P1 + 1
+column 17
+0.0
+select Cell at 0,17
+input Q1 + 1
+column 18
+0.0
+select Cell at 0,18
+input R1 + 1
+column 19
+0.0
+select Cell at 0,19
+input S1 + 1
+row 1
+0.0
+select Cell at 1,0
+column 0
+0.0
+select Cell at 1,0
+input T1 + 1
+column 1
+0.0
+select Cell at 1,1
+input A2 + 1
+column 2
+0.0
+select Cell at 1,2
+input B2 + 1
+column 3
+0.0
+select Cell at 1,3
+input C2 + 1
+column 4
+0.0
+select Cell at 1,4
+input D2 + 1
+column 5
+0.0
+select Cell at 1,5
+input E2 + 1
+column 6
+0.0
+select Cell at 1,6
+input F2 + 1
+column 7
+0.0
+select Cell at 1,7
+input G2 + 1
+column 8
+0.0
+select Cell at 1,8
+input H2 + 1
+column 9
+0.0
+select Cell at 1,9
+input I2 + 1
+column 10
+0.0
+select Cell at 1,10
+input J2 + 1
+column 11
+0.0
+select Cell at 1,11
+input K2 + 1
+column 12
+0.0
+select Cell at 1,12
+input L2 + 1
+column 13
+0.0
+select Cell at 1,13
+input M2 + 1
+column 14
+0.0
+select Cell at 1,14
+input N2 + 1
+column 15
+0.0
+select Cell at 1,15
+input O2 + 1
+column 16
+0.0
+select Cell at 1,16
+input P2 + 1
+column 17
+0.0
+select Cell at 1,17
+input Q2 + 1
+column 18
+0.0
+select Cell at 1,18
+input R2 + 1
+column 19
+0.0
+select Cell at 1,19
+input S2 + 1
+row 2
+0.0
+select Cell at 2,0
+column 0
+0.0
+select Cell at 2,0
+input T2 + 1
+column 1
+0.0
+select Cell at 2,1
+input A3 + 1
+column 2
+0.0
+select Cell at 2,2
+input B3 + 1
+column 3
+0.0
+select Cell at 2,3
+input C3 + 1
+column 4
+0.0
+select Cell at 2,4
+input D3 + 1
+column 5
+0.0
+select Cell at 2,5
+input E3 + 1
+column 6
+0.0
+select Cell at 2,6
+input F3 + 1
+column 7
+0.0
+select Cell at 2,7
+input G3 + 1
+column 8
+0.0
+select Cell at 2,8
+input H3 + 1
+column 9
+0.0
+select Cell at 2,9
+input I3 + 1
+column 10
+0.0
+select Cell at 2,10
+input J3 + 1
+column 11
+0.0
+select Cell at 2,11
+input K3 + 1
+column 12
+0.0
+select Cell at 2,12
+input L3 + 1
+column 13
+0.0
+select Cell at 2,13
+input M3 + 1
+column 14
+0.0
+select Cell at 2,14
+input N3 + 1
+column 15
+0.0
+select Cell at 2,15
+input O3 + 1
+column 16
+0.0
+select Cell at 2,16
+input P3 + 1
+column 17
+0.0
+select Cell at 2,17
+input Q3 + 1
+column 18
+0.0
+select Cell at 2,18
+input R3 + 1
+column 19
+0.0
+select Cell at 2,19
+input S3 + 1
+row 3
+0.0
+select Cell at 3,0
+column 0
+0.0
+select Cell at 3,0
+input T3 + 1
+column 1
+0.0
+select Cell at 3,1
+input A4 + 1
+column 2
+0.0
+select Cell at 3,2
+input B4 + 1
+column 3
+0.0
+select Cell at 3,3
+input C4 + 1
+column 4
+0.0
+select Cell at 3,4
+input D4 + 1
+column 5
+0.0
+select Cell at 3,5
+input E4 + 1
+column 6
+0.0
+select Cell at 3,6
+input F4 + 1
+column 7
+0.0
+select Cell at 3,7
+input G4 + 1
+column 8
+0.0
+select Cell at 3,8
+input H4 + 1
+column 9
+0.0
+select Cell at 3,9
+input I4 + 1
+column 10
+0.0
+select Cell at 3,10
+input J4 + 1
+column 11
+0.0
+select Cell at 3,11
+input K4 + 1
+column 12
+0.0
+select Cell at 3,12
+input L4 + 1
+column 13
+0.0
+select Cell at 3,13
+input M4 + 1
+column 14
+0.0
+select Cell at 3,14
+input N4 + 1
+column 15
+0.0
+select Cell at 3,15
+input O4 + 1
+column 16
+0.0
+select Cell at 3,16
+input P4 + 1
+column 17
+0.0
+select Cell at 3,17
+input Q4 + 1
+column 18
+0.0
+select Cell at 3,18
+input R4 + 1
+column 19
+0.0
+select Cell at 3,19
+input S4 + 1
+row 4
+0.0
+select Cell at 4,0
+column 0
+0.0
+select Cell at 4,0
+input T4 + 1
+column 1
+0.0
+select Cell at 4,1
+input A5 + 1
+column 2
+0.0
+select Cell at 4,2
+input B5 + 1
+column 3
+0.0
+select Cell at 4,3
+input C5 + 1
+column 4
+0.0
+select Cell at 4,4
+input D5 + 1
+column 5
+0.0
+select Cell at 4,5
+input E5 + 1
+column 6
+0.0
+select Cell at 4,6
+input F5 + 1
+column 7
+0.0
+select Cell at 4,7
+input G5 + 1
+column 8
+0.0
+select Cell at 4,8
+input H5 + 1
+column 9
+0.0
+select Cell at 4,9
+input I5 + 1
+column 10
+0.0
+select Cell at 4,10
+input J5 + 1
+column 11
+0.0
+select Cell at 4,11
+input K5 + 1
+column 12
+0.0
+select Cell at 4,12
+input L5 + 1
+column 13
+0.0
+select Cell at 4,13
+input M5 + 1
+column 14
+0.0
+select Cell at 4,14
+input N5 + 1
+column 15
+0.0
+select Cell at 4,15
+input O5 + 1
+column 16
+0.0
+select Cell at 4,16
+input P5 + 1
+column 17
+0.0
+select Cell at 4,17
+input Q5 + 1
+column 18
+0.0
+select Cell at 4,18
+input R5 + 1
+column 19
+0.0
+select Cell at 4,19
+input S5 + 1
+row 5
+0.0
+select Cell at 5,0
+column 0
+0.0
+select Cell at 5,0
+input T5 + 1
+column 1
+0.0
+select Cell at 5,1
+input A6 + 1
+column 2
+0.0
+select Cell at 5,2
+input B6 + 1
+column 3
+0.0
+select Cell at 5,3
+input C6 + 1
+column 4
+0.0
+select Cell at 5,4
+input D6 + 1
+column 5
+0.0
+select Cell at 5,5
+input E6 + 1
+column 6
+0.0
+select Cell at 5,6
+input F6 + 1
+column 7
+0.0
+select Cell at 5,7
+input G6 + 1
+column 8
+0.0
+select Cell at 5,8
+input H6 + 1
+column 9
+0.0
+select Cell at 5,9
+input I6 + 1
+column 10
+0.0
+select Cell at 5,10
+input J6 + 1
+column 11
+0.0
+select Cell at 5,11
+input K6 + 1
+column 12
+0.0
+select Cell at 5,12
+input L6 + 1
+column 13
+0.0
+select Cell at 5,13
+input M6 + 1
+column 14
+0.0
+select Cell at 5,14
+input N6 + 1
+column 15
+0.0
+select Cell at 5,15
+input O6 + 1
+column 16
+0.0
+select Cell at 5,16
+input P6 + 1
+column 17
+0.0
+select Cell at 5,17
+input Q6 + 1
+column 18
+0.0
+select Cell at 5,18
+input R6 + 1
+column 19
+0.0
+select Cell at 5,19
+input S6 + 1
+row 6
+0.0
+select Cell at 6,0
+column 0
+0.0
+select Cell at 6,0
+input T6 + 1
+column 1
+0.0
+select Cell at 6,1
+input A7 + 1
+column 2
+0.0
+select Cell at 6,2
+input B7 + 1
+column 3
+0.0
+select Cell at 6,3
+input C7 + 1
+column 4
+0.0
+select Cell at 6,4
+input D7 + 1
+column 5
+0.0
+select Cell at 6,5
+input E7 + 1
+column 6
+0.0
+select Cell at 6,6
+input F7 + 1
+column 7
+0.0
+select Cell at 6,7
+input G7 + 1
+column 8
+0.0
+select Cell at 6,8
+input H7 + 1
+column 9
+0.0
+select Cell at 6,9
+input I7 + 1
+column 10
+0.0
+select Cell at 6,10
+input J7 + 1
+column 11
+0.0
+select Cell at 6,11
+input K7 + 1
+column 12
+0.0
+select Cell at 6,12
+input L7 + 1
+column 13
+0.0
+select Cell at 6,13
+input M7 + 1
+column 14
+0.0
+select Cell at 6,14
+input N7 + 1
+column 15
+0.0
+select Cell at 6,15
+input O7 + 1
+column 16
+0.0
+select Cell at 6,16
+input P7 + 1
+column 17
+0.0
+select Cell at 6,17
+input Q7 + 1
+column 18
+0.0
+select Cell at 6,18
+input R7 + 1
+column 19
+0.0
+select Cell at 6,19
+input S7 + 1
+row 7
+0.0
+select Cell at 7,0
+column 0
+0.0
+select Cell at 7,0
+input T7 + 1
+column 1
+0.0
+select Cell at 7,1
+input A8 + 1
+column 2
+0.0
+select Cell at 7,2
+input B8 + 1
+column 3
+0.0
+select Cell at 7,3
+input C8 + 1
+column 4
+0.0
+select Cell at 7,4
+input D8 + 1
+column 5
+0.0
+select Cell at 7,5
+input E8 + 1
+column 6
+0.0
+select Cell at 7,6
+input F8 + 1
+column 7
+0.0
+select Cell at 7,7
+input G8 + 1
+column 8
+0.0
+select Cell at 7,8
+input H8 + 1
+column 9
+0.0
+select Cell at 7,9
+input I8 + 1
+column 10
+0.0
+select Cell at 7,10
+input J8 + 1
+column 11
+0.0
+select Cell at 7,11
+input K8 + 1
+column 12
+0.0
+select Cell at 7,12
+input L8 + 1
+column 13
+0.0
+select Cell at 7,13
+input M8 + 1
+column 14
+0.0
+select Cell at 7,14
+input N8 + 1
+column 15
+0.0
+select Cell at 7,15
+input O8 + 1
+column 16
+0.0
+select Cell at 7,16
+input P8 + 1
+column 17
+0.0
+select Cell at 7,17
+input Q8 + 1
+column 18
+0.0
+select Cell at 7,18
+input R8 + 1
+column 19
+0.0
+select Cell at 7,19
+input S8 + 1
+row 8
+0.0
+select Cell at 8,0
+column 0
+0.0
+select Cell at 8,0
+input T8 + 1
+column 1
+0.0
+select Cell at 8,1
+input A9 + 1
+column 2
+0.0
+select Cell at 8,2
+input B9 + 1
+column 3
+0.0
+select Cell at 8,3
+input C9 + 1
+column 4
+0.0
+select Cell at 8,4
+input D9 + 1
+column 5
+0.0
+select Cell at 8,5
+input E9 + 1
+column 6
+0.0
+select Cell at 8,6
+input F9 + 1
+column 7
+0.0
+select Cell at 8,7
+input G9 + 1
+column 8
+0.0
+select Cell at 8,8
+input H9 + 1
+column 9
+0.0
+select Cell at 8,9
+input I9 + 1
+column 10
+0.0
+select Cell at 8,10
+input J9 + 1
+column 11
+0.0
+select Cell at 8,11
+input K9 + 1
+column 12
+0.0
+select Cell at 8,12
+input L9 + 1
+column 13
+0.0
+select Cell at 8,13
+input M9 + 1
+column 14
+0.0
+select Cell at 8,14
+input N9 + 1
+column 15
+0.0
+select Cell at 8,15
+input O9 + 1
+column 16
+0.0
+select Cell at 8,16
+input P9 + 1
+column 17
+0.0
+select Cell at 8,17
+input Q9 + 1
+column 18
+0.0
+select Cell at 8,18
+input R9 + 1
+column 19
+0.0
+select Cell at 8,19
+input S9 + 1
+row 9
+0.0
+select Cell at 9,0
+column 0
+0.0
+select Cell at 9,0
+input T9 + 1
+column 1
+0.0
+select Cell at 9,1
+input A10 + 1
+column 2
+0.0
+select Cell at 9,2
+input B10 + 1
+column 3
+0.0
+select Cell at 9,3
+input C10 + 1
+column 4
+0.0
+select Cell at 9,4
+input D10 + 1
+column 5
+0.0
+select Cell at 9,5
+input E10 + 1
+column 6
+0.0
+select Cell at 9,6
+input F10 + 1
+column 7
+0.0
+select Cell at 9,7
+input G10 + 1
+column 8
+0.0
+select Cell at 9,8
+input H10 + 1
+column 9
+0.0
+select Cell at 9,9
+input I10 + 1
+column 10
+0.0
+select Cell at 9,10
+input J10 + 1
+column 11
+0.0
+select Cell at 9,11
+input K10 + 1
+column 12
+0.0
+select Cell at 9,12
+input L10 + 1
+column 13
+0.0
+select Cell at 9,13
+input M10 + 1
+column 14
+0.0
+select Cell at 9,14
+input N10 + 1
+column 15
+0.0
+select Cell at 9,15
+input O10 + 1
+column 16
+0.0
+select Cell at 9,16
+input P10 + 1
+column 17
+0.0
+select Cell at 9,17
+input Q10 + 1
+column 18
+0.0
+select Cell at 9,18
+input R10 + 1
+column 19
+0.0
+select Cell at 9,19
+input S10 + 1
+row 10
+0.0
+select Cell at 10,0
+column 0
+0.0
+select Cell at 10,0
+input T10 + 1
+column 1
+0.0
+select Cell at 10,1
+input A11 + 1
+column 2
+0.0
+select Cell at 10,2
+input B11 + 1
+column 3
+0.0
+select Cell at 10,3
+input C11 + 1
+column 4
+0.0
+select Cell at 10,4
+input D11 + 1
+column 5
+0.0
+select Cell at 10,5
+input E11 + 1
+column 6
+0.0
+select Cell at 10,6
+input F11 + 1
+column 7
+0.0
+select Cell at 10,7
+input G11 + 1
+column 8
+0.0
+select Cell at 10,8
+input H11 + 1
+column 9
+0.0
+select Cell at 10,9
+input I11 + 1
+column 10
+0.0
+select Cell at 10,10
+input J11 + 1
+column 11
+0.0
+select Cell at 10,11
+input K11 + 1
+column 12
+0.0
+select Cell at 10,12
+input L11 + 1
+column 13
+0.0
+select Cell at 10,13
+input M11 + 1
+column 14
+0.0
+select Cell at 10,14
+input N11 + 1
+column 15
+0.0
+select Cell at 10,15
+input O11 + 1
+column 16
+0.0
+select Cell at 10,16
+input P11 + 1
+column 17
+0.0
+select Cell at 10,17
+input Q11 + 1
+column 18
+0.0
+select Cell at 10,18
+input R11 + 1
+column 19
+0.0
+select Cell at 10,19
+input S11 + 1
+row 11
+0.0
+select Cell at 11,0
+column 0
+0.0
+select Cell at 11,0
+input T11 + 1
+column 1
+0.0
+select Cell at 11,1
+input A12 + 1
+column 2
+0.0
+select Cell at 11,2
+input B12 + 1
+column 3
+0.0
+select Cell at 11,3
+input C12 + 1
+column 4
+0.0
+select Cell at 11,4
+input D12 + 1
+column 5
+0.0
+select Cell at 11,5
+input E12 + 1
+column 6
+0.0
+select Cell at 11,6
+input F12 + 1
+column 7
+0.0
+select Cell at 11,7
+input G12 + 1
+column 8
+0.0
+select Cell at 11,8
+input H12 + 1
+column 9
+0.0
+select Cell at 11,9
+input I12 + 1
+column 10
+0.0
+select Cell at 11,10
+input J12 + 1
+column 11
+0.0
+select Cell at 11,11
+input K12 + 1
+column 12
+0.0
+select Cell at 11,12
+input L12 + 1
+column 13
+0.0
+select Cell at 11,13
+input M12 + 1
+column 14
+0.0
+select Cell at 11,14
+input N12 + 1
+column 15
+0.0
+select Cell at 11,15
+input O12 + 1
+column 16
+0.0
+select Cell at 11,16
+input P12 + 1
+column 17
+0.0
+select Cell at 11,17
+input Q12 + 1
+column 18
+0.0
+select Cell at 11,18
+input R12 + 1
+column 19
+0.0
+select Cell at 11,19
+input S12 + 1
+row 12
+0.0
+select Cell at 12,0
+column 0
+0.0
+select Cell at 12,0
+input T12 + 1
+column 1
+0.0
+select Cell at 12,1
+input A13 + 1
+column 2
+0.0
+select Cell at 12,2
+input B13 + 1
+column 3
+0.0
+select Cell at 12,3
+input C13 + 1
+column 4
+0.0
+select Cell at 12,4
+input D13 + 1
+column 5
+0.0
+select Cell at 12,5
+input E13 + 1
+column 6
+0.0
+select Cell at 12,6
+input F13 + 1
+column 7
+0.0
+select Cell at 12,7
+input G13 + 1
+column 8
+0.0
+select Cell at 12,8
+input H13 + 1
+column 9
+0.0
+select Cell at 12,9
+input I13 + 1
+column 10
+0.0
+select Cell at 12,10
+input J13 + 1
+column 11
+0.0
+select Cell at 12,11
+input K13 + 1
+column 12
+0.0
+select Cell at 12,12
+input L13 + 1
+column 13
+0.0
+select Cell at 12,13
+input M13 + 1
+column 14
+0.0
+select Cell at 12,14
+input N13 + 1
+column 15
+0.0
+select Cell at 12,15
+input O13 + 1
+column 16
+0.0
+select Cell at 12,16
+input P13 + 1
+column 17
+0.0
+select Cell at 12,17
+input Q13 + 1
+column 18
+0.0
+select Cell at 12,18
+input R13 + 1
+column 19
+0.0
+select Cell at 12,19
+input S13 + 1
+row 13
+0.0
+select Cell at 13,0
+column 0
+0.0
+select Cell at 13,0
+input T13 + 1
+column 1
+0.0
+select Cell at 13,1
+input A14 + 1
+column 2
+0.0
+select Cell at 13,2
+input B14 + 1
+column 3
+0.0
+select Cell at 13,3
+input C14 + 1
+column 4
+0.0
+select Cell at 13,4
+input D14 + 1
+column 5
+0.0
+select Cell at 13,5
+input E14 + 1
+column 6
+0.0
+select Cell at 13,6
+input F14 + 1
+column 7
+0.0
+select Cell at 13,7
+input G14 + 1
+column 8
+0.0
+select Cell at 13,8
+input H14 + 1
+column 9
+0.0
+select Cell at 13,9
+input I14 + 1
+column 10
+0.0
+select Cell at 13,10
+input J14 + 1
+column 11
+0.0
+select Cell at 13,11
+input K14 + 1
+column 12
+0.0
+select Cell at 13,12
+input L14 + 1
+column 13
+0.0
+select Cell at 13,13
+input M14 + 1
+column 14
+0.0
+select Cell at 13,14
+input N14 + 1
+column 15
+0.0
+select Cell at 13,15
+input O14 + 1
+column 16
+0.0
+select Cell at 13,16
+input P14 + 1
+column 17
+0.0
+select Cell at 13,17
+input Q14 + 1
+column 18
+0.0
+select Cell at 13,18
+input R14 + 1
+column 19
+0.0
+select Cell at 13,19
+input S14 + 1
+row 14
+0.0
+select Cell at 14,0
+column 0
+0.0
+select Cell at 14,0
+input T14 + 1
+column 1
+0.0
+select Cell at 14,1
+input A15 + 1
+column 2
+0.0
+select Cell at 14,2
+input B15 + 1
+column 3
+0.0
+select Cell at 14,3
+input C15 + 1
+column 4
+0.0
+select Cell at 14,4
+input D15 + 1
+column 5
+0.0
+select Cell at 14,5
+input E15 + 1
+column 6
+0.0
+select Cell at 14,6
+input F15 + 1
+column 7
+0.0
+select Cell at 14,7
+input G15 + 1
+column 8
+0.0
+select Cell at 14,8
+input H15 + 1
+column 9
+0.0
+select Cell at 14,9
+input I15 + 1
+column 10
+0.0
+select Cell at 14,10
+input J15 + 1
+column 11
+0.0
+select Cell at 14,11
+input K15 + 1
+column 12
+0.0
+select Cell at 14,12
+input L15 + 1
+column 13
+0.0
+select Cell at 14,13
+input M15 + 1
+column 14
+0.0
+select Cell at 14,14
+input N15 + 1
+column 15
+0.0
+select Cell at 14,15
+input O15 + 1
+column 16
+0.0
+select Cell at 14,16
+input P15 + 1
+column 17
+0.0
+select Cell at 14,17
+input Q15 + 1
+column 18
+0.0
+select Cell at 14,18
+input R15 + 1
+column 19
+0.0
+select Cell at 14,19
+input S15 + 1
+row 15
+0.0
+select Cell at 15,0
+column 0
+0.0
+select Cell at 15,0
+input T15 + 1
+column 1
+0.0
+select Cell at 15,1
+input A16 + 1
+column 2
+0.0
+select Cell at 15,2
+input B16 + 1
+column 3
+0.0
+select Cell at 15,3
+input C16 + 1
+column 4
+0.0
+select Cell at 15,4
+input D16 + 1
+column 5
+0.0
+select Cell at 15,5
+input E16 + 1
+column 6
+0.0
+select Cell at 15,6
+input F16 + 1
+column 7
+0.0
+select Cell at 15,7
+input G16 + 1
+column 8
+0.0
+select Cell at 15,8
+input H16 + 1
+column 9
+0.0
+select Cell at 15,9
+input I16 + 1
+column 10
+0.0
+select Cell at 15,10
+input J16 + 1
+column 11
+0.0
+select Cell at 15,11
+input K16 + 1
+column 12
+0.0
+select Cell at 15,12
+input L16 + 1
+column 13
+0.0
+select Cell at 15,13
+input M16 + 1
+column 14
+0.0
+select Cell at 15,14
+input N16 + 1
+column 15
+0.0
+select Cell at 15,15
+input O16 + 1
+column 16
+0.0
+select Cell at 15,16
+input P16 + 1
+column 17
+0.0
+select Cell at 15,17
+input Q16 + 1
+column 18
+0.0
+select Cell at 15,18
+input R16 + 1
+column 19
+0.0
+select Cell at 15,19
+input S16 + 1
+row 16
+0.0
+select Cell at 16,0
+column 0
+0.0
+select Cell at 16,0
+input T16 + 1
+column 1
+0.0
+select Cell at 16,1
+input A17 + 1
+column 2
+0.0
+select Cell at 16,2
+input B17 + 1
+column 3
+0.0
+select Cell at 16,3
+input C17 + 1
+column 4
+0.0
+select Cell at 16,4
+input D17 + 1
+column 5
+0.0
+select Cell at 16,5
+input E17 + 1
+column 6
+0.0
+select Cell at 16,6
+input F17 + 1
+column 7
+0.0
+select Cell at 16,7
+input G17 + 1
+column 8
+0.0
+select Cell at 16,8
+input H17 + 1
+column 9
+0.0
+select Cell at 16,9
+input I17 + 1
+column 10
+0.0
+select Cell at 16,10
+input J17 + 1
+column 11
+0.0
+select Cell at 16,11
+input K17 + 1
+column 12
+0.0
+select Cell at 16,12
+input L17 + 1
+column 13
+0.0
+select Cell at 16,13
+input M17 + 1
+column 14
+0.0
+select Cell at 16,14
+input N17 + 1
+column 15
+0.0
+select Cell at 16,15
+input O17 + 1
+column 16
+0.0
+select Cell at 16,16
+input P17 + 1
+column 17
+0.0
+select Cell at 16,17
+input Q17 + 1
+column 18
+0.0
+select Cell at 16,18
+input R17 + 1
+column 19
+0.0
+select Cell at 16,19
+input S17 + 1
+row 17
+0.0
+select Cell at 17,0
+column 0
+0.0
+select Cell at 17,0
+input T17 + 1
+column 1
+0.0
+select Cell at 17,1
+input A18 + 1
+column 2
+0.0
+select Cell at 17,2
+input B18 + 1
+column 3
+0.0
+select Cell at 17,3
+input C18 + 1
+column 4
+0.0
+select Cell at 17,4
+input D18 + 1
+column 5
+0.0
+select Cell at 17,5
+input E18 + 1
+column 6
+0.0
+select Cell at 17,6
+input F18 + 1
+column 7
+0.0
+select Cell at 17,7
+input G18 + 1
+column 8
+0.0
+select Cell at 17,8
+input H18 + 1
+column 9
+0.0
+select Cell at 17,9
+input I18 + 1
+column 10
+0.0
+select Cell at 17,10
+input J18 + 1
+column 11
+0.0
+select Cell at 17,11
+input K18 + 1
+column 12
+0.0
+select Cell at 17,12
+input L18 + 1
+column 13
+0.0
+select Cell at 17,13
+input M18 + 1
+column 14
+0.0
+select Cell at 17,14
+input N18 + 1
+column 15
+0.0
+select Cell at 17,15
+input O18 + 1
+column 16
+0.0
+select Cell at 17,16
+input P18 + 1
+column 17
+0.0
+select Cell at 17,17
+input Q18 + 1
+column 18
+0.0
+select Cell at 17,18
+input R18 + 1
+column 19
+0.0
+select Cell at 17,19
+input S18 + 1
+row 18
+0.0
+select Cell at 18,0
+column 0
+0.0
+select Cell at 18,0
+input T18 + 1
+column 1
+0.0
+select Cell at 18,1
+input A19 + 1
+column 2
+0.0
+select Cell at 18,2
+input B19 + 1
+column 3
+0.0
+select Cell at 18,3
+input C19 + 1
+column 4
+0.0
+select Cell at 18,4
+input D19 + 1
+column 5
+0.0
+select Cell at 18,5
+input E19 + 1
+column 6
+0.0
+select Cell at 18,6
+input F19 + 1
+column 7
+0.0
+select Cell at 18,7
+input G19 + 1
+column 8
+0.0
+select Cell at 18,8
+input H19 + 1
+column 9
+0.0
+select Cell at 18,9
+input I19 + 1
+column 10
+0.0
+select Cell at 18,10
+input J19 + 1
+column 11
+0.0
+select Cell at 18,11
+input K19 + 1
+column 12
+0.0
+select Cell at 18,12
+input L19 + 1
+column 13
+0.0
+select Cell at 18,13
+input M19 + 1
+column 14
+0.0
+select Cell at 18,14
+input N19 + 1
+column 15
+0.0
+select Cell at 18,15
+input O19 + 1
+column 16
+0.0
+select Cell at 18,16
+input P19 + 1
+column 17
+0.0
+select Cell at 18,17
+input Q19 + 1
+column 18
+0.0
+select Cell at 18,18
+input R19 + 1
+column 19
+0.0
+select Cell at 18,19
+input S19 + 1
+row 19
+0.0
+select Cell at 19,0
+column 0
+0.0
+select Cell at 19,0
+input T19 + 1
+column 1
+0.0
+select Cell at 19,1
+input A20 + 1
+column 2
+0.0
+select Cell at 19,2
+input B20 + 1
+column 3
+0.0
+select Cell at 19,3
+input C20 + 1
+column 4
+0.0
+select Cell at 19,4
+input D20 + 1
+column 5
+0.0
+select Cell at 19,5
+input E20 + 1
+column 6
+0.0
+select Cell at 19,6
+input F20 + 1
+column 7
+0.0
+select Cell at 19,7
+input G20 + 1
+column 8
+0.0
+select Cell at 19,8
+input H20 + 1
+column 9
+0.0
+select Cell at 19,9
+input I20 + 1
+column 10
+0.0
+select Cell at 19,10
+input J20 + 1
+column 11
+0.0
+select Cell at 19,11
+input K20 + 1
+column 12
+0.0
+select Cell at 19,12
+input L20 + 1
+column 13
+0.0
+select Cell at 19,13
+input M20 + 1
+column 14
+0.0
+select Cell at 19,14
+input N20 + 1
+column 15
+0.0
+select Cell at 19,15
+input O20 + 1
+column 16
+0.0
+select Cell at 19,16
+input P20 + 1
+column 17
+0.0
+select Cell at 19,17
+input Q20 + 1
+column 18
+0.0
+select Cell at 19,18
+input R20 + 1
+column 19
+0.0
+select Cell at 19,19
+input S20 + 1
+]]></system-out>
+  <system-err><![CDATA[Exception in thread "AWT-EventQueue-0" java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+	at java.lang.String.charAt(Unknown Source)
+	at ui.Gui.propertyChange(Gui.java:103)
+	at java.beans.PropertyChangeSupport.fire(Unknown Source)
+	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
+	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
+	at java.awt.Component.firePropertyChange(Unknown Source)
+	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:85)
+	at javax.swing.JTextField.fireActionPerformed(Unknown Source)
+	at javax.swing.JTextField.postActionEvent(Unknown Source)
+	at javax.swing.JTextField$NotifyAction.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$200(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+]]></system-err>
+</testsuite>
