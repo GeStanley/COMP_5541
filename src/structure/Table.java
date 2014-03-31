@@ -3,7 +3,6 @@ package structure;
 import java.util.ArrayList;
 import java.util.Stack;
 
-
 /**
  * This class manages the cells in the spreadsheet. It is also designed to be able to interact with a user interface.
  * A user will be able to retrieve and edit information contained within a cell by interacting the the Table class. It also can
@@ -11,9 +10,11 @@ import java.util.Stack;
  * 
  * Finally, it can create an array of cells by loading information from a text file as well as save information input into 
  * the spreadsheet to a text file.
+
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
  * 
- * @author GeStanley
- * @author Mike
+ * Date 31-03-2014
  */
 public class Table {
 	

@@ -1,16 +1,16 @@
 package structure;
 
-import java.awt.event.ActionEvent;
 import java.util.Map;
 
-import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 
 /**
  * 	This class handles the clipboard functions; copy, cut and paste.
  * 
- * @author Nick Reinlein
- *
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
  */
 
 public class ClipboardControl {

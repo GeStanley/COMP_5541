@@ -1,7 +1,6 @@
 package structure;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
@@ -14,6 +13,17 @@ import javax.swing.KeyStroke;
 import structure.Cell.Format;
 import ui.SpreadSheet;
 
+/**
+ * This class manages the behavior of shortcut keys. A user can use CTRL+C, CTRL+V,
+ * CTRL+X to copy or cut and paste cells. 
+ * CTRL+1, CTRL+2, CTRL+3, CTRL+4 to change cell format to default, monetary, scientific
+ * or integer.
+ * 
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
+ */
 public class KeyboardControl {
 	
 	private CellFormatControl cellFormat;

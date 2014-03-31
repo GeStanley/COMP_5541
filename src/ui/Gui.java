@@ -13,15 +13,21 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import structure.Cell;
+import structure.Cell.Format;
 import structure.KeyboardControl;
 import structure.Table;
-import structure.Cell.Format;
 
 
 /**
- * This class handles the creation of the gui for the calcul-o-matic program
+ * This class handles the creation of the gui for the calcul-o-matic program.
+ * This program is used to display a grid of cells in a visual manner, and it
+ * lets a user manipulate the data, analyze data using formulas, input new data,
+ * save or load from a file.
  * 
- * @author Mike
+ * @author 	Ankita Mishara, Geoffrey Stanley, Michael Burkat, 
+ * 			Nicholas Reinlein, Sofiane Benaissa, Tengzhong Wen
+ * 
+ * Date 31-03-2014
  */
 @SuppressWarnings("serial")
 public class Gui extends JFrame implements PropertyChangeListener{
