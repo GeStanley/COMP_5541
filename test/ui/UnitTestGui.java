@@ -59,7 +59,7 @@ public class UnitTestGui {
 		testGui.inputLine.setText(null);
 		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
 		
-		assertEquals("0.0",Gui.spreadsheet.getValueAt(2, 2).toString());
+		assertEquals("0.0",Gui.spreadsheet.getValueAt(3, 3).toString());
 		
 		//exception case
 		Gui.spreadsheet.setRowSelectionInterval(3, 3);
