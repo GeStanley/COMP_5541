@@ -112,6 +112,7 @@ public class UnitTestFormula {
 		resultBool = (boolean) testMe.invoke(tester, '(');
 		assertTrue(resultBool);
 		resultBool = (boolean) testMe.invoke(tester, ')');
+		assertTrue(resultBool);
 		//Should fail
 		resultBool = (boolean) testMe.invoke(tester, '?');
 		assertFalse(resultBool);
