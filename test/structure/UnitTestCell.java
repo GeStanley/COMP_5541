@@ -75,7 +75,7 @@ public class UnitTestCell {
 	@Test
 	public void testEquals() {
 		assertFalse("Compare a cell to a table", cell.equals(table));
-		assertFalse("Compare a cell to null", cell.equals(table));
+		assertFalse("Compare a cell to null", cell.equals(null));
 		assertTrue("Compare a cellt o itself", cell.equals(cell));
 
 		// Now compare actual cells
