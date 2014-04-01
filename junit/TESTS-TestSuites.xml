@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="Mike-Win81" id="0" name="Increment1Suite" package="suite" skipped="0" tests="34" time="0.1" timestamp="2014-03-31T19:39:37">
+  <testsuite errors="0" failures="0" hostname="Mike-Win81" id="0" name="Increment1Suite" package="suite" skipped="0" tests="34" time="0.091" timestamp="2014-04-01T16:02:03">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -150,7 +150,7 @@
 
           <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment1Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment1Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher6727266146351563125.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit9158362730027782962.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment1Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment1Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher3375963260754480316.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit4979731993895528551.properties" />
 
           <property name="java.class.path" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\bin;C:\Program Files\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;C:\Program Files\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-assert-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-reflect-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\fest-swing-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-util-1.1.2.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit4.jar" />
 
@@ -222,13 +222,13 @@
 
           <property name="java.specification.version" value="1.7" />
 
-          <property name="ant.project.invoked-targets" value="build,Increment1Suite,junitreport" />
+          <property name="ant.project.invoked-targets" value="build,Increment1Suite,Increment2Suite,Increment3Suite,junitreport" />
 
           <property name="env.PROCESSOR_LEVEL" value="6" />
 
       </properties>
 
-      <testcase classname="structure.UnitTestCell" name="testGetValue" time="0.005" />
+      <testcase classname="structure.UnitTestCell" name="testGetValue" time="0.004" />
 
       <testcase classname="structure.UnitTestCell" name="testCellConstructor" time="0.0" />
 
@@ -248,21 +248,322 @@
 
       <testcase classname="structure.UnitTestFormula" name="testMiscOperations" time="0.0" />
 
-      <testcase classname="structure.UnitTestFormula" name="testCircularReference" time="0.001" />
+      <testcase classname="structure.UnitTestFormula" name="testCircularReference" time="0.0" />
 
-      <testcase classname="structure.UnitTestFormula" name="testBasicOperations" time="0.001" />
+      <testcase classname="structure.UnitTestFormula" name="testBasicOperations" time="0.0" />
 
-      <testcase classname="structure.UnitTestFormula" name="testPolynomialOperations" time="0.0" />
+      <testcase classname="structure.UnitTestFormula" name="testPolynomialOperations" time="0.001" />
 
       <testcase classname="structure.UnitTestFormula" name="testNegativeNumbersPlus" time="0.0" />
 
-      <testcase classname="structure.UnitTestFormula" name="testNegativeNumbers" time="0.001" />
+      <testcase classname="structure.UnitTestFormula" name="testNegativeNumbers" time="0.0" />
 
       <testcase classname="structure.UnitTestTable" name="testGetWidth" time="0.0" />
 
       <testcase classname="structure.UnitTestTable" name="testCellSelection" time="0.0" />
 
       <testcase classname="structure.UnitTestTable" name="testExpandTable" time="0.001" />
+
+      <testcase classname="structure.UnitTestTable" name="testUpdateRows" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testGetCell" time="0.001" />
+
+      <testcase classname="structure.UnitTestTable" name="testDimensions" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testCellReferencing" time="0.001" />
+
+      <testcase classname="structure.UnitTestTable" name="testIsCellSelected" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testExpandCol" time="0.001" />
+
+      <testcase classname="structure.UnitTestTable" name="testExpandRow" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testGetLength" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testEquals" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testGetRow" time="0.001" />
+
+      <testcase classname="structure.UnitTestTable" name="testGetColumnIndex" time="0.0" />
+
+      <testcase classname="ui.UnitTestSaveFile" name="testOpenWrite" time="0.002" />
+
+      <testcase classname="ui.UnitTestSaveFile" name="testLoad" time="0.008" />
+
+      <testcase classname="ui.UnitTestSaveFile" name="testSave" time="0.003" />
+
+      <testcase classname="ui.UnitTestSaveFile" name="testOpenRead" time="0.001" />
+
+      <testcase classname="ui.UnitTestSaveFile" name="testImportExportLine" time="0.002" />
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+  <testsuite errors="2" failures="0" hostname="Mike-Win81" id="1" name="Increment2Suite" package="suite" skipped="0" tests="55" time="0.508" timestamp="2014-04-01T16:02:04">
+      <properties>
+          <property name="java.vendor" value="Oracle Corporation" />
+
+          <property name="env.USERDOMAIN_ROAMINGPROFILE" value="MIKE-WIN81" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="eclipse.pdebuild.templates" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/templates/" />
+
+          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+
+          <property name="env.PROMPT" value="$P$G" />
+
+          <property name="os.name" value="Windows 8" />
+
+          <property name="env.FP_NO_HOST_CHECK" value="NO" />
+
+          <property name="sun.boot.class.path" value="C:\Program Files\Java\jre7\lib\resources.jar;C:\Program Files\Java\jre7\lib\rt.jar;C:\Program Files\Java\jre7\lib\sunrsasign.jar;C:\Program Files\Java\jre7\lib\jsse.jar;C:\Program Files\Java\jre7\lib\jce.jar;C:\Program Files\Java\jre7\lib\charsets.jar;C:\Program Files\Java\jre7\lib\jfr.jar;C:\Program Files\Java\jre7\classes" />
+
+          <property name="env.COMPUTERNAME" value="MIKE-WIN81" />
+
+          <property name="env.CommonProgramW6432" value="C:\Program Files\Common Files" />
+
+          <property name="env.ALLUSERSPROFILE" value="C:\ProgramData" />
+
+          <property name="sun.desktop" value="windows" />
+
+          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="ant.home" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3" />
+
+          <property name="java.runtime.version" value="1.7.0_40-b43" />
+
+          <property name="env.HOMEPATH" value="\Users\Mike" />
+
+          <property name="user.name" value="Mike" />
+
+          <property name="user.language" value="en" />
+
+          <property name="sun.boot.library.path" value="C:\Program Files\Java\jre7\bin" />
+
+          <property name="ant.project.default-target" value="build" />
+
+          <property name="ant.project.name" value="COMP_5541" />
+
+          <property name="java.version" value="1.7.0_40" />
+
+          <property name="env.PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 58 Stepping 9, GenuineIntel" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="env.TEMP" value="C:\Users\Mike\AppData\Local\Temp" />
+
+          <property name="sun.arch.data.model" value="64" />
+
+          <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre7\lib\endorsed" />
+
+          <property name="sun.cpu.isalist" value="amd64" />
+
+          <property name="ant.file.COMP_5541" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\build.xml" />
+
+          <property name="env.HOMEDRIVE" value="C:" />
+
+          <property name="sun.jnu.encoding" value="Cp1252" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="ECLIPSE_HOME" value="../../../../../Program Files/eclipse" />
+
+          <property name="file.separator" value="\" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="java.class.version" value="51.0" />
+
+          <property name="user.country" value="CA" />
+
+          <property name="java.home" value="C:\Program Files\Java\jre7" />
+
+          <property name="env.PSModulePath" value="C:\Windows\system32\WindowsPowerShell\v1.0\Modules\" />
+
+          <property name="env.APPDATA" value="C:\Users\Mike\AppData\Roaming" />
+
+          <property name="env.PUBLIC" value="C:\Users\Public" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="env.ComSpec" value="C:\Windows\system32\cmd.exe" />
+
+          <property name="env.OS" value="Windows_NT" />
+
+          <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files" />
+
+          <property name="ant.file" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\build.xml" />
+
+          <property name="os.version" value="6.2" />
+
+          <property name="env.ProgramW6432" value="C:\Program Files" />
+
+          <property name="path.separator" value=";" />
+
+          <property name="java.vm.version" value="24.0-b56" />
+
+          <property name="env.USERPROFILE" value="C:\Users\Mike" />
+
+          <property name="user.variant" value="" />
+
+          <property name="ant.library.dir" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib" />
+
+          <property name="junit.output.dir" value="junit" />
+
+          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+
+          <property name="env.TMP" value="C:\Users\Mike\AppData\Local\Temp" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+
+          <property name="user.script" value="" />
+
+          <property name="eclipse.pdebuild.scripts" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/scripts/" />
+
+          <property name="user.home" value="C:\Users\Mike" />
+
+          <property name="target" value="1.7" />
+
+          <property name="env.ProgramData" value="C:\ProgramData" />
+
+          <property name="env.SESSIONNAME" value="Console" />
+
+          <property name="env.ProgramFiles(x86)" value="C:\Program Files (x86)" />
+
+          <property name="java.specification.vendor" value="Oracle Corporation" />
+
+          <property name="env.NUMBER_OF_PROCESSORS" value="8" />
+
+          <property name="java.library.path" value="C:\Program Files\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python33\;C:\Python33\Scripts\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MATLAB\R2014a\bin;C:\Python33;." />
+
+          <property name="java.vendor.url" value="http://java.oracle.com/" />
+
+          <property name="java.vm.vendor" value="Oracle Corporation" />
+
+          <property name="ant.file.type.COMP_5541" value="file" />
+
+          <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
+
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment2Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment2Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher5456089089169850592.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit1171478238791236095.properties" />
+
+          <property name="java.class.path" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\bin;C:\Program Files\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;C:\Program Files\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-assert-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-reflect-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\fest-swing-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-util-1.1.2.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit4.jar" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="env.windir" value="C:\Windows" />
+
+          <property name="env.LOGONSERVER" value="\\MicrosoftAccount" />
+
+          <property name="java.vm.specification.version" value="1.7" />
+
+          <property name="env.PROCESSOR_ARCHITECTURE" value="AMD64" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="sun.os.patch.level" value="" />
+
+          <property name="debuglevel" value="source,lines,vars" />
+
+          <property name="env.ANT_HOME" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3" />
+
+          <property name="env.ProgramFiles" value="C:\Program Files" />
+
+          <property name="java.io.tmpdir" value="C:\Users\Mike\AppData\Local\Temp\" />
+
+          <property name="eclipse.pdebuild.home" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/./" />
+
+          <property name="env.PROCESSOR_REVISION" value="3a09" />
+
+          <property name="env.CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files" />
+
+          <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+
+          <property name="env.SystemRoot" value="C:\Windows" />
+
+          <property name="os.arch" value="amd64" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+
+          <property name="java.ext.dirs" value="C:\Program Files\Java\jre7\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+
+          <property name="user.dir" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541" />
+
+          <property name="env.LOCALAPPDATA" value="C:\Users\Mike\AppData\Local" />
+
+          <property name="line.separator" value="&#xd;&#xa;" />
+
+          <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+
+          <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC" />
+
+          <property name="env.Path" value="C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python33\;C:\Python33\Scripts\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MATLAB\R2014a\bin;C:\Python33" />
+
+          <property name="basedir" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541" />
+
+          <property name="ant.java.version" value="1.7" />
+
+          <property name="ant.core.lib" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar" />
+
+          <property name="env.USERNAME" value="Mike" />
+
+          <property name="source" value="1.7" />
+
+          <property name="env.SystemDrive" value="C:" />
+
+          <property name="file.encoding" value="Cp1252" />
+
+          <property name="env.USERDOMAIN" value="MIKE-WIN81" />
+
+          <property name="java.specification.version" value="1.7" />
+
+          <property name="ant.project.invoked-targets" value="build,Increment1Suite,Increment2Suite,Increment3Suite,junitreport" />
+
+          <property name="env.PROCESSOR_LEVEL" value="6" />
+
+      </properties>
+
+      <testcase classname="structure.UnitTestCell" name="testGetValue" time="0.004" />
+
+      <testcase classname="structure.UnitTestCell" name="testCellConstructor" time="0.0" />
+
+      <testcase classname="structure.UnitTestCell" name="testSetCellFormula" time="0.0" />
+
+      <testcase classname="structure.UnitTestCell" name="testGetCellFormula" time="0.0" />
+
+      <testcase classname="structure.UnitTestCell" name="testGetValueString" time="0.0" />
+
+      <testcase classname="structure.UnitTestCell" name="testEquals" time="0.0" />
+
+      <testcase classname="structure.UnitTestFormula" name="testExceptions" time="0.001" />
+
+      <testcase classname="structure.UnitTestFormula" name="testPrivateMethodsFormula" time="0.0" />
+
+      <testcase classname="structure.UnitTestFormula" name="testCellReferences" time="0.0" />
+
+      <testcase classname="structure.UnitTestFormula" name="testMiscOperations" time="0.0" />
+
+      <testcase classname="structure.UnitTestFormula" name="testCircularReference" time="0.001" />
+
+      <testcase classname="structure.UnitTestFormula" name="testBasicOperations" time="0.0" />
+
+      <testcase classname="structure.UnitTestFormula" name="testPolynomialOperations" time="0.0" />
+
+      <testcase classname="structure.UnitTestFormula" name="testNegativeNumbersPlus" time="0.001" />
+
+      <testcase classname="structure.UnitTestFormula" name="testNegativeNumbers" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testGetWidth" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testCellSelection" time="0.0" />
+
+      <testcase classname="structure.UnitTestTable" name="testExpandTable" time="0.0" />
 
       <testcase classname="structure.UnitTestTable" name="testUpdateRows" time="0.0" />
 
@@ -284,316 +585,15 @@
 
       <testcase classname="structure.UnitTestTable" name="testGetRow" time="0.0" />
 
-      <testcase classname="structure.UnitTestTable" name="testGetColumnIndex" time="0.001" />
-
-      <testcase classname="ui.UnitTestSaveFile" name="testOpenWrite" time="0.002" />
-
-      <testcase classname="ui.UnitTestSaveFile" name="testLoad" time="0.012" />
-
-      <testcase classname="ui.UnitTestSaveFile" name="testSave" time="0.002" />
-
-      <testcase classname="ui.UnitTestSaveFile" name="testOpenRead" time="0.001" />
-
-      <testcase classname="ui.UnitTestSaveFile" name="testImportExportLine" time="0.002" />
-
-      <system-out><![CDATA[]]></system-out>
-
-      <system-err><![CDATA[]]></system-err>
-
-  </testsuite>
-  <testsuite errors="2" failures="0" hostname="Mike-Win81" id="1" name="Increment2Suite" package="suite" skipped="0" tests="55" time="0.504" timestamp="2014-03-31T17:07:45">
-      <properties>
-          <property name="java.vendor" value="Oracle Corporation" />
-
-          <property name="env.USERDOMAIN_ROAMINGPROFILE" value="MIKE-WIN81" />
-
-          <property name="sun.java.launcher" value="SUN_STANDARD" />
-
-          <property name="eclipse.pdebuild.templates" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/templates/" />
-
-          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
-
-          <property name="env.PROMPT" value="$P$G" />
-
-          <property name="os.name" value="Windows 8" />
-
-          <property name="env.FP_NO_HOST_CHECK" value="NO" />
-
-          <property name="sun.boot.class.path" value="C:\Program Files\Java\jre7\lib\resources.jar;C:\Program Files\Java\jre7\lib\rt.jar;C:\Program Files\Java\jre7\lib\sunrsasign.jar;C:\Program Files\Java\jre7\lib\jsse.jar;C:\Program Files\Java\jre7\lib\jce.jar;C:\Program Files\Java\jre7\lib\charsets.jar;C:\Program Files\Java\jre7\lib\jfr.jar;C:\Program Files\Java\jre7\classes" />
-
-          <property name="env.COMPUTERNAME" value="MIKE-WIN81" />
-
-          <property name="env.CommonProgramW6432" value="C:\Program Files\Common Files" />
-
-          <property name="env.ALLUSERSPROFILE" value="C:\ProgramData" />
-
-          <property name="sun.desktop" value="windows" />
-
-          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
-
-          <property name="ant.home" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3" />
-
-          <property name="java.runtime.version" value="1.7.0_40-b43" />
-
-          <property name="env.HOMEPATH" value="\Users\Mike" />
-
-          <property name="user.name" value="Mike" />
-
-          <property name="user.language" value="en" />
-
-          <property name="sun.boot.library.path" value="C:\Program Files\Java\jre7\bin" />
-
-          <property name="ant.project.default-target" value="build" />
-
-          <property name="ant.project.name" value="COMP_5541" />
-
-          <property name="java.version" value="1.7.0_40" />
-
-          <property name="env.PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 58 Stepping 9, GenuineIntel" />
-
-          <property name="user.timezone" value="" />
-
-          <property name="env.TEMP" value="C:\Users\Mike\AppData\Local\Temp" />
-
-          <property name="sun.arch.data.model" value="64" />
-
-          <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre7\lib\endorsed" />
-
-          <property name="sun.cpu.isalist" value="amd64" />
-
-          <property name="ant.file.COMP_5541" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\build.xml" />
-
-          <property name="env.HOMEDRIVE" value="C:" />
-
-          <property name="sun.jnu.encoding" value="Cp1252" />
-
-          <property name="file.encoding.pkg" value="sun.io" />
-
-          <property name="ECLIPSE_HOME" value="../../../../../Program Files/eclipse" />
-
-          <property name="file.separator" value="\" />
-
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
-          <property name="java.class.version" value="51.0" />
-
-          <property name="user.country" value="CA" />
-
-          <property name="java.home" value="C:\Program Files\Java\jre7" />
-
-          <property name="env.PSModulePath" value="C:\Windows\system32\WindowsPowerShell\v1.0\Modules\" />
-
-          <property name="env.APPDATA" value="C:\Users\Mike\AppData\Roaming" />
-
-          <property name="env.PUBLIC" value="C:\Users\Public" />
-
-          <property name="java.vm.info" value="mixed mode" />
-
-          <property name="env.ComSpec" value="C:\Windows\system32\cmd.exe" />
-
-          <property name="env.OS" value="Windows_NT" />
-
-          <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files" />
-
-          <property name="ant.file" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\build.xml" />
-
-          <property name="os.version" value="6.2" />
-
-          <property name="env.ProgramW6432" value="C:\Program Files" />
-
-          <property name="path.separator" value=";" />
-
-          <property name="java.vm.version" value="24.0-b56" />
-
-          <property name="env.USERPROFILE" value="C:\Users\Mike" />
-
-          <property name="user.variant" value="" />
-
-          <property name="ant.library.dir" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib" />
-
-          <property name="junit.output.dir" value="junit" />
-
-          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
-
-          <property name="env.TMP" value="C:\Users\Mike\AppData\Local\Temp" />
-
-          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
-
-          <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
-
-          <property name="user.script" value="" />
-
-          <property name="eclipse.pdebuild.scripts" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/scripts/" />
-
-          <property name="user.home" value="C:\Users\Mike" />
-
-          <property name="target" value="1.7" />
-
-          <property name="env.ProgramData" value="C:\ProgramData" />
-
-          <property name="env.SESSIONNAME" value="Console" />
-
-          <property name="env.ProgramFiles(x86)" value="C:\Program Files (x86)" />
-
-          <property name="java.specification.vendor" value="Oracle Corporation" />
-
-          <property name="env.NUMBER_OF_PROCESSORS" value="8" />
-
-          <property name="java.library.path" value="C:\Program Files\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python33\;C:\Python33\Scripts\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MATLAB\R2014a\bin;C:\Python33;." />
-
-          <property name="java.vendor.url" value="http://java.oracle.com/" />
-
-          <property name="java.vm.vendor" value="Oracle Corporation" />
-
-          <property name="ant.file.type.COMP_5541" value="file" />
-
-          <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
-
-          <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
-
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment2Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment2Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher3767406344546492215.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit3782429333362023767.properties" />
-
-          <property name="java.class.path" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\bin;C:\Program Files\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;C:\Program Files\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-assert-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-reflect-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\fest-swing-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-util-1.1.2.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit4.jar" />
-
-          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
-
-          <property name="env.windir" value="C:\Windows" />
-
-          <property name="env.LOGONSERVER" value="\\MicrosoftAccount" />
-
-          <property name="java.vm.specification.version" value="1.7" />
-
-          <property name="env.PROCESSOR_ARCHITECTURE" value="AMD64" />
-
-          <property name="sun.cpu.endian" value="little" />
-
-          <property name="sun.os.patch.level" value="" />
-
-          <property name="debuglevel" value="source,lines,vars" />
-
-          <property name="env.ANT_HOME" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3" />
-
-          <property name="env.ProgramFiles" value="C:\Program Files" />
-
-          <property name="java.io.tmpdir" value="C:\Users\Mike\AppData\Local\Temp\" />
-
-          <property name="eclipse.pdebuild.home" value="/C:/Program Files/eclipse/plugins/org.eclipse.pde.build_3.8.100.v20130514-1028/./" />
-
-          <property name="env.PROCESSOR_REVISION" value="3a09" />
-
-          <property name="env.CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files" />
-
-          <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
-
-          <property name="env.SystemRoot" value="C:\Windows" />
-
-          <property name="os.arch" value="amd64" />
-
-          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
-
-          <property name="java.ext.dirs" value="C:\Program Files\Java\jre7\lib\ext;C:\Windows\Sun\Java\lib\ext" />
-
-          <property name="user.dir" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541" />
-
-          <property name="env.LOCALAPPDATA" value="C:\Users\Mike\AppData\Local" />
-
-          <property name="line.separator" value="&#xd;&#xa;" />
-
-          <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
-
-          <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC" />
-
-          <property name="env.Path" value="C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python33\;C:\Python33\Scripts\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MATLAB\R2014a\bin;C:\Python33" />
-
-          <property name="basedir" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541" />
-
-          <property name="ant.java.version" value="1.7" />
-
-          <property name="ant.core.lib" value="C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar" />
-
-          <property name="env.USERNAME" value="Mike" />
-
-          <property name="source" value="1.7" />
-
-          <property name="env.SystemDrive" value="C:" />
-
-          <property name="file.encoding" value="Cp1252" />
-
-          <property name="env.USERDOMAIN" value="MIKE-WIN81" />
-
-          <property name="java.specification.version" value="1.7" />
-
-          <property name="ant.project.invoked-targets" value="build,Increment2Suite,Increment3Suite,junitreport" />
-
-          <property name="env.PROCESSOR_LEVEL" value="6" />
-
-      </properties>
-
-      <testcase classname="structure.UnitTestCell" name="testGetValue" time="0.004" />
-
-      <testcase classname="structure.UnitTestCell" name="testCellConstructor" time="0.0" />
-
-      <testcase classname="structure.UnitTestCell" name="testSetCellFormula" time="0.0" />
-
-      <testcase classname="structure.UnitTestCell" name="testGetCellFormula" time="0.001" />
-
-      <testcase classname="structure.UnitTestCell" name="testGetValueString" time="0.0" />
-
-      <testcase classname="structure.UnitTestCell" name="testEquals" time="0.0" />
-
-      <testcase classname="structure.UnitTestFormula" name="testExceptions" time="0.0" />
-
-      <testcase classname="structure.UnitTestFormula" name="testPrivateMethodsFormula" time="0.001" />
-
-      <testcase classname="structure.UnitTestFormula" name="testCellReferences" time="0.001" />
-
-      <testcase classname="structure.UnitTestFormula" name="testMiscOperations" time="0.001" />
-
-      <testcase classname="structure.UnitTestFormula" name="testCircularReference" time="0.0" />
-
-      <testcase classname="structure.UnitTestFormula" name="testBasicOperations" time="0.0" />
-
-      <testcase classname="structure.UnitTestFormula" name="testPolynomialOperations" time="0.001" />
-
-      <testcase classname="structure.UnitTestFormula" name="testNegativeNumbersPlus" time="0.0" />
-
-      <testcase classname="structure.UnitTestFormula" name="testNegativeNumbers" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testGetWidth" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testCellSelection" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testExpandTable" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testUpdateRows" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testGetCell" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testDimensions" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testCellReferencing" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testIsCellSelected" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testExpandCol" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testExpandRow" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testGetLength" time="0.0" />
-
-      <testcase classname="structure.UnitTestTable" name="testEquals" time="0.001" />
-
-      <testcase classname="structure.UnitTestTable" name="testGetRow" time="0.001" />
-
       <testcase classname="structure.UnitTestTable" name="testGetColumnIndex" time="0.0" />
 
-      <testcase classname="ui.UnitTestGridModel" name="testSetValueAt" time="0.002" />
+      <testcase classname="ui.UnitTestGridModel" name="testSetValueAt" time="0.001" />
 
       <testcase classname="ui.UnitTestGridModel" name="testGetValue" time="0.002" />
 
       <testcase classname="ui.UnitTestGridModel" name="testDimensionConstructor" time="0.0" />
 
-      <testcase classname="ui.UnitTestGridModel" name="testDimensionRetreaval" time="0.009" />
+      <testcase classname="ui.UnitTestGridModel" name="testDimensionRetreaval" time="0.008" />
 
       <testcase classname="ui.UnitTestGridModel" name="testTableConstructor" time="0.0" />
 
@@ -601,30 +601,30 @@
 
       <testcase classname="ui.UnitTestGui" name="testCreateNewPropertyChange" time="0.0" />
 
-      <testcase classname="ui.UnitTestGui" name="testInputPropertyChange" time="0.241">
+      <testcase classname="ui.UnitTestGui" name="testInputPropertyChange" time="0.244">
           <error message="String index out of range: 0" type="java.lang.StringIndexOutOfBoundsException">java.lang.StringIndexOutOfBoundsException: String index out of range: 0
 	at java.lang.String.charAt(Unknown Source)
-	at ui.Gui.propertyChange(Gui.java:103)
+	at ui.Gui.propertyChange(Gui.java:109)
 	at java.beans.PropertyChangeSupport.fire(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.awt.Component.firePropertyChange(Unknown Source)
-	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:85)
-	at ui.UnitTestGui.testInputPropertyChange(UnitTestGui.java:42)
+	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:87)
+	at ui.UnitTestGui.testInputPropertyChange(UnitTestGui.java:51)
 </error>
 
       </testcase>
 
-      <testcase classname="ui.UnitTestGui" name="testSelectPropertyChange" time="0.124">
+      <testcase classname="ui.UnitTestGui" name="testSelectPropertyChange" time="0.131">
           <error message="String index out of range: 0" type="java.lang.StringIndexOutOfBoundsException">java.lang.StringIndexOutOfBoundsException: String index out of range: 0
 	at java.lang.String.charAt(Unknown Source)
-	at ui.Gui.propertyChange(Gui.java:103)
+	at ui.Gui.propertyChange(Gui.java:109)
 	at java.beans.PropertyChangeSupport.fire(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.awt.Component.firePropertyChange(Unknown Source)
-	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:85)
-	at ui.UnitTestGui.testSelectPropertyChange(UnitTestGui.java:108)
+	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:87)
+	at ui.UnitTestGui.testSelectPropertyChange(UnitTestGui.java:117)
 </error>
 
       </testcase>
@@ -633,19 +633,19 @@
 
       <testcase classname="ui.UnitTestGui" name="testSavePropertyChange" time="0.0" />
 
-      <testcase classname="ui.UnitTestGui" name="testTableConstructor" time="0.014" />
+      <testcase classname="ui.UnitTestGui" name="testTableConstructor" time="0.015" />
 
       <testcase classname="ui.UnitTestGui" name="testLoadPropertyChange" time="0.0" />
 
       <testcase classname="ui.UnitTestInputLine" name="testSetGetText" time="0.001" />
 
-      <testcase classname="ui.UnitTestInputLine" name="testSetGetMsg" time="0.0" />
+      <testcase classname="ui.UnitTestInputLine" name="testSetGetMsg" time="0.001" />
 
-      <testcase classname="ui.UnitTestInputLine" name="testInputConstructor" time="0.0" />
+      <testcase classname="ui.UnitTestInputLine" name="testInputConstructor" time="0.001" />
 
       <testcase classname="ui.UnitTestSaveFile" name="testOpenWrite" time="0.001" />
 
-      <testcase classname="ui.UnitTestSaveFile" name="testLoad" time="0.004" />
+      <testcase classname="ui.UnitTestSaveFile" name="testLoad" time="0.005" />
 
       <testcase classname="ui.UnitTestSaveFile" name="testSave" time="0.002" />
 
@@ -653,15 +653,15 @@
 
       <testcase classname="ui.UnitTestSaveFile" name="testImportExportLine" time="0.001" />
 
-      <testcase classname="ui.UnitTestSpreadSheet" name="testDimensionConstructor" time="0.0" />
+      <testcase classname="ui.UnitTestSpreadSheet" name="testDimensionConstructor" time="0.001" />
 
       <testcase classname="ui.UnitTestSpreadSheet" name="testActionPerformed" time="0.001" />
 
-      <testcase classname="ui.UnitTestSpreadSheet" name="testIsSelected" time="0.002" />
+      <testcase classname="ui.UnitTestSpreadSheet" name="testIsSelected" time="0.001" />
 
-      <testcase classname="ui.UnitTestSpreadSheet" name="testSetFormulaOfSelectedCell" time="0.002" />
+      <testcase classname="ui.UnitTestSpreadSheet" name="testSetFormulaOfSelectedCell" time="0.001" />
 
-      <testcase classname="ui.UnitTestSpreadSheet" name="testConstructor" time="0.001" />
+      <testcase classname="ui.UnitTestSpreadSheet" name="testConstructor" time="0.002" />
 
       <system-out><![CDATA[row 1
 column 2
@@ -910,7 +910,7 @@ column 2
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="2" hostname="Mike-Win81" id="2" name="Increment3Suite" package="suite" skipped="0" tests="12" time="991.166" timestamp="2014-03-31T17:07:45">
+  <testsuite errors="0" failures="0" hostname="Mike-Win81" id="2" name="Increment3Suite" package="suite" skipped="0" tests="12" time="957.168" timestamp="2014-04-01T16:02:05">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -1060,7 +1060,7 @@ column 2
 
           <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment3Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment3Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher920312704246153273.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit7883590166561222854.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment3Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment3Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher5147456890871889134.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit9024932592580584670.properties" />
 
           <property name="java.class.path" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\bin;C:\Program Files\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;C:\Program Files\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-assert-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-reflect-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\fest-swing-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-util-1.1.2.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit4.jar" />
 
@@ -1132,45 +1132,35 @@ column 2
 
           <property name="java.specification.version" value="1.7" />
 
-          <property name="ant.project.invoked-targets" value="build,Increment2Suite,Increment3Suite,junitreport" />
+          <property name="ant.project.invoked-targets" value="build,Increment1Suite,Increment2Suite,Increment3Suite,junitreport" />
 
           <property name="env.PROCESSOR_LEVEL" value="6" />
 
       </properties>
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCutPasteValue" time="7.042" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testCutPasteValue" time="4.557" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCellFormatChange" time="8.944" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testCellFormatChange" time="5.9" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCicularReference" time="12.42" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testCicularReference" time="8.419" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCutPasteFormula" time="9.858">
-          <failure message="expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;
-	at ui.UnitTestGuiAuto.testCutPasteFormula(UnitTestGuiAuto.java:401)
-</failure>
+      <testcase classname="ui.UnitTestGuiAuto" name="testCutPasteFormula" time="7.267" />
 
-      </testcase>
+      <testcase classname="ui.UnitTestGuiAuto" name="testCopyPasteValue" time="3.837" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCopyPasteValue" time="7.361" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testSaveToFile" time="2.425" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testSaveToFile" time="6.442" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testChangePropagation" time="7.252" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testChangePropagation" time="11.812" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testLoadFromFile" time="2.084" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testLoadFromFile" time="4.095" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testCreateNew" time="1.986" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCreateNew" time="1.994" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testCellInputs" time="6.918" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCellInputs" time="10.933" />
+      <testcase classname="ui.UnitTestGuiAuto" name="testCopyPasteFormula" time="6.53" />
 
-      <testcase classname="ui.UnitTestGuiAuto" name="testCopyPasteFormula" time="9.826">
-          <failure message="expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;[1].0&gt; but was:&lt;[0].0&gt;
-	at ui.UnitTestGuiAuto.testCopyPasteFormula(UnitTestGuiAuto.java:331)
-</failure>
-
-      </testcase>
-
-      <testcase classname="ui.UnitTestStress" name="testStress" time="900.376" />
+      <testcase classname="ui.UnitTestStress" name="testStress" time="899.935" />
 
       <system-out><![CDATA[row 0
 column 0
@@ -1196,7 +1186,6 @@ select Cell at 18,18
 column 18
 0.0
 select Cell at 18,18
-1____________________________
 Paste
 row 17
 0.0
@@ -1296,40 +1285,64 @@ column 0
 1.0
 select Cell at 0,0
 input C1 + 1
+row 0
+column 0
+0.0
+select Cell at 0,0
+input 1
 row 1
+0.0
+select Cell at 1,1
 column 1
 0.0
 select Cell at 1,1
-input 1
-row 10
+input 10
+row 2
 0.0
-select Cell at 10,4
-column 4
+select Cell at 2,2
+column 2
 0.0
-select Cell at 10,4
-input B2
-column 5
+select Cell at 2,2
+input A1
+column 3
 0.0
-select Cell at 10,5
-column 4
+select Cell at 2,3
+column 2
 1.0
-select Cell at 10,4
--9>>>>>-3
+select Cell at 2,2
+-2>>>>>-2
 Cut
-row 5
+row 3
 0.0
-select Cell at 5,16
-column 16
+select Cell at 3,3
+column 3
 0.0
-select Cell at 5,16
-N-3____________________________
+select Cell at 3,3
 Paste
-column 15
+column 4
 0.0
-select Cell at 5,15
-column 16
+select Cell at 3,4
+column 3
+10.0
+select Cell at 3,3
+row 2
 0.0
-select Cell at 5,16
+select Cell at 2,2
+column 2
+0.0
+select Cell at 2,2
+row 0
+0.0
+select Cell at 0,0
+column 0
+1.0
+select Cell at 0,0
+row 1
+0.0
+select Cell at 1,1
+column 1
+10.0
+select Cell at 1,1
 row 0
 column 0
 0.0
@@ -1354,7 +1367,6 @@ select Cell at 18,18
 column 18
 0.0
 select Cell at 18,18
-1____________________________
 Paste
 row 17
 0.0
@@ -1458,6 +1470,13 @@ column 0
 0.0
 select Cell at 0,0
 input 1
+row 1
+0.0
+select Cell at 1,2
+column 2
+0.0
+select Cell at 1,2
+input 10
 row 10
 0.0
 select Cell at 10,4
@@ -1473,20 +1492,19 @@ column 4
 select Cell at 10,4
 -10>>>>>-4
 Copy
-row 5
+row 11
 0.0
-select Cell at 5,16
-column 16
+select Cell at 11,6
+column 6
 0.0
-select Cell at 5,16
-M-4____________________________
+select Cell at 11,6
 Paste
-column 15
+column 7
 0.0
-select Cell at 5,15
-column 16
-0.0
-select Cell at 5,16
+select Cell at 11,7
+column 6
+10.0
+select Cell at 11,6
 row 0
 column 0
 0.0
@@ -3149,12 +3167,12 @@ input S20 + 1
 
       <system-err><![CDATA[Exception in thread "AWT-EventQueue-0" java.lang.StringIndexOutOfBoundsException: String index out of range: 0
 	at java.lang.String.charAt(Unknown Source)
-	at ui.Gui.propertyChange(Gui.java:103)
+	at ui.Gui.propertyChange(Gui.java:109)
 	at java.beans.PropertyChangeSupport.fire(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.awt.Component.firePropertyChange(Unknown Source)
-	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:85)
+	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:87)
 	at javax.swing.JTextField.fireActionPerformed(Unknown Source)
 	at javax.swing.JTextField.postActionEvent(Unknown Source)
 	at javax.swing.JTextField$NotifyAction.actionPerformed(Unknown Source)
