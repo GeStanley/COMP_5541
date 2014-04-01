@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="2" failures="0" hostname="Mike-Win81" name="suite.Increment2Suite" skipped="0" tests="55" time="0.504" timestamp="2014-03-31T17:07:45">
+<testsuite errors="2" failures="0" hostname="Mike-Win81" name="suite.Increment2Suite" skipped="0" tests="55" time="0.508" timestamp="2014-04-01T16:02:04">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.USERDOMAIN_ROAMINGPROFILE" value="MIKE-WIN81" />
@@ -75,7 +75,7 @@
     <property name="ant.file.type.COMP_5541" value="file" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on December 23 2013" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment2Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment2Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher3767406344546492215.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit3782429333362023767.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner suite.Increment2Suite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit\TEST-suite.Increment2Suite.xml crashfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junitvmwatcher5456089089169850592.properties propsfile=C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\junit1171478238791236095.properties" />
     <property name="java.class.path" value="C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\bin;C:\Program Files\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar;C:\Program Files\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-assert-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-reflect-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\fest-swing-1.2.jar;C:\Users\Mike\Dropbox\EclipseWorkspace\COMP_5541\FEST\FEST\lib\fest-util-1.1.2.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-launcher.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit.jar;C:\Program Files\eclipse\plugins\apache-ant-1.9.3\lib\ant-junit4.jar" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
     <property name="env.windir" value="C:\Windows" />
@@ -111,86 +111,86 @@
     <property name="file.encoding" value="Cp1252" />
     <property name="env.USERDOMAIN" value="MIKE-WIN81" />
     <property name="java.specification.version" value="1.7" />
-    <property name="ant.project.invoked-targets" value="build,Increment2Suite,Increment3Suite,junitreport" />
+    <property name="ant.project.invoked-targets" value="build,Increment1Suite,Increment2Suite,Increment3Suite,junitreport" />
     <property name="env.PROCESSOR_LEVEL" value="6" />
   </properties>
   <testcase classname="structure.UnitTestCell" name="testGetValue" time="0.004" />
   <testcase classname="structure.UnitTestCell" name="testCellConstructor" time="0.0" />
   <testcase classname="structure.UnitTestCell" name="testSetCellFormula" time="0.0" />
-  <testcase classname="structure.UnitTestCell" name="testGetCellFormula" time="0.001" />
+  <testcase classname="structure.UnitTestCell" name="testGetCellFormula" time="0.0" />
   <testcase classname="structure.UnitTestCell" name="testGetValueString" time="0.0" />
   <testcase classname="structure.UnitTestCell" name="testEquals" time="0.0" />
-  <testcase classname="structure.UnitTestFormula" name="testExceptions" time="0.0" />
-  <testcase classname="structure.UnitTestFormula" name="testPrivateMethodsFormula" time="0.001" />
-  <testcase classname="structure.UnitTestFormula" name="testCellReferences" time="0.001" />
-  <testcase classname="structure.UnitTestFormula" name="testMiscOperations" time="0.001" />
-  <testcase classname="structure.UnitTestFormula" name="testCircularReference" time="0.0" />
+  <testcase classname="structure.UnitTestFormula" name="testExceptions" time="0.001" />
+  <testcase classname="structure.UnitTestFormula" name="testPrivateMethodsFormula" time="0.0" />
+  <testcase classname="structure.UnitTestFormula" name="testCellReferences" time="0.0" />
+  <testcase classname="structure.UnitTestFormula" name="testMiscOperations" time="0.0" />
+  <testcase classname="structure.UnitTestFormula" name="testCircularReference" time="0.001" />
   <testcase classname="structure.UnitTestFormula" name="testBasicOperations" time="0.0" />
-  <testcase classname="structure.UnitTestFormula" name="testPolynomialOperations" time="0.001" />
-  <testcase classname="structure.UnitTestFormula" name="testNegativeNumbersPlus" time="0.0" />
+  <testcase classname="structure.UnitTestFormula" name="testPolynomialOperations" time="0.0" />
+  <testcase classname="structure.UnitTestFormula" name="testNegativeNumbersPlus" time="0.001" />
   <testcase classname="structure.UnitTestFormula" name="testNegativeNumbers" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testGetWidth" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testCellSelection" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testExpandTable" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testUpdateRows" time="0.0" />
-  <testcase classname="structure.UnitTestTable" name="testGetCell" time="0.0" />
+  <testcase classname="structure.UnitTestTable" name="testGetCell" time="0.001" />
   <testcase classname="structure.UnitTestTable" name="testDimensions" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testCellReferencing" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testIsCellSelected" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testExpandCol" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testExpandRow" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testGetLength" time="0.0" />
-  <testcase classname="structure.UnitTestTable" name="testEquals" time="0.001" />
-  <testcase classname="structure.UnitTestTable" name="testGetRow" time="0.001" />
+  <testcase classname="structure.UnitTestTable" name="testEquals" time="0.0" />
+  <testcase classname="structure.UnitTestTable" name="testGetRow" time="0.0" />
   <testcase classname="structure.UnitTestTable" name="testGetColumnIndex" time="0.0" />
-  <testcase classname="ui.UnitTestGridModel" name="testSetValueAt" time="0.002" />
+  <testcase classname="ui.UnitTestGridModel" name="testSetValueAt" time="0.001" />
   <testcase classname="ui.UnitTestGridModel" name="testGetValue" time="0.002" />
   <testcase classname="ui.UnitTestGridModel" name="testDimensionConstructor" time="0.0" />
-  <testcase classname="ui.UnitTestGridModel" name="testDimensionRetreaval" time="0.009" />
+  <testcase classname="ui.UnitTestGridModel" name="testDimensionRetreaval" time="0.008" />
   <testcase classname="ui.UnitTestGridModel" name="testTableConstructor" time="0.0" />
   <testcase classname="ui.UnitTestGridModel" name="testSelectCell" time="0.002" />
   <testcase classname="ui.UnitTestGui" name="testCreateNewPropertyChange" time="0.0" />
-  <testcase classname="ui.UnitTestGui" name="testInputPropertyChange" time="0.241">
+  <testcase classname="ui.UnitTestGui" name="testInputPropertyChange" time="0.244">
     <error message="String index out of range: 0" type="java.lang.StringIndexOutOfBoundsException">java.lang.StringIndexOutOfBoundsException: String index out of range: 0
 	at java.lang.String.charAt(Unknown Source)
-	at ui.Gui.propertyChange(Gui.java:103)
+	at ui.Gui.propertyChange(Gui.java:109)
 	at java.beans.PropertyChangeSupport.fire(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.awt.Component.firePropertyChange(Unknown Source)
-	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:85)
-	at ui.UnitTestGui.testInputPropertyChange(UnitTestGui.java:42)
+	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:87)
+	at ui.UnitTestGui.testInputPropertyChange(UnitTestGui.java:51)
 </error>
   </testcase>
-  <testcase classname="ui.UnitTestGui" name="testSelectPropertyChange" time="0.124">
+  <testcase classname="ui.UnitTestGui" name="testSelectPropertyChange" time="0.131">
     <error message="String index out of range: 0" type="java.lang.StringIndexOutOfBoundsException">java.lang.StringIndexOutOfBoundsException: String index out of range: 0
 	at java.lang.String.charAt(Unknown Source)
-	at ui.Gui.propertyChange(Gui.java:103)
+	at ui.Gui.propertyChange(Gui.java:109)
 	at java.beans.PropertyChangeSupport.fire(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.beans.PropertyChangeSupport.firePropertyChange(Unknown Source)
 	at java.awt.Component.firePropertyChange(Unknown Source)
-	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:85)
-	at ui.UnitTestGui.testSelectPropertyChange(UnitTestGui.java:108)
+	at ui.InputLineComponent.actionPerformed(InputLineComponent.java:87)
+	at ui.UnitTestGui.testSelectPropertyChange(UnitTestGui.java:117)
 </error>
   </testcase>
   <testcase classname="ui.UnitTestGui" name="openFile" time="0.0" />
   <testcase classname="ui.UnitTestGui" name="testSavePropertyChange" time="0.0" />
-  <testcase classname="ui.UnitTestGui" name="testTableConstructor" time="0.014" />
+  <testcase classname="ui.UnitTestGui" name="testTableConstructor" time="0.015" />
   <testcase classname="ui.UnitTestGui" name="testLoadPropertyChange" time="0.0" />
   <testcase classname="ui.UnitTestInputLine" name="testSetGetText" time="0.001" />
-  <testcase classname="ui.UnitTestInputLine" name="testSetGetMsg" time="0.0" />
-  <testcase classname="ui.UnitTestInputLine" name="testInputConstructor" time="0.0" />
+  <testcase classname="ui.UnitTestInputLine" name="testSetGetMsg" time="0.001" />
+  <testcase classname="ui.UnitTestInputLine" name="testInputConstructor" time="0.001" />
   <testcase classname="ui.UnitTestSaveFile" name="testOpenWrite" time="0.001" />
-  <testcase classname="ui.UnitTestSaveFile" name="testLoad" time="0.004" />
+  <testcase classname="ui.UnitTestSaveFile" name="testLoad" time="0.005" />
   <testcase classname="ui.UnitTestSaveFile" name="testSave" time="0.002" />
   <testcase classname="ui.UnitTestSaveFile" name="testOpenRead" time="0.001" />
   <testcase classname="ui.UnitTestSaveFile" name="testImportExportLine" time="0.001" />
-  <testcase classname="ui.UnitTestSpreadSheet" name="testDimensionConstructor" time="0.0" />
+  <testcase classname="ui.UnitTestSpreadSheet" name="testDimensionConstructor" time="0.001" />
   <testcase classname="ui.UnitTestSpreadSheet" name="testActionPerformed" time="0.001" />
-  <testcase classname="ui.UnitTestSpreadSheet" name="testIsSelected" time="0.002" />
-  <testcase classname="ui.UnitTestSpreadSheet" name="testSetFormulaOfSelectedCell" time="0.002" />
-  <testcase classname="ui.UnitTestSpreadSheet" name="testConstructor" time="0.001" />
+  <testcase classname="ui.UnitTestSpreadSheet" name="testIsSelected" time="0.001" />
+  <testcase classname="ui.UnitTestSpreadSheet" name="testSetFormulaOfSelectedCell" time="0.001" />
+  <testcase classname="ui.UnitTestSpreadSheet" name="testConstructor" time="0.002" />
   <system-out><![CDATA[row 1
 column 2
 0.0
