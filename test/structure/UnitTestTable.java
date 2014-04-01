@@ -209,6 +209,8 @@ public class UnitTestTable {
 	    Method expandMethod = getMethodOfClass(Table.class, "expandTable");
 	    expandMethod.invoke(tester,new Cell[5][5]);
 		assertEquals("new length should be 5", 5, tester.getLength());
+		assertEquals("new length should be 5", 5, tester.getWidth());
+
 	}
 
 	/**
