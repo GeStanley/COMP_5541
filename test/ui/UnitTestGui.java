@@ -69,7 +69,7 @@ public class UnitTestGui {
 		testGui.inputLine.actionPerformed(new ActionEvent(testGui.inputLine,ActionEvent.ACTION_PERFORMED,""));
 		
 		assertEquals("Message: D4: Cell abc could not be referenced!",testGui.inputLine.getMsg());
-		assertEquals("0.0",Gui.spreadsheet.getValueAt(2, 2).toString());
+		assertEquals("0.0",Gui.spreadsheet.getValueAt(3, 3).toString());
 	}
 	
 	@Test
