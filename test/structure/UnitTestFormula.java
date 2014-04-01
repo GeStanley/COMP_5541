@@ -123,7 +123,7 @@ public class UnitTestFormula {
 		resultBool = (boolean) testMe.invoke(tester, 'j');
 		assertFalse(resultBool);
 		
-		//Test isNumBound
+		//Test isOp
 		methodName = "isOp";
 		testMe = getMethodOfClass(structure.Formula.class, methodName, params);		
 		//Should pass
